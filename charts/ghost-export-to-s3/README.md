@@ -2,9 +2,9 @@
 
 Helm Chart for backing up a headless Ghost Blog to AWS S3
 
-[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/ghost-export-to-s3)](https://artifacthub.io/packages/search?repo=ghost-export-to-s3) ![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
+![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
-## Installation
+<!--## Installation
 
 ```bash
 # Add repository
@@ -12,6 +12,7 @@ helm repo add ghost-export-to-s3 https://raw.githubusercontent.com/rm3l/ghost-ex
 # Install Chart
 helm install my-ghost-export-to-s3 ghost-export-to-s3/ghost-export-to-s3 --version 0.0.1
 ```
+-->
 
 See https://artifacthub.io/packages/helm/ghost-export-to-s3/ghost-export-to-s3?modal=install
 
