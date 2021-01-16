@@ -1,0 +1,21 @@
+{{ template "chart.header" . }}
+{{ template "chart.description" . }}
+
+[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/ghost-export-to-s3)](https://artifacthub.io/packages/search?repo=ghost-export-to-s3) {{ template "chart.versionBadge" .  }}{{ template "chart.typeBadge" .  }}{{ template "chart.appVersionBadge" .  }}
+
+## Installation
+
+```bash
+# Add repository
+helm repo add ghost-export-to-s3 https://raw.githubusercontent.com/rm3l/ghost-export-to-s3/main
+# Install Chart
+helm install my-ghost-export-to-s3 ghost-export-to-s3/ghost-export-to-s3 --version 0.0.1
+```
+
+See https://artifacthub.io/packages/helm/ghost-export-to-s3/ghost-export-to-s3?modal=install
+
+{{ template "chart.requirementsSection" . }}
+
+{{ template "chart.valuesSection" . }}
+
+{{ template "helm-docs.versionFooter" . }}

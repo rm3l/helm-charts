@@ -1,0 +1,79 @@
+# Default values for ghost-export-to-s3.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+ghost:
+  # -- Base URL for the headless Ghost CMS targeted
+  apiBaseUrl: "https://my.ghost.blog/ghost"
+  # -- Ghost CMS username
+  username: "my-ghost-username"
+  # -- Ghost CMS password
+  password: "my-ghost-password"
+
+aws:
+  # -- AWS Access Key. Must have the permissions to write to the target bucket.
+  accessKeyId: "my-aws-access-key-id"
+  # -- AWS Secret Key. Must have the permissions to write to the target bucket.
+  secretKey: "my-aws-secret-key"
+  # -- Target destination (absolute) in AWS S3, where the backup file should be written
+  s3:
+    destination: "s3://path/to/my/s3-export.json"
+
+cronJob:
+  # -- How frequently the Backup job should run. Cron Syntax, as supported by Kubernetes CronJobs
+  schedule: "@daily"
+  concurrencyPolicy: Forbid
+  restartPolicy: OnFailure
+  ttlSecondsAfterFinished: 300
+  backoffLimit: 1
+  parallelism: 1
+  init:
+    image: curlimages/curl:7.74.0
+    imagePullPolicy: IfNotPresent
+    resources: {}
+  main:
+    image: amazon/aws-cli:2.1.15
+    imagePullPolicy: IfNotPresent
+    resources: {}
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # -- Specifies whether a service account should be created
+  create: true
+  # -- Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

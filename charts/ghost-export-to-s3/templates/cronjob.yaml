@@ -1,0 +1,107 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "ghost-export-to-s3.fullname" . }}
+  labels:
+    {{- include "ghost-export-to-s3.labels" . | nindent 4 }}
+spec:
+  schedule: "{{ .Values.cronJob.schedule }}"
+  concurrencyPolicy: {{ .Values.cronJob.concurrencyPolicy }}
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: {{ .Values.cronJob.ttlSecondsAfterFinished }}
+      backoffLimit: {{ .Values.cronJob.backoffLimit }}
+      parallelism: {{ .Values.cronJob.parallelism }}
+      template:
+        spec:
+          restartPolicy: {{ .Values.cronJob.restartPolicy }}
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+          serviceAccountName: {{ include "ghost-export-to-s3.serviceAccountName" . }}
+          securityContext:
+            {{- toYaml .Values.podSecurityContext | nindent 12 }}
+          volumes:
+          - name: "export-data"
+            emptyDir: {}
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+          {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+          {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+
+          initContainers:
+          - name: download-glorious-json-from-ghost
+            image: {{ .Values.cronJob.init.image }}
+            imagePullPolicy: {{ .Values.cronJob.init.imagePullPolicy }}
+            command: ["/bin/sh", "-c", "curl --fail -sSL -c /tmp/ghost-cookie.txt -d username=\"$GHOST_AUTH_USERNAME\" -d password=\"$GHOST_AUTH_PASSWORD\" -H \"Origin: k8s://$POD_NAME@$POD_NAMESPACE\" \"${GHOST_URL}\"/api/v3/admin/session/ && 
+    curl --fail -sSL -b /tmp/ghost-cookie.txt -H \"Origin: k8s://$POD_NAME@$POD_NAMESPACE\" -H 'Content-Type: application/json' \"${GHOST_URL}\"/api/v3/admin/db/ -o /data/ghost-export/ghost-export.json && 
+    rm -rf /tmp/ghost-cookie.txt"]
+            env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: GHOST_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "ghost-export-to-s3.fullname" . }}
+                  key: GHOST_URL
+            - name: GHOST_AUTH_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "ghost-export-to-s3.fullname" . }}
+                  key: GHOST_AUTH_USERNAME
+            - name: GHOST_AUTH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "ghost-export-to-s3.fullname" . }}
+                  key: GHOST_AUTH_PASSWORD
+            volumeMounts:
+            - name: export-data
+              mountPath: /data/ghost-export
+            resources:
+              {{- toYaml .Values.resources | nindent 14 }}
+
+          containers:
+          - name: export-ghost-json-to-s3
+            image: {{ .Values.cronJob.main.image }}
+            imagePullPolicy: {{ .Values.cronJob.main.imagePullPolicy }}
+            args:
+            - s3
+            - cp
+            - "/data/to-export/ghost-export.json"
+            - "$(S3_DESTINATION)"
+            env:
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "ghost-export-to-s3.fullname" . }}
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "ghost-export-to-s3.fullname" . }}
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: S3_DESTINATION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "ghost-export-to-s3.fullname" . }}
+                  key: S3_DESTINATION
+            volumeMounts:
+            - name: export-data
+              mountPath: /data/to-export
+            resources:
+              {{- toYaml .Values.resources | nindent 14 }}
