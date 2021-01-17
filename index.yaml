@@ -3,6 +3,18 @@ entries:
   ghost-export-to-s3:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2021-01-17T21:50:34.877104275Z"
+    description: |
+      Automated backups of headless Ghost Blogs to AWS S3.
+      See https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ for more details.
+    digest: c2fd89af9fe12bc113b883d0c4df1055a8293cea052fadb505aabae88f49df1b
+    name: ghost-export-to-s3
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/ghost-export-to-s3-0.0.5/ghost-export-to-s3-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2021-01-17T21:36:18.440645418Z"
     description: Helm Chart for backing up a headless Ghost Blog to AWS S3
     digest: 4f2753cbf32a11bca5e77515633999637b7a8e19b829c35e02561490ca9b0de0
