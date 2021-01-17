@@ -6,7 +6,7 @@ Helm Chart for backing up a headless Ghost Blog to AWS S3
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-release rm3l/ghost-export-to-s3 --version 0.0.3
+$ helm install my-release rm3l/ghost-export-to-s3 --version 0.0.4
 ```
 
 ## Values
