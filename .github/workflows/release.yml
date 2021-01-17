@@ -6,7 +6,37 @@ on:
       - main
 
 jobs:
+  update_gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Sync README.md to gh-pages branch
+        run: |
+          git fetch
+          git checkout -b gh-pages origin/gh-pages
+          git checkout origin/main README.md
+          git commit -am "Sync README.md from origin/main"
+          git pull --rebase
+
+      - name: Push changes to gh-pages
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: false
+          branch: gh-pages
+
   release:
+    needs:
+      - update_gh-pages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
