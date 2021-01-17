@@ -8,7 +8,7 @@ Collection of some tools and apps that I maintain, ready to launch on [Kubernete
 
 ```bash
 $ # Add Helm Chart Repo
-$ helm repo add rm3l https://rm3l.github.io/helm-charts
+$ helm repo add rm3l https://helm-charts.rm3l.org
 
 $ # Search repo
 $ helm search repo rm3l
