@@ -1,0 +1,15 @@
+{{ template "chart.header" . }}
+{{ template "chart.description" . }}
+
+## Installation
+
+```bash
+$ helm repo add rm3l https://helm-charts.rm3l.org
+$ helm install my-release rm3l/{{ template "chart.name" . }} --version {{ template "chart.version" . }}
+```
+
+{{ template "chart.requirementsSection" . }}
+
+{{ template "chart.valuesSection" . }}
+
+{{ template "helm-docs.versionFooter" . }}

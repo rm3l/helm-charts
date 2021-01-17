@@ -2,6 +2,9 @@
 
 ![Release Charts](https://github.com/rm3l/helm-charts/workflows/Release%20Charts/badge.svg) [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/rm3l)](https://artifacthub.io/packages/search?repo=rm3l)
 
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+
+
 Collection of some tools and apps that I maintain, ready to launch on [Kubernetes](https://kubernetes.io/) using [Helm](https://helm.sh/).
 
 ## TL;DR
