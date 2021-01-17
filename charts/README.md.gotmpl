@@ -8,6 +8,8 @@ $ helm repo add rm3l https://helm-charts.rm3l.org
 $ helm install my-{{ template "chart.name" . }} rm3l/{{ template "chart.name" . }} --version {{ template "chart.version" . }}
 ```
 
+See https://artifacthub.io/packages/helm/rm3l/{{ template "chart.name" . }}?modal=install
+
 #{{ template "chart.requirementsSection" . }}
 
 #{{ template "chart.valuesSection" . }}
