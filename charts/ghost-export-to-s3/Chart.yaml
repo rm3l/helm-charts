@@ -1,6 +1,8 @@
 apiVersion: v2
 name: ghost-export-to-s3
-description: Helm Chart for backing up a headless Ghost Blog to AWS S3
+description: |
+    Automated backups of headless Ghost Blogs to AWS S3.
+    See https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ for more details.
 
 type: application
 

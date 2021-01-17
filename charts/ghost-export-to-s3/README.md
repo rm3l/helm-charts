@@ -1,6 +1,7 @@
 ## ghost-export-to-s3
 
-Helm Chart for backing up a headless Ghost Blog to AWS S3
+Automated backups of headless Ghost Blogs to AWS S3.
+See https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ for more details.
 
 ### Installation
 
