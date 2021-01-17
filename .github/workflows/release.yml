@@ -24,15 +24,10 @@ jobs:
           git fetch
           git checkout -b gh-pages origin/gh-pages
           git checkout origin/main README.md
-          git commit -am "Sync README.md from origin/main"
-          git pull --rebase
-
-      - name: Push changes to gh-pages
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: false
-          branch: gh-pages
+          if [[ `git status --porcelain` ]]; then
+            git commit -am "Sync README.md from origin/main"
+            git push origin gh-pages
+          fi
 
   release:
     needs:
