@@ -3,6 +3,16 @@ entries:
   ghost-export-to-s3:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2021-01-17T21:36:18.440645418Z"
+    description: Helm Chart for backing up a headless Ghost Blog to AWS S3
+    digest: 4f2753cbf32a11bca5e77515633999637b7a8e19b829c35e02561490ca9b0de0
+    name: ghost-export-to-s3
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/ghost-export-to-s3-0.0.4/ghost-export-to-s3-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2021-01-17T00:16:31.345129484Z"
     description: Helm Chart for backing up a headless Ghost Blog to AWS S3
     digest: 905f82fc1b944a04163c6469d2eead8a3698413047ad5c7b195dafba6a8ecb92
