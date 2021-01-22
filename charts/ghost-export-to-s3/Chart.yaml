@@ -2,13 +2,13 @@ apiVersion: v2
 name: ghost-export-to-s3
 description: |
     Automated backups of headless Ghost Blogs to AWS S3.
-    See https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ for more details.
+    https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
 
 type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.0.5
+version: 0.0.6
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
