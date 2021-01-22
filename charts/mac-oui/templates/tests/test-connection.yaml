@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "mac-oui.fullname" . }}-test-connection"
+  labels:
+    {{- include "mac-oui.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "mac-oui.fullname" . }}:{{ .Values.service.port }}/00-00-00']
+  restartPolicy: Never
