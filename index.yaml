@@ -33,4 +33,17 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/ghost-export-to-s3-0.0.3/ghost-export-to-s3-0.0.3.tgz
     version: 0.0.3
+  mac-oui:
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2021-01-22T22:51:57.442188056Z"
+    description: |
+      Microservice for looking up manufacturers from MAC addresses.
+      https://github.com/rm3l/mac-oui
+    digest: ff32dfdc79fc3d44dad314c1b5ee43e6cd9333a58ddd5430c2445072b04224aa
+    name: mac-oui
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.0.0/mac-oui-1.0.0.tgz
+    version: 1.0.0
 generated: "2021-01-17T00:16:31.182580073Z"
