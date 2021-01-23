@@ -28,18 +28,12 @@ See https://artifacthub.io/packages/helm/rm3l/mac-oui?modal=install
 | ingress.hosts[0].host | string | `"mac-oui.local"` |  |
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
-| livenessProbe.failureThreshold | int | `5` |  |
-| livenessProbe.initialDelaySeconds | int | `3` |  |
-| livenessProbe.periodSeconds | int | `10` |  |
-| livenessProbe.timeoutSeconds | int | `3` |  |
+| livenessProbe | object | `{"failureThreshold":5,"initialDelaySeconds":3,"periodSeconds":10,"timeoutSeconds":3}` | Configure the liveness healthcheck for the mac-oui containers |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
-| readinessProbe.failureThreshold | int | `5` |  |
-| readinessProbe.initialDelaySeconds | int | `3` |  |
-| readinessProbe.periodSeconds | int | `10` |  |
-| readinessProbe.timeoutSeconds | int | `3` |  |
-| replicaCount | int | `1` |  |
+| readinessProbe | object | `{"failureThreshold":5,"initialDelaySeconds":3,"periodSeconds":10,"timeoutSeconds":3}` | Configure the readiness healthcheck for the mac-oui containers |
+| replicaCount | int | `1` | (int) Number of replicas |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
 | service.port | int | `8080` |  |
@@ -47,7 +41,7 @@ See https://artifacthub.io/packages/helm/rm3l/mac-oui?modal=install
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `nil` |  |
-| strategy | object | `{}` |  |
+| strategy | object | `{}` | Strategy used to replace old Pods by new ones  |
 | tolerations | list | `[]` |  |
 
 #

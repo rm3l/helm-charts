@@ -2,6 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# -- (int) Number of replicas
 replicaCount: 1
 
 image:
@@ -49,18 +50,21 @@ ingress:
   #    hosts:
   #      - mac-oui.local
 
+# -- Configure the liveness healthcheck for the mac-oui containers
 livenessProbe:
   initialDelaySeconds: 3
   periodSeconds: 10
   timeoutSeconds: 3
   failureThreshold: 5
 
+# -- Configure the readiness healthcheck for the mac-oui containers
 readinessProbe:
   initialDelaySeconds: 3
   periodSeconds: 10
   timeoutSeconds: 3
   failureThreshold: 5
 
+# -- Strategy used to replace old Pods by new ones 
 strategy: {}
   # type: RollingUpdate
   # rollingUpdate:
