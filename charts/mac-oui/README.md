@@ -39,6 +39,7 @@ See https://artifacthub.io/packages/helm/rm3l/mac-oui?modal=install
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `nil` |  |
+| strategy | object | `{}` |  |
 | tolerations | list | `[]` |  |
 
 #
