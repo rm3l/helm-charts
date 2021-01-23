@@ -49,6 +49,18 @@ ingress:
   #    hosts:
   #      - mac-oui.local
 
+livenessProbe:
+  initialDelaySeconds: 3
+  periodSeconds: 10
+  timeoutSeconds: 3
+  failureThreshold: 5
+
+readinessProbe:
+  initialDelaySeconds: 3
+  periodSeconds: 10
+  timeoutSeconds: 3
+  failureThreshold: 5
+
 strategy: {}
   # type: RollingUpdate
   # rollingUpdate:

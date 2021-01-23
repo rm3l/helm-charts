@@ -28,9 +28,17 @@ See https://artifacthub.io/packages/helm/rm3l/mac-oui?modal=install
 | ingress.hosts[0].host | string | `"mac-oui.local"` |  |
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
+| livenessProbe.failureThreshold | int | `5` |  |
+| livenessProbe.initialDelaySeconds | int | `3` |  |
+| livenessProbe.periodSeconds | int | `10` |  |
+| livenessProbe.timeoutSeconds | int | `3` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
+| readinessProbe.failureThreshold | int | `5` |  |
+| readinessProbe.initialDelaySeconds | int | `3` |  |
+| readinessProbe.periodSeconds | int | `10` |  |
+| readinessProbe.timeoutSeconds | int | `3` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
