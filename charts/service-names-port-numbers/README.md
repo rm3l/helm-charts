@@ -7,7 +7,7 @@ https://github.com/rm3l/service-names-port-numbers
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-service-names-port-numbers rm3l/service-names-port-numbers --version 0.1.0
+$ helm install my-service-names-port-numbers rm3l/service-names-port-numbers --version 0.1.1
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers?modal=install
@@ -29,11 +29,11 @@ See https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers?modal=i
 | ingress.hosts[0].host | string | `"service-names-port-numbers.local"` |  |
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
-| livenessProbe | object | `{"failureThreshold":5,"initialDelaySeconds":3,"periodSeconds":10,"timeoutSeconds":3}` | Configure the liveness healthcheck for the mac-oui containers |
+| livenessProbe | object | `{"initialDelaySeconds":3,"periodSeconds":90,"timeoutSeconds":10}` | Configure the liveness healthcheck for the containers |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
-| readinessProbe | object | `{"failureThreshold":5,"initialDelaySeconds":3,"periodSeconds":10,"timeoutSeconds":3}` | Configure the readiness healthcheck for the mac-oui containers |
+| readinessProbe | object | `{"initialDelaySeconds":3,"periodSeconds":4}` | Configure the readiness healthcheck for the containers |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |

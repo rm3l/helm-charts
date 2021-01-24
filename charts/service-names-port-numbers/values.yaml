@@ -49,19 +49,16 @@ ingress:
   #    hosts:
   #      - service-names-port-numbers.local
 
-# -- Configure the liveness healthcheck for the mac-oui containers
+# -- Configure the liveness healthcheck for the containers
 livenessProbe:
   initialDelaySeconds: 3
-  periodSeconds: 10
-  timeoutSeconds: 3
-  failureThreshold: 5
+  periodSeconds: 90
+  timeoutSeconds: 10
 
-# -- Configure the readiness healthcheck for the mac-oui containers
+# -- Configure the readiness healthcheck for the containers
 readinessProbe:
   initialDelaySeconds: 3
-  periodSeconds: 10
-  timeoutSeconds: 3
-  failureThreshold: 5
+  periodSeconds: 4
 
 # -- Strategy used to replace old Pods by new ones 
 strategy: {}
