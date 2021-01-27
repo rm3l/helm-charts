@@ -32,7 +32,7 @@ cronJob:
     imagePullPolicy: IfNotPresent
     resources: {}
   main:
-    image: amazon/aws-cli:2.1.15
+    image: amazon/aws-cli:2.1.21
     imagePullPolicy: IfNotPresent
     resources: {}
 
