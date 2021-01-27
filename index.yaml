@@ -2,6 +2,18 @@ apiVersion: v1
 entries:
   ghost-export-to-s3:
   - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2021-01-27T20:23:08.229289836Z"
+    description: |
+      Automated backups of headless Ghost Blogs to AWS S3.
+      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    digest: 790f48dd7a574e021322fa897571c34271ebccd330009c96ed3d06fec9a3338f
+    name: ghost-export-to-s3
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/ghost-export-to-s3-0.1.0/ghost-export-to-s3-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
     appVersion: 1.0.0
     created: "2021-01-22T22:58:38.482652843Z"
     description: |
@@ -48,6 +60,18 @@ entries:
   mac-oui:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2021-01-27T20:23:08.33247204Z"
+    description: |
+      Microservice for looking up manufacturers from MAC addresses.
+      https://github.com/rm3l/mac-oui
+    digest: 95a318f139e0801021085d914d5421b3f8539525073bb57b8135c1fb8fb43136
+    name: mac-oui
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.2.0/mac-oui-1.2.0.tgz
+    version: 1.2.0
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2021-01-23T21:56:42.246946259Z"
     description: |
       Microservice for looking up manufacturers from MAC addresses.
@@ -71,6 +95,18 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.0.0/mac-oui-1.0.0.tgz
     version: 1.0.0
   service-names-port-numbers:
+  - apiVersion: v2
+    appVersion: 0.8.0
+    created: "2021-01-27T20:23:08.424364804Z"
+    description: |
+      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
+      https://github.com/rm3l/service-names-port-numbers
+    digest: c31405f17f40eaee79ca280196adea5f0f7e881650cac8d6c2d8b150dee64764
+    name: service-names-port-numbers
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.2.0/service-names-port-numbers-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-01-24T23:26:02.477558093Z"
