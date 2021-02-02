@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    tags:
+      - '*'
+  pull_request:
 
 jobs:
   lint-test:
@@ -45,6 +48,7 @@ jobs:
         run: ct install
 
   update_gh-pages:
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/'))
     needs:
       - lint-test
     runs-on: ubuntu-latest
@@ -70,6 +74,7 @@ jobs:
           fi
 
   release:
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/'))
     needs:
       - lint-test
     runs-on: ubuntu-latest
