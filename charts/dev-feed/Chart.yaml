@@ -21,3 +21,9 @@ version: 0.1.0
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
 appVersion: 1.7.0
+
+# Issue with name. See discussion here : https://github.com/helm/chart-testing/issues/192
+maintainers:
+- name: rm3l
+  email: armel@rm3l.org
+  url: https://rm3l.org
