@@ -1,0 +1,9 @@
+# See https://github.com/helm/chart-testing#configuration
+remote: origin
+# Required if branch name is not 'master' : https://github.com/helm/chart-testing-action/issues/43
+target-branch: main
+chart-dirs:
+- charts
+chart-repos:
+- stable=https://charts.helm.sh/stable
+helm-extra-args: --timeout 600s
