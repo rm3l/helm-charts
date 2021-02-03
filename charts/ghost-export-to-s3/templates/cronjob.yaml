@@ -42,9 +42,21 @@ spec:
           - name: download-glorious-json-from-ghost
             image: {{ .Values.cronJob.init.image }}
             imagePullPolicy: {{ .Values.cronJob.init.imagePullPolicy }}
-            command: ["/bin/sh", "-c", "curl --fail -sSL -c /tmp/ghost-cookie.txt -d username=\"$GHOST_AUTH_USERNAME\" -d password=\"$GHOST_AUTH_PASSWORD\" -H \"Origin: k8s://$POD_NAME@$POD_NAMESPACE\" \"${GHOST_URL}\"/api/v3/admin/session/ && 
-    curl --fail -sSL -b /tmp/ghost-cookie.txt -H \"Origin: k8s://$POD_NAME@$POD_NAMESPACE\" -H 'Content-Type: application/json' \"${GHOST_URL}\"/api/v3/admin/db/ -o /data/ghost-export/ghost-export.json && 
-    rm -rf /tmp/ghost-cookie.txt"]
+            command:
+            - /bin/sh
+            - -c
+            - |
+              curl --fail -sSL -c /tmp/ghost-cookie.txt \
+                -d username='$(GHOST_AUTH_USERNAME)' \
+                -d password='$(GHOST_AUTH_PASSWORD)' \
+                -H 'Origin: k8s://$(POD_NAME)@$(POD_NAMESPACE)' \
+                '$(GHOST_URL)'/api/v3/admin/session/ && \
+              curl --fail -sSL -b /tmp/ghost-cookie.txt \
+                -H 'Origin: k8s://$(POD_NAME)@$(POD_NAMESPACE)' \
+                -H 'Content-Type: application/json' \
+                '$(GHOST_URL)'/api/v3/admin/db/ \
+                -o /data/ghost-export/ghost-export.json && \
+              rm -rf /tmp/ghost-cookie.txt
             env:
             - name: POD_NAME
               valueFrom:
