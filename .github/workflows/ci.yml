@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    tags:
-      - '*'
   pull_request:
 
 jobs:
@@ -31,10 +29,20 @@ jobs:
         with:
           version: v3.3.1
 
-      - name: Run chart-testing (list-changed)
+      - name: Run chart-testing (list-changed on main)
         id: list-changed
+        if: github.ref == 'refs/heads/main'
         run: |
           changed=$(ct list-changed --config ct.yaml --since ${{ github.event.before }})
+          if [[ -n "$changed" ]]; then
+            echo "::set-output name=changed::true"
+          fi
+
+      - name: Run chart-testing (list-changed for PRs)
+        id: list-changed
+        if: github.event_name == 'pull_request'
+        run: |
+          changed=$(ct list-changed --config ct.yaml)
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
