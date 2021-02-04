@@ -30,16 +30,16 @@ jobs:
           version: v3.3.1
 
       - name: Run chart-testing (list-changed on main)
-        id: list-changed
-        if: github.ref == 'refs/heads/main'
+        id: list-changed-main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           changed=$(ct list-changed --config ct.yaml --since ${{ github.event.before }})
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
 
-      - name: Run chart-testing (list-changed for PRs)
-        id: list-changed
+      - name: Run chart-testing (list-changed for PR)
+        id: list-changed-pr
         if: github.event_name == 'pull_request'
         run: |
           changed=$(ct list-changed --config ct.yaml)
@@ -50,9 +50,13 @@ jobs:
       - name: Run chart-testing (lint)
         run: ct lint --config ct.yaml
 
-      - name: Create kind cluster
+      - name: Create kind cluster (main)
         uses: helm/kind-action@v1.1.0
-        if: steps.list-changed.outputs.changed == 'true'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.list-changed-main.outputs.changed == 'true'
+
+      - name: Create kind cluster (PR)
+        uses: helm/kind-action@v1.1.0
+        if: github.event_name == 'pull_request' && steps.list-changed-pr.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
         run: ct install --config ct.yaml
