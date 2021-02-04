@@ -3,6 +3,22 @@ entries:
   ghost-export-to-s3:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2021-02-04T21:30:05.053221707Z"
+    description: |
+      Automated backups of headless Ghost Blogs to AWS S3.
+      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    digest: 991cc8fceafab70270bbae76dc3a5b9d78b1bd29189249aee3d992ae243b4249
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: ghost-export-to-s3
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/ghost-export-to-s3-0.5.0/ghost-export-to-s3-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2021-02-03T22:49:10.969671841Z"
     description: |
       Automated backups of headless Ghost Blogs to AWS S3.
@@ -100,6 +116,22 @@ entries:
   mac-oui:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2021-02-04T21:30:05.155921782Z"
+    description: |
+      Microservice for looking up manufacturers from MAC addresses.
+      https://github.com/rm3l/mac-oui
+    digest: 0d7b3685a7d7bf9250042568cda439357d46cfc4f06620d180a0dfbd70056ef5
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: mac-oui
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.6.0/mac-oui-1.6.0.tgz
+    version: 1.6.0
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2021-02-03T22:49:11.065094942Z"
     description: |
       Microservice for looking up manufacturers from MAC addresses.
@@ -175,6 +207,22 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.0.0/mac-oui-1.0.0.tgz
     version: 1.0.0
   service-names-port-numbers:
+  - apiVersion: v2
+    appVersion: 0.8.0
+    created: "2021-02-04T21:30:05.282174728Z"
+    description: |
+      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
+      https://github.com/rm3l/service-names-port-numbers
+    digest: ac39939b62a00e03e615c5baa75b1f90d32ad3df4807c2a9afdcecce53d8b5d2
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: service-names-port-numbers
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.6.0/service-names-port-numbers-0.6.0.tgz
+    version: 0.6.0
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-02-03T22:49:11.153208374Z"
