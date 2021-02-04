@@ -64,9 +64,11 @@ jobs:
         if: github.event_name == 'pull_request' && steps.list-changed-pr.outputs.changed == 'true'
 
       - name: Run chart-testing (install on main)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: ct install --config ct.yaml --since ${{ github.event.before }}
 
       - name: Run chart-testing (install for PR)
+        if: github.event_name == 'pull_request'
         run: ct install --config ct.yaml
 
   update_gh-pages:
