@@ -25,6 +25,36 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | affinity | object | `{}` |  |
 | auth.password | string | `"r3allyPl34s3Ch4ng3M3"` |  |
 | config | string | `"logging.level.org.rm3l.devfeed=INFO\ndatasource.poolSize=2\n\n# Crawlers disabled because they are now deployed as independent Kubernetes CronJobs (1 per crawler service)\ncrawlers.task.fetch-articles=false\nexecutor.thread-pool.size=20\n\n#article.screenshot.service=pagespeedonline\n#pagespeedonline.api.timeoutSeconds=300\n"` |  |
+| crawlers.discoverdev_io.affinity | object | `{}` |  |
+| crawlers.discoverdev_io.articleMaxAgeDays | int | `365` |  |
+| crawlers.discoverdev_io.concurrencyPolicy | string | `"Forbid"` |  |
+| crawlers.discoverdev_io.enabled | bool | `true` |  |
+| crawlers.discoverdev_io.image.pullPolicy | string | `"IfNotPresent"` |  |
+| crawlers.discoverdev_io.image.repository | string | `"rm3l/dev-feed-crawler-discoverdev_io"` |  |
+| crawlers.discoverdev_io.restartPolicy | string | `"OnFailure"` |  |
+| crawlers.discoverdev_io.schedule | string | `"0 0 * * 0"` |  |
+| crawlers.discoverdev_io.startingDeadlineSeconds | int | `3600` |  |
+| crawlers.discoverdev_io.ttlSecondsAfterFinished | int | `900` |  |
+| crawlers.engineeringblogs_xyz.affinity | object | `{}` |  |
+| crawlers.engineeringblogs_xyz.articleMaxAgeDays | int | `365` |  |
+| crawlers.engineeringblogs_xyz.concurrencyPolicy | string | `"Forbid"` |  |
+| crawlers.engineeringblogs_xyz.enabled | bool | `true` |  |
+| crawlers.engineeringblogs_xyz.image.pullPolicy | string | `"IfNotPresent"` |  |
+| crawlers.engineeringblogs_xyz.image.repository | string | `"rm3l/dev-feed-crawler-engineeringblogs-xyz"` |  |
+| crawlers.engineeringblogs_xyz.restartPolicy | string | `"OnFailure"` |  |
+| crawlers.engineeringblogs_xyz.schedule | string | `"*/30 * * * *"` |  |
+| crawlers.engineeringblogs_xyz.startingDeadlineSeconds | int | `3600` |  |
+| crawlers.engineeringblogs_xyz.ttlSecondsAfterFinished | int | `900` |  |
+| crawlers.rm3l_org.affinity | object | `{}` |  |
+| crawlers.rm3l_org.articleMaxAgeDays | int | `365` |  |
+| crawlers.rm3l_org.concurrencyPolicy | string | `"Forbid"` |  |
+| crawlers.rm3l_org.enabled | bool | `true` |  |
+| crawlers.rm3l_org.image.pullPolicy | string | `"IfNotPresent"` |  |
+| crawlers.rm3l_org.image.repository | string | `"rm3l/dev-feed-crawler-rm3l_org"` |  |
+| crawlers.rm3l_org.restartPolicy | string | `"OnFailure"` |  |
+| crawlers.rm3l_org.schedule | string | `"0 0 * * *"` |  |
+| crawlers.rm3l_org.startingDeadlineSeconds | int | `3600` |  |
+| crawlers.rm3l_org.ttlSecondsAfterFinished | int | `900` |  |
 | datasource.password | string | `"pl34s3Ch4ng3M3"` |  |
 | datasource.user | string | `"db-user"` |  |
 | fullnameOverride | string | `""` |  |

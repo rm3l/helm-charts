@@ -127,3 +127,44 @@ mariadb:
     ##
     replicationUser: replicator
     replicationPassword: "pl34s3Ch4ng3M3"
+
+crawlers:
+
+  discoverdev_io:
+    enabled: true
+    image:
+      repository: rm3l/dev-feed-crawler-discoverdev_io
+      pullPolicy: IfNotPresent
+    schedule: "0 0 * * 0"
+    concurrencyPolicy: Forbid
+    startingDeadlineSeconds: 3600
+    ttlSecondsAfterFinished: 900
+    restartPolicy: OnFailure
+    articleMaxAgeDays: 365
+    affinity: {}
+
+  engineeringblogs_xyz:
+    enabled: true
+    image:
+      repository: rm3l/dev-feed-crawler-engineeringblogs-xyz
+      pullPolicy: IfNotPresent
+    schedule: "*/30 * * * *"
+    concurrencyPolicy: Forbid
+    startingDeadlineSeconds: 3600
+    ttlSecondsAfterFinished: 900
+    restartPolicy: OnFailure
+    articleMaxAgeDays: 365
+    affinity: {}
+
+  rm3l_org:
+    enabled: true
+    image:
+      repository: rm3l/dev-feed-crawler-rm3l_org
+      pullPolicy: IfNotPresent
+    schedule: "0 0 * * *"
+    concurrencyPolicy: Forbid
+    startingDeadlineSeconds: 3600
+    ttlSecondsAfterFinished: 900
+    restartPolicy: OnFailure
+    articleMaxAgeDays: 365
+    affinity: {}
