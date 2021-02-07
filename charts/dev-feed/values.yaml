@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: rm3l/dev-feed-api
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -34,7 +34,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 28080
 
 ingress:
   enabled: false
@@ -42,12 +42,38 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: chart-example.local
+    - host: dev-feed-api.local
       paths: []
   tls: []
-  #  - secretName: chart-example-tls
+  #  - secretName: dev-feed-api-tls
   #    hosts:
-  #      - chart-example.local
+  #      - dev-feed-api.local
+
+# -- Configure the startup healthcheck for the containers
+startupProbe:
+  initialDelaySeconds: 120
+  periodSeconds: 4
+  failureThreshold: 5
+  timeoutSeconds: 10
+
+# -- Configure the liveness healthcheck for the containers
+livenessProbe:
+  # initialDelaySeconds: 3
+  # periodSeconds: 90
+  timeoutSeconds: 10
+
+# -- Configure the readiness healthcheck for the containers
+readinessProbe:
+  # initialDelaySeconds: 3
+  # periodSeconds: 4
+  timeoutSeconds: 10
+
+# -- Strategy used to replace old Pods by new ones 
+strategy: {}
+  # type: RollingUpdate
+  # rollingUpdate:
+  #   maxSurge: 1
+  #   maxUnavailable: 33%
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -66,3 +92,38 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+datasource:
+  user: db-user
+  password: pl34s3Ch4ng3M3
+
+auth:
+  password: r3allyPl34s3Ch4ng3M3
+
+config: |
+  logging.level.org.rm3l.devfeed=INFO
+  datasource.poolSize=2
+  
+  # Crawlers disabled because they are now deployed as independent Kubernetes CronJobs (1 per crawler service)
+  crawlers.task.fetch-articles=false
+  executor.thread-pool.size=20
+  
+  #article.screenshot.service=pagespeedonline
+  #pagespeedonline.api.timeoutSeconds=300
+
+## Dependencies
+mariadb:
+  enabled: true
+  auth:
+    ## MariaDB custom user and database
+    ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-on-first-run
+    ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-user-on-first-run
+    ##
+    database: dev-feed
+    username: "db-user"
+    password: "pl34s3Ch4ng3M3"
+    ## MariaDB replication user and password
+    ## ref: https://github.com/bitnami/bitnami-docker-mariadb#setting-up-a-replication-cluster
+    ##
+    replicationUser: replicator
+    replicationPassword: "pl34s3Ch4ng3M3"

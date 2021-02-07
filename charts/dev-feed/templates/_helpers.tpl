@@ -25,6 +25,28 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 
 {{/*
+Return the JDBC URL
+*/}}
+{{- define "dev-feed.databaseJdbcUrl" -}}
+{{- if .Values.mariadb.enabled }}
+{{- printf "jdbc:mariadb://%s-mariadb.%s.svc.cluster.local:3306/dev-feed" (include "dev-feed.fullname" .) .Release.Namespace -}}
+{{- else -}}
+{{- printf "jdbc:sqlite::memory:" -}}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Return the JDBC Driver
+*/}}
+{{- define "dev-feed.databaseJdbcDriver" -}}
+{{- if .Values.mariadb.enabled }}
+{{- printf "org.mariadb.jdbc.Driver" -}}
+{{- else -}}
+{{- printf "org.sqlite.JDBC" -}}
+{{- end -}}
+{{- end -}}
+
+{{/*
 Create chart name and version as used by the chart label.
 */}}
 {{- define "dev-feed.chart" -}}

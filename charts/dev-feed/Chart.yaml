@@ -27,3 +27,10 @@ maintainers:
 - name: rm3l
   email: armel@rm3l.org
   url: https://rm3l.org
+
+dependencies:
+# See https://github.com/bitnami/charts/tree/master/bitnami/mariadb
+- name: mariadb
+  version: "9.3.0"
+  repository: "https://charts.bitnami.com/bitnami"
+  condition: mariadb.enabled
