@@ -104,8 +104,6 @@ config: |
   logging.level.org.rm3l.devfeed=INFO
   datasource.poolSize=2
   
-  # Crawlers disabled because they are now deployed as independent Kubernetes CronJobs (1 per crawler service)
-  crawlers.task.fetch-articles=false
   executor.thread-pool.size=20
   
   #article.screenshot.service=pagespeedonline

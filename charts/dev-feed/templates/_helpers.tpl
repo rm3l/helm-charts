@@ -31,7 +31,7 @@ Return the JDBC URL
 {{- if .Values.mariadb.enabled }}
 {{- printf "jdbc:mariadb://%s-mariadb.%s.svc.cluster.local:3306/dev-feed" (include "dev-feed.fullname" .) .Release.Namespace -}}
 {{- else -}}
-{{- printf "jdbc:sqlite::memory:" -}}
+{{- printf "jdbc:h2:mem:%s;DB_CLOSE_DELAY=-1" (include "dev-feed.fullname" .) -}}
 {{- end -}}
 {{- end -}}
 
@@ -42,7 +42,7 @@ Return the JDBC Driver
 {{- if .Values.mariadb.enabled }}
 {{- printf "org.mariadb.jdbc.Driver" -}}
 {{- else -}}
-{{- printf "org.sqlite.JDBC" -}}
+{{- printf "org.h2.Driver" -}}
 {{- end -}}
 {{- end -}}
 

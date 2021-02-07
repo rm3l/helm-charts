@@ -24,7 +24,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | auth.password | string | `"r3allyPl34s3Ch4ng3M3"` |  |
-| config | string | `"logging.level.org.rm3l.devfeed=INFO\ndatasource.poolSize=2\n\n# Crawlers disabled because they are now deployed as independent Kubernetes CronJobs (1 per crawler service)\ncrawlers.task.fetch-articles=false\nexecutor.thread-pool.size=20\n\n#article.screenshot.service=pagespeedonline\n#pagespeedonline.api.timeoutSeconds=300\n"` |  |
+| config | string | `"logging.level.org.rm3l.devfeed=INFO\ndatasource.poolSize=2\n\nexecutor.thread-pool.size=20\n\n#article.screenshot.service=pagespeedonline\n#pagespeedonline.api.timeoutSeconds=300\n"` |  |
 | crawlers.discoverdev_io.affinity | object | `{}` |  |
 | crawlers.discoverdev_io.articleMaxAgeDays | int | `365` |  |
 | crawlers.discoverdev_io.concurrencyPolicy | string | `"Forbid"` |  |
