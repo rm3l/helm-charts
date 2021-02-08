@@ -1,5 +1,4 @@
 {{- if .Values.mariadb.enabled }}
-
 {{- if .Values.crawlers.discoverdev_io.enabled }}
 # discoverdev.io
 apiVersion: batch/v1beta1
@@ -50,9 +49,7 @@ spec:
           restartPolicy: {{ .Values.crawlers.discoverdev_io.restartPolicy }}
 
 {{- end }}
-
 ---
-
 {{- if .Values.crawlers.engineeringblogs_xyz.enabled }}
 # engineeringblogs.xyz
 apiVersion: batch/v1beta1
@@ -101,11 +98,8 @@ spec:
             - --datasource-user=$(DATASOURCE_USER)
             - --datasource-password=$(DATASOURCE_PASSWORD)
           restartPolicy: {{ .Values.crawlers.engineeringblogs_xyz.restartPolicy }}
-
 {{- end }}
-
 ---
-
 {{- if .Values.crawlers.rm3l_org.enabled }}
 # rm3l.org
 apiVersion: batch/v1beta1
@@ -154,7 +148,5 @@ spec:
             - --datasource-user=$(DATASOURCE_USER)
             - --datasource-password=$(DATASOURCE_PASSWORD)
           restartPolicy: {{ .Values.crawlers.rm3l_org.restartPolicy }}
-
 {{- end }}
-
 {{- end }}
