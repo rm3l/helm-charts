@@ -1,0 +1,47 @@
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 28080
+
+# -- Configure the startup healthcheck for the containers
+startupProbe:
+  initialDelaySeconds: 20
+  periodSeconds: 4
+  failureThreshold: 5
+  timeoutSeconds: 10
+
+# -- Configure the liveness healthcheck for the containers
+livenessProbe:
+  # initialDelaySeconds: 3
+  # periodSeconds: 90
+  timeoutSeconds: 10
+
+# -- Configure the readiness healthcheck for the containers
+readinessProbe:
+  # initialDelaySeconds: 3
+  # periodSeconds: 4
+  timeoutSeconds: 10
+
+auth:
+  password: r3allyPl34s3Ch4ng3M3
+
+config: |
+  logging.level.org.rm3l.devfeed=DEBUG
+  datasource.poolSize=2
+  executor.thread-pool.size=20
+
+## Dependencies
+mariadb:
+  enabled: false
+
+crawlers:
+
+  discoverdev_io:
+    enabled: false
+
+  engineeringblogs_xyz:
+    enabled: false
+
+  rm3l_org:
+    enabled: true
