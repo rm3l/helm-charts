@@ -24,7 +24,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | auth.password | string | `"r3allyPl34s3Ch4ng3M3"` |  |
-| config | string | `"logging.level.org.rm3l.devfeed=INFO\ndatasource.poolSize=2\n\nexecutor.thread-pool.size=20\n\n#article.screenshot.service=pagespeedonline\n#pagespeedonline.api.timeoutSeconds=300\n"` |  |
+| config | string | `"logging.level.org.rm3l.devfeed=INFO\ndatasource.poolSize=2\nexecutor.thread-pool.size=20\n#article.screenshot.service=pagespeedonline\n#pagespeedonline.api.timeoutSeconds=300\n"` |  |
 | crawlers.discoverdev_io.affinity | object | `{}` |  |
 | crawlers.discoverdev_io.articleMaxAgeDays | int | `365` |  |
 | crawlers.discoverdev_io.concurrencyPolicy | string | `"Forbid"` |  |
@@ -86,7 +86,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `nil` |  |
 | startupProbe | object | `{"failureThreshold":5,"initialDelaySeconds":120,"periodSeconds":4,"timeoutSeconds":10}` | Configure the startup healthcheck for the containers |
-| strategy | object | `{}` | Strategy used to replace old Pods by new ones  |
+| strategy | object | `{}` | Strategy used to replace old Pods by new ones |
 | tolerations | list | `[]` |  |
 
 #

@@ -68,7 +68,7 @@ readinessProbe:
   # periodSeconds: 4
   timeoutSeconds: 10
 
-# -- Strategy used to replace old Pods by new ones 
+# -- Strategy used to replace old Pods by new ones
 strategy: {}
   # type: RollingUpdate
   # rollingUpdate:
@@ -103,9 +103,7 @@ auth:
 config: |
   logging.level.org.rm3l.devfeed=INFO
   datasource.poolSize=2
-  
   executor.thread-pool.size=20
-  
   #article.screenshot.service=pagespeedonline
   #pagespeedonline.api.timeoutSeconds=300
 
