@@ -49,7 +49,7 @@ jobs:
 
       - name: Run chart-testing (lint on main)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: ct lint --config ct.yaml --since ${{ github.event.before }}
+        run: ct lint --config ct.yaml --since ${{ github.event.before }} --check-version-increment false
 
       - name: Run chart-testing (lint for PR)
         if: github.event_name == 'pull_request'
