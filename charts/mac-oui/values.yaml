@@ -64,7 +64,7 @@ readinessProbe:
   timeoutSeconds: 3
   failureThreshold: 5
 
-# -- Strategy used to replace old Pods by new ones 
+# -- Strategy used to replace old Pods by new ones
 strategy: {}
   # type: RollingUpdate
   # rollingUpdate:

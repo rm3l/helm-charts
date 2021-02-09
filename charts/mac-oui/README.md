@@ -7,7 +7,7 @@ https://github.com/rm3l/mac-oui
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-mac-oui rm3l/mac-oui --version 1.7.0
+$ helm install my-mac-oui rm3l/mac-oui --version 1.8.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/mac-oui?modal=install
@@ -41,7 +41,7 @@ See https://artifacthub.io/packages/helm/rm3l/mac-oui?modal=install
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `nil` |  |
-| strategy | object | `{}` | Strategy used to replace old Pods by new ones  |
+| strategy | object | `{}` | Strategy used to replace old Pods by new ones |
 | tolerations | list | `[]` |  |
 
 #
