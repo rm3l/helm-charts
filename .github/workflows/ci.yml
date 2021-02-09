@@ -33,7 +33,7 @@ jobs:
         id: list-changed-main
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          changed=$(ct list-changed --config ct.yaml --target-branch ${{ github.event.before }})
+          changed=$(ct list-changed --config ct.yaml --since ${{ github.event.before }})
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
@@ -42,18 +42,18 @@ jobs:
         id: list-changed-pr
         if: github.event_name == 'pull_request'
         run: |
-          changed=$(ct list-changed --config ct.yaml --target-branch main)
+          changed=$(ct list-changed --config ct.yaml)
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
 
       - name: Run chart-testing (lint on main)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: ct lint --config ct.yaml --target-branch ${{ github.event.before }}
+        run: ct lint --config ct.yaml --since ${{ github.event.before }}
 
       - name: Run chart-testing (lint for PR)
         if: github.event_name == 'pull_request'
-        run: ct lint --config ct.yaml --target-branch main
+        run: ct lint --config ct.yaml
 
       - name: Create kind cluster (main)
         uses: helm/kind-action@v1.1.0
@@ -69,11 +69,11 @@ jobs:
 
       - name: Run chart-testing (install on main)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: ct install --config ct.yaml --target-branch ${{ github.event.before }}
+        run: ct install --config ct.yaml --since ${{ github.event.before }}
 
       - name: Run chart-testing (install for PR)
         if: github.event_name == 'pull_request'
-        run: ct install --config ct.yaml --target-branch main
+        run: ct install --config ct.yaml
 
   update_gh-pages:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/'))
