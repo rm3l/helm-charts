@@ -1,0 +1,152 @@
+{{- if .Values.mariadb.enabled }}
+{{- if .Values.crawlers.discoverdev_io.enabled }}
+# discoverdev.io
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "dev-feed.fullname" . }}-crawler-discoverdev-io
+spec:
+  schedule: "{{ .Values.crawlers.discoverdev_io.schedule }}"
+  concurrencyPolicy: {{ .Values.crawlers.discoverdev_io.concurrencyPolicy }}
+  startingDeadlineSeconds: {{ .Values.crawlers.discoverdev_io.startingDeadlineSeconds }}
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: {{ .Values.crawlers.discoverdev_io.ttlSecondsAfterFinished }}
+      template:
+        spec:
+          {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          initContainers:
+          - name: wait-db-service
+            image: busybox:1.28
+            command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.{{ .Release.Namespace }}.svc.cluster.local; sleep 2; done"]
+
+          containers:
+          - name: {{ include "dev-feed.fullname" . }}-crawler-discoverdev-io
+            image: "{{ .Values.crawlers.discoverdev_io.image.repository }}:{{ .Chart.AppVersion }}"
+            imagePullPolicy: {{ .Values.crawlers.discoverdev_io.image.pullPolicy }}
+            env:
+            - name: DATASOURCE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "dev-feed.fullname" . }}
+                  key: datasource.user
+            - name: DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "dev-feed.fullname" . }}
+                  key: datasource.password
+            args:
+            - rdbms
+            - --article-max-age-days={{ .Values.crawlers.discoverdev_io.articleMaxAgeDays }}
+            - --datasource-jdbc-driver={{ include "dev-feed.databaseJdbcDriver" . }}
+            - --datasource-jdbc-url={{ include "dev-feed.databaseJdbcUrl" . }}
+            - --datasource-user=$(DATASOURCE_USER)
+            - --datasource-password=$(DATASOURCE_PASSWORD)
+          restartPolicy: {{ .Values.crawlers.discoverdev_io.restartPolicy }}
+
+{{- end }}
+---
+{{- if .Values.crawlers.engineeringblogs_xyz.enabled }}
+# engineeringblogs.xyz
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "dev-feed.fullname" . }}-crawler-engineeringblogs-xyz
+spec:
+  schedule: "{{ .Values.crawlers.engineeringblogs_xyz.schedule }}"
+  concurrencyPolicy: {{ .Values.crawlers.engineeringblogs_xyz.concurrencyPolicy }}
+  startingDeadlineSeconds: {{ .Values.crawlers.engineeringblogs_xyz.startingDeadlineSeconds }}
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: {{ .Values.crawlers.engineeringblogs_xyz.ttlSecondsAfterFinished }}
+      template:
+        spec:
+          {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          initContainers:
+          - name: wait-db-service
+            image: busybox:1.28
+            command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.{{ .Release.Namespace }}.svc.cluster.local; sleep 2; done"]
+
+          containers:
+          - name: {{ include "dev-feed.fullname" . }}-crawler-engineeringblogs-xyz
+            image: "{{ .Values.crawlers.engineeringblogs_xyz.image.repository }}:{{ .Chart.AppVersion }}"
+            imagePullPolicy: {{ .Values.crawlers.engineeringblogs_xyz.image.pullPolicy }}
+            env:
+            - name: DATASOURCE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "dev-feed.fullname" . }}
+                  key: datasource.user
+            - name: DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "dev-feed.fullname" . }}
+                  key: datasource.password
+            args:
+            - rdbms
+            - --article-max-age-days={{ .Values.crawlers.engineeringblogs_xyz.articleMaxAgeDays }}
+            - --datasource-jdbc-driver={{ include "dev-feed.databaseJdbcDriver" . }}
+            - --datasource-jdbc-url={{ include "dev-feed.databaseJdbcUrl" . }}
+            - --datasource-user=$(DATASOURCE_USER)
+            - --datasource-password=$(DATASOURCE_PASSWORD)
+          restartPolicy: {{ .Values.crawlers.engineeringblogs_xyz.restartPolicy }}
+{{- end }}
+---
+{{- if .Values.crawlers.rm3l_org.enabled }}
+# rm3l.org
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "dev-feed.fullname" . }}-crawler-rm3l-org
+spec:
+  schedule: "{{ .Values.crawlers.rm3l_org.schedule }}"
+  concurrencyPolicy: {{ .Values.crawlers.rm3l_org.concurrencyPolicy }}
+  startingDeadlineSeconds: {{ .Values.crawlers.rm3l_org.startingDeadlineSeconds }}
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: {{ .Values.crawlers.rm3l_org.ttlSecondsAfterFinished }}
+      template:
+        spec:
+          {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          initContainers:
+          - name: wait-db-service
+            image: busybox:1.28
+            command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.{{ .Release.Namespace }}.svc.cluster.local; sleep 2; done"]
+
+          containers:
+          - name: {{ include "dev-feed.fullname" . }}-crawler-rm3l-org
+            image: "{{ .Values.crawlers.rm3l_org.image.repository }}:{{ .Chart.AppVersion }}"
+            imagePullPolicy: {{ .Values.crawlers.rm3l_org.image.pullPolicy }}
+            env:
+            - name: DATASOURCE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "dev-feed.fullname" . }}
+                  key: datasource.user
+            - name: DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "dev-feed.fullname" . }}
+                  key: datasource.password
+            args:
+            - rdbms
+            - --article-max-age-days={{ .Values.crawlers.rm3l_org.articleMaxAgeDays }}
+            - --datasource-jdbc-driver={{ include "dev-feed.databaseJdbcDriver" . }}
+            - --datasource-jdbc-url={{ include "dev-feed.databaseJdbcUrl" . }}
+            - --datasource-user=$(DATASOURCE_USER)
+            - --datasource-password=$(DATASOURCE_PASSWORD)
+          restartPolicy: {{ .Values.crawlers.rm3l_org.restartPolicy }}
+{{- end }}
+{{- end }}
