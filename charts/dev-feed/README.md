@@ -7,7 +7,7 @@ https://github.com/rm3l/dev-feed
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-dev-feed rm3l/dev-feed --version 0.3.0
+$ helm install my-dev-feed rm3l/dev-feed --version 0.4.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
