@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "dev-feed.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "dev-feed.fullname" . }}:{{ .Values.service.port }}/graphiql']
   restartPolicy: Never
