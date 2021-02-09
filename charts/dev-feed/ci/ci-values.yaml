@@ -2,7 +2,7 @@ replicaCount: 1
 
 service:
   type: ClusterIP
-  port: 28080
+  port: 8080
 
 # -- Configure the startup healthcheck for the containers
 startupProbe:
