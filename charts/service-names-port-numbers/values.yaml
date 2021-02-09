@@ -60,7 +60,7 @@ readinessProbe:
   initialDelaySeconds: 3
   periodSeconds: 4
 
-# -- Strategy used to replace old Pods by new ones 
+# -- Strategy used to replace old Pods by new ones
 strategy: {}
   # type: RollingUpdate
   # rollingUpdate:

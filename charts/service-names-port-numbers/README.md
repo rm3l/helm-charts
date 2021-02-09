@@ -7,7 +7,7 @@ https://github.com/rm3l/service-names-port-numbers
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-service-names-port-numbers rm3l/service-names-port-numbers --version 0.7.0
+$ helm install my-service-names-port-numbers rm3l/service-names-port-numbers --version 0.8.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers?modal=install
@@ -42,7 +42,7 @@ See https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers?modal=i
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `nil` |  |
-| strategy | object | `{}` | Strategy used to replace old Pods by new ones  |
+| strategy | object | `{}` | Strategy used to replace old Pods by new ones |
 | tolerations | list | `[]` |  |
 
 #
