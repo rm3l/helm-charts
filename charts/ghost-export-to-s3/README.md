@@ -7,7 +7,7 @@ https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headl
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-ghost-export-to-s3 rm3l/ghost-export-to-s3 --version 0.5.1
+$ helm install my-ghost-export-to-s3 rm3l/ghost-export-to-s3 --version 0.6.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3?modal=install
