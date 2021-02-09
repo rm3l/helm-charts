@@ -8,9 +8,9 @@ metadata:
     "helm.sh/hook": test-success
 spec:
   containers:
-    - name: wget
+    - name: test
       image: busybox
-      command: ['wget']
+      command: ['echo']
       {{- /*
       args: ['{{ include "ghost-export-to-s3.fullname" . }}:{{ .Values.service.port }}']
       */}}
