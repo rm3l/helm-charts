@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "mac-oui.fullname" . }}:{{ .Values.service.port }}/00-00-00']
+      args: ['{{ include "mac-oui.fullname" . }}:{{ .Values.service.port }}/health/live']
   restartPolicy: Never

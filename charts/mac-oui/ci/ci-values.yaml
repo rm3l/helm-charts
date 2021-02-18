@@ -1,0 +1,33 @@
+# Default values for mac-oui.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# -- (int) Number of replicas
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: false
+
+# -- Configure the liveness healthcheck for the mac-oui containers
+livenessProbe:
+  initialDelaySeconds: 3
+  periodSeconds: 10
+  timeoutSeconds: 3
+  failureThreshold: 5
+  httpGet:
+    path: /health/live
+    port: 8080
+
+# -- Configure the readiness healthcheck for the mac-oui containers
+readinessProbe:
+  initialDelaySeconds: 3
+  periodSeconds: 10
+  timeoutSeconds: 3
+  failureThreshold: 5
+  httpGet: null
+  tcpSocket:
+    port: 8080
