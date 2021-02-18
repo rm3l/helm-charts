@@ -20,6 +20,8 @@ $ # Install a given Chart as a Release
 $ helm install my-release rm3l/<chart>
 ```
 
+<!-- CHARTS -->
+
 ## Developed by
 
 * Armel Soro
