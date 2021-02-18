@@ -1,20 +1,20 @@
-## mac-oui
+### mac-oui
 
 Microservice for looking up manufacturers from MAC addresses.
 https://github.com/rm3l/mac-oui
 
-### Installation
+#### Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-mac-oui rm3l/mac-oui --version 1.12.0
+$ helm install my-mac-oui rm3l/mac-oui --version 1.13.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/mac-oui?modal=install
 
-#
+##
 
-### Values
+#### Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
@@ -44,4 +44,4 @@ See https://artifacthub.io/packages/helm/rm3l/mac-oui?modal=install
 | strategy | object | `{}` | Strategy used to replace old Pods by new ones |
 | tolerations | list | `[]` |  |
 
-#
+##

@@ -1,24 +1,24 @@
-## dev-feed
+### dev-feed
 
 GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
 https://github.com/rm3l/dev-feed
 
-### Installation
+#### Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-dev-feed rm3l/dev-feed --version 0.6.0
+$ helm install my-dev-feed rm3l/dev-feed --version 0.7.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 
-### Requirements
+#### Requirements
 
 | Repository | Name | Version |
 |------------|------|---------|
 | https://charts.bitnami.com/bitnami | mariadb | 9.3.0 |
 
-### Values
+#### Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
@@ -89,4 +89,4 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | strategy | object | `{}` | Strategy used to replace old Pods by new ones |
 | tolerations | list | `[]` |  |
 
-#
+##

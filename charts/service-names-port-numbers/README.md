@@ -1,20 +1,20 @@
-## service-names-port-numbers
+### service-names-port-numbers
 
 Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
 https://github.com/rm3l/service-names-port-numbers
 
-### Installation
+#### Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-service-names-port-numbers rm3l/service-names-port-numbers --version 0.10.0
+$ helm install my-service-names-port-numbers rm3l/service-names-port-numbers --version 0.11.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers?modal=install
 
-#
+##
 
-### Values
+#### Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
@@ -45,4 +45,4 @@ See https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers?modal=i
 | strategy | object | `{}` | Strategy used to replace old Pods by new ones |
 | tolerations | list | `[]` |  |
 
-#
+##
