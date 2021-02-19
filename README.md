@@ -33,30 +33,30 @@ $ helm install my-release rm3l/<chart>
 ### dev-feed
 
 > GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
-> https://github.com/rm3l/dev-feed
+> [https://github.com/rm3l/dev-feed](https://github.com/rm3l/dev-feed)
 
-See https://github.com/rm3l/helm-charts/blob/main/charts/dev-feed/README.md for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/dev-feed/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/dev-feed/README.md) for further details.
 
 ### ghost-export-to-s3
 
 > Automated backups of headless Ghost Blogs to AWS S3.
-> https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+> [https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/](https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/)
 
-See https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/README.md for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/README.md) for further details.
 
 ### mac-oui
 
 > Microservice for looking up manufacturers from MAC addresses.
-> https://github.com/rm3l/mac-oui
+> [https://github.com/rm3l/mac-oui](https://github.com/rm3l/mac-oui)
 
-See https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md) for further details.
 
 ### service-names-port-numbers
 
 > Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-> https://github.com/rm3l/service-names-port-numbers
+> [https://github.com/rm3l/service-names-port-numbers](https://github.com/rm3l/service-names-port-numbers)
 
-See https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-numbers/README.md for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-numbers/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-numbers/README.md) for further details.
 
 
 ## Developed by
