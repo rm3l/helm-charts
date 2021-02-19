@@ -1,7 +1,7 @@
-##{{ template "chart.header" . }}
+{{ template "chart.header" . }}
 {{ template "chart.description" . }}
 
-#### Installation
+## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
@@ -10,8 +10,8 @@ $ helm install my-{{ template "chart.name" . }} rm3l/{{ template "chart.name" . 
 
 See https://artifacthub.io/packages/helm/rm3l/{{ template "chart.name" . }}?modal=install
 
-##{{ template "chart.requirementsSection" . }}
+{{ template "chart.requirementsSection" . }}
 
-##{{ template "chart.valuesSection" . }}
+{{ template "chart.valuesSection" . }}
 
-##{{ template "helm-docs.versionFooter" . }}
+{{ template "helm-docs.versionFooter" . }}
