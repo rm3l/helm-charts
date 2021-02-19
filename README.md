@@ -1,10 +1,15 @@
 <h1>Helm Charts</h1>
 
-![CI](https://github.com/rm3l/helm-charts/workflows/CI/badge.svg) [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/rm3l)](https://artifacthub.io/packages/search?repo=rm3l)
+> Collection of some tools and apps that I maintain, ready to launch on [Kubernetes](https://kubernetes.io/) using [Helm](https://helm.sh/).
 
+![CI](https://github.com/rm3l/helm-charts/workflows/CI/badge.svg)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-> Collection of some tools and apps that I maintain, ready to launch on [Kubernetes](https://kubernetes.io/) using [Helm](https://helm.sh/).
+[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/rm3l)](https://artifacthub.io/packages/search?repo=rm3l)
+[![dev-feed](https://img.shields.io/badge/dev--feed-0.10.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![ghost-export-to-s3](https://img.shields.io/badge/ghost--export--to--s3-0.13.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
+[![mac-oui](https://img.shields.io/badge/mac--oui-1.16.0-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
+[![service-names-port-numbers](https://img.shields.io/badge/service--names--port--numbers-0.14.0-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
 
 - [TL;DR](#tldr)
 - [Charts](#charts)
@@ -33,30 +38,30 @@ $ helm install my-release rm3l/<chart>
 ### dev-feed
 
 > GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
-> https://github.com/rm3l/dev-feed
+> [https://github.com/rm3l/dev-feed](https://github.com/rm3l/dev-feed)
 
-See https://github.com/rm3l/helm-charts/blob/main/charts/dev-feed/README.md for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/dev-feed/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/dev-feed/README.md) for further details.
 
 ### ghost-export-to-s3
 
 > Automated backups of headless Ghost Blogs to AWS S3.
-> https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+> [https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/](https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/)
 
-See https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/README.md for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/README.md) for further details.
 
 ### mac-oui
 
 > Microservice for looking up manufacturers from MAC addresses.
-> https://github.com/rm3l/mac-oui
+> [https://github.com/rm3l/mac-oui](https://github.com/rm3l/mac-oui)
 
-See https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md) for further details.
 
 ### service-names-port-numbers
 
 > Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-> https://github.com/rm3l/service-names-port-numbers
+> [https://github.com/rm3l/service-names-port-numbers](https://github.com/rm3l/service-names-port-numbers)
 
-See https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-numbers/README.md for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-numbers/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-numbers/README.md) for further details.
 
 
 ## Developed by
