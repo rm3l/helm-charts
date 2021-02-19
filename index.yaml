@@ -3,6 +3,27 @@ entries:
   dev-feed:
   - apiVersion: v2
     appVersion: 1.7.0
+    created: "2021-02-19T20:48:19.371734087Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.3.0
+    description: |
+      GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
+      https://github.com/rm3l/dev-feed
+    digest: 4e3a224d73b68c2b1fb49ece35e0278178a81ff7b12790b7cb195464a80e827d
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: dev-feed
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/dev-feed-0.9.0/dev-feed-0.9.0.tgz
+    version: 0.9.0
+  - apiVersion: v2
+    appVersion: 1.7.0
     created: "2021-02-18T23:40:34.073546489Z"
     dependencies:
     - condition: mariadb.enabled
@@ -65,6 +86,22 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/dev-feed-0.3.0/dev-feed-0.3.0.tgz
     version: 0.3.0
   ghost-export-to-s3:
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2021-02-19T20:48:19.461956009Z"
+    description: |
+      Automated backups of headless Ghost Blogs to AWS S3.
+      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    digest: 2bd31517a6aaa4d5712dd2f936fced15e66c7e47db6a0c289e96dc9ab87ed6b6
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: ghost-export-to-s3
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/ghost-export-to-s3-0.12.0/ghost-export-to-s3-0.12.0.tgz
+    version: 0.12.0
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-18T23:40:34.172001636Z"
@@ -244,6 +281,22 @@ entries:
   mac-oui:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2021-02-19T20:48:19.561469384Z"
+    description: |
+      Microservice for looking up manufacturers from MAC addresses.
+      https://github.com/rm3l/mac-oui
+    digest: a37f2d316d4eb525177f31ab3a1549378375db9b3ddd7c2e7aeec885d079103e
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: mac-oui
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.15.0/mac-oui-1.15.0.tgz
+    version: 1.15.0
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2021-02-18T23:40:34.264086428Z"
     description: |
       Microservice for looking up manufacturers from MAC addresses.
@@ -415,6 +468,22 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.0.0/mac-oui-1.0.0.tgz
     version: 1.0.0
   service-names-port-numbers:
+  - apiVersion: v2
+    appVersion: 0.8.0
+    created: "2021-02-19T20:48:19.665341385Z"
+    description: |
+      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
+      https://github.com/rm3l/service-names-port-numbers
+    digest: dcb121a8f86200bffe2d2b1ad051de8c3303eec5f38216ad7c581f3e3afa7043
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: service-names-port-numbers
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.13.0/service-names-port-numbers-0.13.0.tgz
+    version: 0.13.0
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-02-18T23:40:34.376291893Z"
