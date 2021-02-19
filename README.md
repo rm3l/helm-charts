@@ -1,10 +1,15 @@
 <h1>Helm Charts</h1>
 
-![CI](https://github.com/rm3l/helm-charts/workflows/CI/badge.svg) [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/rm3l)](https://artifacthub.io/packages/search?repo=rm3l)
+> Collection of some tools and apps that I maintain, ready to launch on [Kubernetes](https://kubernetes.io/) using [Helm](https://helm.sh/).
 
+![CI](https://github.com/rm3l/helm-charts/workflows/CI/badge.svg)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-> Collection of some tools and apps that I maintain, ready to launch on [Kubernetes](https://kubernetes.io/) using [Helm](https://helm.sh/).
+[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/rm3l)](https://artifacthub.io/packages/search?repo=rm3l)
+[![dev-feed](https://img.shields.io/badge/dev--feed-0.9.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![ghost-export-to-s3](https://img.shields.io/badge/ghost--export--to--s3-0.12.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
+[![mac-oui](https://img.shields.io/badge/mac--oui-1.15.0-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
+[![service-names-port-numbers](https://img.shields.io/badge/service--names--port--numbers-0.13.0-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
 
 - [TL;DR](#tldr)
 - [Charts](#charts)
