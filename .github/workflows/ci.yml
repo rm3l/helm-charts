@@ -94,16 +94,18 @@ jobs:
       - name: Sync README.md to gh-pages branch
         run: |
           git fetch
-          CHARTS_READMES="## Charts\n\n"
+          CHARTS_READMES="## Charts"
           for chart in `find charts -mindepth 1 -maxdepth 1 -type d`; do
-            CHARTS_READMES="`cat ${chart}/README.md`\n\n"
+            CHARTS_READMES="${CHARTS_READMES}\n\n`cat ${chart}/README.md`"
           done
-          export TO_ADD="${CHARTS_READMES}"
+          export TO_ADD="\n\n${CHARTS_READMES}"
 
           git checkout -b gh-pages origin/gh-pages
           git checkout origin/main README.md
-          sed -i "s/<\!-- CHARTS -->/${TO_ADD}/g" README.md
-
+          sed -i -f - README.md << EOF
+          s/<!-- CHARTS -->/${TO_ADD//\//\\\/}}/g
+          EOF
+          
           if [[ `git status --porcelain` ]]; then
             git commit -am "Sync README.md from origin/main"
             git push origin gh-pages
