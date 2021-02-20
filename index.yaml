@@ -3,6 +3,27 @@ entries:
   dev-feed:
   - apiVersion: v2
     appVersion: 1.7.0
+    created: "2021-02-20T22:23:08.378379539Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.3.0
+    description: |
+      GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
+      https://github.com/rm3l/dev-feed
+    digest: 2502c4f5c4ee4be176b3ea08c0915995ba01083706c6264f67c026f698fdb0f1
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: dev-feed
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/dev-feed-0.11.0/dev-feed-0.11.0.tgz
+    version: 0.11.0
+  - apiVersion: v2
+    appVersion: 1.7.0
     created: "2021-02-19T21:40:21.651939035Z"
     dependencies:
     - condition: mariadb.enabled
