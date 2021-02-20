@@ -19,6 +19,14 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
 
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+           {{- end }}
+          serviceAccountName: {{ include "dev-feed.serviceAccountName" . }}
+          securityContext:
+            {{- toYaml .Values.podSecurityContext | nindent 12 }}
+
           initContainers:
           - name: wait-db-service
             image: busybox:1.28
