@@ -142,7 +142,7 @@ crawlers:
   engineeringblogs_xyz:
     enabled: true
     image:
-      repository: rm3l/dev-feed-crawler-engineeringblogs-xyz
+      repository: rm3l/dev-feed-crawler-engineeringblogs_xyz
       pullPolicy: IfNotPresent
     schedule: "*/30 * * * *"
     concurrencyPolicy: Forbid

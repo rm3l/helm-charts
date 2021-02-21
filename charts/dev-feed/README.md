@@ -42,7 +42,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | crawlers.engineeringblogs_xyz.concurrencyPolicy | string | `"Forbid"` |  |
 | crawlers.engineeringblogs_xyz.enabled | bool | `true` |  |
 | crawlers.engineeringblogs_xyz.image.pullPolicy | string | `"IfNotPresent"` |  |
-| crawlers.engineeringblogs_xyz.image.repository | string | `"rm3l/dev-feed-crawler-engineeringblogs-xyz"` |  |
+| crawlers.engineeringblogs_xyz.image.repository | string | `"rm3l/dev-feed-crawler-engineeringblogs_xyz"` |  |
 | crawlers.engineeringblogs_xyz.restartPolicy | string | `"OnFailure"` |  |
 | crawlers.engineeringblogs_xyz.schedule | string | `"*/30 * * * *"` |  |
 | crawlers.engineeringblogs_xyz.startingDeadlineSeconds | int | `3600` |  |
