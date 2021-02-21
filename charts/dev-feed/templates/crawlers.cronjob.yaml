@@ -4,7 +4,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ include "dev-feed.fullname" . }}-crawler-discoverdev-io
+  name: {{ include "dev-feed.fullname" . }}-crawler-discoverdev_io
 spec:
   schedule: "{{ .Values.crawlers.discoverdev_io.schedule }}"
   concurrencyPolicy: {{ .Values.crawlers.discoverdev_io.concurrencyPolicy }}
@@ -33,7 +33,7 @@ spec:
             command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.{{ .Release.Namespace }}.svc.cluster.local; sleep 2; done"]
 
           containers:
-          - name: {{ include "dev-feed.fullname" . }}-crawler-discoverdev-io
+          - name: {{ include "dev-feed.fullname" . }}-crawler-discoverdev_io
             image: "{{ .Values.crawlers.discoverdev_io.image.repository }}:{{ .Chart.AppVersion }}"
             imagePullPolicy: {{ .Values.crawlers.discoverdev_io.image.pullPolicy }}
             env:
@@ -63,7 +63,7 @@ spec:
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ include "dev-feed.fullname" . }}-crawler-engineeringblogs-xyz
+  name: {{ include "dev-feed.fullname" . }}-crawler-engineeringblogs_xyz
 spec:
   schedule: "{{ .Values.crawlers.engineeringblogs_xyz.schedule }}"
   concurrencyPolicy: {{ .Values.crawlers.engineeringblogs_xyz.concurrencyPolicy }}
@@ -92,7 +92,7 @@ spec:
             command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.{{ .Release.Namespace }}.svc.cluster.local; sleep 2; done"]
 
           containers:
-          - name: {{ include "dev-feed.fullname" . }}-crawler-engineeringblogs-xyz
+          - name: {{ include "dev-feed.fullname" . }}-crawler-engineeringblogs_xyz
             image: "{{ .Values.crawlers.engineeringblogs_xyz.image.repository }}:{{ .Chart.AppVersion }}"
             imagePullPolicy: {{ .Values.crawlers.engineeringblogs_xyz.image.pullPolicy }}
             env:
@@ -121,7 +121,7 @@ spec:
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ include "dev-feed.fullname" . }}-crawler-rm3l-org
+  name: {{ include "dev-feed.fullname" . }}-crawler-rm3l_org
 spec:
   schedule: "{{ .Values.crawlers.rm3l_org.schedule }}"
   concurrencyPolicy: {{ .Values.crawlers.rm3l_org.concurrencyPolicy }}
@@ -150,7 +150,7 @@ spec:
             command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.{{ .Release.Namespace }}.svc.cluster.local; sleep 2; done"]
 
           containers:
-          - name: {{ include "dev-feed.fullname" . }}-crawler-rm3l-org
+          - name: {{ include "dev-feed.fullname" . }}-crawler-rm3l_org
             image: "{{ .Values.crawlers.rm3l_org.image.repository }}:{{ .Chart.AppVersion }}"
             imagePullPolicy: {{ .Values.crawlers.rm3l_org.image.pullPolicy }}
             env:
