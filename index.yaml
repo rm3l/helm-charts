@@ -9,9 +9,8 @@ entries:
       name: mariadb
       repository: https://charts.bitnami.com/bitnami
       version: 9.3.0
-    description: |
-      GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
-      https://github.com/rm3l/dev-feed
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
     digest: a82078afd46125023bcc4500f08c3910e4c4cdf7338d94e8ff7484dbb275e9e7
     maintainers:
     - email: armel@rm3l.org
@@ -30,9 +29,8 @@ entries:
       name: mariadb
       repository: https://charts.bitnami.com/bitnami
       version: 9.3.0
-    description: |
-      GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
-      https://github.com/rm3l/dev-feed
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
     digest: 6f852d10d0f4d00f0b6f9e1a698ea6d7b14ceebc8e3b623708f01313124e81ff
     maintainers:
     - email: armel@rm3l.org
@@ -51,9 +49,8 @@ entries:
       name: mariadb
       repository: https://charts.bitnami.com/bitnami
       version: 9.3.0
-    description: |
-      GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
-      https://github.com/rm3l/dev-feed
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
     digest: cc9dedf85c2b9b8041c139023e44cf3e9ac31c88e23ef27640724fbd0949b301
     maintainers:
     - email: armel@rm3l.org
@@ -72,9 +69,8 @@ entries:
       name: mariadb
       repository: https://charts.bitnami.com/bitnami
       version: 9.3.0
-    description: |
-      GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
-      https://github.com/rm3l/dev-feed
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
     digest: 13ca5096be2f8b1ce54745b76688e0bafcb4d9b440e6f4fb33ce60264af689ec
     maintainers:
     - email: armel@rm3l.org
@@ -93,9 +89,8 @@ entries:
       name: mariadb
       repository: https://charts.bitnami.com/bitnami
       version: 9.3.0
-    description: |
-      GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
-      https://github.com/rm3l/dev-feed
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
     digest: 2502c4f5c4ee4be176b3ea08c0915995ba01083706c6264f67c026f698fdb0f1
     maintainers:
     - email: armel@rm3l.org
@@ -114,9 +109,8 @@ entries:
       name: mariadb
       repository: https://charts.bitnami.com/bitnami
       version: 9.3.0
-    description: |
-      GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
-      https://github.com/rm3l/dev-feed
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
     digest: 91a91d7c4aeb6b79a5090663bf618a8e7ad15e6ceed68d4075ed6bd52f9f9995
     maintainers:
     - email: armel@rm3l.org
@@ -135,9 +129,8 @@ entries:
       name: mariadb
       repository: https://charts.bitnami.com/bitnami
       version: 9.3.0
-    description: |
-      GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
-      https://github.com/rm3l/dev-feed
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
     digest: 4e3a224d73b68c2b1fb49ece35e0278178a81ff7b12790b7cb195464a80e827d
     maintainers:
     - email: armel@rm3l.org
@@ -156,9 +149,8 @@ entries:
       name: mariadb
       repository: https://charts.bitnami.com/bitnami
       version: 9.3.0
-    description: |
-      GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
-      https://github.com/rm3l/dev-feed
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
     digest: 8250fca7f1a75f33f7ebc6c22256e6a7ed440238c63737462949f5a72aebd31f
     maintainers:
     - email: armel@rm3l.org
@@ -177,9 +169,8 @@ entries:
       name: mariadb
       repository: https://charts.bitnami.com/bitnami
       version: 9.3.0
-    description: |
-      GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
-      https://github.com/rm3l/dev-feed
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
     digest: f2be08966b6b315afd883141baab53abf41ccf11677c353841f38449b1ec58d7
     maintainers:
     - email: armel@rm3l.org
@@ -198,9 +189,8 @@ entries:
       name: mariadb
       repository: https://charts.bitnami.com/bitnami
       version: 9.3.0
-    description: |
-      GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
-      https://github.com/rm3l/dev-feed
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
     digest: 94a91f569695e448059ad9381e69bf023f9a4a9468dd60824a88f9129b171974
     maintainers:
     - email: armel@rm3l.org
@@ -215,9 +205,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-19T21:40:21.747815512Z"
-    description: |
-      Automated backups of headless Ghost Blogs to AWS S3.
-      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: 1cbceec4429e68c47a6897a9076828967f155670668004a33fb927843f66f56f
     maintainers:
     - email: armel@rm3l.org
@@ -231,9 +219,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-19T20:48:19.461956009Z"
-    description: |
-      Automated backups of headless Ghost Blogs to AWS S3.
-      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: 2bd31517a6aaa4d5712dd2f936fced15e66c7e47db6a0c289e96dc9ab87ed6b6
     maintainers:
     - email: armel@rm3l.org
@@ -247,9 +233,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-18T23:40:34.172001636Z"
-    description: |
-      Automated backups of headless Ghost Blogs to AWS S3.
-      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: bbd5ca89645cff72e5e8b9c19c46d9925b1fb02966518669982aa24c47304f78
     maintainers:
     - email: armel@rm3l.org
@@ -263,9 +247,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-09T23:44:33.816265996Z"
-    description: |
-      Automated backups of headless Ghost Blogs to AWS S3.
-      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: e892987d396c8f4007b2369abce2893396d1fb185576e961e6ea89bfc33a861d
     maintainers:
     - email: armel@rm3l.org
@@ -279,9 +261,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-09T23:06:52.384504769Z"
-    description: |
-      Automated backups of headless Ghost Blogs to AWS S3.
-      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: fc5cf9c0168af9edf4735ab23edc11b7e07cd509f477e07d1d36a176619d3225
     maintainers:
     - email: armel@rm3l.org
@@ -295,9 +275,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-04T21:40:26.111587701Z"
-    description: |
-      Automated backups of headless Ghost Blogs to AWS S3.
-      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: e915ea11bcab68a6ce7024e76453278d1bcc354d3a6a469c9354f94e1cc0ff67
     maintainers:
     - email: armel@rm3l.org
@@ -311,9 +289,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-04T21:30:05.053221707Z"
-    description: |
-      Automated backups of headless Ghost Blogs to AWS S3.
-      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: 991cc8fceafab70270bbae76dc3a5b9d78b1bd29189249aee3d992ae243b4249
     maintainers:
     - email: armel@rm3l.org
@@ -327,9 +303,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-03T22:49:10.969671841Z"
-    description: |
-      Automated backups of headless Ghost Blogs to AWS S3.
-      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: 93b62d0032273a8aac2ad2fde1d7c0f2d0ec4d3de0a7bcc8f494420ec3a4015e
     maintainers:
     - email: armel@rm3l.org
@@ -343,9 +317,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-03T22:31:09.923297981Z"
-    description: |
-      Automated backups of headless Ghost Blogs to AWS S3.
-      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: b0263afda609070d63c1c3648034fe56b2462fa5687d95e28705bdb38b9c6aa8
     name: ghost-export-to-s3
     type: application
@@ -355,9 +327,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-01T23:12:02.615605358Z"
-    description: |
-      Automated backups of headless Ghost Blogs to AWS S3.
-      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: 968d4afc258c49d9b73492a3a8c83abfb6ba15b1ace2a5ceb7b440eee5edf36b
     name: ghost-export-to-s3
     type: application
@@ -367,9 +337,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.1.0
     created: "2021-01-27T20:23:08.229289836Z"
-    description: |
-      Automated backups of headless Ghost Blogs to AWS S3.
-      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: 790f48dd7a574e021322fa897571c34271ebccd330009c96ed3d06fec9a3338f
     name: ghost-export-to-s3
     type: application
@@ -379,9 +347,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.0.0
     created: "2021-01-22T22:58:38.482652843Z"
-    description: |
-      Automated backups of headless Ghost Blogs to AWS S3.
-      https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: 6c685c2c03b9c4a5202a467b60b307429e8f1743793915f2e1e8ee19c591485a
     name: ghost-export-to-s3
     type: application
@@ -391,9 +357,8 @@ entries:
   - apiVersion: v2
     appVersion: 1.0.0
     created: "2021-01-17T21:50:34.877104275Z"
-    description: |
-      Automated backups of headless Ghost Blogs to AWS S3.
-      See https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ for more details.
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. See https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
+      for more details. '
     digest: c2fd89af9fe12bc113b883d0c4df1055a8293cea052fadb505aabae88f49df1b
     name: ghost-export-to-s3
     type: application
@@ -424,9 +389,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2021-02-19T21:40:21.84231689Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: 7a1c72d5a7a7660e0daefddc79fd0df318c4afc2af39cb752559d2f07d40835d
     maintainers:
     - email: armel@rm3l.org
@@ -440,9 +403,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2021-02-19T20:48:19.561469384Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: a37f2d316d4eb525177f31ab3a1549378375db9b3ddd7c2e7aeec885d079103e
     maintainers:
     - email: armel@rm3l.org
@@ -456,9 +417,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2021-02-18T23:40:34.264086428Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: c57ae0c45af893d84274578af064e83ac7d503169239b7d85ec63dc40e55af40
     maintainers:
     - email: armel@rm3l.org
@@ -472,9 +431,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2021-02-18T22:30:55.687625837Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: 41bbb6c0d2eda919a62da9777d72d979352ed459e954451dd88b24ae5c24e4f5
     maintainers:
     - email: armel@rm3l.org
@@ -488,9 +445,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-09T23:44:33.898112224Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: 565421ef41710a3e6fe1ffcc0b674e8ec4df8c948d1c711e91639624c03da7cc
     maintainers:
     - email: armel@rm3l.org
@@ -504,9 +459,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-09T23:06:52.479841928Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: b7d79d01ebba7baa17db616566506f8bb7e025a695016139ad2aa5f3d2cba2cd
     maintainers:
     - email: armel@rm3l.org
@@ -520,9 +473,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-04T21:40:26.18569155Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: 2a171f0935614791f7f4ad9bc3bf9ceb3505065819239a97fd8fb1a4553afde2
     maintainers:
     - email: armel@rm3l.org
@@ -536,9 +487,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-04T21:30:05.155921782Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: 0d7b3685a7d7bf9250042568cda439357d46cfc4f06620d180a0dfbd70056ef5
     maintainers:
     - email: armel@rm3l.org
@@ -552,9 +501,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-03T22:49:11.065094942Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: 117ada713e70bbf5856c1e3c17ccaefdf938e16a7fc11e4c69af631cd0a77f28
     maintainers:
     - email: armel@rm3l.org
@@ -568,9 +515,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-03T22:31:10.012988694Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: ab70de45120ca24f469b00ff60bba69180a83ff684de04e0c45931829a7a1e0a
     name: mac-oui
     type: application
@@ -580,9 +525,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-02-01T23:12:02.758947442Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: 75c338b21f1c82f827eabad9eee7df12d2df00321ba15839c840e03526d85292
     name: mac-oui
     type: application
@@ -592,9 +535,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-01-27T20:23:08.33247204Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: 95a318f139e0801021085d914d5421b3f8539525073bb57b8135c1fb8fb43136
     name: mac-oui
     type: application
@@ -604,9 +545,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-01-23T21:56:42.246946259Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: db015506167275297bc9e556093d6affc27bd6dfbb7cbd08cac7dd67db0af2e7
     name: mac-oui
     type: application
@@ -616,9 +555,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-01-22T22:51:57.442188056Z"
-    description: |
-      Microservice for looking up manufacturers from MAC addresses.
-      https://github.com/rm3l/mac-oui
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: ff32dfdc79fc3d44dad314c1b5ee43e6cd9333a58ddd5430c2445072b04224aa
     name: mac-oui
     type: application
@@ -627,11 +564,25 @@ entries:
     version: 1.0.0
   service-names-port-numbers:
   - apiVersion: v2
+    appVersion: 0.9.0
+    created: "2021-03-02T23:36:36.597553475Z"
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
+    digest: ebb8a401f234e114f0af52d524bb2c17b6518e84ac5ad21cab6dc37224a529c9
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: service-names-port-numbers
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.15.0/service-names-port-numbers-0.15.0.tgz
+    version: 0.15.0
+  - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-02-19T21:40:21.937501768Z"
-    description: |
-      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-      https://github.com/rm3l/service-names-port-numbers
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
     digest: 83d6d0e9f48b1fd852f82d3db1c60e9d6bc913ce28fde9098e01b08bf84f580b
     maintainers:
     - email: armel@rm3l.org
@@ -645,9 +596,8 @@ entries:
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-02-19T20:48:19.665341385Z"
-    description: |
-      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-      https://github.com/rm3l/service-names-port-numbers
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
     digest: dcb121a8f86200bffe2d2b1ad051de8c3303eec5f38216ad7c581f3e3afa7043
     maintainers:
     - email: armel@rm3l.org
@@ -661,9 +611,8 @@ entries:
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-02-18T23:40:34.376291893Z"
-    description: |
-      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-      https://github.com/rm3l/service-names-port-numbers
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
     digest: 935454396dda5374622709b8255f85300dfbf24cd571ec701e5a482cc5d65741
     maintainers:
     - email: armel@rm3l.org
@@ -677,9 +626,8 @@ entries:
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-02-09T23:44:33.983036054Z"
-    description: |
-      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-      https://github.com/rm3l/service-names-port-numbers
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
     digest: 482eab33a5c242ab8fe8c59006943c9b4442c4688f3606f5db966dd8ae67b031
     maintainers:
     - email: armel@rm3l.org
@@ -693,9 +641,8 @@ entries:
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-02-09T23:06:52.565240859Z"
-    description: |
-      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-      https://github.com/rm3l/service-names-port-numbers
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
     digest: 2ac7ed5f62f1dd69a39ff42a3bdaa978931ce8ee9473462a8dea40aff7788f34
     maintainers:
     - email: armel@rm3l.org
@@ -709,9 +656,8 @@ entries:
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-02-04T21:40:26.274469127Z"
-    description: |
-      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-      https://github.com/rm3l/service-names-port-numbers
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
     digest: 5ba26b153d51739ed1e5d71318a32b888db5266345b4a224f1ca5a02323957fd
     maintainers:
     - email: armel@rm3l.org
@@ -725,9 +671,8 @@ entries:
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-02-04T21:30:05.282174728Z"
-    description: |
-      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-      https://github.com/rm3l/service-names-port-numbers
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
     digest: ac39939b62a00e03e615c5baa75b1f90d32ad3df4807c2a9afdcecce53d8b5d2
     maintainers:
     - email: armel@rm3l.org
@@ -741,9 +686,8 @@ entries:
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-02-03T22:49:11.153208374Z"
-    description: |
-      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-      https://github.com/rm3l/service-names-port-numbers
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
     digest: 1522f7080aae1819db08aeeee9c8570e3bc4d6e6cd47bb7da93c0270eb6512d8
     maintainers:
     - email: armel@rm3l.org
@@ -757,9 +701,8 @@ entries:
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-02-03T22:31:10.106867224Z"
-    description: |
-      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-      https://github.com/rm3l/service-names-port-numbers
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
     digest: 9048419498f0c9a27c075e56380a298132f018a5c8e3d18bfca3858e4a9fe919
     name: service-names-port-numbers
     type: application
@@ -769,9 +712,8 @@ entries:
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-02-01T23:12:02.864326591Z"
-    description: |
-      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-      https://github.com/rm3l/service-names-port-numbers
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
     digest: f78f625413f72c81274eaa5df58f181ebf6c61f0acd7bfc0dd80ba9c4bad917c
     name: service-names-port-numbers
     type: application
@@ -781,9 +723,8 @@ entries:
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-01-27T20:23:08.424364804Z"
-    description: |
-      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-      https://github.com/rm3l/service-names-port-numbers
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
     digest: c31405f17f40eaee79ca280196adea5f0f7e881650cac8d6c2d8b150dee64764
     name: service-names-port-numbers
     type: application
@@ -793,9 +734,8 @@ entries:
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-01-24T23:26:02.477558093Z"
-    description: |
-      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-      https://github.com/rm3l/service-names-port-numbers
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
     digest: 4542f3eac20d0ed157dc19be3c035ae32e003e031f612bd4ade1b58410b24ae6
     name: service-names-port-numbers
     type: application
@@ -805,13 +745,12 @@ entries:
   - apiVersion: v2
     appVersion: 0.8.0
     created: "2021-01-24T22:59:39.637383163Z"
-    description: |
-      Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
-      https://github.com/rm3l/service-names-port-numbers
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
     digest: d92f966cd817674ee15e8ab862603117307c8fc16dd72e9727ec3aa25b13cec8
     name: service-names-port-numbers
     type: application
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2021-01-17T00:16:31.182580073Z"
+generated: "2021-03-02T23:36:36.597773475Z"
