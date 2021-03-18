@@ -14,18 +14,18 @@ spec:
       ttlSecondsAfterFinished: {{ .Values.crawlers.discoverdev_io.ttlSecondsAfterFinished }}
       template:
         spec:
-          {{- with .Values.affinity }}
+          {{- with .Values.crawlers.discoverdev_io.affinity }}
           affinity:
             {{- toYaml . | nindent 12 }}
           {{- end }}
 
-          {{- with .Values.imagePullSecrets }}
+          {{- with .Values.crawlers.discoverdev_io.imagePullSecrets }}
           imagePullSecrets:
             {{- toYaml . | nindent 12 }}
            {{- end }}
           serviceAccountName: {{ include "dev-feed.serviceAccountName" . }}
           securityContext:
-            {{- toYaml .Values.podSecurityContext | nindent 12 }}
+            {{- toYaml .Values.crawlers.discoverdev_io.podSecurityContext | nindent 12 }}
 
           initContainers:
           - name: wait-db-service
@@ -73,18 +73,18 @@ spec:
       ttlSecondsAfterFinished: {{ .Values.crawlers.engineeringblogs_xyz.ttlSecondsAfterFinished }}
       template:
         spec:
-          {{- with .Values.affinity }}
+          {{- with .Values.crawlers.engineeringblogs_xyz.affinity }}
           affinity:
             {{- toYaml . | nindent 12 }}
           {{- end }}
 
-          {{- with .Values.imagePullSecrets }}
+          {{- with .Values.crawlers.engineeringblogs_xyz.imagePullSecrets }}
           imagePullSecrets:
             {{- toYaml . | nindent 12 }}
            {{- end }}
           serviceAccountName: {{ include "dev-feed.serviceAccountName" . }}
           securityContext:
-            {{- toYaml .Values.podSecurityContext | nindent 12 }}
+            {{- toYaml .Values.crawlers.engineeringblogs_xyz.podSecurityContext | nindent 12 }}
 
           initContainers:
           - name: wait-db-service
@@ -131,18 +131,18 @@ spec:
       ttlSecondsAfterFinished: {{ .Values.crawlers.rm3l_org.ttlSecondsAfterFinished }}
       template:
         spec:
-          {{- with .Values.affinity }}
+          {{- with .Values.crawlers.rm3l_org.affinity }}
           affinity:
             {{- toYaml . | nindent 12 }}
           {{- end }}
 
-          {{- with .Values.imagePullSecrets }}
+          {{- with .Values.crawlers.rm3l_org.imagePullSecrets }}
           imagePullSecrets:
             {{- toYaml . | nindent 12 }}
            {{- end }}
           serviceAccountName: {{ include "dev-feed.serviceAccountName" . }}
           securityContext:
-            {{- toYaml .Values.podSecurityContext | nindent 12 }}
+            {{- toYaml .Values.crawlers.rm3l_org.podSecurityContext | nindent 12 }}
 
           initContainers:
           - name: wait-db-service
