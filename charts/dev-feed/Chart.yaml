@@ -16,11 +16,11 @@ type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.13.0
+version: 0.14.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
-appVersion: 1.7.1
+appVersion: 1.8.0
 
 # Issue with name. See discussion here : https://github.com/helm/chart-testing/issues/192
 maintainers:
