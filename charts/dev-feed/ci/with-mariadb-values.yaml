@@ -33,6 +33,9 @@ config: |
 
 ## Dependencies
 mariadb:
+  enabled: true
+
+mongodb:
   enabled: false
 
 crawlers:
@@ -45,3 +48,4 @@ crawlers:
 
   rm3l_org:
     enabled: true
+    schedule: "*/1 * * * *"

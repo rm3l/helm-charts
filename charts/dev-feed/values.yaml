@@ -94,6 +94,7 @@ tolerations: []
 affinity: {}
 
 datasource:
+# TODO Deduce from mariadb or mongodb settings
   user: db-user
   password: pl34s3Ch4ng3M3
 
@@ -123,6 +124,14 @@ mariadb:
     ##
     replicationUser: replicator
     replicationPassword: "pl34s3Ch4ng3M3"
+
+mongodb:
+  enabled: false
+  auth:
+    rootPassword: "pl34s3Ch4ng3M3"
+    database: dev-feed
+    username: "db-user"
+    password: "pl34s3Ch4ng3M3"
 
 crawlers:
 

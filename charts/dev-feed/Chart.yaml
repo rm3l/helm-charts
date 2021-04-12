@@ -16,11 +16,11 @@ type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.14.0
+version: 0.15.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
-appVersion: 1.8.0
+appVersion: 1.9.0
 
 # Issue with name. See discussion here : https://github.com/helm/chart-testing/issues/192
 maintainers:
@@ -29,8 +29,13 @@ maintainers:
   url: https://rm3l.org
 
 dependencies:
-# See https://github.com/bitnami/charts/tree/master/bitnami/mariadb
 - name: mariadb
+  # See https://github.com/bitnami/charts/tree/master/bitnami/mariadb
   version: "9.3.0"
   repository: "https://charts.bitnami.com/bitnami"
   condition: mariadb.enabled
+- name: mongodb
+  # See https://github.com/bitnami/charts/tree/master/bitnami/mongodb
+  version: "10.12.2"
+  repository: "https://charts.bitnami.com/bitnami"
+  condition: mongodb.enabled

@@ -6,9 +6,14 @@ metadata:
     {{- include "dev-feed.labels" . | nindent 4 }}
 data:
   backend.properties: |
-    {{- printf "datasource.url=%s" (include "dev-feed.databaseJdbcUrl" .) | nindent 4 }}
-    {{- printf "datasource.driver=%s" (include "dev-feed.databaseJdbcDriver" .) | nindent 4 }}
-    {{- if .Values.mariadb.enabled }}
+    {{- printf "datasource.url=%s" (include "dev-feed.datasourceUrl" .) | nindent 4 }}
+    {{- printf "datasource.driver=%s" (include "dev-feed.datasourceDriver" .) | nindent 4 }}
+    {{- if .Values.mongodb.enabled }}
+    {{- printf "datasource.type=mongodb" | nindent 4 }}
+    {{- else }}
+    {{- printf "datasource.type=rdbms" | nindent 4 }}
+    {{- end }}
+    {{- if or .Values.mariadb.enabled .Values.mongodb.enabled }}
       {{- printf "# Crawlers disabled here but deployed as independent Kubernetes CronJobs (1 per crawler service)" | nindent 4 }}
       {{- printf "crawlers.task.fetch-articles=false" | nindent 4 }}
     {{- else}}

@@ -1,4 +1,4 @@
-{{- if .Values.mariadb.enabled }}
+{{- if or .Values.mariadb.enabled .Values.mongodb.enabled }}
 {{- if .Values.crawlers.discoverdev_io.enabled }}
 # discoverdev.io
 apiVersion: batch/v1beta1
@@ -30,13 +30,24 @@ spec:
           initContainers:
           - name: wait-db-service
             image: busybox:1.28
-            command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.{{ .Release.Namespace }}.svc.cluster.local; sleep 2; done"]
+            {{- if .Values.mariadb.enabled }}
+            command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
+            {{- else }}
+            command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
+            {{- end }}
 
           containers:
           - name: {{ include "dev-feed.fullname" . }}-crawler-discoverdev-io
             image: "{{ .Values.crawlers.discoverdev_io.image.repository }}:{{ .Chart.AppVersion }}"
             imagePullPolicy: {{ .Values.crawlers.discoverdev_io.image.pullPolicy }}
             env:
+            {{- if .Values.mongodb.enabled }}
+            - name: DATASOURCE_MONGODB_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "dev-feed.fullname" . }}
+                  key: datasource.mongodb.connectionString
+            {{- else }}
             - name: DATASOURCE_USER
               valueFrom:
                 secretKeyRef:
@@ -47,13 +58,19 @@ spec:
                 secretKeyRef:
                   name: {{ include "dev-feed.fullname" . }}
                   key: datasource.password
+            {{- end }}
             args:
+            {{- if .Values.mongodb.enabled }}
+            - mongo
+            - --mongo-connection-string=$(DATASOURCE_MONGODB_CONNECTION_STRING)
+            {{- else }}
             - rdbms
-            - --article-max-age-days={{ .Values.crawlers.discoverdev_io.articleMaxAgeDays }}
-            - --datasource-jdbc-driver={{ include "dev-feed.databaseJdbcDriver" . }}
-            - --datasource-jdbc-url={{ include "dev-feed.databaseJdbcUrl" . }}
+            - --datasource-jdbc-driver={{ include "dev-feed.datasourceDriver" . }}
+            - --datasource-jdbc-url={{ include "dev-feed.datasourceUrl" . }}
             - --datasource-user=$(DATASOURCE_USER)
             - --datasource-password=$(DATASOURCE_PASSWORD)
+            {{- end }}
+            - --article-max-age-days={{ .Values.crawlers.discoverdev_io.articleMaxAgeDays }}
           restartPolicy: {{ .Values.crawlers.discoverdev_io.restartPolicy }}
 
 {{- end }}
@@ -89,13 +106,24 @@ spec:
           initContainers:
           - name: wait-db-service
             image: busybox:1.28
-            command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.{{ .Release.Namespace }}.svc.cluster.local; sleep 2; done"]
+            {{- if .Values.mariadb.enabled }}
+            command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
+            {{- else }}
+            command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
+            {{- end }}
 
           containers:
           - name: {{ include "dev-feed.fullname" . }}-crawler-engineeringblogs-xyz
             image: "{{ .Values.crawlers.engineeringblogs_xyz.image.repository }}:{{ .Chart.AppVersion }}"
             imagePullPolicy: {{ .Values.crawlers.engineeringblogs_xyz.image.pullPolicy }}
             env:
+            {{- if .Values.mongodb.enabled }}
+            - name: DATASOURCE_MONGODB_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "dev-feed.fullname" . }}
+                  key: datasource.mongodb.connectionString
+            {{- else }}
             - name: DATASOURCE_USER
               valueFrom:
                 secretKeyRef:
@@ -106,13 +134,19 @@ spec:
                 secretKeyRef:
                   name: {{ include "dev-feed.fullname" . }}
                   key: datasource.password
+            {{- end }}
             args:
+            {{- if .Values.mongodb.enabled }}
+            - mongo
+            - --mongo-connection-string=$(DATASOURCE_MONGODB_CONNECTION_STRING)
+            {{- else }}
             - rdbms
-            - --article-max-age-days={{ .Values.crawlers.engineeringblogs_xyz.articleMaxAgeDays }}
-            - --datasource-jdbc-driver={{ include "dev-feed.databaseJdbcDriver" . }}
-            - --datasource-jdbc-url={{ include "dev-feed.databaseJdbcUrl" . }}
+            - --datasource-jdbc-driver={{ include "dev-feed.datasourceDriver" . }}
+            - --datasource-jdbc-url={{ include "dev-feed.datasourceUrl" . }}
             - --datasource-user=$(DATASOURCE_USER)
             - --datasource-password=$(DATASOURCE_PASSWORD)
+            {{- end }}
+            - --article-max-age-days={{ .Values.crawlers.engineeringblogs_xyz.articleMaxAgeDays }}
           restartPolicy: {{ .Values.crawlers.engineeringblogs_xyz.restartPolicy }}
 {{- end }}
 ---
@@ -147,13 +181,24 @@ spec:
           initContainers:
           - name: wait-db-service
             image: busybox:1.28
-            command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.{{ .Release.Namespace }}.svc.cluster.local; sleep 2; done"]
+            {{- if .Values.mariadb.enabled }}
+            command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
+            {{- else }}
+            command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
+            {{- end }}
 
           containers:
           - name: {{ include "dev-feed.fullname" . }}-crawler-rm3l-org
             image: "{{ .Values.crawlers.rm3l_org.image.repository }}:{{ .Chart.AppVersion }}"
             imagePullPolicy: {{ .Values.crawlers.rm3l_org.image.pullPolicy }}
             env:
+            {{- if .Values.mongodb.enabled }}
+            - name: DATASOURCE_MONGODB_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "dev-feed.fullname" . }}
+                  key: datasource.mongodb.connectionString
+            {{- else }}
             - name: DATASOURCE_USER
               valueFrom:
                 secretKeyRef:
@@ -164,13 +209,19 @@ spec:
                 secretKeyRef:
                   name: {{ include "dev-feed.fullname" . }}
                   key: datasource.password
+            {{- end }}
             args:
+            {{- if .Values.mongodb.enabled }}
+            - mongo
+            - --mongo-connection-string=$(DATASOURCE_MONGODB_CONNECTION_STRING)
+            {{- else }}
             - rdbms
-            - --article-max-age-days={{ .Values.crawlers.rm3l_org.articleMaxAgeDays }}
-            - --datasource-jdbc-driver={{ include "dev-feed.databaseJdbcDriver" . }}
-            - --datasource-jdbc-url={{ include "dev-feed.databaseJdbcUrl" . }}
+            - --datasource-jdbc-driver={{ include "dev-feed.datasourceDriver" . }}
+            - --datasource-jdbc-url={{ include "dev-feed.datasourceUrl" . }}
             - --datasource-user=$(DATASOURCE_USER)
             - --datasource-password=$(DATASOURCE_PASSWORD)
+            {{- end }}
+            - --article-max-age-days={{ .Values.crawlers.rm3l_org.articleMaxAgeDays }}
           restartPolicy: {{ .Values.crawlers.rm3l_org.restartPolicy }}
 {{- end }}
 {{- end }}

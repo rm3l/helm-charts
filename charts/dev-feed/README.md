@@ -3,13 +3,13 @@
 GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
 https://github.com/rm3l/dev-feed
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.14.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![Latest version](https://img.shields.io/badge/latest_version-0.15.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-dev-feed rm3l/dev-feed --version 0.14.0
+$ helm install my-dev-feed rm3l/dev-feed --version 0.15.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
@@ -19,6 +19,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | Repository | Name | Version |
 |------------|------|---------|
 | https://charts.bitnami.com/bitnami | mariadb | 9.3.0 |
+| https://charts.bitnami.com/bitnami | mongodb | 10.12.2 |
 
 ## Values
 
@@ -81,6 +82,11 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | mariadb.auth.replicationUser | string | `"replicator"` |  |
 | mariadb.auth.username | string | `"db-user"` |  |
 | mariadb.enabled | bool | `true` |  |
+| mongodb.auth.database | string | `"dev-feed"` |  |
+| mongodb.auth.password | string | `"pl34s3Ch4ng3M3"` |  |
+| mongodb.auth.rootPassword | string | `"pl34s3Ch4ng3M3"` |  |
+| mongodb.auth.username | string | `"db-user"` |  |
+| mongodb.enabled | bool | `false` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |

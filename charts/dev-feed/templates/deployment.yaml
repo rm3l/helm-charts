@@ -27,11 +27,15 @@ spec:
       - name: {{ include "dev-feed.fullname" . }}
         configMap:
           name: {{ include "dev-feed.fullname" . }}
-      {{- if .Values.mariadb.enabled }}
+      {{- if or .Values.mariadb.enabled .Values.mongodb.enabled }}
       initContainers:
         - name: wait-db-service
           image: busybox:1.28
+          {{- if .Values.mariadb.enabled }}
           command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
+          {{- else }}
+          command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
+          {{- end }}
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -67,6 +71,18 @@ spec:
               path: /management/health
               port: 8081
           env:
+            - name: spring.security.user.password
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "dev-feed.fullname" . }}
+                  key: auth.password
+            {{- if .Values.mongodb.enabled }}
+            - name: datasource.mongodb.connectionString
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "dev-feed.fullname" . }}
+                  key: datasource.mongodb.connectionString
+            {{- else }}
             - name: datasource.user
               valueFrom:
                 secretKeyRef:
@@ -77,11 +93,7 @@ spec:
                 secretKeyRef:
                   name: {{ include "dev-feed.fullname" . }}
                   key: datasource.password
-            - name: spring.security.user.password
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "dev-feed.fullname" . }}
-                  key: auth.password
+            {{- end }}
           volumeMounts:
             - name: {{ include "dev-feed.fullname" . }}
               mountPath: /etc/dev-feed
