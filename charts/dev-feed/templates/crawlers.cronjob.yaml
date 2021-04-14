@@ -1,7 +1,7 @@
 {{- if or .Values.mariadb.enabled .Values.mongodb.enabled }}
 {{- $kubeVersion := .Capabilities.KubeVersion.GitVersion -}}
 {{- if .Values.crawlers.discoverdev_io.enabled }}
-# discoverdev.io
+{{/* discoverdev.io */}}
 {{- if semverCompare ">=1.21-0" $kubeVersion -}}
 apiVersion: batch/v1
 {{- else -}}
@@ -81,7 +81,7 @@ spec:
 {{- end }}
 ---
 {{- if .Values.crawlers.engineeringblogs_xyz.enabled }}
-# engineeringblogs.xyz
+{{/* engineeringblogs.xyz */}}
 {{- if semverCompare ">=1.21-0" $kubeVersion -}}
 apiVersion: batch/v1
 {{- else -}}
@@ -160,7 +160,7 @@ spec:
 {{- end }}
 ---
 {{- if .Values.crawlers.rm3l_org.enabled }}
-# rm3l.org
+{{/* rm3l.org */}}
 {{- if semverCompare ">=1.21-0" $kubeVersion -}}
 apiVersion: batch/v1
 {{- else -}}
