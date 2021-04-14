@@ -1,7 +1,12 @@
 {{- if or .Values.mariadb.enabled .Values.mongodb.enabled }}
+{{- $kubeVersion := .Capabilities.KubeVersion.GitVersion -}}
 {{- if .Values.crawlers.discoverdev_io.enabled }}
 # discoverdev.io
+{{- if semverCompare ">=1.21-0" $kubeVersion -}}
+apiVersion: batch/v1
+{{- else -}}
 apiVersion: batch/v1beta1
+{{- end -}}
 kind: CronJob
 metadata:
   name: {{ include "dev-feed.fullname" . }}-crawler-discoverdev-io
@@ -77,7 +82,11 @@ spec:
 ---
 {{- if .Values.crawlers.engineeringblogs_xyz.enabled }}
 # engineeringblogs.xyz
+{{- if semverCompare ">=1.21-0" $kubeVersion -}}
+apiVersion: batch/v1
+{{- else -}}
 apiVersion: batch/v1beta1
+{{- end -}}
 kind: CronJob
 metadata:
   name: {{ include "dev-feed.fullname" . }}-crawler-engineeringblogs-xyz
@@ -152,7 +161,11 @@ spec:
 ---
 {{- if .Values.crawlers.rm3l_org.enabled }}
 # rm3l.org
+{{- if semverCompare ">=1.21-0" $kubeVersion -}}
+apiVersion: batch/v1
+{{- else -}}
 apiVersion: batch/v1beta1
+{{- end -}}
 kind: CronJob
 metadata:
   name: {{ include "dev-feed.fullname" . }}-crawler-rm3l-org
