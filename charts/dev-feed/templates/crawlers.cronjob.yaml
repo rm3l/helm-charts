@@ -6,7 +6,7 @@
 apiVersion: batch/v1
 {{- else -}}
 apiVersion: batch/v1beta1
-{{- end -}}
+{{- end }}
 kind: CronJob
 metadata:
   name: {{ include "dev-feed.fullname" . }}-crawler-discoverdev-io
@@ -86,7 +86,7 @@ spec:
 apiVersion: batch/v1
 {{- else -}}
 apiVersion: batch/v1beta1
-{{- end -}}
+{{- end }}
 kind: CronJob
 metadata:
   name: {{ include "dev-feed.fullname" . }}-crawler-engineeringblogs-xyz
@@ -165,7 +165,7 @@ spec:
 apiVersion: batch/v1
 {{- else -}}
 apiVersion: batch/v1beta1
-{{- end -}}
+{{- end }}
 kind: CronJob
 metadata:
   name: {{ include "dev-feed.fullname" . }}-crawler-rm3l-org
