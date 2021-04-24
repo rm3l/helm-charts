@@ -3,6 +3,30 @@ entries:
   dev-feed:
   - apiVersion: v2
     appVersion: 1.9.0
+    created: "2021-04-24T21:31:00.920509108Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.3.0
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.12.2
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
+    digest: 3870a9c7152c70a74b2781d6f9c43cdc8a6b2aa6a0ac6ab2b93ad3114464af40
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: dev-feed
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/dev-feed-0.17.1/dev-feed-0.17.1.tgz
+    version: 0.17.1
+  - apiVersion: v2
+    appVersion: 1.9.0
     created: "2021-04-14T21:52:46.203111774Z"
     dependencies:
     - condition: mariadb.enabled
@@ -314,6 +338,20 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/dev-feed-0.3.0/dev-feed-0.3.0.tgz
     version: 0.3.0
   ghost-export-to-s3:
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2021-04-24T21:31:01.084965152Z"
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
+    digest: f41304a20a457b1184b82b4b2fe556543c3ac79e41ff5ca2eb57f97d4d67f15b
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: ghost-export-to-s3
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/ghost-export-to-s3-0.16.0/ghost-export-to-s3-0.16.0.tgz
+    version: 0.16.0
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2021-04-14T21:42:05.827262681Z"
@@ -894,4 +932,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2021-04-21T21:05:45.904129764Z"
+generated: "2021-04-24T21:31:01.085385157Z"
