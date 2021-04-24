@@ -143,6 +143,7 @@ crawlers:
     schedule: "0 0 * * 0"
     concurrencyPolicy: Forbid
     startingDeadlineSeconds: 3600
+    activeDeadlineSeconds: 1800
     ttlSecondsAfterFinished: 900
     restartPolicy: OnFailure
     articleMaxAgeDays: 365
@@ -159,6 +160,7 @@ crawlers:
     schedule: "*/30 * * * *"
     concurrencyPolicy: Forbid
     startingDeadlineSeconds: 3600
+    activeDeadlineSeconds: 1800
     ttlSecondsAfterFinished: 900
     restartPolicy: OnFailure
     articleMaxAgeDays: 365
@@ -175,6 +177,7 @@ crawlers:
     schedule: "0 0 * * *"
     concurrencyPolicy: Forbid
     startingDeadlineSeconds: 3600
+    activeDeadlineSeconds: 1800
     ttlSecondsAfterFinished: 900
     restartPolicy: OnFailure
     articleMaxAgeDays: 365
