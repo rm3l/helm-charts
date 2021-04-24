@@ -14,10 +14,10 @@ spec:
   schedule: "{{ .Values.crawlers.discoverdev_io.schedule }}"
   concurrencyPolicy: {{ .Values.crawlers.discoverdev_io.concurrencyPolicy }}
   startingDeadlineSeconds: {{ .Values.crawlers.discoverdev_io.startingDeadlineSeconds }}
-  activeDeadlineSeconds: {{ .Values.crawlers.discoverdev_io.activeDeadlineSeconds }}
   jobTemplate:
     spec:
       ttlSecondsAfterFinished: {{ .Values.crawlers.discoverdev_io.ttlSecondsAfterFinished }}
+      activeDeadlineSeconds: {{ .Values.crawlers.discoverdev_io.activeDeadlineSeconds }}
       template:
         spec:
           {{- with .Values.crawlers.discoverdev_io.affinity }}
@@ -95,10 +95,10 @@ spec:
   schedule: "{{ .Values.crawlers.engineeringblogs_xyz.schedule }}"
   concurrencyPolicy: {{ .Values.crawlers.engineeringblogs_xyz.concurrencyPolicy }}
   startingDeadlineSeconds: {{ .Values.crawlers.engineeringblogs_xyz.startingDeadlineSeconds }}
-  activeDeadlineSeconds: {{ .Values.crawlers.engineeringblogs_xyz.activeDeadlineSeconds }}
   jobTemplate:
     spec:
       ttlSecondsAfterFinished: {{ .Values.crawlers.engineeringblogs_xyz.ttlSecondsAfterFinished }}
+      activeDeadlineSeconds: {{ .Values.crawlers.engineeringblogs_xyz.activeDeadlineSeconds }}
       template:
         spec:
           {{- with .Values.crawlers.engineeringblogs_xyz.affinity }}
@@ -175,10 +175,10 @@ spec:
   schedule: "{{ .Values.crawlers.rm3l_org.schedule }}"
   concurrencyPolicy: {{ .Values.crawlers.rm3l_org.concurrencyPolicy }}
   startingDeadlineSeconds: {{ .Values.crawlers.rm3l_org.startingDeadlineSeconds }}
-  activeDeadlineSeconds: {{ .Values.crawlers.rm3l_org.activeDeadlineSeconds }}
   jobTemplate:
     spec:
       ttlSecondsAfterFinished: {{ .Values.crawlers.rm3l_org.ttlSecondsAfterFinished }}
+      activeDeadlineSeconds: {{ .Values.crawlers.rm3l_org.activeDeadlineSeconds }}
       template:
         spec:
           {{- with .Values.crawlers.rm3l_org.affinity }}
