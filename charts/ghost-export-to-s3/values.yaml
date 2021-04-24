@@ -25,6 +25,7 @@ cronJob:
   concurrencyPolicy: Forbid
   restartPolicy: OnFailure
   ttlSecondsAfterFinished: 300
+  activeDeadlineSeconds: 1800
   backoffLimit: 1
   parallelism: 1
   init:

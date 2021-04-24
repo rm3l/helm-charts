@@ -16,6 +16,7 @@ spec:
       ttlSecondsAfterFinished: {{ .Values.cronJob.ttlSecondsAfterFinished }}
       backoffLimit: {{ .Values.cronJob.backoffLimit }}
       parallelism: {{ .Values.cronJob.parallelism }}
+      activeDeadlineSeconds: {{ .Values.cronJob.activeDeadlineSeconds }}
       template:
         spec:
           restartPolicy: {{ .Values.cronJob.restartPolicy }}

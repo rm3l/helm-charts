@@ -3,13 +3,13 @@
 Automated backups of headless Ghost Blogs to AWS S3.
 https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.14.2-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
+[![Latest version](https://img.shields.io/badge/latest_version-0.15.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-ghost-export-to-s3 rm3l/ghost-export-to-s3 --version 0.14.2
+$ helm install my-ghost-export-to-s3 rm3l/ghost-export-to-s3 --version 0.15.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3?modal=install
@@ -22,6 +22,7 @@ See https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3?modal=install
 | aws.accessKeyId | string | `"my-aws-access-key-id"` | AWS Access Key. Must have the permissions to write to the target bucket. |
 | aws.s3 | object | `{"destination":"s3://path/to/my/s3-export.json"}` | Target destination (absolute) in AWS S3, where the backup file should be written |
 | aws.secretKey | string | `"my-aws-secret-key"` | AWS Secret Key. Must have the permissions to write to the target bucket. |
+| cronJob.activeDeadlineSeconds | int | `1800` |  |
 | cronJob.backoffLimit | int | `1` |  |
 | cronJob.concurrencyPolicy | string | `"Forbid"` |  |
 | cronJob.init.image | string | `"curlimages/curl:7.74.0"` |  |
