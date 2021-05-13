@@ -3,13 +3,13 @@
 GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
 https://github.com/rm3l/dev-feed
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.18.1-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![Latest version](https://img.shields.io/badge/latest_version-0.19.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-dev-feed rm3l/dev-feed --version 0.18.1
+$ helm install my-dev-feed rm3l/dev-feed --version 0.19.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
@@ -18,8 +18,8 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | mariadb | 9.3.0 |
-| https://charts.bitnami.com/bitnami | mongodb | 10.12.2 |
+| https://charts.bitnami.com/bitnami | mariadb | 9.3.11 |
+| https://charts.bitnami.com/bitnami | mongodb | 10.15.2 |
 
 ## Values
 
