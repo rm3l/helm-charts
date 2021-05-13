@@ -3,7 +3,7 @@
 GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
 https://github.com/rm3l/dev-feed
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.18.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![Latest version](https://img.shields.io/badge/latest_version-0.18.1-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 
 ## Installation
 
