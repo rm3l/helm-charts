@@ -3,6 +3,30 @@ entries:
   dev-feed:
   - apiVersion: v2
     appVersion: 1.9.0
+    created: "2021-05-13T21:30:39.285637595Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.3.11
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.15.2
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
+    digest: 517cf7b54492eadae5eab740521e18693a0be5548190e16a998b006230fa4e4b
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: dev-feed
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/dev-feed-0.19.1/dev-feed-0.19.1.tgz
+    version: 0.19.1
+  - apiVersion: v2
+    appVersion: 1.9.0
     created: "2021-05-13T13:52:17.947092196Z"
     dependencies:
     - condition: mariadb.enabled
@@ -388,6 +412,20 @@ entries:
   ghost-export-to-s3:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2021-05-13T21:30:39.465469639Z"
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
+    digest: 6e945ec4ca6a44d6ec49139c07c7465e9ff4ca08deb43acf5ce6cf9e3ed90b51
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: ghost-export-to-s3
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/ghost-export-to-s3-0.17.2/ghost-export-to-s3-0.17.2.tgz
+    version: 0.17.2
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2021-05-13T14:05:09.430236622Z"
     description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: 22ebcb84bd48ed42a9d76c088b44adf851fd7cb8c0200a561813b674cac0de43
@@ -628,6 +666,20 @@ entries:
   mac-oui:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2021-05-13T21:30:39.631068693Z"
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
+    digest: 09b570ac86d26f3cfcbfd1875a23bb1042bc9ada5f56e533e1495c9d630801a2
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: mac-oui
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.16.1/mac-oui-1.16.1.tgz
+    version: 1.16.1
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2021-02-19T21:40:21.84231689Z"
     description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: 7a1c72d5a7a7660e0daefddc79fd0df318c4afc2af39cb752559d2f07d40835d
@@ -803,6 +855,21 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.0.0/mac-oui-1.0.0.tgz
     version: 1.0.0
   service-names-port-numbers:
+  - apiVersion: v2
+    appVersion: 0.10.0
+    created: "2021-05-13T21:30:39.794459932Z"
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
+    digest: ca41c7fdedc06ce75e3043b2d99f3795c87749c3acf54515d1919fc0ae3af67e
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: service-names-port-numbers
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.17.2/service-names-port-numbers-0.17.2.tgz
+    version: 0.17.2
   - apiVersion: v2
     appVersion: 0.10.0
     created: "2021-05-13T14:11:23.863151168Z"
@@ -1038,4 +1105,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2021-05-13T14:11:23.863485969Z"
+generated: "2021-05-13T21:30:39.795178837Z"
