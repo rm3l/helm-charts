@@ -388,6 +388,20 @@ entries:
   ghost-export-to-s3:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2021-05-13T14:05:09.430236622Z"
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
+    digest: 22ebcb84bd48ed42a9d76c088b44adf851fd7cb8c0200a561813b674cac0de43
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: ghost-export-to-s3
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/ghost-export-to-s3-0.17.1/ghost-export-to-s3-0.17.1.tgz
+    version: 0.17.1
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2021-05-13T13:52:18.130644763Z"
     description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: c4109dd8be1fa3ab0b851fda079fb6e8edc49d0ea242fbef58a21db14953b24b
@@ -1009,4 +1023,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2021-05-13T13:52:18.298470305Z"
+generated: "2021-05-13T14:05:09.430996022Z"
