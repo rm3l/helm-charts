@@ -805,6 +805,21 @@ entries:
   service-names-port-numbers:
   - apiVersion: v2
     appVersion: 0.10.0
+    created: "2021-05-13T14:11:23.863151168Z"
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
+    digest: c9d24916e62f681a2cc7718347679b6a748d953ac7fd1720e7552191585e02a4
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: service-names-port-numbers
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.17.1/service-names-port-numbers-0.17.1.tgz
+    version: 0.17.1
+  - apiVersion: v2
+    appVersion: 0.10.0
     created: "2021-05-13T13:52:18.297764945Z"
     description: 'Microservice (GraphQL API) against the IANA Service Names And Port
       Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
@@ -1023,4 +1038,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2021-05-13T14:05:09.430996022Z"
+generated: "2021-05-13T14:11:23.863485969Z"
