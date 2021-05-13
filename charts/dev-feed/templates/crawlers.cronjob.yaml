@@ -19,6 +19,13 @@ spec:
       ttlSecondsAfterFinished: {{ .Values.crawlers.discoverdev_io.ttlSecondsAfterFinished }}
       activeDeadlineSeconds: {{ .Values.crawlers.discoverdev_io.activeDeadlineSeconds }}
       template:
+        metadata:
+          annotations:
+            checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+            checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+            {{- with .Values.crawlers.discoverdev_io.podAnnotations }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
         spec:
           {{- with .Values.crawlers.discoverdev_io.affinity }}
           affinity:
@@ -100,6 +107,13 @@ spec:
       ttlSecondsAfterFinished: {{ .Values.crawlers.engineeringblogs_xyz.ttlSecondsAfterFinished }}
       activeDeadlineSeconds: {{ .Values.crawlers.engineeringblogs_xyz.activeDeadlineSeconds }}
       template:
+        metadata:
+          annotations:
+            checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+            checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+            {{- with .Values.crawlers.engineeringblogs_xyz.podAnnotations }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
         spec:
           {{- with .Values.crawlers.engineeringblogs_xyz.affinity }}
           affinity:
@@ -180,6 +194,13 @@ spec:
       ttlSecondsAfterFinished: {{ .Values.crawlers.rm3l_org.ttlSecondsAfterFinished }}
       activeDeadlineSeconds: {{ .Values.crawlers.rm3l_org.activeDeadlineSeconds }}
       template:
+        metadata:
+          annotations:
+            checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+            checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+            {{- with .Values.crawlers.rm3l_org.podAnnotations }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
         spec:
           {{- with .Values.crawlers.rm3l_org.affinity }}
           affinity:

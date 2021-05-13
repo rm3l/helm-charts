@@ -21,6 +21,8 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name:
 
+podAnnotations: {}
+
 podSecurityContext: {}
   # fsGroup: 2000
 
@@ -150,6 +152,7 @@ crawlers:
     affinity: {}
     imagePullSecrets: []
     podSecurityContext: {}
+    podAnnotations: {}
       # fsGroup: 2000
 
   engineeringblogs_xyz:
@@ -167,6 +170,7 @@ crawlers:
     affinity: {}
     imagePullSecrets: []
     podSecurityContext: {}
+    podAnnotations: {}
       # fsGroup: 2000
 
   rm3l_org:
@@ -184,4 +188,5 @@ crawlers:
     affinity: {}
     imagePullSecrets: []
     podSecurityContext: {}
+    podAnnotations: {}
       # fsGroup: 2000

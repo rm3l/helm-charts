@@ -3,13 +3,13 @@
 GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
 https://github.com/rm3l/dev-feed
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.17.2-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![Latest version](https://img.shields.io/badge/latest_version-0.18.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-dev-feed rm3l/dev-feed --version 0.17.2
+$ helm install my-dev-feed rm3l/dev-feed --version 0.18.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
@@ -36,6 +36,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | crawlers.discoverdev_io.image.pullPolicy | string | `"IfNotPresent"` |  |
 | crawlers.discoverdev_io.image.repository | string | `"rm3l/dev-feed-crawler-discoverdev_io"` |  |
 | crawlers.discoverdev_io.imagePullSecrets | list | `[]` |  |
+| crawlers.discoverdev_io.podAnnotations | object | `{}` |  |
 | crawlers.discoverdev_io.podSecurityContext | object | `{}` |  |
 | crawlers.discoverdev_io.restartPolicy | string | `"OnFailure"` |  |
 | crawlers.discoverdev_io.schedule | string | `"0 0 * * 0"` |  |
@@ -49,6 +50,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | crawlers.engineeringblogs_xyz.image.pullPolicy | string | `"IfNotPresent"` |  |
 | crawlers.engineeringblogs_xyz.image.repository | string | `"rm3l/dev-feed-crawler-engineeringblogs_xyz"` |  |
 | crawlers.engineeringblogs_xyz.imagePullSecrets | list | `[]` |  |
+| crawlers.engineeringblogs_xyz.podAnnotations | object | `{}` |  |
 | crawlers.engineeringblogs_xyz.podSecurityContext | object | `{}` |  |
 | crawlers.engineeringblogs_xyz.restartPolicy | string | `"OnFailure"` |  |
 | crawlers.engineeringblogs_xyz.schedule | string | `"*/30 * * * *"` |  |
@@ -62,6 +64,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | crawlers.rm3l_org.image.pullPolicy | string | `"IfNotPresent"` |  |
 | crawlers.rm3l_org.image.repository | string | `"rm3l/dev-feed-crawler-rm3l_org"` |  |
 | crawlers.rm3l_org.imagePullSecrets | list | `[]` |  |
+| crawlers.rm3l_org.podAnnotations | object | `{}` |  |
 | crawlers.rm3l_org.podSecurityContext | object | `{}` |  |
 | crawlers.rm3l_org.restartPolicy | string | `"OnFailure"` |  |
 | crawlers.rm3l_org.schedule | string | `"0 0 * * *"` |  |
@@ -92,6 +95,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | mongodb.enabled | bool | `false` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
+| podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | readinessProbe | object | `{"timeoutSeconds":10}` | Configure the readiness healthcheck for the containers |
 | replicaCount | int | `1` |  |
