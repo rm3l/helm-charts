@@ -6,7 +6,7 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/rm3l)](https://artifacthub.io/packages/search?repo=rm3l)
-[![dev-feed](https://img.shields.io/badge/dev--feed-0.19.1-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![dev-feed](https://img.shields.io/badge/dev--feed-0.20.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 [![ghost-export-to-s3](https://img.shields.io/badge/ghost--export--to--s3-0.17.2-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
 [![mac-oui](https://img.shields.io/badge/mac--oui-1.16.1-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
 [![service-names-port-numbers](https://img.shields.io/badge/service--names--port--numbers-0.17.2-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
