@@ -56,13 +56,13 @@ jobs:
         run: ct lint --config ct.yaml
 
       - name: Create kind cluster (main)
-        uses: helm/kind-action@v1.1.0
+        uses: helm/kind-action@v1.2.0
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.list-changed-main.outputs.changed == 'true'
         with:
           version: v0.10.0
 
       - name: Create kind cluster (PR)
-        uses: helm/kind-action@v1.1.0
+        uses: helm/kind-action@v1.2.0
         if: github.event_name == 'pull_request' && steps.list-changed-pr.outputs.changed == 'true'
         with:
           version: v0.10.0
