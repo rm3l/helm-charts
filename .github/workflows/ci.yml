@@ -75,6 +75,24 @@ jobs:
         if: github.event_name == 'pull_request'
         run: ct install --config ct.yaml
 
+  kube-linter:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        chart:
+          - dev-feed
+          - ghost-export-to-s3
+          - mac-oui
+          - service-names-port-numbers
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Scan '${{ matrix.chart }}' Chart with kube-linter
+        uses: stackrox/kube-linter-action@v1.0.2
+        with:
+          directory: charts/${{ matrix.chart }}
+          config: .kube-linter/config.yaml
+
   release:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/'))
     needs:
