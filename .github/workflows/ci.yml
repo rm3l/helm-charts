@@ -89,6 +89,7 @@ jobs:
 
       - name: Scan '${{ matrix.chart }}' Chart with kube-linter
         uses: stackrox/kube-linter-action@v1.0.2
+        continue-on-error: true
         with:
           directory: charts/${{ matrix.chart }}
           config: .kube-linter/config.yaml
