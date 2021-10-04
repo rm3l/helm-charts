@@ -1,9 +1,9 @@
 dependencies:
 - name: mariadb
   repository: https://charts.bitnami.com/bitnami
-  version: 9.3.11
+  version: 9.6.1
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
-  version: 10.15.2
-digest: sha256:434ca770b4e524181e0fb081d208c4502995321008ca5753b0de3261592b8ae5
-generated: "2021-05-13T23:09:16.366717054+02:00"
+  version: 10.26.4
+digest: sha256:230702e6c182497366fcefde7ea9b39d080ee1dd8bcce2bd037e5752db00b591
+generated: "2021-10-05T00:03:08.824014458+02:00"
