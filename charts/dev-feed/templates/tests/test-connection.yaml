@@ -6,10 +6,30 @@ metadata:
     {{- include "dev-feed.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test-success
+    email: "armel+helm_charts@rm3l.org"
+    "ignore-check.kube-linter.io/no-liveness-probe": "This is a one-shot pod for testing. It is not supposed to run forever."
+    "ignore-check.kube-linter.io/no-readiness-probe": "This is a one-shot pod for testing. It is not supposed to run forever."
+    "ignore-check.kube-linter.io/default-service-account": "This is a one-shot pod for testing."
+    "ignore-check.kube-linter.io/non-isolated-pod": "This is a one-shot pod for testing."
 spec:
+  securityContext:
+    runAsNonRoot: true
+    # nobody
+    runAsUser: 65534
+    # nobody
+    runAsGroup: 65534
   containers:
     - name: wget
       image: busybox
       command: ['wget']
       args: ['{{ include "dev-feed.fullname" . }}:{{ .Values.service.port }}/graphiql']
+      securityContext:
+        readOnlyRootFilesystem: true
+      resources:
+        limits:
+          cpu: 100m
+          memory: 10Mi
+        requests:
+          cpu: 100m
+          memory: 1Mi
   restartPolicy: Never
