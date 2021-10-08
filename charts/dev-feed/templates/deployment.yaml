@@ -33,15 +33,28 @@ spec:
       - name: {{ include "dev-feed.fullname" . }}
         configMap:
           name: {{ include "dev-feed.fullname" . }}
+      - name: tmpdir
+        emptyDir: {}
       {{- if or .Values.mariadb.enabled .Values.mongodb.enabled }}
       initContainers:
         - name: wait-db-service
           image: busybox:1.28
+          securityContext:
+            readOnlyRootFilesystem: true
+            runAsUser: 65534
+            runAsGroup: 65534
           {{- if .Values.mariadb.enabled }}
           command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mariadb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
           {{- else }}
           command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
           {{- end }}
+          resources:
+            limits:
+              cpu: 100m
+              memory: 10Mi
+            requests:
+              cpu: 100m
+              memory: 1Mi
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -101,8 +114,12 @@ spec:
                   key: datasource.password
             {{- end }}
           volumeMounts:
+            - name: tmpdir
+              mountPath: /tmp
+              readOnly: false
             - name: {{ include "dev-feed.fullname" . }}
               mountPath: /etc/dev-feed
+              readOnly: true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

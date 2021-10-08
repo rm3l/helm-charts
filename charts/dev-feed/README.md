@@ -3,13 +3,13 @@
 GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
 https://github.com/rm3l/dev-feed
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.21.1-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![Latest version](https://img.shields.io/badge/latest_version-1.0.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-dev-feed rm3l/dev-feed --version 0.21.1
+$ helm install my-dev-feed rm3l/dev-feed --version 1.0.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
@@ -37,7 +37,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | crawlers.discoverdev_io.image.repository | string | `"rm3l/dev-feed-crawler-discoverdev_io"` |  |
 | crawlers.discoverdev_io.imagePullSecrets | list | `[]` |  |
 | crawlers.discoverdev_io.podAnnotations | object | `{}` |  |
-| crawlers.discoverdev_io.podSecurityContext | object | `{}` |  |
+| crawlers.discoverdev_io.podSecurityContext.runAsNonRoot | bool | `true` |  |
 | crawlers.discoverdev_io.restartPolicy | string | `"OnFailure"` |  |
 | crawlers.discoverdev_io.schedule | string | `"0 0 * * 0"` |  |
 | crawlers.discoverdev_io.startingDeadlineSeconds | int | `3600` |  |
@@ -51,7 +51,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | crawlers.engineeringblogs_xyz.image.repository | string | `"rm3l/dev-feed-crawler-engineeringblogs_xyz"` |  |
 | crawlers.engineeringblogs_xyz.imagePullSecrets | list | `[]` |  |
 | crawlers.engineeringblogs_xyz.podAnnotations | object | `{}` |  |
-| crawlers.engineeringblogs_xyz.podSecurityContext | object | `{}` |  |
+| crawlers.engineeringblogs_xyz.podSecurityContext.runAsNonRoot | bool | `true` |  |
 | crawlers.engineeringblogs_xyz.restartPolicy | string | `"OnFailure"` |  |
 | crawlers.engineeringblogs_xyz.schedule | string | `"*/30 * * * *"` |  |
 | crawlers.engineeringblogs_xyz.startingDeadlineSeconds | int | `3600` |  |
@@ -65,7 +65,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | crawlers.rm3l_org.image.repository | string | `"rm3l/dev-feed-crawler-rm3l_org"` |  |
 | crawlers.rm3l_org.imagePullSecrets | list | `[]` |  |
 | crawlers.rm3l_org.podAnnotations | object | `{}` |  |
-| crawlers.rm3l_org.podSecurityContext | object | `{}` |  |
+| crawlers.rm3l_org.podSecurityContext.runAsNonRoot | bool | `true` |  |
 | crawlers.rm3l_org.restartPolicy | string | `"OnFailure"` |  |
 | crawlers.rm3l_org.schedule | string | `"0 0 * * *"` |  |
 | crawlers.rm3l_org.startingDeadlineSeconds | int | `3600` |  |
@@ -96,17 +96,23 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
-| podSecurityContext | object | `{}` |  |
+| podSecurityContext.runAsNonRoot | bool | `true` |  |
 | readinessProbe | object | `{"timeoutSeconds":10}` | Configure the readiness healthcheck for the containers |
 | replicaCount | int | `1` |  |
-| resources | object | `{}` |  |
-| securityContext | object | `{}` |  |
+| resources.limits.cpu | string | `"500m"` |  |
+| resources.limits.memory | string | `"2048Mi"` |  |
+| resources.requests.cpu | string | `"500m"` |  |
+| resources.requests.memory | string | `"1024Mi"` |  |
+| securityContext.readOnlyRootFilesystem | bool | `true` |  |
+| securityContext.runAsGroup | int | `65534` |  |
+| securityContext.runAsNonRoot | bool | `true` |  |
+| securityContext.runAsUser | int | `65534` |  |
 | service.port | int | `28080` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `nil` |  |
-| startupProbe | object | `{"failureThreshold":5,"initialDelaySeconds":120,"periodSeconds":4,"timeoutSeconds":10}` | Configure the startup healthcheck for the containers |
+| startupProbe | object | `{"failureThreshold":10,"initialDelaySeconds":180,"periodSeconds":4,"timeoutSeconds":10}` | Configure the startup healthcheck for the containers |
 | strategy | object | `{}` | Strategy used to replace old Pods by new ones |
 | tolerations | list | `[]` |  |
 

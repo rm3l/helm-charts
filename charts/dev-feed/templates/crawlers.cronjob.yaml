@@ -48,11 +48,26 @@ spec:
             {{- else }}
             command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
             {{- end }}
+            resources:
+              limits:
+                cpu: 100m
+                memory: 10Mi
+              requests:
+                cpu: 100m
+                memory: 1Mi
+            securityContext:
+              readOnlyRootFilesystem: true
+              runAsUser: 65534
+              runAsGroup: 65534
 
           containers:
           - name: {{ include "dev-feed.fullname" . }}-crawler-discoverdev-io
             image: "{{ .Values.crawlers.discoverdev_io.image.repository }}:{{ .Chart.AppVersion }}"
             imagePullPolicy: {{ .Values.crawlers.discoverdev_io.image.pullPolicy }}
+            securityContext:
+              readOnlyRootFilesystem: true
+              runAsUser: 65534
+              runAsGroup: 65534
             env:
             {{- if .Values.mongodb.enabled }}
             - name: DATASOURCE_MONGODB_CONNECTION_STRING
@@ -84,6 +99,13 @@ spec:
             - --datasource-password=$(DATASOURCE_PASSWORD)
             {{- end }}
             - --article-max-age-days={{ .Values.crawlers.discoverdev_io.articleMaxAgeDays }}
+            resources:
+              limits:
+                cpu: 300m
+                memory: 1024Mi
+              requests:
+                cpu: 300m
+                memory: 512Mi
           restartPolicy: {{ .Values.crawlers.discoverdev_io.restartPolicy }}
 
 {{- end }}
@@ -136,11 +158,26 @@ spec:
             {{- else }}
             command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
             {{- end }}
+            resources:
+              limits:
+                cpu: 100m
+                memory: 10Mi
+              requests:
+                cpu: 100m
+                memory: 1Mi
+            securityContext:
+              readOnlyRootFilesystem: true
+              runAsUser: 65534
+              runAsGroup: 65534
 
           containers:
           - name: {{ include "dev-feed.fullname" . }}-crawler-engineeringblogs-xyz
             image: "{{ .Values.crawlers.engineeringblogs_xyz.image.repository }}:{{ .Chart.AppVersion }}"
             imagePullPolicy: {{ .Values.crawlers.engineeringblogs_xyz.image.pullPolicy }}
+            securityContext:
+              readOnlyRootFilesystem: true
+              runAsUser: 65534
+              runAsGroup: 65534
             env:
             {{- if .Values.mongodb.enabled }}
             - name: DATASOURCE_MONGODB_CONNECTION_STRING
@@ -172,6 +209,13 @@ spec:
             - --datasource-password=$(DATASOURCE_PASSWORD)
             {{- end }}
             - --article-max-age-days={{ .Values.crawlers.engineeringblogs_xyz.articleMaxAgeDays }}
+            resources:
+              limits:
+                cpu: 500m
+                memory: 2048Mi
+              requests:
+                cpu: 500m
+                memory: 1024Mi
           restartPolicy: {{ .Values.crawlers.engineeringblogs_xyz.restartPolicy }}
 {{- end }}
 ---
@@ -223,11 +267,26 @@ spec:
             {{- else }}
             command: ['sh', '-c', "until nslookup {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "dev-feed.fullname" . }}-mongodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
             {{- end }}
+            resources:
+              limits:
+                cpu: 100m
+                memory: 10Mi
+              requests:
+                cpu: 100m
+                memory: 1Mi
+            securityContext:
+              readOnlyRootFilesystem: true
+              runAsUser: 65534
+              runAsGroup: 65534
 
           containers:
           - name: {{ include "dev-feed.fullname" . }}-crawler-rm3l-org
             image: "{{ .Values.crawlers.rm3l_org.image.repository }}:{{ .Chart.AppVersion }}"
             imagePullPolicy: {{ .Values.crawlers.rm3l_org.image.pullPolicy }}
+            securityContext:
+              readOnlyRootFilesystem: true
+              runAsUser: 65534
+              runAsGroup: 65534
             env:
             {{- if .Values.mongodb.enabled }}
             - name: DATASOURCE_MONGODB_CONNECTION_STRING
@@ -259,6 +318,13 @@ spec:
             - --datasource-password=$(DATASOURCE_PASSWORD)
             {{- end }}
             - --article-max-age-days={{ .Values.crawlers.rm3l_org.articleMaxAgeDays }}
+            resources:
+              limits:
+                cpu: 300m
+                memory: 1024Mi
+              requests:
+                cpu: 300m
+                memory: 512Mi
           restartPolicy: {{ .Values.crawlers.rm3l_org.restartPolicy }}
 {{- end }}
 {{- end }}

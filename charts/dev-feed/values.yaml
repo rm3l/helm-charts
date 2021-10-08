@@ -23,16 +23,17 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext:
+  runAsNonRoot: true
 
-securityContext: {}
+securityContext:
   # capabilities:
   #   drop:
   #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 65534
+  runAsGroup: 65534
 
 service:
   type: ClusterIP
@@ -53,9 +54,9 @@ ingress:
 
 # -- Configure the startup healthcheck for the containers
 startupProbe:
-  initialDelaySeconds: 120
+  initialDelaySeconds: 180
   periodSeconds: 4
-  failureThreshold: 5
+  failureThreshold: 10
   timeoutSeconds: 10
 
 # -- Configure the liveness healthcheck for the containers
@@ -77,7 +78,13 @@ strategy: {}
   #   maxSurge: 1
   #   maxUnavailable: 33%
 
-resources: {}
+resources:
+  limits:
+    cpu: 500m
+    memory: 2048Mi
+  requests:
+    cpu: 500m
+    memory: 1024Mi
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -151,7 +158,8 @@ crawlers:
     articleMaxAgeDays: 365
     affinity: {}
     imagePullSecrets: []
-    podSecurityContext: {}
+    podSecurityContext:
+      runAsNonRoot: true
     podAnnotations: {}
       # fsGroup: 2000
 
@@ -169,7 +177,8 @@ crawlers:
     articleMaxAgeDays: 365
     affinity: {}
     imagePullSecrets: []
-    podSecurityContext: {}
+    podSecurityContext:
+      runAsNonRoot: true
     podAnnotations: {}
       # fsGroup: 2000
 
@@ -187,6 +196,7 @@ crawlers:
     articleMaxAgeDays: 365
     affinity: {}
     imagePullSecrets: []
-    podSecurityContext: {}
+    podSecurityContext:
+      runAsNonRoot: true
     podAnnotations: {}
       # fsGroup: 2000
