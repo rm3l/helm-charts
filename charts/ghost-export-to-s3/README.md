@@ -49,6 +49,6 @@ See https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3?modal=install
 | securityContext | object | `{}` |  |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
 | serviceAccount.create | bool | `true` | Specifies whether a service account should be created |
-| serviceAccount.name | string | `nil` |  |
+| serviceAccount.name | string | `nil` |  If not set and create is true, a name is generated using the fullname template |
 | tolerations | list | `[]` |  |
 

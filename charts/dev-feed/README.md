@@ -3,13 +3,13 @@
 GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
 https://github.com/rm3l/dev-feed
 
-[![Latest version](https://img.shields.io/badge/latest_version-1.0.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![Latest version](https://img.shields.io/badge/latest_version-1.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-dev-feed rm3l/dev-feed --version 1.0.0
+$ helm install my-dev-feed rm3l/dev-feed --version 1.1.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
@@ -18,8 +18,8 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | mariadb | 9.6.1 |
-| https://charts.bitnami.com/bitnami | mongodb | 10.26.4 |
+| https://charts.bitnami.com/bitnami | mariadb | 9.6.2 |
+| https://charts.bitnami.com/bitnami | mongodb | 10.27.2 |
 
 ## Values
 
@@ -78,10 +78,10 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
-| ingress.hosts[0].host | string | `"dev-feed-api.local"` |  |
-| ingress.hosts[0].paths | list | `[]` |  |
+| ingress.hosts | list | `[{"host":"dev-feed-api.local","paths":[]}]` |  kubernetes.io/tls-acme: "true" |
 | ingress.tls | list | `[]` |  |
 | livenessProbe | object | `{"timeoutSeconds":10}` | Configure the liveness healthcheck for the containers |
+| livenessProbe.timeoutSeconds | int | `10` |  periodSeconds: 90 |
 | mariadb.auth.database | string | `"dev-feed"` |  |
 | mariadb.auth.password | string | `"pl34s3Ch4ng3M3"` |  |
 | mariadb.auth.replicationPassword | string | `"pl34s3Ch4ng3M3"` |  |
@@ -98,12 +98,13 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | podAnnotations | object | `{}` |  |
 | podSecurityContext.runAsNonRoot | bool | `true` |  |
 | readinessProbe | object | `{"timeoutSeconds":10}` | Configure the readiness healthcheck for the containers |
+| readinessProbe.timeoutSeconds | int | `10` |  periodSeconds: 4 |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | string | `"500m"` |  |
 | resources.limits.memory | string | `"2048Mi"` |  |
 | resources.requests.cpu | string | `"500m"` |  |
 | resources.requests.memory | string | `"1024Mi"` |  |
-| securityContext.readOnlyRootFilesystem | bool | `true` |  |
+| securityContext.readOnlyRootFilesystem | bool | `true` |    drop:   - ALL |
 | securityContext.runAsGroup | int | `65534` |  |
 | securityContext.runAsNonRoot | bool | `true` |  |
 | securityContext.runAsUser | int | `65534` |  |
@@ -111,7 +112,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
-| serviceAccount.name | string | `nil` |  |
+| serviceAccount.name | string | `nil` |  If not set and create is true, a name is generated using the fullname template |
 | startupProbe | object | `{"failureThreshold":10,"initialDelaySeconds":180,"periodSeconds":4,"timeoutSeconds":10}` | Configure the startup healthcheck for the containers |
 | strategy | object | `{}` | Strategy used to replace old Pods by new ones |
 | tolerations | list | `[]` |  |

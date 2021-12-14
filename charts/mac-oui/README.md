@@ -25,8 +25,7 @@ See https://artifacthub.io/packages/helm/rm3l/mac-oui?modal=install
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
-| ingress.hosts[0].host | string | `"mac-oui.local"` |  |
-| ingress.hosts[0].paths | list | `[]` |  |
+| ingress.hosts | list | `[{"host":"mac-oui.local","paths":[]}]` |  kubernetes.io/tls-acme: "true" |
 | ingress.tls | list | `[]` |  |
 | livenessProbe | object | `{"failureThreshold":5,"httpGet":{"path":"/health/live","port":8080},"initialDelaySeconds":3,"periodSeconds":10,"timeoutSeconds":3}` | Configure the liveness healthcheck for the mac-oui containers |
 | nameOverride | string | `""` |  |
@@ -40,7 +39,7 @@ See https://artifacthub.io/packages/helm/rm3l/mac-oui?modal=install
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
-| serviceAccount.name | string | `nil` |  |
+| serviceAccount.name | string | `nil` |  If not set and create is true, a name is generated using the fullname template |
 | strategy | object | `{}` | Strategy used to replace old Pods by new ones |
 | tolerations | list | `[]` |  |
 
