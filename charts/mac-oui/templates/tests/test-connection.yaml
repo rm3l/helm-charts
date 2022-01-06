@@ -22,7 +22,7 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "mac-oui.fullname" . }}:{{ .Values.service.port }}/health/live']
+      args: ['-qO', '-', '{{ include "mac-oui.fullname" . }}:{{ .Values.service.port }}/health/live']
       securityContext:
         readOnlyRootFilesystem: true
       resources:

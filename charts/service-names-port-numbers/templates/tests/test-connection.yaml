@@ -22,7 +22,7 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "service-names-port-numbers.fullname" . }}:{{ .Values.service.port }}/graphiql']
+      args: ['-qO', '-', '{{ include "service-names-port-numbers.fullname" . }}:{{ .Values.service.port }}/graphiql']
       securityContext:
         readOnlyRootFilesystem: true
       resources:
