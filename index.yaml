@@ -3,6 +3,30 @@ entries:
   dev-feed:
   - apiVersion: v2
     appVersion: 1.12.0
+    created: "2022-01-06T23:53:58.030812305Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.2.0
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.30.11
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
+    digest: ba3d4561d6278fb723094a5e434d5855dd02291e014ba9471b71cdc0f845f24d
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: dev-feed
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/dev-feed-1.3.1/dev-feed-1.3.1.tgz
+    version: 1.3.1
+  - apiVersion: v2
+    appVersion: 1.12.0
     created: "2022-01-06T23:19:13.219633917Z"
     dependencies:
     - condition: mariadb.enabled
@@ -780,6 +804,20 @@ entries:
   mac-oui:
   - apiVersion: v2
     appVersion: 1.4.0
+    created: "2022-01-06T23:53:58.144497987Z"
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
+    digest: b44407d7f5864ec473a67a0737c95b07705129be3589c99df08f52969ad8b8d1
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: mac-oui
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.19.0/mac-oui-1.19.0.tgz
+    version: 1.19.0
+  - apiVersion: v2
+    appVersion: 1.4.0
     created: "2022-01-06T23:19:13.449358103Z"
     description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: 3f9caa14759e8bb3dfd6e913d2be05cbf9ac164d643f41072e161c25570b6977
@@ -1011,6 +1049,21 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.0.0/mac-oui-1.0.0.tgz
     version: 1.0.0
   service-names-port-numbers:
+  - apiVersion: v2
+    appVersion: 0.12.1
+    created: "2022-01-06T23:53:58.254107424Z"
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
+    digest: 8331ba85379003a8f39c542e5dd1489788adf8ad5f0f3e064ff7409525462786
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: service-names-port-numbers
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.22.0/service-names-port-numbers-0.22.0.tgz
+    version: 0.22.0
   - apiVersion: v2
     appVersion: 0.12.1
     created: "2022-01-06T23:19:13.570812821Z"
@@ -1306,4 +1359,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-06T23:19:13.571398533Z"
+generated: "2022-01-06T23:53:58.254983434Z"
