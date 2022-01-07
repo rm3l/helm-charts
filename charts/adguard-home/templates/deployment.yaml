@@ -1,0 +1,139 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "adguard-home.fullname" . }}
+  labels:
+    {{- include "adguard-home.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "adguard-home.selectorLabels" . | nindent 6 }}
+  strategy:
+    {{- toYaml .Values.strategy | nindent 4 }}
+  template:
+    metadata:
+      labels:
+        {{- include "adguard-home.selectorLabels" . | nindent 8 }}
+      annotations:
+        checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+        {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "adguard-home.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+      - name: bootstrap-config-vol
+        secret:
+          secretName: {{ include "adguard-home.fullname" . }}
+      - name: data-vol
+        persistentVolumeClaim:
+          claimName: {{ include "adguard-home.fullname" . }}
+      
+      initContainers:
+      - image: busybox:1.35
+        name: configurator
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 100m
+            memory: "128Mi"
+          requests:
+            cpu: 100m
+            memory: "64Mi"
+        volumeMounts:
+        - name: bootstrap-config-vol
+          mountPath: /var/adguardhome-bootstrap
+        - name: data-vol
+          mountPath: /opt/adguardhome/conf
+          subPath: conf
+        command:
+        - /bin/sh
+        - "-c"
+        - |
+          if ls /opt/adguardhome/conf/AdGuardHome.yaml; then
+            echo "Existing file will NOT be altered: /opt/adguardhome/conf/AdGuardHome.yaml"
+          else
+            cp -v /var/adguardhome-bootstrap/AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
+          fi
+
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+          - name: dns-tcp
+            containerPort: 53
+            protocol: TCP
+          - name: dns-udp
+            containerPort: 53
+            protocol: UDP
+          - name: http
+            containerPort: 80
+            protocol: TCP
+          - name: https
+            containerPort: 443
+            protocol: TCP
+          - name: https-udp
+            containerPort: 443
+            protocol: UDP
+          - name: admin
+            containerPort: 3000
+            protocol: TCP
+          - name: dns-over-tls
+            containerPort: 853
+            protocol: TCP
+          - name: dns-over-quic-1
+            containerPort: 784
+            protocol: UDP
+          - name: dns-over-quic-2
+            containerPort: 853
+            protocol: UDP
+          - name: dns-over-quic-3
+            containerPort: 8853
+            protocol: UDP
+          - name: dnscrypt
+            containerPort: 5443
+            protocol: TCP
+          - name: dnscrypt-udp
+            containerPort: 5443
+            protocol: UDP
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - name: data-vol
+            mountPath: /opt/adguardhome/work
+            subPath: work
+          - name: data-vol
+            mountPath: /opt/adguardhome/conf
+            subPath: conf
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

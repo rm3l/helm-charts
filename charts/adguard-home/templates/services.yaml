@@ -1,0 +1,123 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "adguard-home.fullname" . }}-admin-panel
+  labels:
+    {{- include "adguard-home.labels" . | nindent 4 }}
+spec:
+  selector:
+    {{- include "adguard-home.selectorLabels" . | nindent 4 }}
+  type: {{ .Values.services.adminPanel.type }}
+  ports:
+  - port: {{ .Values.services.adminPanel.port }}
+    targetPort: admin
+    protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "adguard-home.fullname" . }}-http
+spec:
+  selector:
+    {{- include "adguard-home.selectorLabels" . | nindent 4 }}
+  type: {{ .Values.services.http.type }}
+  ports:
+  - port: {{ .Values.services.http.port }}
+    targetPort: http
+    protocol: TCP
+
+---
+{{- if .Values.services.https.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "adguard-home.fullname" . }}-https
+spec:
+  selector:
+    {{- include "adguard-home.selectorLabels" . | nindent 4 }}
+  type: {{ .Values.services.https.type }}
+  ports:
+  - port: {{ .Values.services.https.port }}
+    targetPort: https
+    protocol: TCP
+{{- end }}
+
+---
+{{- if .Values.services.dns.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "adguard-home.fullname" . }}-dns
+spec:
+  selector:
+    {{- include "adguard-home.selectorLabels" . | nindent 4 }}
+  type: {{ .Values.services.dns.type }}
+  ports:
+  - port: {{ .Values.services.dns.port }}
+    name: dns-tcp
+    targetPort: dns-tcp
+    protocol: TCP
+  - port: {{ .Values.services.dns.port }}
+    name: dns-udp
+    targetPort: dns-udp
+    protocol: UDP
+{{- end }}
+
+---
+{{- if .Values.services.dnsOverTls.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "adguard-home.fullname" . }}-dot
+spec:
+  selector:
+    {{- include "adguard-home.selectorLabels" . | nindent 4 }}
+  type: {{ .Values.services.dnsOverTls.type }}
+  ports:
+  - port: {{ .Values.services.dnsOverTls.port }}
+    targetPort: dns-over-tls
+    protocol: TCP
+{{- end }}
+
+---
+{{- if .Values.services.dnsOverQuic.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "adguard-home.fullname" . }}-doq
+spec:
+  selector:
+    {{- include "adguard-home.selectorLabels" . | nindent 4 }}
+  type: {{ .Values.services.dnsOverQuic.type }}
+  ports:
+  - port: {{ .Values.services.dnsOverQuic.port1 }}
+    name: dns-over-quic-1
+    targetPort: dns-over-quic-1
+    protocol: UDP
+  - port: {{ .Values.services.dnsOverQuic.port2 }}
+    name: dns-over-quic-3
+    targetPort: dns-over-quic-3
+    protocol: UDP
+{{- end }}
+
+---
+{{- if .Values.services.dnscrypt.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "adguard-home.fullname" . }}-dnscrypt
+spec:
+  selector:
+    {{- include "adguard-home.selectorLabels" . | nindent 4 }}
+  type: {{ .Values.services.dnscrypt.type }}
+  ports:
+  - name: dnscrypt-tcp
+    port: {{ .Values.services.dnscrypt.port }}
+    targetPort: dnscrypt
+    protocol: TCP
+  - name: dnscrypt-udp
+    port: {{ .Values.services.dnscrypt.port }}
+    targetPort: dnscrypt-udp
+    protocol: UDP
+{{- end }}
