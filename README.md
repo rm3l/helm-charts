@@ -76,7 +76,7 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-num
 
     MIT License
 
-    Copyright (c) 2021 Armel Soro
+    Copyright (c) 2021-2022 Armel Soro
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
