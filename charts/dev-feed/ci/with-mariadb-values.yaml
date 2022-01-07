@@ -6,8 +6,8 @@ service:
 
 # -- Configure the startup healthcheck for the containers
 startupProbe:
-  initialDelaySeconds: 20
-  periodSeconds: 4
+  initialDelaySeconds: 60
+  periodSeconds: 10
   failureThreshold: 5
   timeoutSeconds: 10
 

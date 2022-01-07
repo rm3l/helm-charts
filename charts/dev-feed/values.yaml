@@ -61,14 +61,14 @@ startupProbe:
 
 # -- Configure the liveness healthcheck for the containers
 livenessProbe:
-  # initialDelaySeconds: 3
-  # periodSeconds: 90
+  initialDelaySeconds: 3
+  periodSeconds: 90
   timeoutSeconds: 10
 
 # -- Configure the readiness healthcheck for the containers
 readinessProbe:
-  # initialDelaySeconds: 3
-  # periodSeconds: 4
+  initialDelaySeconds: 3
+  periodSeconds: 4
   timeoutSeconds: 10
 
 # -- Strategy used to replace old Pods by new ones

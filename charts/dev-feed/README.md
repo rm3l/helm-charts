@@ -3,13 +3,13 @@
 GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
 https://github.com/rm3l/dev-feed
 
-[![Latest version](https://img.shields.io/badge/latest_version-1.3.1-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![Latest version](https://img.shields.io/badge/latest_version-1.3.2-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-dev-feed rm3l/dev-feed --version 1.3.1
+$ helm install my-dev-feed rm3l/dev-feed --version 1.3.2
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
@@ -80,8 +80,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | ingress.enabled | bool | `false` |  |
 | ingress.hosts | list | `[{"host":"dev-feed-api.local","paths":[]}]` |  kubernetes.io/tls-acme: "true" |
 | ingress.tls | list | `[]` |  |
-| livenessProbe | object | `{"timeoutSeconds":10}` | Configure the liveness healthcheck for the containers |
-| livenessProbe.timeoutSeconds | int | `10` |  periodSeconds: 90 |
+| livenessProbe | object | `{"initialDelaySeconds":3,"periodSeconds":90,"timeoutSeconds":10}` | Configure the liveness healthcheck for the containers |
 | mariadb.auth.database | string | `"dev-feed"` |  |
 | mariadb.auth.password | string | `"pl34s3Ch4ng3M3"` |  |
 | mariadb.auth.replicationPassword | string | `"pl34s3Ch4ng3M3"` |  |
@@ -97,8 +96,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext.runAsNonRoot | bool | `true` |  |
-| readinessProbe | object | `{"timeoutSeconds":10}` | Configure the readiness healthcheck for the containers |
-| readinessProbe.timeoutSeconds | int | `10` |  periodSeconds: 4 |
+| readinessProbe | object | `{"initialDelaySeconds":3,"periodSeconds":4,"timeoutSeconds":10}` | Configure the readiness healthcheck for the containers |
 | replicaCount | int | `1` |  |
 | resources.limits.cpu | string | `"500m"` |  |
 | resources.limits.memory | string | `"2048Mi"` |  |
