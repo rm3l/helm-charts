@@ -6,6 +6,7 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/rm3l)](https://artifacthub.io/packages/search?repo=rm3l)
+[![adguard-home](https://img.shields.io/badge/adguard--home-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
 [![dev-feed](https://img.shields.io/badge/dev--feed-1.4.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 [![ghost-export-to-s3](https://img.shields.io/badge/ghost--export--to--s3-0.20.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
 [![mac-oui](https://img.shields.io/badge/mac--oui-1.19.0-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
@@ -13,6 +14,7 @@
 
 - [TL;DR](#tldr)
 - [Charts](#charts)
+  - [adguard-home](#adguard-home)
   - [dev-feed](#dev-feed)
   - [ghost-export-to-s3](#ghost-export-to-s3)
   - [mac-oui](#mac-oui)
@@ -34,6 +36,13 @@ $ helm install my-release rm3l/<chart>
 ```
 
 ## Charts
+
+### adguard-home
+
+> Unofficial Chart for Adguard Home, the network-wide ad and tracking blocker.
+> [https://github.com/AdguardTeam/AdGuardHome](https://github.com/AdguardTeam/AdGuardHome)
+
+See [https://github.com/rm3l/helm-charts/blob/main/charts/adguard-home/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/adguard-home/README.md) for further details.
 
 ### dev-feed
 
