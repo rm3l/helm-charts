@@ -1,6 +1,7 @@
 <h1>Helm Charts</h1>
 
-> Collection of some tools and apps that I maintain, ready to launch on [Kubernetes](https://kubernetes.io/) using [Helm](https://helm.sh/).
+> Collection of Helm Charts that I personally use, ready to launch on [Kubernetes](https://kubernetes.io/) using [Helm](https://helm.sh/).
+> Some of the services deployed are maintained by me. Others are not.
 
 ![CI](https://github.com/rm3l/helm-charts/workflows/CI/badge.svg)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
