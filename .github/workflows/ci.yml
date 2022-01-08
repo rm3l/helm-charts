@@ -84,6 +84,7 @@ jobs:
     strategy:
       matrix:
         chart:
+          - adguard-home
           - dev-feed
           - ghost-export-to-s3
           - mac-oui

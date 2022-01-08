@@ -1,0 +1,401 @@
+# Default values for adguard-home.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: adguard/adguardhome
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+# service:
+#   type: ClusterIP
+#   port: 80
+
+services:
+  adminPanel:
+    type: ClusterIP
+    port: 3000
+  http:
+    type: ClusterIP
+    port: 80
+  https:
+    enabled: true
+    type: ClusterIP
+    port: 443
+  dns:
+    enabled: true
+    type: NodePort
+    port: 53
+  dnsOverTls:
+    enabled: true
+    type: NodePort
+    port: 853
+  dnsOverQuic:
+    enabled: true
+    type: NodePort
+    port1: 784
+    port2: 8853
+  dnscrypt:
+    enabled: true
+    type: NodePort
+    port: 5443
+
+ingresses:
+  adminPanel:
+    enabled: false
+    className: ""
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    hosts:
+      - host: admin.adguard-home-example.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls: []
+    #  - secretName: chart-example-tls
+    #    hosts:
+    #      - chart-example.
+  http:
+    enabled: false
+    className: ""
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    hosts:
+      - host: adguard-home-example.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls: []
+    #  - secretName: chart-example-tls
+    #    hosts:
+    #      - chart-example.
+  https:
+    enabled: false
+    className: ""
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    hosts:
+      - host: adguard-home-example.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls: []
+    #  - secretName: chart-example-tls
+    #    hosts:
+    #      - chart-example.
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# -- Strategy used to replace old Pods by new ones
+strategy: {}
+  # type: RollingUpdate
+  # rollingUpdate:
+  #   maxSurge: 1
+  #   maxUnavailable: 33%
+
+persistence:
+  volumeClaimSpec:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+
+bootstrapConfig:
+  # -- AdGuard Home config. See [this page](https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration#configuration-file)
+  bind_host: 0.0.0.0
+  bind_port: 80
+  beta_bind_port: 0
+  users: []
+  # - name: admin
+  #   # -- password encoded via httpasswd : r3allyPl34s3Ch4ng3M3
+  #   password: $2y$05$0mz52NwW/bheVxROVUIVQ.Gf1HOyBP/SPK5DRmN/B0y.GNBN80xXO
+  auth_attempts: 5
+  block_auth_min: 15
+  http_proxy: ""
+  language: en
+  debug_pprof: false
+  web_session_ttl: 720
+  dns:
+    bind_hosts:
+    - 0.0.0.0
+    port: 53
+    statistics_interval: 90
+    querylog_enabled: true
+    querylog_file_enabled: true
+    querylog_interval: 168h
+    querylog_size_memory: 1000
+    anonymize_client_ip: false
+    protection_enabled: true
+    blocking_mode: default
+    blocking_ipv4: ""
+    blocking_ipv6: ""
+    blocked_response_ttl: 10
+    parental_block_host: family-block.dns.adguard.com
+    safebrowsing_block_host: standard-block.dns.adguard.com
+    ratelimit: 20
+    ratelimit_whitelist: []
+    refuse_any: true
+    upstream_dns:
+    - https://dns.cloudflare.com/dns-query
+    - tls://1dot1dot1dot1.cloudflare-dns.com
+    - https://dns10.quad9.net/dns-query
+    upstream_dns_file: ""
+    bootstrap_dns:
+    - 1.1.1.1
+    - 1.0.0.1
+    - 9.9.9.10
+    - 149.112.112.10
+    - 2620:fe::10
+    - 2620:fe::fe:10
+    all_servers: true
+    fastest_addr: false
+    fastest_timeout: 1s
+    allowed_clients: []
+    disallowed_clients: []
+    blocked_hosts:
+    - version.bind
+    - id.server
+    - hostname.bind
+    trusted_proxies:
+    - 127.0.0.0/8
+    - ::1/128
+    cache_size: 4194304
+    cache_ttl_min: 0
+    cache_ttl_max: 0
+    cache_optimistic: true
+    bogus_nxdomain: []
+    aaaa_disabled: false
+    enable_dnssec: false
+    edns_client_subnet: false
+    max_goroutines: 300
+    ipset: []
+    filtering_enabled: true
+    filters_update_interval: 24
+    parental_enabled: false
+    safesearch_enabled: false
+    safebrowsing_enabled: false
+    safebrowsing_cache_size: 1048576
+    safesearch_cache_size: 1048576
+    parental_cache_size: 1048576
+    cache_time: 30
+    rewrites: []
+    blocked_services: []
+    upstream_timeout: 10s
+    local_domain_name: lan
+    resolve_clients: true
+    use_private_ptr_resolvers: true
+    local_ptr_upstreams: []
+  tls:
+    enabled: true
+    server_name: my.dns.example.com
+    force_https: false
+    port_https: 443
+    port_dns_over_tls: 853
+    port_dns_over_quic: 784
+    port_dnscrypt: 0
+    dnscrypt_config_file: ""
+    # -- Whether to expose DNS over HTTPS over HTTP instead.
+    # -- Useful if Adguard Home is behind a reverse proxy already terminating TLS connections.
+    allow_unencrypted_doh: true
+    strict_sni_check: false
+    # -- sample self-signed certificate for my.dns.example.com. Valid for 3650 days.
+    certificate_chain: |-
+      -----BEGIN CERTIFICATE-----
+      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
+      aE+GBbiAOPS9w/eFLaASK/YLA3I95swb
+      -----END CERTIFICATE-----
+    # -- sample TLS Private key for my.dns.example.com
+    private_key: |-
+      -----BEGIN PRIVATE KEY-----
+      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
+      UdMaBW43oZ+E5o/yfWMcnVZCdlqd/A==
+      -----END PRIVATE KEY-----
+    certificate_path: ""
+    private_key_path: ""
+  filters:
+  - enabled: true
+    url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+    name: AdGuard DNS filter
+    id: 1
+  - enabled: false
+    url: https://adaway.org/hosts.txt
+    name: AdAway Default Blocklist
+    id: 2
+  - enabled: false
+    url: https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
+    name: WindowsSpyBlocker - Hosts spy rules
+    id: 1641249001
+  - enabled: false
+    url: https://abp.oisd.nl/basic/
+    name: OISD Blocklist Basic
+    id: 1641249002
+  - enabled: false
+    url: https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV-AGH.txt
+    name: Perflyst and Dandelion Sprout's Smart-TV Blocklist
+    id: 1641249003
+  - enabled: false
+    url: https://raw.githubusercontent.com/DandelionSprout/adfilt/master/GameConsoleAdblockList.txt
+    name: Game Console Adblock List
+    id: 1641249004
+  whitelist_filters: []
+  user_rules: []
+  dhcp:
+    enabled: false
+    interface_name: ""
+    dhcpv4:
+      gateway_ip: ""
+      subnet_mask: ""
+      range_start: ""
+      range_end: ""
+      lease_duration: 86400
+      icmp_timeout_msec: 1000
+      options: []
+    dhcpv6:
+      range_start: ""
+      lease_duration: 86400
+      ra_slaac_only: false
+      ra_allow_slaac: false
+  clients: []
+  log_compress: false
+  log_localtime: false
+  log_max_backups: 0
+  log_max_size: 100
+  log_max_age: 3
+  log_file: ""
+  verbose: false
+  os:
+    group: ""
+    user: ""
+    rlimit_nofile: 0
+  schema_version: 12
