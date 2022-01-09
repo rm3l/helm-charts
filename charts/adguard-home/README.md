@@ -3,13 +3,13 @@
 Unofficial Chart for Adguard Home, the network-wide ad and tracking blocker.
 https://github.com/AdguardTeam/AdGuardHome
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
+[![Latest version](https://img.shields.io/badge/latest_version-0.2.1-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-adguard-home rm3l/adguard-home --version 0.1.0
+$ helm install my-adguard-home rm3l/adguard-home --version 0.2.1
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
@@ -23,6 +23,20 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| backup.activeDeadlineSeconds | int | `1800` |  |
+| backup.aws.accessKeyId | string | `"my-aws-access-key-id"` | AWS Access Key. Must have the permissions to write to the target bucket. |
+| backup.aws.enabled | bool | `true` | For now, only AWS is supported. Setting this to `false` (while `backup.enabled` is `true`) will cause a deployment error. |
+| backup.aws.s3 | object | `{"destination":"s3://path/to/my/adguard-home-s3-export.json"}` | Target destination (absolute) in AWS S3, where the backup file should be written |
+| backup.aws.secretKey | string | `"my-aws-secret-key"` | AWS Secret Key. Must have the permissions to write to the target bucket. |
+| backup.backoffLimit | int | `1` |  |
+| backup.concurrencyPolicy | string | `"Forbid"` |  |
+| backup.enabled | bool | `false` | Note that this depends on the Access Mode set for the persistent volume claim (PVC) specified. -- As a consequence, backups will not be possible if the PVC access mode is set to ReadWriteOncePod (Kubernetes 1.22+), -- since the volume will be accessible only to the sole Adguard Home pod. |
+| backup.imagePullPolicy | string | `"IfNotPresent"` |  |
+| backup.parallelism | int | `1` |  |
+| backup.resources | object | `{}` |  |
+| backup.restartPolicy | string | `"OnFailure"` |  |
+| backup.schedule | string | `"@daily"` | How frequently the Backup job should run. Cron Syntax, as supported by Kubernetes CronJobs |
+| backup.ttlSecondsAfterFinished | int | `300` |  |
 | bootstrapConfig.auth_attempts | int | `5` |  |
 | bootstrapConfig.beta_bind_port | int | `0` |  |
 | bootstrapConfig.bind_host | string | `"0.0.0.0"` | AdGuard Home config. See [this page](https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration#configuration-file) |

@@ -129,9 +129,24 @@ spec:
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- if and (.Values.backup.enabled) (has "ReadWriteOnce" (((.Values.persistence).volumeClaimSpec).accessModes)) }}
+      affinity:
+        podAffinity:
+          {{- /*
+          # Add soft affinity to avoid race condition when backup cronjob already runs and has the volume mounted
+          */}}
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  {{- include "adguard-home.backupSelectorLabels" . | nindent 18 }}
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+      {{- else}}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
+      {{- end }}
       {{- end }}
       {{- with .Values.tolerations }}
       tolerations:
