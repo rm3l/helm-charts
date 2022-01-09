@@ -3,6 +3,21 @@ entries:
   adguard-home:
   - apiVersion: v2
     appVersion: v0.107.2
+    created: "2022-01-09T20:43:27.308724252Z"
+    description: 'Unofficial Chart for Adguard Home, the network-wide ad and tracking
+      blocker. https://github.com/AdguardTeam/AdGuardHome '
+    digest: cef7a29d5e1ce8e879cd4bd49484122add8bb2204efd7ca4cb370df4840cf64b
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: adguard-home
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/adguard-home-0.2.1/adguard-home-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: v0.107.2
     created: "2022-01-08T22:26:54.728930627Z"
     description: 'Unofficial Chart for Adguard Home, the network-wide ad and tracking
       blocker. https://github.com/AdguardTeam/AdGuardHome '
@@ -1399,4 +1414,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-08T22:26:54.729453423Z"
+generated: "2022-01-09T20:43:27.309508482Z"
