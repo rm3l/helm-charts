@@ -3,13 +3,13 @@
 Automated backups of headless Ghost Blogs to AWS S3.
 https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.20.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
+[![Latest version](https://img.shields.io/badge/latest_version-0.21.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-ghost-export-to-s3 rm3l/ghost-export-to-s3 --version 0.20.0
+$ helm install my-ghost-export-to-s3 rm3l/ghost-export-to-s3 --version 0.21.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3?modal=install
@@ -25,10 +25,8 @@ See https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3?modal=install
 | cronJob.activeDeadlineSeconds | int | `1800` |  |
 | cronJob.backoffLimit | int | `1` |  |
 | cronJob.concurrencyPolicy | string | `"Forbid"` |  |
-| cronJob.init.image | string | `"curlimages/curl:7.74.0"` |  |
 | cronJob.init.imagePullPolicy | string | `"IfNotPresent"` |  |
 | cronJob.init.resources | object | `{}` |  |
-| cronJob.main.image | string | `"amazon/aws-cli:2.1.22"` |  |
 | cronJob.main.imagePullPolicy | string | `"IfNotPresent"` |  |
 | cronJob.main.resources | object | `{}` |  |
 | cronJob.parallelism | int | `1` |  |

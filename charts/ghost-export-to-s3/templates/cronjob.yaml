@@ -52,7 +52,7 @@ spec:
 
           initContainers:
           - name: download-glorious-json-from-ghost
-            image: {{ .Values.cronJob.init.image }}
+            image: curlimages/curl:7.74.0
             imagePullPolicy: {{ .Values.cronJob.init.imagePullPolicy }}
             command:
             - /bin/sh
@@ -106,7 +106,7 @@ spec:
 
           containers:
           - name: export-ghost-json-to-s3
-            image: {{ .Values.cronJob.main.image }}
+            image: amazon/aws-cli:2.4.9
             imagePullPolicy: {{ .Values.cronJob.main.imagePullPolicy }}
             args:
             - s3
