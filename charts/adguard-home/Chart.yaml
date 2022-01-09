@@ -2,6 +2,7 @@ apiVersion: v2
 name: adguard-home
 description: |
     Unofficial Chart for Adguard Home, the network-wide ad and tracking blocker.
+    This Chart also provides automated backups of the Adguard Home configuration to services like AWS S3.
     https://github.com/AdguardTeam/AdGuardHome
 
 # A chart can be either an 'application' or a 'library' chart.
@@ -17,7 +18,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.2.1
+version: 0.3.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
