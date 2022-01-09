@@ -7,7 +7,7 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/rm3l)](https://artifacthub.io/packages/search?repo=rm3l)
-[![adguard-home](https://img.shields.io/badge/adguard--home-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
+[![adguard-home](https://img.shields.io/badge/adguard--home-0.2.1-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
 [![dev-feed](https://img.shields.io/badge/dev--feed-1.4.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 [![ghost-export-to-s3](https://img.shields.io/badge/ghost--export--to--s3-0.20.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
 [![mac-oui](https://img.shields.io/badge/mac--oui-1.19.0-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
