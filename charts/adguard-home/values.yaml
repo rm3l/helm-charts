@@ -178,9 +178,9 @@ backup:
     accessKeyId: "my-aws-access-key-id"
     # -- AWS Secret Key. Must have the permissions to write to the target bucket.
     secretKey: "my-aws-secret-key"
-    # -- Target destination (absolute) in AWS S3, where the backup file should be written
+    # -- Target destination bucket (absolute) in AWS S3, where the backup resources should be written
     s3:
-      destination: "s3://path/to/my/adguard-home-s3-export.json"
+      destination: "s3://path/to/my/adguard-home-backup-bucket"
 
 bootstrapConfig:
   # -- AdGuard Home config. See [this page](https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration#configuration-file)

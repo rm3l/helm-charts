@@ -1,16 +1,16 @@
 # adguard-home
 
 Unofficial Chart for Adguard Home, the network-wide ad and tracking blocker.
-This Chart also provides automated backups of the Adguard Home configuration to services like AWS S3.
+This Chart also provides automated backups of Adguard Home to services like AWS S3.
 https://github.com/AdguardTeam/AdGuardHome
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.3.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
+[![Latest version](https://img.shields.io/badge/latest_version-0.4.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-adguard-home rm3l/adguard-home --version 0.3.0
+$ helm install my-adguard-home rm3l/adguard-home --version 0.4.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
@@ -27,7 +27,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | backup.activeDeadlineSeconds | int | `1800` |  |
 | backup.aws.accessKeyId | string | `"my-aws-access-key-id"` | AWS Access Key. Must have the permissions to write to the target bucket. |
 | backup.aws.enabled | bool | `true` | For now, only AWS is supported. Setting this to `false` (while `backup.enabled` is `true`) will cause a deployment error. |
-| backup.aws.s3 | object | `{"destination":"s3://path/to/my/adguard-home-s3-export.json"}` | Target destination (absolute) in AWS S3, where the backup file should be written |
+| backup.aws.s3 | object | `{"destination":"s3://path/to/my/adguard-home-backup-bucket"}` | Target destination bucket (absolute) in AWS S3, where the backup resources should be written |
 | backup.aws.secretKey | string | `"my-aws-secret-key"` | AWS Secret Key. Must have the permissions to write to the target bucket. |
 | backup.backoffLimit | int | `1` |  |
 | backup.concurrencyPolicy | string | `"Forbid"` |  |

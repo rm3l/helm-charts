@@ -66,7 +66,7 @@ spec:
           {{- end }}
 
           containers:
-          - name: backup-adguard-home-config
+          - name: backup-config
             imagePullPolicy: {{ .Values.backup.imagePullPolicy }}
             volumeMounts:
             - name: data-vol
@@ -79,8 +79,43 @@ spec:
             args:
             - s3
             - cp
-            - "/opt/adguardhome/conf/AdGuardHome.yaml"
+            - "/opt/adguardhome/conf"
             - "$(S3_DESTINATION)"
+            - "--recursive"
+            env:
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "adguard-home.fullname" . }}-backup
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "adguard-home.fullname" . }}-backup
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: S3_DESTINATION
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "adguard-home.fullname" . }}-backup
+                  key: S3_DESTINATION
+            {{- end }}
+
+          - name: backup-work
+            imagePullPolicy: {{ .Values.backup.imagePullPolicy }}
+            volumeMounts:
+            - name: data-vol
+              mountPath: /opt/adguardhome/work
+              subPath: work
+            resources:
+              {{- toYaml .Values.resources | nindent 14 }}
+            {{- if .Values.backup.aws.enabled }}
+            image: amazon/aws-cli:2.4.9
+            args:
+            - s3
+            - cp
+            - "/opt/adguardhome/work"
+            - "$(S3_DESTINATION)"
+            - "--recursive"
             env:
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
