@@ -4,13 +4,13 @@ Unofficial Chart for Adguard Home, the network-wide ad and tracking blocker.
 This Chart also provides automated backups of Adguard Home to services like AWS S3.
 https://github.com/AdguardTeam/AdGuardHome
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.4.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
+[![Latest version](https://img.shields.io/badge/latest_version-0.5.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-adguard-home rm3l/adguard-home --version 0.4.0
+$ helm install my-adguard-home rm3l/adguard-home --version 0.5.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
