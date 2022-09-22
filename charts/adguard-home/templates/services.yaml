@@ -12,7 +12,6 @@ spec:
   - port: {{ .Values.services.adminPanel.port }}
     targetPort: admin
     protocol: TCP
-
 ---
 apiVersion: v1
 kind: Service
@@ -26,9 +25,8 @@ spec:
   - port: {{ .Values.services.http.port }}
     targetPort: http
     protocol: TCP
-
 ---
-{{- if .Values.services.https.enabled -}}
+{{ if .Values.services.https.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -42,9 +40,8 @@ spec:
     targetPort: https
     protocol: TCP
 {{- end }}
-
 ---
-{{- if .Values.services.dns.enabled -}}
+{{ if .Values.services.dns.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -63,9 +60,8 @@ spec:
     targetPort: dns-udp
     protocol: UDP
 {{- end }}
-
 ---
-{{- if .Values.services.dnsOverTls.enabled -}}
+{{ if .Values.services.dnsOverTls.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -79,9 +75,8 @@ spec:
     targetPort: dns-over-tls
     protocol: TCP
 {{- end }}
-
 ---
-{{- if .Values.services.dnsOverQuic.enabled -}}
+{{ if .Values.services.dnsOverQuic.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -100,9 +95,8 @@ spec:
     targetPort: dns-over-quic-3
     protocol: UDP
 {{- end }}
-
 ---
-{{- if .Values.services.dnscrypt.enabled -}}
+{{ if .Values.services.dnscrypt.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:

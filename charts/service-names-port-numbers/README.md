@@ -3,13 +3,13 @@
 Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
 https://github.com/rm3l/service-names-port-numbers
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.22.0-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
+[![Latest version](https://img.shields.io/badge/latest_version-0.23.0-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-service-names-port-numbers rm3l/service-names-port-numbers --version 0.22.0
+$ helm install my-service-names-port-numbers rm3l/service-names-port-numbers --version 0.23.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers?modal=install
@@ -26,7 +26,8 @@ See https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers?modal=i
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
-| ingress.hosts | list | `[{"host":"service-names-port-numbers.local","paths":[]}]` |  kubernetes.io/tls-acme: "true" |
+| ingress.hosts[0].host | string | `"service-names-port-numbers.local"` |  |
+| ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
 | livenessProbe | object | `{"initialDelaySeconds":3,"periodSeconds":90,"timeoutSeconds":10}` | Configure the liveness healthcheck for the containers |
 | nameOverride | string | `""` |  |
@@ -41,7 +42,7 @@ See https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers?modal=i
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
-| serviceAccount.name | string | `nil` |  If not set and create is true, a name is generated using the fullname template |
+| serviceAccount.name | string | `nil` |  |
 | strategy | object | `{}` | Strategy used to replace old Pods by new ones |
 | tolerations | list | `[]` |  |
 

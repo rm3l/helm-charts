@@ -4,13 +4,13 @@ Unofficial Chart for Adguard Home, the network-wide ad and tracking blocker.
 This Chart also provides automated backups of Adguard Home to services like AWS S3.
 https://github.com/AdguardTeam/AdGuardHome
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.5.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
+[![Latest version](https://img.shields.io/badge/latest_version-0.6.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-adguard-home rm3l/adguard-home --version 0.5.0
+$ helm install my-adguard-home rm3l/adguard-home --version 0.6.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
@@ -31,7 +31,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | backup.aws.secretKey | string | `"my-aws-secret-key"` | AWS Secret Key. Must have the permissions to write to the target bucket. |
 | backup.backoffLimit | int | `1` |  |
 | backup.concurrencyPolicy | string | `"Forbid"` |  |
-| backup.enabled | bool | `false` | Note that this depends on the Access Mode set for the persistent volume claim (PVC) specified. -- As a consequence, backups will not be possible if the PVC access mode is set to ReadWriteOncePod (Kubernetes 1.22+), -- since the volume will be accessible only to the sole Adguard Home pod. |
+| backup.enabled | bool | `false` | since the volume will be accessible only to the sole Adguard Home pod. |
 | backup.imagePullPolicy | string | `"IfNotPresent"` |  |
 | backup.parallelism | int | `1` |  |
 | backup.resources | object | `{}` |  |
@@ -158,7 +158,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | bootstrapConfig.os.rlimit_nofile | int | `0` |  |
 | bootstrapConfig.os.user | string | `""` |  |
 | bootstrapConfig.schema_version | int | `12` |  |
-| bootstrapConfig.tls.allow_unencrypted_doh | bool | `true` | Whether to expose DNS over HTTPS over HTTP instead. -- Useful if Adguard Home is behind a reverse proxy already terminating TLS connections. |
+| bootstrapConfig.tls.allow_unencrypted_doh | bool | `true` | Useful if Adguard Home is behind a reverse proxy already terminating TLS connections. |
 | bootstrapConfig.tls.certificate_chain | string | `"-----BEGIN CERTIFICATE-----\nMIIFVDCCAzygAwIBAgIUM+ltXj0iog81U2Dqsavv6DCPE3YwDQYJKoZIhvcNAQEL\nBQAwHTEbMBkGA1UEAwwSbXkuZG5zLmV4YW1wbGUuY29tMB4XDTIyMDEwNjIzMjkx\nOVoXDTMyMDEwNDIzMjkxOVowHTEbMBkGA1UEAwwSbXkuZG5zLmV4YW1wbGUuY29t\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAwOKVaSijP1HLaMkqqOD/\nVIqchRt3UDljCM/rGAlL/1bYJKAxvdPxIffF3PPiwLFs4pMEeLnGZUtWjT/HTRpP\nU2uhUiOUd6fY/KtF4j46KHJaRV/kITtVHsygnSdgUibg3qGQpG1lcfMgsOmsCvcQ\n6151uPiJ+h+Vv6ARWD03+5WqMKHQGSEzwMp33F2h1OC4k1gcp3ZYt+GHk9rfXdxC\n0Gh2KxI8w5nKgbKJVgjwo7uIXk+JRwNuIDn29eywwWuWT2VERLLM/rVrENg25tKl\n/NmNEZRsLNaSQt2geJev4mQqfousIEqgy30IJ1ApQUX/rlLcSEB4X+tpMGuWEqEJ\nOJ5HiR4ZQSk9dr8aZQjRDGivFqK+3WkjuclUYYkN1KoOYshbpRARUljqfZEHy8Xc\nOSC09P59yrKwc70aBHbcRJpghw020W7rM4sMCjcmMaaI49Gd418g4CTuf9LlKQ2e\nmWtuw1mLSQiN1FjvvQi1iwSOGROLQnFSgPGehzd4hv4FP/C66ve3ayW5+Uu59cQC\n7bC/8fjVaxCSZZjkiu9hW44lTkEw492BzgCg1cbTygFaFzcolHgwlagOXCv77xrY\nBAqeIjSA0AsVtJ4nfqKuwgOJyL+JX2o+tPbg/9+BYXGQMF1dKPHMauQuvnpLc6gD\nBklwd3b9SjtYM7h4/ILy1+ECAwEAAaOBizCBiDAdBgNVHQ4EFgQUYRJ0FNVy5lSh\nEt0tMIMWfOIx+eYwHwYDVR0jBBgwFoAUYRJ0FNVy5lShEt0tMIMWfOIx+eYwDwYD\nVR0TAQH/BAUwAwEB/zA1BgNVHREELjAsghJteS5kbnMuZXhhbXBsZS5jb22CFnd3\ndy5teS5kbnMuZXhhbXBsZS5uZXQwDQYJKoZIhvcNAQELBQADggIBAIVK11AyIqFp\nPjiePjl/+izQWkILKFOwbE5dECF1jfSG6LbDCkOOwEFm3LgTAQrcKyOfyctWeU19\nbApMtTwfgBA5FEkqEAuyB7AJPG62nmsvOjp2IQFxkZNfsuCHTwqIBpQYvzfvKsbM\nlakwEUFN/jf+affXOwvXdOo5EuIZBQeCyNTN6witBWAnlUANZUT68/H8WKKX5LU1\nJoKPi+hETTOpV48KtVWX9FGRf2M6fGPYVpJhZCuBdtyoHPdiMZZgscqQbECYiwa4\npSEMjPTktRT434dn+hYv8f70TtdGHJblGpRDL6CCxUa0mIH0S3Gm2Oi9ndoAkxKZ\noKKP7+D9hgT6h++CmB8FBa9LD90KIwSYyqycCChbkVZjOcBF7w61/2vC8UEFjAin\nyju4kxWDQI5CxcZqE0FLGHrz0QDD1QAkWhDvOfyRzf+znWk0C13z1RDzlu6qJ+KQ\nyiAY68repdN7mMr6hRiFG2d8q053tIs9FzbxwgexasExNJpK/z6mxUPAWTuEImCE\n/A7i5LhgoybIfOaOlVRjChCmw0rUD0QkY2jf3WU5hH0kXewYJTDkLZZx4pktp7I1\nZtkn6iQ1aYr9GInZ6AeaCYnwPe6INXAGS2YZV3EObHaZPMqvJEHRvMaF0qoOOpjt\naE+GBbiAOPS9w/eFLaASK/YLA3I95swb\n-----END CERTIFICATE-----"` | sample self-signed certificate for my.dns.example.com. Valid for 3650 days. |
 | bootstrapConfig.tls.certificate_path | string | `""` |  |
 | bootstrapConfig.tls.dnscrypt_config_file | string | `""` |  |
@@ -185,17 +185,23 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | ingresses.adminPanel.annotations | object | `{}` |  |
 | ingresses.adminPanel.className | string | `""` |  |
 | ingresses.adminPanel.enabled | bool | `false` |  |
-| ingresses.adminPanel.hosts | list | `[{"host":"admin.adguard-home-example.local","paths":[{"path":"/","pathType":"ImplementationSpecific"}]}]` |  kubernetes.io/tls-acme: "true" |
+| ingresses.adminPanel.hosts[0].host | string | `"admin.adguard-home-example.local"` |  |
+| ingresses.adminPanel.hosts[0].paths[0].path | string | `"/"` |  |
+| ingresses.adminPanel.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
 | ingresses.adminPanel.tls | list | `[]` |  |
 | ingresses.http.annotations | object | `{}` |  |
 | ingresses.http.className | string | `""` |  |
 | ingresses.http.enabled | bool | `false` |  |
-| ingresses.http.hosts | list | `[{"host":"adguard-home-example.local","paths":[{"path":"/","pathType":"ImplementationSpecific"}]}]` |  kubernetes.io/tls-acme: "true" |
+| ingresses.http.hosts[0].host | string | `"adguard-home-example.local"` |  |
+| ingresses.http.hosts[0].paths[0].path | string | `"/"` |  |
+| ingresses.http.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
 | ingresses.http.tls | list | `[]` |  |
 | ingresses.https.annotations | object | `{}` |  |
 | ingresses.https.className | string | `""` |  |
 | ingresses.https.enabled | bool | `false` |  |
-| ingresses.https.hosts | list | `[{"host":"adguard-home-example.local","paths":[{"path":"/","pathType":"ImplementationSpecific"}]}]` |  kubernetes.io/tls-acme: "true" |
+| ingresses.https.hosts[0].host | string | `"adguard-home-example.local"` |  |
+| ingresses.https.hosts[0].paths[0].path | string | `"/"` |  |
+| ingresses.https.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
 | ingresses.https.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
@@ -208,8 +214,27 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | securityContext | object | `{}` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
-| serviceAccount.name | string | `""` |  If not set and create is true, a name is generated using the fullname template |
-| services | object | `{"adminPanel":{"port":3000,"type":"ClusterIP"},"dns":{"enabled":true,"port":53,"type":"NodePort"},"dnsOverQuic":{"enabled":true,"port1":784,"port2":8853,"type":"NodePort"},"dnsOverTls":{"enabled":true,"port":853,"type":"NodePort"},"dnscrypt":{"enabled":true,"port":5443,"type":"NodePort"},"http":{"port":80,"type":"ClusterIP"},"https":{"enabled":true,"port":443,"type":"ClusterIP"}}` |    type: ClusterIP   port: 80 |
+| serviceAccount.name | string | `""` |  |
+| services.adminPanel.port | int | `3000` |  |
+| services.adminPanel.type | string | `"ClusterIP"` |  |
+| services.dns.enabled | bool | `true` |  |
+| services.dns.port | int | `53` |  |
+| services.dns.type | string | `"NodePort"` |  |
+| services.dnsOverQuic.enabled | bool | `true` |  |
+| services.dnsOverQuic.port1 | int | `784` |  |
+| services.dnsOverQuic.port2 | int | `8853` |  |
+| services.dnsOverQuic.type | string | `"NodePort"` |  |
+| services.dnsOverTls.enabled | bool | `true` |  |
+| services.dnsOverTls.port | int | `853` |  |
+| services.dnsOverTls.type | string | `"NodePort"` |  |
+| services.dnscrypt.enabled | bool | `true` |  |
+| services.dnscrypt.port | int | `5443` |  |
+| services.dnscrypt.type | string | `"NodePort"` |  |
+| services.http.port | int | `80` |  |
+| services.http.type | string | `"ClusterIP"` |  |
+| services.https.enabled | bool | `true` |  |
+| services.https.port | int | `443` |  |
+| services.https.type | string | `"ClusterIP"` |  |
 | strategy | object | `{}` | Strategy used to replace old Pods by new ones |
 | tolerations | list | `[]` |  |
 

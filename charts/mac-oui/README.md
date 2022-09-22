@@ -3,13 +3,13 @@
 Microservice for looking up manufacturers from MAC addresses.
 https://github.com/rm3l/mac-oui
 
-[![Latest version](https://img.shields.io/badge/latest_version-1.19.0-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
+[![Latest version](https://img.shields.io/badge/latest_version-1.20.0-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-mac-oui rm3l/mac-oui --version 1.19.0
+$ helm install my-mac-oui rm3l/mac-oui --version 1.20.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/mac-oui?modal=install
@@ -25,21 +25,22 @@ See https://artifacthub.io/packages/helm/rm3l/mac-oui?modal=install
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
-| ingress.hosts | list | `[{"host":"mac-oui.local","paths":[]}]` |  kubernetes.io/tls-acme: "true" |
+| ingress.hosts[0].host | string | `"mac-oui.local"` |  |
+| ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
 | livenessProbe | object | `{"failureThreshold":5,"httpGet":{"path":"/health/live","port":8080},"initialDelaySeconds":3,"periodSeconds":10,"timeoutSeconds":3}` | Configure the liveness healthcheck for the mac-oui containers |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | readinessProbe | object | `{"failureThreshold":5,"httpGet":{"path":"/health/ready","port":8080},"initialDelaySeconds":3,"periodSeconds":10,"timeoutSeconds":3}` | Configure the readiness healthcheck for the mac-oui containers |
-| replicaCount | int | `1` | (int) Number of replicas |
+| replicaCount | int | `1` | Number of replicas |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
 | service.port | int | `8080` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
-| serviceAccount.name | string | `nil` |  If not set and create is true, a name is generated using the fullname template |
+| serviceAccount.name | string | `nil` |  |
 | strategy | object | `{}` | Strategy used to replace old Pods by new ones |
 | tolerations | list | `[]` |  |
 
