@@ -100,7 +100,7 @@ jobs:
           config: .kube-linter/config.yaml
           format: sarif
           output-file: ${{ matrix.chart }}.sarif
-          version: 0.2.5
+          version: 0.5.0
 
       - name: Upload SARIF file
         if: ${{ always() }}
