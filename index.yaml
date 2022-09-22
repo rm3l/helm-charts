@@ -2,6 +2,22 @@ apiVersion: v1
 entries:
   adguard-home:
   - apiVersion: v2
+    appVersion: v0.107.13
+    created: "2022-09-22T23:49:48.425722982Z"
+    description: 'Unofficial Chart for Adguard Home, the network-wide ad and tracking
+      blocker. This Chart also provides automated backups of Adguard Home to services
+      like AWS S3. https://github.com/AdguardTeam/AdGuardHome '
+    digest: 18ba3d868c1d851f83da5cd6613ff5e26d7c0263b9cac714f010c3f74696532a
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: adguard-home
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/adguard-home-0.8.0/adguard-home-0.8.0.tgz
+    version: 0.8.0
+  - apiVersion: v2
     appVersion: v0.107.2
     created: "2022-01-12T22:20:52.781868289Z"
     description: 'Unofficial Chart for Adguard Home, the network-wide ad and tracking
@@ -80,6 +96,30 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/adguard-home-0.1.0/adguard-home-0.1.0.tgz
     version: 0.1.0
   dev-feed:
+  - apiVersion: v2
+    appVersion: 1.12.1
+    created: "2022-09-22T23:49:48.593523789Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.3.1
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.1.5
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
+    digest: 2c03f976ec210a84180199687324a36f975a2771ba373a6ade9d83928e7e138e
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: dev-feed
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/dev-feed-2.0.0/dev-feed-2.0.0.tgz
+    version: 2.0.0
   - apiVersion: v2
     appVersion: 1.12.1
     created: "2022-01-07T13:14:56.61288528Z"
@@ -611,6 +651,20 @@ entries:
   ghost-export-to-s3:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2022-09-22T23:49:48.724639516Z"
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
+    digest: 5ce34574e5f2192facec85df2b1778139c660f773532603d09ed8f6c21bbdae1
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: ghost-export-to-s3
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/ghost-export-to-s3-0.24.0/ghost-export-to-s3-0.24.0.tgz
+    version: 0.24.0
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2022-01-09T23:50:02.955035152Z"
     description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: bce99a257f33cef890d1072322225e1cf484691c7e6401dafbd5a690dcb7c6df
@@ -921,6 +975,20 @@ entries:
   mac-oui:
   - apiVersion: v2
     appVersion: 1.4.0
+    created: "2022-09-22T23:49:48.86792719Z"
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
+    digest: b8eddc85d798e691f99e11046aca8c7ac7b5765772618920c4a74ca869757dea
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: mac-oui
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.22.0/mac-oui-1.22.0.tgz
+    version: 1.22.0
+  - apiVersion: v2
+    appVersion: 1.4.0
     created: "2022-01-06T23:53:58.144497987Z"
     description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
     digest: b44407d7f5864ec473a67a0737c95b07705129be3589c99df08f52969ad8b8d1
@@ -1166,6 +1234,21 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.0.0/mac-oui-1.0.0.tgz
     version: 1.0.0
   service-names-port-numbers:
+  - apiVersion: v2
+    appVersion: 0.12.1
+    created: "2022-09-22T23:49:49.010726128Z"
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
+    digest: a09ac80751ca555ef79f3f7d62c4a99e4e3ff7aee1f94021d727fcce382a2178
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: service-names-port-numbers
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.25.0/service-names-port-numbers-0.25.0.tgz
+    version: 0.25.0
   - apiVersion: v2
     appVersion: 0.12.1
     created: "2022-01-06T23:53:58.254107424Z"
@@ -1476,4 +1559,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-12T22:20:52.782408222Z"
+generated: "2022-09-22T23:49:49.011268027Z"
