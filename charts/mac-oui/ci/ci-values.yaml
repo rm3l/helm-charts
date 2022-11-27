@@ -19,7 +19,7 @@ livenessProbe:
   timeoutSeconds: 3
   failureThreshold: 5
   httpGet:
-    path: /health/live
+    path: /q/health/live
     port: 8080
 
 # -- Configure the readiness healthcheck for the mac-oui containers

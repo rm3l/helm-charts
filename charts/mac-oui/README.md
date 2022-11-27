@@ -3,13 +3,13 @@
 Microservice for looking up manufacturers from MAC addresses.
 https://github.com/rm3l/mac-oui
 
-[![Latest version](https://img.shields.io/badge/latest_version-1.23.1-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
+[![Latest version](https://img.shields.io/badge/latest_version-1.23.2-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-mac-oui rm3l/mac-oui --version 1.23.1
+$ helm install my-mac-oui rm3l/mac-oui --version 1.23.2
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/mac-oui?modal=install
