@@ -57,7 +57,7 @@ livenessProbe:
   timeoutSeconds: 3
   failureThreshold: 5
   httpGet:
-    path: /health/live
+    path: /q/health/live
     port: 8080
 
 # -- Configure the readiness healthcheck for the mac-oui containers
@@ -67,7 +67,7 @@ readinessProbe:
   timeoutSeconds: 3
   failureThreshold: 5
   httpGet:
-    path: /health/ready
+    path: /q/health/ready
     port: 8080
 
 # -- Strategy used to replace old Pods by new ones
