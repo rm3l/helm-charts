@@ -1,0 +1,8 @@
+ingresses:
+  http:
+    enabled: true
+    hosts:
+      - host: agh-http.127.0.0.1.nip.io
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
