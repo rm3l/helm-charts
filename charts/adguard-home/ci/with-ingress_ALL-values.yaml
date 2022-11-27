@@ -1,0 +1,22 @@
+ingresses:
+  adminPanel:
+    enabled: true
+    hosts:
+      - host: agh-admin.127.0.0.1.nip.io
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+  http:
+    enabled: true
+    hosts:
+      - host: agh-http.127.0.0.1.nip.io
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+  https:
+    enabled: true
+    hosts:
+      - host: agh-https.127.0.0.1.nip.io
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
