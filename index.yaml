@@ -974,6 +974,20 @@ entries:
     version: 0.0.3
   mac-oui:
   - apiVersion: v2
+    appVersion: 1.5.0
+    created: "2022-11-27T00:33:45.205021346Z"
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
+    digest: 7463a650aaf8fc1f1187063164e5b8b0508ee99adcdd5a6ae14ef025abf6c811
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: mac-oui
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.23.3/mac-oui-1.23.3.tgz
+    version: 1.23.3
+  - apiVersion: v2
     appVersion: 1.4.0
     created: "2022-09-22T23:49:48.86792719Z"
     description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
@@ -1559,4 +1573,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-22T23:49:49.011268027Z"
+generated: "2022-11-27T00:33:45.205527342Z"
