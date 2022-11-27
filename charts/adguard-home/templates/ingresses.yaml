@@ -5,14 +5,14 @@
   {{- if not (hasKey .Values.ingresses.adminPanel.annotations "kubernetes.io/ingress.class") }}
   {{- $_ := set .Values.ingresses.adminPanel.annotations "kubernetes.io/ingress.class" .Values.ingresses.adminPanel.className}}
   {{- end }}
-{{- end }}
-{{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- end -}}
+{{if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion }}
 apiVersion: networking.k8s.io/v1
-{{- else if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+{{else if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion }}
 apiVersion: networking.k8s.io/v1beta1
-{{- else -}}
+{{else }}
 apiVersion: extensions/v1beta1
-{{- end }}
+{{end -}}
 kind: Ingress
 metadata:
   name: {{ $fullName }}-admin-panel
@@ -68,14 +68,14 @@ spec:
   {{- if not (hasKey .Values.ingresses.http.annotations "kubernetes.io/ingress.class") }}
   {{- $_ := set .Values.ingresses.http.annotations "kubernetes.io/ingress.class" .Values.ingresses.http.className}}
   {{- end }}
-{{- end }}
-{{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- end -}}
+{{if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion }}
 apiVersion: networking.k8s.io/v1
-{{- else if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+{{else if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion }}
 apiVersion: networking.k8s.io/v1beta1
-{{- else -}}
+{{else }}
 apiVersion: extensions/v1beta1
-{{- end }}
+{{end -}}
 kind: Ingress
 metadata:
   name: {{ $fullName }}-http
@@ -131,14 +131,14 @@ spec:
   {{- if not (hasKey .Values.ingresses.https.annotations "kubernetes.io/ingress.class") }}
   {{- $_ := set .Values.ingresses.https.annotations "kubernetes.io/ingress.class" .Values.ingresses.https.className}}
   {{- end }}
-{{- end }}
-{{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- end -}}
+{{if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion }}
 apiVersion: networking.k8s.io/v1
-{{- else if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+{{else if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion }}
 apiVersion: networking.k8s.io/v1beta1
-{{- else -}}
+{{else }}
 apiVersion: extensions/v1beta1
-{{- end }}
+{{end -}}
 kind: Ingress
 metadata:
   name: {{ $fullName }}-https
