@@ -44,30 +44,80 @@ services:
   adminPanel:
     type: ClusterIP
     port: 3000
+    # -- Internal cluster service IP for the Admin Panel (when applicable)
+    clusterIP: ""
+    # -- Load balancer IP for the Admin Panel (when applicable)
+    loadBalancerIP:
+    # -- (int) Node port for the Admin Panel (when applicable)
+    nodePort:
   http:
     type: ClusterIP
+    # -- Internal cluster service IP for HTTP (when applicable)
+    clusterIP: ""
+    # -- Load balancer IP for HTTP (when applicable)
+    loadBalancerIP:
+    # -- (int) Node port for HTTP (when applicable)
     port: 80
+    nodePort:
   https:
     enabled: true
     type: ClusterIP
+    # -- Internal cluster service IP for HTTPS (when applicable)
+    clusterIP: ""
+    # -- Load balancer IP for HTTPS (when applicable)
+    loadBalancerIP:
+    # -- (int) Node port for HTTPS (when applicable)
+    nodePort:
     port: 443
   dns:
     enabled: true
     type: NodePort
-    port: 53
+    # -- Internal cluster service IP for DNS (when applicable)
+    clusterIP: ""
+    # -- Load balancer IP for DNS (when applicable)
+    loadBalancerIP:
+    tcp:
+      port: 53
+      nodePort:
+    udp:
+      port: 53
+      nodePort:
   dnsOverTls:
     enabled: true
     type: NodePort
+    # -- Internal cluster service IP for DNS over TLS (when applicable)
+    clusterIP: ""
+    # -- Load balancer IP for DNS over TLS (when applicable)
+    loadBalancerIP:
+    # -- (int) Node port for DNS over TLS (when applicable)
     port: 853
+    nodePort:
   dnsOverQuic:
     enabled: true
     type: NodePort
-    port1: 784
-    port2: 8853
+    port1:
+      port: 784
+      nodePort:
+    port2:
+      port: 8853
+      nodePort:
+    # -- Internal cluster service IP for DNS Over QUIC (when applicable)
+    clusterIP: ""
+    # -- Load balancer IP for DNS Over QUIC (when applicable)
+    loadBalancerIP:
   dnscrypt:
     enabled: true
     type: NodePort
-    port: 5443
+    # -- Internal cluster service IP for DNSCrypt (when applicable)
+    clusterIP: ""
+    # -- Load balancer IP for DNSCrypt (when applicable)
+    loadBalancerIP:
+    tcp:
+      port: 5443
+      nodePort:
+    udp:
+      port: 5443
+      nodePort:
 
 ingresses:
   adminPanel:
