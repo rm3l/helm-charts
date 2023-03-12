@@ -143,6 +143,27 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/adguard-home-0.1.0/adguard-home-0.1.0.tgz
     version: 0.1.0
+  atuin:
+  - apiVersion: v2
+    appVersion: "13.0"
+    created: "2023-03-12T01:29:49.289229845Z"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.2.2
+    description: 'Unofficial Chart for Atuin, the magical shell history. The server
+      provides fully encrypted synchronization of the shell history across machines.
+      https://github.com/ellie/atuin '
+    digest: 4c21cf92b177a9474c470328afcd489710f96ff04d81bed9d0e0d4e707bf8c84
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: atuin
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/atuin-0.1.0/atuin-0.1.0.tgz
+    version: 0.1.0
   dev-feed:
   - apiVersion: v2
     appVersion: 1.12.1
@@ -1621,4 +1642,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-11T23:04:33.468419648Z"
+generated: "2023-03-12T01:29:49.289421848Z"
