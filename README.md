@@ -8,6 +8,7 @@
 
 [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/rm3l)](https://artifacthub.io/packages/search?repo=rm3l)
 [![adguard-home](https://img.shields.io/badge/adguard--home-0.9.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
+[![atuin](https://img.shields.io/badge/atuin-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
 [![dev-feed](https://img.shields.io/badge/dev--feed-2.0.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 [![ghost-export-to-s3](https://img.shields.io/badge/ghost--export--to--s3-0.24.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
 [![mac-oui](https://img.shields.io/badge/mac--oui-1.23.3-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
@@ -16,6 +17,7 @@
 - [TL;DR](#tldr)
 - [Charts](#charts)
   - [adguard-home](#adguard-home)
+  - [atuin](#atuin)
   - [dev-feed](#dev-feed)
   - [ghost-export-to-s3](#ghost-export-to-s3)
   - [mac-oui](#mac-oui)
@@ -45,6 +47,14 @@ $ helm install my-release rm3l/<chart>
 > [https://github.com/AdguardTeam/AdGuardHome](https://github.com/AdguardTeam/AdGuardHome)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/adguard-home/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/adguard-home/README.md) for further details.
+
+### atuin
+
+> Unofficial Chart for Atuin, the magical shell history.
+> The server provides fully encrypted synchronization of the shell history across machines.
+> https://github.com/ellie/atuin
+
+See [https://github.com/rm3l/helm-charts/blob/main/charts/atuin/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/atuin/README.md) for further details.
 
 ### dev-feed
 
