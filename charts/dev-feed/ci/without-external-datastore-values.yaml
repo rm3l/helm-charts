@@ -6,8 +6,8 @@ service:
 
 # -- Configure the startup healthcheck for the containers
 startupProbe:
-  initialDelaySeconds: 60
-  periodSeconds: 10
+  initialDelaySeconds: 180
+  periodSeconds: 30
   failureThreshold: 5
   timeoutSeconds: 10
 
@@ -44,7 +44,8 @@ crawlers:
     enabled: false
 
   engineeringblogs_xyz:
-    enabled: false
+    enabled: true
+    schedule: "*/1 * * * *"
 
   rm3l_org:
     enabled: true
