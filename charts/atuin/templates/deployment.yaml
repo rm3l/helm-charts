@@ -48,7 +48,7 @@ spec:
             - name: ATUIN_PORT
               value: "{{ .Values.service.port }}"
             - name: ATUIN_OPEN_REGISTRATION
-              value: "true"
+              value: "{{ .Values.atuin.openRegistration }}"
           ports:
             - name: app-port
               containerPort: {{ .Values.service.port }}

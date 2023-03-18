@@ -90,6 +90,9 @@ storage:
         requests:
           storage: 50Mi
 
+atuin:
+  openRegistration: true
+
 postgresql:
   auth:
     database: atuin
