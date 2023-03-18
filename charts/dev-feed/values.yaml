@@ -144,6 +144,9 @@ mongodb:
 
 crawlers:
 
+  dummy:
+    enabled: false
+
   discoverdev_io:
     enabled: true
     image:

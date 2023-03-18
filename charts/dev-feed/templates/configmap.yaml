@@ -14,10 +14,21 @@ data:
     {{- printf "datasource.type=rdbms" | nindent 4 }}
     {{- end }}
     {{- if or .Values.mariadb.enabled .Values.mongodb.enabled }}
-      {{- printf "# Crawlers disabled here but deployed as independent Kubernetes CronJobs (1 per crawler service)" | nindent 4 }}
-      {{- printf "crawlers.task.fetch-articles=false" | nindent 4 }}
+      {{- if .Values.crawlers.dummy.enabled }}
+        {{- printf "crawlers.dummy.enabled=true" | nindent 4 }}
+      {{- else}}
+        {{- printf "crawlers.dummy.enabled=false" | nindent 4 }}
+      {{- end}}
+      {{- printf "# Remote Crawlers disabled here but deployed as independent Kubernetes CronJobs (1 per crawler service)" | nindent 4 }}
+      {{- printf "crawlers.discoverdev_io.enabled=false" | nindent 4 }}
+      {{- printf "crawlers.engineeringblogs_xyz.enabled=false" | nindent 4 }}
+      {{- printf "crawlers.rm3l_org.enabled=false" | nindent 4 }}
     {{- else}}
-      {{- printf "crawlers.task.fetch-articles=true" | nindent 4 }}
+      {{- if .Values.crawlers.dummy.enabled }}
+        {{- printf "crawlers.dummy.enabled=true" | nindent 4 }}
+      {{- else}}
+        {{- printf "crawlers.dummy.enabled=false" | nindent 4 }}
+      {{- end}}
       {{- if .Values.crawlers.discoverdev_io.enabled }}
         {{- printf "crawlers.discoverdev_io.enabled=true" | nindent 4 }}
       {{- else}}

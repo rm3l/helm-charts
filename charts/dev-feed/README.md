@@ -3,13 +3,13 @@
 GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
 https://github.com/rm3l/dev-feed
 
-[![Latest version](https://img.shields.io/badge/latest_version-2.0.1-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![Latest version](https://img.shields.io/badge/latest_version-2.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-dev-feed rm3l/dev-feed --version 2.0.1
+$ helm install my-dev-feed rm3l/dev-feed --version 2.1.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
@@ -42,6 +42,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | crawlers.discoverdev_io.schedule | string | `"0 0 * * 0"` |  |
 | crawlers.discoverdev_io.startingDeadlineSeconds | int | `3600` |  |
 | crawlers.discoverdev_io.ttlSecondsAfterFinished | int | `900` |  |
+| crawlers.dummy.enabled | bool | `false` |  |
 | crawlers.engineeringblogs_xyz.activeDeadlineSeconds | int | `1800` |  |
 | crawlers.engineeringblogs_xyz.affinity | object | `{}` |  |
 | crawlers.engineeringblogs_xyz.articleMaxAgeDays | int | `365` |  |

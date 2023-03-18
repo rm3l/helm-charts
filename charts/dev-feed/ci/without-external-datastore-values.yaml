@@ -6,21 +6,20 @@ service:
 
 # -- Configure the startup healthcheck for the containers
 startupProbe:
-  initialDelaySeconds: 180
-  periodSeconds: 30
-  failureThreshold: 5
+  initialDelaySeconds: 3
+  periodSeconds: 10
   timeoutSeconds: 10
 
 # -- Configure the liveness healthcheck for the containers
 livenessProbe:
   # initialDelaySeconds: 3
-  # periodSeconds: 90
+  periodSeconds: 10
   timeoutSeconds: 10
 
 # -- Configure the readiness healthcheck for the containers
 readinessProbe:
   # initialDelaySeconds: 3
-  # periodSeconds: 4
+  periodSeconds: 10
   timeoutSeconds: 10
 
 auth:
@@ -40,13 +39,14 @@ mongodb:
 
 crawlers:
 
+  dummy:
+    enabled: true
+
   discoverdev_io:
     enabled: false
 
   engineeringblogs_xyz:
-    enabled: true
-    schedule: "*/1 * * * *"
+    enabled: false
 
   rm3l_org:
-    enabled: true
-    schedule: "*/1 * * * *"
+    enabled: false
