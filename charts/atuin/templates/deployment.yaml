@@ -27,6 +27,21 @@ spec:
       serviceAccountName: {{ include "atuin.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: wait-db-service
+          image: busybox:1.28
+          securityContext:
+            readOnlyRootFilesystem: true
+            runAsUser: 65534
+            runAsGroup: 65534
+          command: ['sh', '-c', "until nslookup {{ include "atuin.fullname" . }}-postgresql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "atuin.fullname" . }}-postgresql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
+          resources:
+            limits:
+              cpu: 100m
+              memory: 10Mi
+            requests:
+              cpu: 100m
+              memory: 1Mi
       containers:
         - name: {{ .Chart.Name }}
           args:
