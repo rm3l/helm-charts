@@ -62,7 +62,7 @@ spec:
 
           containers:
           - name: {{ include "dev-feed.fullname" . }}-crawler-discoverdev-io
-            image: "{{ .Values.crawlers.discoverdev_io.image.repository }}:{{ .Chart.AppVersion }}"
+            image: "{{ .Values.crawlers.discoverdev_io.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
             imagePullPolicy: {{ .Values.crawlers.discoverdev_io.image.pullPolicy }}
             securityContext:
               readOnlyRootFilesystem: true
@@ -172,7 +172,7 @@ spec:
 
           containers:
           - name: {{ include "dev-feed.fullname" . }}-crawler-engineeringblogs-xyz
-            image: "{{ .Values.crawlers.engineeringblogs_xyz.image.repository }}:{{ .Chart.AppVersion }}"
+            image: "{{ .Values.crawlers.engineeringblogs_xyz.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
             imagePullPolicy: {{ .Values.crawlers.engineeringblogs_xyz.image.pullPolicy }}
             securityContext:
               readOnlyRootFilesystem: true
@@ -281,7 +281,7 @@ spec:
 
           containers:
           - name: {{ include "dev-feed.fullname" . }}-crawler-rm3l-org
-            image: "{{ .Values.crawlers.rm3l_org.image.repository }}:{{ .Chart.AppVersion }}"
+            image: "{{ .Values.crawlers.rm3l_org.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
             imagePullPolicy: {{ .Values.crawlers.rm3l_org.image.pullPolicy }}
             securityContext:
               readOnlyRootFilesystem: true
