@@ -16,7 +16,7 @@ type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 2.2.0
+version: 2.3.1
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
@@ -31,11 +31,11 @@ maintainers:
 dependencies:
 - name: mariadb
   # See https://github.com/bitnami/charts/tree/master/bitnami/mariadb
-  version: "11.3.1"
+  version: "11.5.3"
   repository: "https://charts.bitnami.com/bitnami"
   condition: mariadb.enabled
 - name: mongodb
   # See https://github.com/bitnami/charts/tree/master/bitnami/mongodb
-  version: "13.1.5"
+  version: "13.9.1"
   repository: "https://charts.bitnami.com/bitnami"
   condition: mongodb.enabled

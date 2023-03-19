@@ -1,9 +1,9 @@
 dependencies:
 - name: mariadb
   repository: https://charts.bitnami.com/bitnami
-  version: 11.3.1
+  version: 11.5.3
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
-  version: 13.1.5
-digest: sha256:f8d5421b1aa1179ea5fb0bd4b3aaa467e10da058d9470d70544145d89ef68a5d
-generated: "2022-09-23T01:39:47.820085397+02:00"
+  version: 13.9.1
+digest: sha256:af9d2f254fa468a17ef76369fe8b11cbb49f232726f4c1cd4830c3136beb75a2
+generated: "2023-03-19T11:29:13.865961603+01:00"
