@@ -223,6 +223,30 @@ entries:
   dev-feed:
   - apiVersion: v2
     appVersion: 2.0.1
+    created: "2023-03-19T11:02:23.814523293Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.5.3
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.9.1
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
+    digest: ad6b5e6c118524a9951d06bfefbf5076a8ac6c23f49aaf235095c3854fe0ed14
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: dev-feed
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/dev-feed-2.3.2/dev-feed-2.3.2.tgz
+    version: 2.3.2
+  - apiVersion: v2
+    appVersion: 2.0.1
     created: "2023-03-18T20:03:02.380226618Z"
     dependencies:
     - condition: mariadb.enabled
@@ -1842,4 +1866,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-18T20:03:02.864302849Z"
+generated: "2023-03-19T11:02:23.8149357Z"
