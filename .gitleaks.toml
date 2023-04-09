@@ -1,0 +1,22 @@
+[allowlist]
+  description = "Global Allowlist"
+
+  # Ignore based on any subset of the file path
+  paths = [
+    # Ignore all example certs
+    # '''\/example.*\.pem$''',
+                
+    # Ignore anything with the word funkymonkey anywhere in the path
+    # '''funkymonkey''',
+
+    # AdGuard Home Chart contains an asymmetric Private Key,
+    # used as a sample data not actually a secret.
+    '''charts\/adguard-home\/README.md$''',
+    '''charts\/adguard-home\/values.yaml$''',
+  ]
+        
+  # Ignore based on any subset of the line
+  #regexes = [
+  #  # Ignore lines containing pickles
+  #  '''pickles''',
+  #]
