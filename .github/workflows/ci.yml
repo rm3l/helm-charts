@@ -85,6 +85,7 @@ jobs:
       matrix:
         chart:
           - adguard-home
+          - atuin
           - dev-feed
           - ghost-export-to-s3
           - mac-oui
