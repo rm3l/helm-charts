@@ -17,17 +17,17 @@ jobs:
 
       - name: Set up Helm
         uses: azure/setup-helm@v3.5
-        with:
-          version: v3.10.0
+        #with:
+        #  version: v3.10.0
 
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.4.0
-        with:
-          version: v3.7.0
+        #with:
+        #  version: v3.7.0
 
       - name: Run chart-testing (list-changed on main)
         id: list-changed-main
@@ -59,17 +59,17 @@ jobs:
         uses: helm/kind-action@v1.5.0
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.list-changed-main.outputs.changed == 'true'
         with:
-          version: v0.15.0
-          node_image: "kindest/node:v1.25.2"
-          kubectl_version: v1.25.2
+          #version: v0.15.0
+          node_image: "kindest/node:v1.26.3"
+          kubectl_version: v1.26.3
 
       - name: Create kind cluster (PR)
         uses: helm/kind-action@v1.5.0
         if: github.event_name == 'pull_request' && steps.list-changed-pr.outputs.changed == 'true'
         with:
-          version: v0.15.0
-          node_image: "kindest/node:v1.25.2"
-          kubectl_version: v1.25.2
+          #version: v0.15.0
+          node_image: "kindest/node:v1.26.3"
+          kubectl_version: v1.26.3
 
       - name: Run chart-testing (install on main)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -100,7 +100,7 @@ jobs:
           config: .kube-linter/config.yaml
           format: sarif
           output-file: ${{ matrix.chart }}.sarif
-          version: 0.5.0
+          #version: 0.5.0
 
       - name: Upload SARIF file
         if: ${{ always() }}
@@ -126,8 +126,8 @@ jobs:
 
       - name: Install Helm
         uses: azure/setup-helm@v3.5
-        with:
-          version: v3.10.0
+        #with:
+        #  version: v3.10.0
 
       - name: Add Helm repos
         run: |
