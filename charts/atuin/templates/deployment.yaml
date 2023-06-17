@@ -52,21 +52,12 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            {{- if .Values.postgresql.enabled }}
             - name: ATUIN_DB_URI
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "atuin.fullname" . }}
-                  key: ATUIN_DB_URI
+                  name: {{ ternary (include "atuin.fullname" .) .Values.postgresql.auth.existingSecret .Values.postgresql.enabled }}
+                  key: {{ ternary "ATUIN_DB_URI" .Values.postgresql.auth.existingSecretKey .Values.postgresql.enabled }}
                   optional: false
-            {{- else }}
-            - name: ATUIN_DB_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.postgresql.auth.existingSecret }}
-                  key: {{ .Values.postgresql.auth.existingSecretKey }}
-                  optional: false
-            {{- end }}
             - name: ATUIN_HOST
               value: 0.0.0.0
             - name: ATUIN_PORT
