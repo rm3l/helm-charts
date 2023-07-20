@@ -94,7 +94,14 @@ atuin:
   openRegistration: true
 
 postgresql:
+  ## Switch to enable or disable the PostgreSQL helm subchart
+  enabled: true
   auth:
     database: atuin
     username: "db-user"
     password: "pl34s3Ch4ng3M3"
+    ## Name of an existing secret to use for the PostgreSQL connection string
+    ## `auth.username`, `auth.password`, and `auth.database` will be ignored and picked up from this secret
+    ## The secret must have the following format: postgresql://login:password@hostname:port/dbname?sslmode=disable
+    existingSecret: ""
+    existingSecretKey: ATUIN_DB_URI

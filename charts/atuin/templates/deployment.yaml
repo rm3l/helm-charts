@@ -27,6 +27,7 @@ spec:
       serviceAccountName: {{ include "atuin.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- if .Values.postgresql.enabled }}
       initContainers:
         - name: wait-db-service
           image: busybox:1.28
@@ -42,6 +43,7 @@ spec:
             requests:
               cpu: 100m
               memory: 1Mi
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           args:
@@ -55,8 +57,8 @@ spec:
             - name: ATUIN_DB_URI
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "atuin.fullname" . }}
-                  key: ATUIN_DB_URI
+                  name: {{ ternary (include "atuin.fullname" .) .Values.postgresql.auth.existingSecret .Values.postgresql.enabled }}
+                  key: {{ ternary "ATUIN_DB_URI" .Values.postgresql.auth.existingSecretKey .Values.postgresql.enabled }}
                   optional: false
             - name: ATUIN_HOST
               value: 0.0.0.0
