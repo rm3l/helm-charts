@@ -4,13 +4,13 @@ Unofficial Chart for Atuin, the magical shell history.
 The server provides fully encrypted synchronization of the shell history across machines.
 https://github.com/ellie/atuin
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.3.0-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
+[![Latest version](https://img.shields.io/badge/latest_version-0.4.0-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-atuin rm3l/atuin --version 0.3.0
+$ helm install my-atuin rm3l/atuin --version 0.4.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
@@ -48,8 +48,11 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | postgresql.auth.database | string | `"atuin"` |  |
+| postgresql.auth.existingSecret | string | `""` |  |
+| postgresql.auth.existingSecretKey | string | `"ATUIN_DB_URI"` |  |
 | postgresql.auth.password | string | `"pl34s3Ch4ng3M3"` |  |
 | postgresql.auth.username | string | `"db-user"` |  |
+| postgresql.enabled | bool | `true` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
