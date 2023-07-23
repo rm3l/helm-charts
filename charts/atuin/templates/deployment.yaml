@@ -51,15 +51,24 @@ spec:
             - start
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
+          {{- if .Values.sqlite.enabled }}
+          image: "{{ .Values.sqlite.image.repository }}:{{ .Values.sqlite.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.sqlite.image.pullPolicy }}
+          {{- else }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- end }}
           env:
             - name: ATUIN_DB_URI
+            {{- if .Values.sqlite.enabled }}
+              value: "sqlite:///data/atuin.db"
+            {{- else }}
               valueFrom:
                 secretKeyRef:
                   name: {{ ternary (include "atuin.fullname" .) .Values.postgresql.auth.existingSecret .Values.postgresql.enabled }}
                   key: {{ ternary "ATUIN_DB_URI" .Values.postgresql.auth.existingSecretKey .Values.postgresql.enabled }}
                   optional: false
+            {{- end }}
             - name: ATUIN_HOST
               value: 0.0.0.0
             - name: ATUIN_PORT
@@ -83,10 +92,19 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: {{ include "atuin.fullname" . }}-config
+            {{- if .Values.sqlite.enabled }}
+            - mountPath: /data
+              name: {{ include "atuin.fullname" . }}-data-sqlite
+            {{- end }}
       volumes:
         - name: {{ include "atuin.fullname" . }}-config
           persistentVolumeClaim:
             claimName: {{ include "atuin.fullname" . }}-config
+        {{- if .Values.sqlite.enabled }}
+        - name: {{ include "atuin.fullname" . }}-data-sqlite
+          persistentVolumeClaim:
+            claimName: {{ include "atuin.fullname" . }}-data-sqlite
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

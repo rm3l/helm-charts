@@ -93,6 +93,21 @@ storage:
 atuin:
   openRegistration: true
 
+sqlite:
+  # -- Experimental support of SQLite. Enable this and disable postgresql.enabled to use it.
+  enabled: false
+  image:
+    repository: ghcr.io/rm3l/atuin-server-sqlite
+    pullPolicy: Always
+    tag: "main"
+  persistence:
+    volumeClaimSpec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+
 postgresql:
   ## Switch to enable or disable the PostgreSQL helm subchart
   enabled: true

@@ -6,3 +6,13 @@ metadata:
     {{- include "atuin.labels" . | nindent 4 }}
 spec:
   {{- toYaml .Values.storage.config.volumeClaimSpec | nindent 2 }}
+
+---
+{{- if .Values.sqlite.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "atuin.fullname" . }}-data-sqlite
+spec:
+  {{- toYaml .Values.sqlite.persistence.volumeClaimSpec | nindent 2 }}
+{{- end }}
