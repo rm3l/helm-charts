@@ -9,6 +9,28 @@ on:
       - main
 
 jobs:
+
+  pre-commit_checks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
+
+    - uses: asdf-vm/actions/setup@v2
+    - name: Install asdf dependencies
+      run: |
+        asdf plugin-add helm-docs https://github.com/sudermanjr/asdf-helm-docs.git
+        asdf install
+
+    - uses: pre-commit/action@v3.0.0
+    - uses: pre-commit-ci/lite-action@v1.0.1
+      if: always()
+      with:
+        msg: Apply automatic fixes
+
   lint-test:
     runs-on: ubuntu-latest
     steps:
