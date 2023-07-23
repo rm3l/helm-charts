@@ -162,6 +162,27 @@ entries:
   atuin:
   - apiVersion: v2
     appVersion: "15.0"
+    created: "2023-07-23T21:26:02.953612046Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.5.6
+    description: 'Unofficial Chart for Atuin, the magical shell history. The server
+      provides fully encrypted synchronization of the shell history across machines.
+      https://github.com/ellie/atuin '
+    digest: 2e450f4a7873134446470fe2c0adfccfe7116290fa6fa901ddaaf0b38ebb2aca
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: atuin
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/atuin-0.5.0/atuin-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
+    appVersion: "15.0"
     created: "2023-07-20T07:33:48.455002205Z"
     dependencies:
     - condition: postgresql.enabled
@@ -1907,4 +1928,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2023-07-20T07:33:48.455306129Z"
+generated: "2023-07-23T21:26:02.953865448Z"
