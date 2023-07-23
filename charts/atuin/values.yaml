@@ -93,6 +93,20 @@ storage:
 atuin:
   openRegistration: true
 
+sqlite:
+  enabled: false
+  image:
+    repository: ghcr.io/rm3l/atuin-server-sqlite
+    pullPolicy: Always
+    tag: "main"
+  persistence:
+    volumeClaimSpec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+
 postgresql:
   ## Switch to enable or disable the PostgreSQL helm subchart
   enabled: true
