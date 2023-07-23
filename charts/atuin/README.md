@@ -61,6 +61,12 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
+| sqlite.enabled | bool | `false` |  |
+| sqlite.image.pullPolicy | string | `"Always"` |  |
+| sqlite.image.repository | string | `"ghcr.io/rm3l/atuin-server-sqlite"` |  |
+| sqlite.image.tag | string | `"main"` |  |
+| sqlite.persistence.volumeClaimSpec.accessModes[0] | string | `"ReadWriteOnce"` |  |
+| sqlite.persistence.volumeClaimSpec.resources.requests.storage | string | `"1Gi"` |  |
 | storage.config.volumeClaimSpec.accessModes[0] | string | `"ReadWriteOnce"` |  |
 | storage.config.volumeClaimSpec.resources.requests.storage | string | `"50Mi"` |  |
 | tolerations | list | `[]` |  |
