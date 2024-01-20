@@ -47,7 +47,7 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 | backup.ttlSecondsAfterFinished | int | `300` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"ghcr.io/ellie/atuin"` |  |
+| image.repository | string | `"ghcr.io/atuinsh/atuin"` |  |
 | image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
