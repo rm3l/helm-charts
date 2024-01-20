@@ -1,0 +1,141 @@
+{{- if semverCompare ">=1.21-0" .Capabilities.KubeVersion.GitVersion -}}
+apiVersion: batch/v1
+{{- else -}}
+apiVersion: batch/v1beta1
+{{- end }}
+kind: CronJob
+metadata:
+  name: {{ include "atuin.fullname" . }}-backup
+  labels:
+    {{- include "atuin.backupLabels" . | nindent 4 }}
+spec:
+  schedule: "{{ .Values.backup.schedule }}"
+  concurrencyPolicy: {{ .Values.backup.concurrencyPolicy }}
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: {{ .Values.backup.ttlSecondsAfterFinished }}
+      backoffLimit: {{ .Values.backup.backoffLimit }}
+      parallelism: {{ .Values.backup.parallelism }}
+      activeDeadlineSeconds: {{ .Values.backup.activeDeadlineSeconds }}
+      template:
+        metadata: 
+          annotations:
+            checksum/secret: {{ include (print $.Template.BasePath "/backup.secret.yaml") . | sha256sum }}
+            {{- with .Values.podAnnotations }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+        spec:
+          restartPolicy: {{ .Values.backup.restartPolicy }}
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+          serviceAccountName: {{ include "atuin.serviceAccountName" . }}
+          securityContext:
+            {{- toYaml .Values.podSecurityContext | nindent 12 }}
+          volumes:
+          - name: {{ include "atuin.fullname" . }}-config
+            persistentVolumeClaim:
+              claimName: {{ include "atuin.fullname" . }}-config
+          {{- if .Values.sqlite.enabled }}
+          - name: {{ include "atuin.fullname" . }}-data-sqlite
+            persistentVolumeClaim:
+              claimName: {{ include "atuin.fullname" . }}-data-sqlite
+          {{- end }}
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+          {{- if has "ReadWriteOnce" (((.Values.persistence).volumeClaimSpec).accessModes) }}
+          {{- /*
+          Force-scheduling the job on the node running the AdguardHome pod.
+          # Otherwise, the job may never run if scheduled on a different node.
+          */}}
+          affinity:
+            podAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchLabels:
+                    {{- include "atuin.selectorLabels" . | nindent 20 }}
+                topologyKey: "kubernetes.io/hostname"
+          {{- else }}
+          {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+          {{- end }}
+          {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+
+          containers:
+          - name: backup-config
+            imagePullPolicy: {{ .Values.backup.imagePullPolicy }}
+            volumeMounts:
+            volumeMounts:
+            - mountPath: /config
+              name: {{ include "atuin.fullname" . }}-config
+            resources:
+              {{- toYaml .Values.resources | nindent 14 }}
+            {{- if .Values.backup.aws.enabled }}
+            image: amazon/aws-cli:2.4.9
+            args:
+            - s3
+            - cp
+            - "/config/"
+            - "$(S3_DESTINATION)"
+            - "--recursive"
+            env:
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "atuin.fullname" . }}-backup
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "atuin.fullname" . }}-backup
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: S3_DESTINATION
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "atuin.fullname" . }}-backup
+                  key: S3_DESTINATION
+            {{- end }}
+
+          {{- if .Values.sqlite.enabled }}
+          - name: backup-data-sqlite
+            imagePullPolicy: {{ .Values.backup.imagePullPolicy }}
+            volumeMounts:
+            volumeMounts:
+            - mountPath: /data
+              name: {{ include "atuin.fullname" . }}-data-sqlite
+            resources:
+              {{- toYaml .Values.resources | nindent 14 }}
+            {{- if .Values.backup.aws.enabled }}
+            image: amazon/aws-cli:2.4.9
+            args:
+            - s3
+            - cp
+            - "/data/"
+            - "$(S3_DESTINATION)"
+            - "--recursive"
+            env:
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "atuin.fullname" . }}-backup
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "atuin.fullname" . }}-backup
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: S3_DESTINATION
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "atuin.fullname" . }}-backup
+                  key: S3_DESTINATION
+            {{- end }}
+          {{- end }}
