@@ -4,13 +4,13 @@ Unofficial Chart for Atuin, the magical shell history.
 The server provides fully encrypted synchronization of the shell history across machines.
 https://github.com/ellie/atuin
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.5.0-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
+[![Latest version](https://img.shields.io/badge/latest_version-0.6.0-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-atuin rm3l/atuin --version 0.5.0
+$ helm install my-atuin rm3l/atuin --version 0.6.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
@@ -19,7 +19,7 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 12.5.6 |
+| https://charts.bitnami.com/bitnami | postgresql | 13.2.30 |
 
 ## Values
 
@@ -31,6 +31,20 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| backup.activeDeadlineSeconds | int | `1800` |  |
+| backup.aws.accessKeyId | string | `"my-aws-access-key-id"` | AWS Access Key. Must have the permissions to write to the target bucket. |
+| backup.aws.enabled | bool | `true` | For now, only AWS is supported. Setting this to `false` (while `sqlite.backup.enabled` is `true`) will cause a deployment error. |
+| backup.aws.s3 | object | `{"destination":"s3://path/to/my/atuin-sqlite-backup-bucket"}` | Target destination bucket (absolute) in AWS S3, where the backup resources should be written |
+| backup.aws.secretKey | string | `"my-aws-secret-key"` | AWS Secret Key. Must have the permissions to write to the target bucket. |
+| backup.backoffLimit | int | `1` |  |
+| backup.concurrencyPolicy | string | `"Forbid"` |  |
+| backup.enabled | bool | `false` | since the volume will be accessible only to the sole Atuin pod. |
+| backup.imagePullPolicy | string | `"IfNotPresent"` |  |
+| backup.parallelism | int | `1` |  |
+| backup.resources | object | `{}` |  |
+| backup.restartPolicy | string | `"OnFailure"` |  |
+| backup.schedule | string | `"@daily"` | How frequently the Backup job should run. Cron Syntax, as supported by Kubernetes CronJobs |
+| backup.ttlSecondsAfterFinished | int | `300` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/ellie/atuin"` |  |
