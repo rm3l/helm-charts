@@ -118,7 +118,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Scan '${{ matrix.chart }}' Chart with kube-linter
-        uses: stackrox/kube-linter-action@v1.0.4
+        uses: stackrox/kube-linter-action@v1.0.5
         continue-on-error: true
         with:
           directory: charts/${{ matrix.chart }}
