@@ -232,6 +232,9 @@ backup:
     s3:
       destination: "s3://path/to/my/adguard-home-backup-bucket"
 
+# -- Whether to enable bootstrapping the AdguardHome config file using the content in bootstrapConfig
+bootstrapEnabled: true
+
 bootstrapConfig:
   # -- AdGuard Home config. See [this page](https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration#configuration-file)
   bind_host: 0.0.0.0
@@ -475,3 +478,12 @@ bootstrapConfig:
     user: ""
     rlimit_nofile: 0
   schema_version: 12
+
+# -- Whether to add default volume mounts.
+defaultVolumeMountsEnabled: true
+
+# -- Additional Volume mounts
+extraVolumeMounts: []
+
+# -- Additional volumes
+extraVolumes: []

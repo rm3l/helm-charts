@@ -31,13 +31,19 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
+      {{- if .Values.bootstrapEnabled }}
       - name: bootstrap-config-vol
         secret:
           secretName: {{ include "adguard-home.fullname" . }}
+      {{- end }}
       - name: data-vol
         persistentVolumeClaim:
           claimName: {{ include "adguard-home.fullname" . }}
-      
+      {{- with .Values.extraVolumes }}
+        {{- toYaml . | nindent 6 }}
+      {{- end }}
+
+      {{- if .Values.bootstrapEnabled }}
       initContainers:
       - image: busybox:1.35
         name: configurator
@@ -64,6 +70,7 @@ spec:
           else
             cp -v /var/adguardhome-bootstrap/AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
           fi
+      {{- end }}
 
       containers:
         - name: {{ .Chart.Name }}
@@ -119,12 +126,17 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
+          {{- if .Values.defaultVolumeMountsEnabled }}
           - name: data-vol
             mountPath: /opt/adguardhome/work
             subPath: work
           - name: data-vol
             mountPath: /opt/adguardhome/conf
             subPath: conf
+          {{- end }}
+          {{- with .Values.extraVolumeMounts }}
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

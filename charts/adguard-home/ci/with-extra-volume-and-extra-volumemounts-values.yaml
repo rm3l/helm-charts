@@ -1,0 +1,13 @@
+  # -- Additional volume mounts
+extraVolumeMounts:
+  - name: my-vol-1
+    mountPath: /vol-1
+  - name: my-vol-2
+    mountPath: /vol-2
+
+  # -- Additional volumes
+extraVolumes:
+  - name: my-vol-1
+    emptyDir: {}
+  - name: my-vol-2
+    emptyDir: {}
