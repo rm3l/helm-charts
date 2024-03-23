@@ -4,13 +4,13 @@ Unofficial Chart for Atuin, the magical shell history.
 The server provides fully encrypted synchronization of the shell history across machines.
 https://github.com/ellie/atuin
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.6.0-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
+[![Latest version](https://img.shields.io/badge/latest_version-0.7.0-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-atuin rm3l/atuin --version 0.6.0
+$ helm install my-atuin rm3l/atuin --version 0.7.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
@@ -19,7 +19,7 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 13.2.30 |
+| https://charts.bitnami.com/bitnami | postgresql | 15.1.2 |
 
 ## Values
 
