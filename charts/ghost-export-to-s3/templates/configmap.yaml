@@ -6,5 +6,6 @@ metadata:
     {{- include "ghost-export-to-s3.labels" . | nindent 4 }}
 data:
   GHOST_URL: "{{ .Values.ghost.apiBaseUrl }}"
+  GHOST_API_BASE_ENDPOINT: "{{ .Values.ghost.apiBaseEndpoint }}"
   GHOST_MAJOR_VERSION: "{{ .Values.ghost.majorVersion }}"
   S3_DESTINATION: "{{ .Values.aws.s3.destination }}"
