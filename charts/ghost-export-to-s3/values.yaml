@@ -3,14 +3,16 @@
 # Declare variables to be passed into your templates.
 
 ghost:
-  # -- Base URL for the headless Ghost CMS targeted
+  # -- Base URL for the headless Ghost CMS targeted. **Deprecated**. Use `ghost.apiBaseEndpoint` instead.
   apiBaseUrl: "https://my.ghost.blog/ghost"
+  # -- Base URL for the headless Ghost CMS targeted, including the version, if needed, e.g.: https://my.ghost.blog/ghost/v4
+  apiBaseEndpoint: ""
   # -- Ghost CMS username
   username: "my-ghost-username"
   # -- Ghost CMS password
   password: "my-ghost-password"
-  # -- API Major Version. For example. this would be '4' if your version of Ghost is '4.7.0'
-  majorVersion: 4
+  # -- API Major Version. For example. this would be '4' if your version of Ghost is '4.7.0'. **Deprecated**. Use `ghost.apiBaseEndpoint` instead.
+  majorVersion: "4"
 
 aws:
   # -- AWS Access Key. Must have the permissions to write to the target bucket.

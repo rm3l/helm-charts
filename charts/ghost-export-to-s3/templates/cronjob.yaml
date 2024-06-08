@@ -62,11 +62,11 @@ spec:
                 -d username='$(GHOST_AUTH_USERNAME)' \
                 -d password='$(GHOST_AUTH_PASSWORD)' \
                 -H 'Origin: k8s://$(POD_NAME)@$(POD_NAMESPACE)' \
-                '$(GHOST_URL)'/api/v$(GHOST_MAJOR_VERSION)/admin/session/ && \
+                '$(GHOST_API_BASE_ENDPOINT)/admin/session/' && \
               curl --fail -sSL -b /tmp/ghost-cookie.txt \
                 -H 'Origin: k8s://$(POD_NAME)@$(POD_NAMESPACE)' \
                 -H 'Content-Type: application/json' \
-                '$(GHOST_URL)'/api/v$(GHOST_MAJOR_VERSION)/admin/db/ \
+                '$(GHOST_API_BASE_ENDPOINT)/admin/db/' \
                 -o /data/ghost-export/ghost-export.json && \
               rm -rf /tmp/ghost-cookie.txt
             env:
@@ -78,6 +78,13 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
+            {{- if .Values.ghost.apiBaseEndpoint }}
+            - name: GHOST_API_BASE_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "ghost-export-to-s3.fullname" . }}
+                  key: GHOST_API_BASE_ENDPOINT
+            {{- else }}
             - name: GHOST_URL
               valueFrom:
                 configMapKeyRef:
@@ -88,6 +95,9 @@ spec:
                 configMapKeyRef:
                   name: {{ include "ghost-export-to-s3.fullname" . }}
                   key: GHOST_MAJOR_VERSION
+            - name: GHOST_API_BASE_ENDPOINT
+              value: "$(GHOST_URL)/api/v$(GHOST_MAJOR_VERSION)"
+            {{- end }}
             - name: GHOST_AUTH_USERNAME
               valueFrom:
                 secretKeyRef:
