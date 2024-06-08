@@ -33,9 +33,11 @@ cronJob:
   backoffLimit: 1
   parallelism: 1
   init:
+    image: "curlimages/curl:8.8.0"
     imagePullPolicy: IfNotPresent
     resources: {}
   main:
+    image: "amazon/aws-cli:2.16.4"
     imagePullPolicy: IfNotPresent
     resources: {}
 
