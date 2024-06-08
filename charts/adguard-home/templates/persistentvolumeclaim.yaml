@@ -1,6 +1,8 @@
+{{- if not .Values.persistence.existingVolumeClaim }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ include "adguard-home.fullname" . }}
 spec:
   {{- toYaml .Values.persistence.volumeClaimSpec | nindent 2 }}
+{{- end }}

@@ -38,7 +38,7 @@ spec:
       {{- end }}
       - name: data-vol
         persistentVolumeClaim:
-          claimName: {{ include "adguard-home.fullname" . }}
+          claimName: {{ .Values.persistence.existingVolumeClaim | default (include "adguard-home.fullname" .) }}
       {{- with .Values.extraVolumes }}
         {{- toYaml . | nindent 6 }}
       {{- end }}
