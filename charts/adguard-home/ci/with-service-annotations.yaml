@@ -1,0 +1,23 @@
+  # -- Additional service annotations
+  services:
+    adminPanel:
+      annotations:
+        key: value
+    http:
+      annotations:
+        key: value
+    https:
+      annotations:
+        key: value
+    dns:
+      annotations:
+        key: value
+    dnsOverTls:
+      annotations:
+        key: value
+    dnsOverQuic:
+      annotations:
+        key: value
+    dnscrypt:
+      annotations:
+        key: value
