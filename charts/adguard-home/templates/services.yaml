@@ -18,6 +18,9 @@ spec:
   {{- with .Values.services.adminPanel.loadBalancerIP }}
   loadBalancerIP: {{ . }}
   {{- end }}
+  {{- with .Values.services.adminPanel.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ . }}
+  {{- end }}
   ports:
   - port: {{ .Values.services.adminPanel.port }}
     {{- if and (or (eq .Values.services.adminPanel.type "NodePort") (eq .Values.services.adminPanel.type "LoadBalancer")) .Values.services.adminPanel.nodePort }}
@@ -43,6 +46,9 @@ spec:
   {{- end }}
   {{- with .Values.services.http.loadBalancerIP }}
   loadBalancerIP: {{ . }}
+  {{- end }}
+  {{- with .Values.services.http.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ . }}
   {{- end }}
   ports:
   - port: {{ .Values.services.http.port }}
@@ -71,6 +77,9 @@ spec:
   {{- with .Values.services.https.loadBalancerIP }}
   loadBalancerIP: {{ . }}
   {{- end }}
+  {{- with .Values.services.https.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ . }}
+  {{- end }}
   ports:
   - port: {{ .Values.services.https.port }}
     {{- if and (or (eq .Values.services.https.type "NodePort") (eq .Values.services.https.type "LoadBalancer")) .Values.services.https.nodePort }}
@@ -98,6 +107,9 @@ spec:
   {{- end }}
   {{- with .Values.services.dns.loadBalancerIP }}
   loadBalancerIP: {{ . }}
+  {{- end }}
+  {{- with .Values.services.dns.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ . }}
   {{- end }}
   ports:
   - port: {{ .Values.services.dns.tcp.port }}
@@ -135,6 +147,9 @@ spec:
   {{- with .Values.services.dnsOverTls.loadBalancerIP }}
   loadBalancerIP: {{ . }}
   {{- end }}
+  {{- with .Values.services.dnsOverTls.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ . }}
+  {{- end }}
   ports:
   - port: {{ .Values.services.dnsOverTls.port }}
     {{- if and (or (eq .Values.services.dnsOverTls.type "NodePort") (eq .Values.services.dnsOverTls.type "LoadBalancer")) .Values.services.dnsOverTls.nodePort }}
@@ -162,6 +177,9 @@ spec:
   {{- end }}
   {{- with .Values.services.dnsOverQuic.loadBalancerIP }}
   loadBalancerIP: {{ . }}
+  {{- end }}
+  {{- with .Values.services.dnsOverQuic.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ . }}
   {{- end }}
   ports:
   - port: {{ .Values.services.dnsOverQuic.port1.port }}
@@ -198,6 +216,9 @@ spec:
   {{- end }}
   {{- with .Values.services.dnscrypt.loadBalancerIP }}
   loadBalancerIP: {{ . }}
+  {{- end }}
+  {{- with .Values.services.dnscrypt.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ . }}
   {{- end }}
   ports:
   - name: dnscrypt-tcp
