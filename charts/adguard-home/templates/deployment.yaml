@@ -23,6 +23,7 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
+      hostNetwork: {{ .Values.hostNetwork }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -78,43 +79,56 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+          - /opt/adguardhome/AdGuardHome
+          - --no-check-update
+          - -c
+          - /opt/adguardhome/conf/AdGuardHome.yaml
+          - -w
+          - /opt/adguardhome/work
+          - --web-addr
+          - "0.0.0.0:{{ .Values.services.http.port }}"
           ports:
+          - name: admin
+            containerPort: {{ .Values.services.adminPanel.port }}
+            protocol: TCP
+          - name: http
+            containerPort: {{ .Values.services.http.port }}
+            protocol: TCP
+          {{- if .Values.services.https.enabled }}
+          - name: https
+            containerPort: {{ .Values.services.https.port }}
+            protocol: TCP
+          {{- end }}
+          {{- if .Values.services.dns.enabled }}
           - name: dns-tcp
-            containerPort: 53
+            containerPort: {{ .Values.services.dns.tcp.port }}
             protocol: TCP
           - name: dns-udp
-            containerPort: 53
-            protocol: UDP
-          - name: http
-            containerPort: 80
+            containerPort: {{ .Values.services.dns.udp.port }}
             protocol: TCP
-          - name: https
-            containerPort: 443
+          {{- end }}
+          {{- if .Values.services.dnsOverTls.enabled }}
+          - name: dot
+            containerPort: {{ .Values.services.dnsOverTls.port }}
             protocol: TCP
-          - name: https-udp
-            containerPort: 443
-            protocol: UDP
-          - name: admin
-            containerPort: 3000
-            protocol: TCP
-          - name: dns-over-tls
-            containerPort: 853
-            protocol: TCP
-          - name: dns-over-quic-1
-            containerPort: 784
-            protocol: UDP
-          - name: dns-over-quic-2
-            containerPort: 853
-            protocol: UDP
-          - name: dns-over-quic-3
-            containerPort: 8853
-            protocol: UDP
-          - name: dnscrypt
-            containerPort: 5443
+          {{- end }}
+          {{- if .Values.services.dnscrypt.enabled }}
+          - name: dnscrypt-tcp
+            containerPort: {{ .Values.services.dnscrypt.tcp.port }}
             protocol: TCP
           - name: dnscrypt-udp
-            containerPort: 5443
+            containerPort: {{ .Values.services.dnscrypt.udp.port }}
+            protocol: TCP
+          {{- end }}
+          {{- if .Values.services.dnsOverQuic.enabled }}
+          - name: doq-1
+            containerPort: {{ .Values.services.dnsOverQuic.port1.port }}
             protocol: UDP
+          - name: doq-2
+            containerPort: {{ .Values.services.dnsOverQuic.port2.port }}
+            protocol: UDP
+          {{- end }}
           # livenessProbe:
           #   httpGet:
           #     path: /
