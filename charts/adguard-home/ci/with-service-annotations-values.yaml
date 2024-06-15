@@ -1,0 +1,23 @@
+# -- Additional service annotations
+services:
+  adminPanel:
+    annotations:
+      agh.admin/key: value
+  http:
+    annotations:
+      agh.http/key: value
+  https:
+    annotations:
+      agh.https/key: value
+  dns:
+    annotations:
+      agh.dns/key: value
+  dnsOverTls:
+    annotations:
+      agh.dot/key: value
+  dnsOverQuic:
+    annotations:
+      agh.doq/key: value
+  dnscrypt:
+    annotations:
+      agh.dnscrypt/key: value

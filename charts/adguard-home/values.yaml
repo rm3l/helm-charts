@@ -43,6 +43,8 @@ securityContext: {}
 services:
   adminPanel:
     type: ClusterIP
+    # -- Service annotations
+    annotations: {}
     port: 3000
     # -- Internal cluster service IP for the Admin Panel (when applicable)
     clusterIP: ""
@@ -52,6 +54,8 @@ services:
     nodePort:
   http:
     type: ClusterIP
+    # -- Service annotations
+    annotations: {}
     # -- Internal cluster service IP for HTTP (when applicable)
     clusterIP: ""
     # -- Load balancer IP for HTTP (when applicable)
@@ -62,6 +66,8 @@ services:
   https:
     enabled: true
     type: ClusterIP
+    # -- Service annotations
+    annotations: {}
     # -- Internal cluster service IP for HTTPS (when applicable)
     clusterIP: ""
     # -- Load balancer IP for HTTPS (when applicable)
@@ -72,6 +78,8 @@ services:
   dns:
     enabled: true
     type: NodePort
+    # -- Service annotations
+    annotations: {}
     # -- Internal cluster service IP for DNS (when applicable)
     clusterIP: ""
     # -- Load balancer IP for DNS (when applicable)
@@ -85,6 +93,8 @@ services:
   dnsOverTls:
     enabled: true
     type: NodePort
+    # -- Service annotations
+    annotations: {}
     # -- Internal cluster service IP for DNS over TLS (when applicable)
     clusterIP: ""
     # -- Load balancer IP for DNS over TLS (when applicable)
@@ -95,6 +105,8 @@ services:
   dnsOverQuic:
     enabled: true
     type: NodePort
+    # -- Service annotations
+    annotations: {}
     port1:
       port: 784
       nodePort:
@@ -108,6 +120,8 @@ services:
   dnscrypt:
     enabled: true
     type: NodePort
+    # -- Service annotations
+    annotations: {}
     # -- Internal cluster service IP for DNSCrypt (when applicable)
     clusterIP: ""
     # -- Load balancer IP for DNSCrypt (when applicable)
