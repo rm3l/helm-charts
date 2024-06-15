@@ -1,0 +1,15 @@
+hostNetwork: true
+
+services:
+  http:
+    port: 8888
+  https:
+    enabled: false
+  dns:
+    enabled: false
+  dnsOverTls:
+    enabled: false
+  dnsOverQuic:
+    enabled: false
+  dnscrypt:
+    enabled: false
