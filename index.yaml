@@ -2,6 +2,22 @@ apiVersion: v1
 entries:
   adguard-home:
   - apiVersion: v2
+    appVersion: v0.107.51
+    created: "2024-06-15T08:42:40.054128575Z"
+    description: 'Unofficial Chart for Adguard Home, the network-wide ad and tracking
+      blocker. This Chart also provides automated backups of Adguard Home to services
+      like AWS S3. https://github.com/AdguardTeam/AdGuardHome '
+    digest: 457260f6186ed7a298c5a35ab82bdab5bae5e9edcf14844ae1cc5d4f8c10d605
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: adguard-home
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/adguard-home-0.15.0/adguard-home-0.15.0.tgz
+    version: 0.15.0
+  - apiVersion: v2
     appVersion: v0.107.46
     created: "2024-06-15T08:13:50.718710021Z"
     description: 'Unofficial Chart for Adguard Home, the network-wide ad and tracking
@@ -2091,4 +2107,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2024-06-15T08:13:50.719009778Z"
+generated: "2024-06-15T08:42:40.054354055Z"
