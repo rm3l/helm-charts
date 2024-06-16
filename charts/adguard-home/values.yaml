@@ -48,7 +48,7 @@ services:
     port: 3000
     # -- Internal cluster service IP for the Admin Panel (when applicable)
     clusterIP: ""
-    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort"
+    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort"
     externalTrafficPolicy:
     # -- Load balancer IP for the Admin Panel (when applicable)
     loadBalancerIP:
@@ -60,7 +60,7 @@ services:
     annotations: {}
     # -- Internal cluster service IP for HTTP (when applicable)
     clusterIP: ""
-    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort"
+    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort"
     externalTrafficPolicy:
     # -- Load balancer IP for HTTP (when applicable)
     loadBalancerIP:
@@ -74,7 +74,7 @@ services:
     annotations: {}
     # -- Internal cluster service IP for HTTPS (when applicable)
     clusterIP: ""
-    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort"
+    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort"
     externalTrafficPolicy:
     # -- Load balancer IP for HTTPS (when applicable)
     loadBalancerIP:
@@ -88,7 +88,7 @@ services:
     annotations: {}
     # -- Internal cluster service IP for DNS (when applicable)
     clusterIP: ""
-    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort"
+    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort"
     externalTrafficPolicy:
     # -- Load balancer IP for DNS (when applicable)
     loadBalancerIP:
@@ -105,7 +105,7 @@ services:
     annotations: {}
     # -- Internal cluster service IP for DNS over TLS (when applicable)
     clusterIP: ""
-    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort"
+    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort"
     externalTrafficPolicy:
     # -- Load balancer IP for DNS over TLS (when applicable)
     loadBalancerIP:
@@ -125,7 +125,7 @@ services:
       nodePort:
     # -- Internal cluster service IP for DNS Over QUIC (when applicable)
     clusterIP: ""
-    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort"
+    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort"
     externalTrafficPolicy:
     # -- Load balancer IP for DNS Over QUIC (when applicable)
     loadBalancerIP:
@@ -136,7 +136,7 @@ services:
     annotations: {}
     # -- Internal cluster service IP for DNSCrypt (when applicable)
     clusterIP: ""
-    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort"
+    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort"
     externalTrafficPolicy:
     # -- Load balancer IP for DNSCrypt (when applicable)
     loadBalancerIP:
