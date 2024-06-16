@@ -1,0 +1,22 @@
+services:
+  adminPanel:
+    externalTrafficPolicy: Local
+    type: NodePort
+  http:
+    externalTrafficPolicy: Local
+    type: NodePort
+  https:
+    externalTrafficPolicy: Local
+    type: NodePort
+  dns:
+    externalTrafficPolicy: Local
+    type: NodePort
+  dnsOverTls:
+    externalTrafficPolicy: Local
+    type: NodePort
+  dnsOverQuic:
+    externalTrafficPolicy: Local
+    type: NodePort
+  dnscrypt:
+    externalTrafficPolicy: Local
+    type: NodePort
