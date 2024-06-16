@@ -221,7 +221,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | serviceAccount.name | string | `""` |  |
 | services.adminPanel.annotations | object | `{}` | Service annotations |
 | services.adminPanel.clusterIP | string | `""` | Internal cluster service IP for the Admin Panel (when applicable) |
-| services.adminPanel.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort" |
+| services.adminPanel.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort" |
 | services.adminPanel.loadBalancerIP | string | `nil` | Load balancer IP for the Admin Panel (when applicable) |
 | services.adminPanel.nodePort | int | `nil` | Node port for the Admin Panel (when applicable) |
 | services.adminPanel.port | int | `3000` |  |
@@ -229,7 +229,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | services.dns.annotations | object | `{}` | Service annotations |
 | services.dns.clusterIP | string | `""` | Internal cluster service IP for DNS (when applicable) |
 | services.dns.enabled | bool | `true` |  |
-| services.dns.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort" |
+| services.dns.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort" |
 | services.dns.loadBalancerIP | string | `nil` | Load balancer IP for DNS (when applicable) |
 | services.dns.tcp.nodePort | string | `nil` |  |
 | services.dns.tcp.port | int | `53` |  |
@@ -239,7 +239,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | services.dnsOverQuic.annotations | object | `{}` | Service annotations |
 | services.dnsOverQuic.clusterIP | string | `""` | Internal cluster service IP for DNS Over QUIC (when applicable) |
 | services.dnsOverQuic.enabled | bool | `true` |  |
-| services.dnsOverQuic.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort" |
+| services.dnsOverQuic.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort" |
 | services.dnsOverQuic.loadBalancerIP | string | `nil` | Load balancer IP for DNS Over QUIC (when applicable) |
 | services.dnsOverQuic.port1.nodePort | string | `nil` |  |
 | services.dnsOverQuic.port1.port | int | `784` |  |
@@ -249,7 +249,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | services.dnsOverTls.annotations | object | `{}` | Service annotations |
 | services.dnsOverTls.clusterIP | string | `""` | Internal cluster service IP for DNS over TLS (when applicable) |
 | services.dnsOverTls.enabled | bool | `true` |  |
-| services.dnsOverTls.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort" |
+| services.dnsOverTls.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort" |
 | services.dnsOverTls.loadBalancerIP | string | `nil` | Load balancer IP for DNS over TLS (when applicable) |
 | services.dnsOverTls.nodePort | string | `nil` |  |
 | services.dnsOverTls.port | int | `853` | Node port for DNS over TLS (when applicable) |
@@ -257,7 +257,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | services.dnscrypt.annotations | object | `{}` | Service annotations |
 | services.dnscrypt.clusterIP | string | `""` | Internal cluster service IP for DNSCrypt (when applicable) |
 | services.dnscrypt.enabled | bool | `true` |  |
-| services.dnscrypt.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort" |
+| services.dnscrypt.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort" |
 | services.dnscrypt.loadBalancerIP | string | `nil` | Load balancer IP for DNSCrypt (when applicable) |
 | services.dnscrypt.tcp.nodePort | string | `nil` |  |
 | services.dnscrypt.tcp.port | int | `5443` |  |
@@ -266,7 +266,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | services.dnscrypt.udp.port | int | `5443` |  |
 | services.http.annotations | object | `{}` | Service annotations |
 | services.http.clusterIP | string | `""` | Internal cluster service IP for HTTP (when applicable) |
-| services.http.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort" |
+| services.http.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort" |
 | services.http.loadBalancerIP | string | `nil` | Load balancer IP for HTTP (when applicable) |
 | services.http.nodePort | string | `nil` |  |
 | services.http.port | int | `80` | Node port for HTTP (when applicable) |
@@ -274,7 +274,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | services.https.annotations | object | `{}` | Service annotations |
 | services.https.clusterIP | string | `""` | Internal cluster service IP for HTTPS (when applicable) |
 | services.https.enabled | bool | `true` |  |
-| services.https.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalacer" or "NodePort" |
+| services.https.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort" |
 | services.https.loadBalancerIP | string | `nil` | Load balancer IP for HTTPS (when applicable) |
 | services.https.nodePort | int | `nil` | Node port for HTTPS (when applicable) |
 | services.https.port | int | `443` |  |
