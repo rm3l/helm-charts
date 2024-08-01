@@ -94,9 +94,6 @@ spec:
           - --web-addr
           - "0.0.0.0:{{ .Values.services.http.port }}"
           ports:
-          - name: admin
-            containerPort: {{ .Values.services.adminPanel.port }}
-            protocol: TCP
           - name: http
             containerPort: {{ .Values.services.http.port }}
             protocol: TCP
