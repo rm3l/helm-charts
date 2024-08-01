@@ -229,7 +229,13 @@ strategy: {}
 # -- Host networking requested for the pod. Beware that setting this to true requires all container ports declared in the pod to be free on the node. This can be useful for example to expose AdGuard Home as a DHCP Server.
 hostNetwork: false
 
+priorityClassName: ""
+livenessProbe: null
+readinessProbe: null
+startupProbe: null
+
 persistence:
+  existingClaim: null
   volumeClaimSpec:
     accessModes:
       - ReadWriteOnce
