@@ -4,13 +4,13 @@ Unofficial Chart for Adguard Home, the network-wide ad and tracking blocker.
 This Chart also provides automated backups of Adguard Home to services like AWS S3.
 https://github.com/AdguardTeam/AdGuardHome
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.17.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
+[![Latest version](https://img.shields.io/badge/latest_version-0.18.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-adguard-home rm3l/adguard-home --version 0.17.0
+$ helm install my-adguard-home rm3l/adguard-home --version 0.18.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
@@ -208,12 +208,16 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | ingresses.https.hosts[0].paths[0].path | string | `"/"` |  |
 | ingresses.https.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
 | ingresses.https.tls | list | `[]` |  |
+| livenessProbe | string | `nil` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
+| persistence.existingClaim | string | `nil` |  |
 | persistence.volumeClaimSpec.accessModes[0] | string | `"ReadWriteOnce"` |  |
 | persistence.volumeClaimSpec.resources.requests.storage | string | `"1Gi"` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
+| priorityClassName | string | `""` |  |
+| readinessProbe | string | `nil` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
@@ -280,6 +284,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | services.https.nodePort | int | `nil` | Node port for HTTPS (when applicable) |
 | services.https.port | int | `443` |  |
 | services.https.type | string | `"ClusterIP"` |  |
+| startupProbe | string | `nil` |  |
 | strategy | object | `{}` | Strategy used to replace old Pods by new ones |
 | tolerations | list | `[]` |  |
 

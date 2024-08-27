@@ -23,6 +23,7 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
+      priorityClassName: {{ .Values.priorityClassName }}
       hostNetwork: {{ .Values.hostNetwork }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -39,7 +40,11 @@ spec:
       {{- end }}
       - name: data-vol
         persistentVolumeClaim:
+          {{- if not .Values.persistence.existingClaim }}
           claimName: {{ include "adguard-home.fullname" . }}
+          {{- else }}
+          claimName: {{ .Values.persistence.existingClaim }}
+          {{- end -}}
       {{- with .Values.extraVolumes }}
         {{- toYaml . | nindent 6 }}
       {{- end }}
@@ -89,9 +94,6 @@ spec:
           - --web-addr
           - "0.0.0.0:{{ .Values.services.http.port }}"
           ports:
-          - name: admin
-            containerPort: {{ .Values.services.adminPanel.port }}
-            protocol: TCP
           - name: http
             containerPort: {{ .Values.services.http.port }}
             protocol: TCP
@@ -106,7 +108,7 @@ spec:
             protocol: TCP
           - name: dns-udp
             containerPort: {{ .Values.services.dns.udp.port }}
-            protocol: TCP
+            protocol: UDP
           {{- end }}
           {{- if .Values.services.dnsOverTls.enabled }}
           - name: dot
@@ -119,7 +121,7 @@ spec:
             protocol: TCP
           - name: dnscrypt-udp
             containerPort: {{ .Values.services.dnscrypt.udp.port }}
-            protocol: TCP
+            protocol: UDP
           {{- end }}
           {{- if .Values.services.dnsOverQuic.enabled }}
           - name: doq-1
@@ -129,14 +131,12 @@ spec:
             containerPort: {{ .Values.services.dnsOverQuic.port2.port }}
             protocol: UDP
           {{- end }}
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
+          livenessProbe:
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
+          startupProbe:
+            {{- toYaml .Values.startupProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
