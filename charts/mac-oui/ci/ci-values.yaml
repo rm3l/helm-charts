@@ -10,7 +10,12 @@ service:
   port: 8080
 
 ingress:
-  enabled: false
+  enabled: true
+  hosts:
+    - host: mac-oui.127.0.0.1.nip.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
 
 # -- Configure the liveness healthcheck for the mac-oui containers
 livenessProbe:
