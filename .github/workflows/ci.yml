@@ -12,6 +12,9 @@ jobs:
 
   pre-commit_checks:
     runs-on: ubuntu-latest
+    concurrency:
+      group: pre-commit-${{ github.ref }}
+      cancel-in-progress: true
     steps:
     - uses: actions/checkout@v4
 
@@ -33,6 +36,9 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    concurrency:
+      group: lint-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -87,6 +93,9 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental }}
     name: Test (K8s ${{ matrix.kube_version }})
+    concurrency:
+      group: test-${{ matrix.kube_version }}-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -121,17 +130,58 @@ jobs:
             echo "::set-output name=changed::true"
           fi
 
+      - name: Create Kind Config
+        run: |
+          cat <<EOF > /tmp/kind.config_${{ matrix.kube_version }}.yaml
+          kind: Cluster
+          apiVersion: kind.x-k8s.io/v1alpha4
+          nodes:
+          - role: control-plane
+            image: "kindest/node:v${{ matrix.kube_version }}"
+            kubeadmConfigPatches:
+            - |
+              kind: InitConfiguration
+              nodeRegistration:
+                kubeletExtraArgs:
+                  node-labels: "ingress-ready=true"
+            extraPortMappings:
+            - containerPort: 80
+              hostPort: 80
+              protocol: TCP
+            - containerPort: 443
+              hostPort: 443
+              protocol: TCP
+          EOF
+
       - name: Create kind cluster (main)
         uses: helm/kind-action@v1.10.0
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.list-changed-main.outputs.changed == 'true'
         with:
-          node_image: "kindest/node:v${{ matrix.kube_version }}"
+          config: /tmp/kind.config_${{ matrix.kube_version }}.yaml
+
+      - name: Deploy NGINX Ingress Controller (main)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.list-changed-main.outputs.changed == 'true'
+        run: |
+          kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+          kubectl wait --namespace ingress-nginx \
+            --for=condition=ready pod \
+            --selector=app.kubernetes.io/component=controller \
+            --timeout=90s
 
       - name: Create kind cluster (PR)
         uses: helm/kind-action@v1.10.0
         if: github.event_name == 'pull_request' && steps.list-changed-pr.outputs.changed == 'true'
         with:
-          node_image: "kindest/node:v${{ matrix.kube_version }}"
+          config: /tmp/kind.config_${{ matrix.kube_version }}.yaml
+
+      - name: Deploy NGINX Ingress Controller (PR)
+        if: github.event_name == 'pull_request' && steps.list-changed-pr.outputs.changed == 'true'
+        run: |
+          kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+          kubectl wait --namespace ingress-nginx \
+            --for=condition=ready pod \
+            --selector=app.kubernetes.io/component=controller \
+            --timeout=90s
 
       - name: Run chart-testing (install on main)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -143,6 +193,9 @@ jobs:
       
   kube-linter:
     runs-on: ubuntu-latest
+    concurrency:
+      group: kube-linter-${{ matrix.chart }}-${{ github.ref }}
+      cancel-in-progress: true
     strategy:
       matrix:
         chart:
@@ -177,6 +230,9 @@ jobs:
       - lint
       - test
     runs-on: ubuntu-latest
+    concurrency:
+      group: release
+      cancel-in-progress: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -206,6 +262,9 @@ jobs:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/'))
     needs:
       - release
+    concurrency:
+      group: update_gh-pages
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

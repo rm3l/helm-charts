@@ -4,21 +4,29 @@ service:
   type: ClusterIP
   port: 8080
 
+ingress:
+  enabled: true
+  hosts:
+    - host: dev-feed.127.0.0.1.nip.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+
 # -- Configure the startup healthcheck for the containers
 startupProbe:
-  initialDelaySeconds: 3
+  initialDelaySeconds: 30
   periodSeconds: 10
   timeoutSeconds: 10
 
 # -- Configure the liveness healthcheck for the containers
 livenessProbe:
-  # initialDelaySeconds: 3
+  initialDelaySeconds: 30
   periodSeconds: 10
   timeoutSeconds: 10
 
 # -- Configure the readiness healthcheck for the containers
 readinessProbe:
-  # initialDelaySeconds: 3
+  initialDelaySeconds: 30
   periodSeconds: 10
   timeoutSeconds: 10
 
@@ -32,7 +40,7 @@ config: |
 
 ## Dependencies
 mariadb:
-  enabled: true
+  enabled: false
 
 mongodb:
   enabled: false
