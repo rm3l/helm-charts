@@ -14,19 +14,19 @@ ingress:
 
 # -- Configure the startup healthcheck for the containers
 startupProbe:
-  initialDelaySeconds: 3
+  initialDelaySeconds: 30
   periodSeconds: 10
   timeoutSeconds: 10
 
 # -- Configure the liveness healthcheck for the containers
 livenessProbe:
-  # initialDelaySeconds: 3
+  initialDelaySeconds: 30
   periodSeconds: 10
   timeoutSeconds: 10
 
 # -- Configure the readiness healthcheck for the containers
 readinessProbe:
-  # initialDelaySeconds: 3
+  initialDelaySeconds: 30
   periodSeconds: 10
   timeoutSeconds: 10
 
