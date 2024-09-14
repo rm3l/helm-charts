@@ -105,9 +105,10 @@ tolerations: []
 affinity: {}
 
 datasource:
-# TODO Deduce from mariadb or mongodb settings
-  user: db-user
-  password: pl34s3Ch4ng3M3
+  # TODO Deduce from mariadb or mongodb settings
+  user: ""
+  password: ""
+  url: ""
 
 auth:
   password: r3allyPl34s3Ch4ng3M3
@@ -151,57 +152,63 @@ crawlers:
 
   discoverdev_io:
     enabled: true
-    image:
-      repository: rm3l/dev-feed-crawler-discoverdev_io
-      pullPolicy: IfNotPresent
-    schedule: "0 0 * * 0"
-    concurrencyPolicy: Forbid
-    startingDeadlineSeconds: 3600
-    activeDeadlineSeconds: 1800
-    ttlSecondsAfterFinished: 900
-    restartPolicy: OnFailure
-    articleMaxAgeDays: 365
-    affinity: {}
-    imagePullSecrets: []
-    podSecurityContext:
-      runAsNonRoot: true
-    podAnnotations: {}
-      # fsGroup: 2000
+    cronjob:
+      enabled: false
+      image:
+        repository: rm3l/dev-feed-crawler-discoverdev_io
+        pullPolicy: IfNotPresent
+      schedule: "0 0 * * 0"
+      concurrencyPolicy: Forbid
+      startingDeadlineSeconds: 3600
+      activeDeadlineSeconds: 1800
+      ttlSecondsAfterFinished: 900
+      restartPolicy: OnFailure
+      articleMaxAgeDays: 365
+      affinity: {}
+      imagePullSecrets: []
+      podSecurityContext:
+        runAsNonRoot: true
+      podAnnotations: {}
+        # fsGroup: 2000
 
   engineeringblogs_xyz:
     enabled: true
-    image:
-      repository: rm3l/dev-feed-crawler-engineeringblogs_xyz
-      pullPolicy: IfNotPresent
-    schedule: "*/30 * * * *"
-    concurrencyPolicy: Forbid
-    startingDeadlineSeconds: 3600
-    activeDeadlineSeconds: 1800
-    ttlSecondsAfterFinished: 900
-    restartPolicy: OnFailure
-    articleMaxAgeDays: 365
-    affinity: {}
-    imagePullSecrets: []
-    podSecurityContext:
-      runAsNonRoot: true
-    podAnnotations: {}
-      # fsGroup: 2000
+    cronjob:
+      enabled: false
+      image:
+        repository: rm3l/dev-feed-crawler-engineeringblogs_xyz
+        pullPolicy: IfNotPresent
+      schedule: "*/30 * * * *"
+      concurrencyPolicy: Forbid
+      startingDeadlineSeconds: 3600
+      activeDeadlineSeconds: 1800
+      ttlSecondsAfterFinished: 900
+      restartPolicy: OnFailure
+      articleMaxAgeDays: 365
+      affinity: {}
+      imagePullSecrets: []
+      podSecurityContext:
+        runAsNonRoot: true
+      podAnnotations: {}
+        # fsGroup: 2000
 
   rm3l_org:
     enabled: true
-    image:
-      repository: rm3l/dev-feed-crawler-rm3l_org
-      pullPolicy: IfNotPresent
-    schedule: "0 0 * * *"
-    concurrencyPolicy: Forbid
-    startingDeadlineSeconds: 3600
-    activeDeadlineSeconds: 1800
-    ttlSecondsAfterFinished: 900
-    restartPolicy: OnFailure
-    articleMaxAgeDays: 365
-    affinity: {}
-    imagePullSecrets: []
-    podSecurityContext:
-      runAsNonRoot: true
-    podAnnotations: {}
-      # fsGroup: 2000
+    cronjob:
+      enabled: false
+      image:
+        repository: rm3l/dev-feed-crawler-rm3l_org
+        pullPolicy: IfNotPresent
+      schedule: "0 0 * * *"
+      concurrencyPolicy: Forbid
+      startingDeadlineSeconds: 3600
+      activeDeadlineSeconds: 1800
+      ttlSecondsAfterFinished: 900
+      restartPolicy: OnFailure
+      articleMaxAgeDays: 365
+      affinity: {}
+      imagePullSecrets: []
+      podSecurityContext:
+        runAsNonRoot: true
+      podAnnotations: {}
+        # fsGroup: 2000

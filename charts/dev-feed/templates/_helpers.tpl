@@ -28,7 +28,9 @@ If release name contains chart name it will be used as a full name.
 Return the Datasource URL
 */}}
 {{- define "dev-feed.datasourceUrl" -}}
-{{- if .Values.mariadb.enabled }}
+{{- if .Values.datasource.url }}
+{{- printf "%s" .Values.datasource.url -}}
+{{- else if .Values.mariadb.enabled }}
 {{- printf "jdbc:mariadb://%s-mariadb.%s.svc.cluster.local:3306/dev-feed" (include "dev-feed.fullname" .) .Release.Namespace -}}
 {{- else -}}
 {{- printf "jdbc:h2:mem:%s;DB_CLOSE_DELAY=-1" (include "dev-feed.fullname" .) -}}
@@ -39,7 +41,9 @@ Return the Datasource URL
 Return the Datasource Driver
 */}}
 {{- define "dev-feed.datasourceDriver" -}}
-{{- if .Values.mariadb.enabled }}
+{{- if .Values.datasource.driver }}
+{{- printf "%s" .Values.datasource.driver -}}
+{{- else if .Values.mariadb.enabled }}
 {{- printf "org.mariadb.jdbc.Driver" -}}
 {{- else if .Values.mongodb.enabled }}
 {{- printf "" -}}
@@ -56,7 +60,9 @@ Create chart name and version as used by the chart label.
 {{- end -}}
 
 {{- define "dev-feed.mongodbConnectionString" -}}
-{{- if .Values.mongodb.enabled }}
+{{- if .Values.datasource.url }}
+{{- printf "%s" .Values.datasource.url -}}
+{{- else if .Values.mongodb.enabled -}}
 {{- printf "mongodb://root:%s@%s-mongodb.%s.svc.cluster.local:27017" .Values.mongodb.auth.rootPassword (include "dev-feed.fullname" .) .Release.Namespace -}}
 {{- else -}}
 {{- printf "" -}}

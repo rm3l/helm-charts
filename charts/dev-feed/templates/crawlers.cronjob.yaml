@@ -1,6 +1,7 @@
-{{- if or .Values.mariadb.enabled .Values.mongodb.enabled }}
+{{- if or .Values.mariadb.enabled .Values.mongodb.enabled .Values.crawlers.engineeringblogs_xyz.cronjob.enabled .Values.crawlers.rm3l_org.cronjob.enabled .Values.crawlers.discoverdev_io.cronjob.enabled }}
 {{- $kubeVersion := .Capabilities.KubeVersion.GitVersion -}}
-{{- if .Values.crawlers.discoverdev_io.enabled }}
+
+{{- if .Values.crawlers.discoverdev_io.cronjob.enabled }}
 {{/* discoverdev.io */}}
 {{- if semverCompare ">=1.21-0" $kubeVersion -}}
 apiVersion: batch/v1
@@ -11,35 +12,36 @@ kind: CronJob
 metadata:
   name: {{ include "dev-feed.fullname" . }}-crawler-discoverdev-io
 spec:
-  schedule: "{{ .Values.crawlers.discoverdev_io.schedule }}"
-  concurrencyPolicy: {{ .Values.crawlers.discoverdev_io.concurrencyPolicy }}
-  startingDeadlineSeconds: {{ .Values.crawlers.discoverdev_io.startingDeadlineSeconds }}
+  schedule: "{{ .Values.crawlers.discoverdev_io.cronjob.schedule }}"
+  concurrencyPolicy: {{ .Values.crawlers.discoverdev_io.cronjob.concurrencyPolicy }}
+  startingDeadlineSeconds: {{ .Values.crawlers.discoverdev_io.cronjob.startingDeadlineSeconds }}
   jobTemplate:
     spec:
-      ttlSecondsAfterFinished: {{ .Values.crawlers.discoverdev_io.ttlSecondsAfterFinished }}
-      activeDeadlineSeconds: {{ .Values.crawlers.discoverdev_io.activeDeadlineSeconds }}
+      ttlSecondsAfterFinished: {{ .Values.crawlers.discoverdev_io.cronjob.ttlSecondsAfterFinished }}
+      activeDeadlineSeconds: {{ .Values.crawlers.discoverdev_io.cronjob.activeDeadlineSeconds }}
       template:
         metadata:
           annotations:
             checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
             checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
-            {{- with .Values.crawlers.discoverdev_io.podAnnotations }}
+            {{- with .Values.crawlers.discoverdev_io.cronjob.podAnnotations }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
         spec:
-          {{- with .Values.crawlers.discoverdev_io.affinity }}
+          {{- with .Values.crawlers.discoverdev_io.cronjob.affinity }}
           affinity:
             {{- toYaml . | nindent 12 }}
           {{- end }}
 
-          {{- with .Values.crawlers.discoverdev_io.imagePullSecrets }}
+          {{- with .Values.crawlers.discoverdev_io.cronjob.imagePullSecrets }}
           imagePullSecrets:
             {{- toYaml . | nindent 12 }}
            {{- end }}
           serviceAccountName: {{ include "dev-feed.serviceAccountName" . }}
           securityContext:
-            {{- toYaml .Values.crawlers.discoverdev_io.podSecurityContext | nindent 12 }}
+            {{- toYaml .Values.crawlers.discoverdev_io.cronjob.podSecurityContext | nindent 12 }}
 
+          {{- if or .Values.mariadb.enabled .Values.mongodb.enabled }}
           initContainers:
           - name: wait-db-service
             image: busybox:1.28
@@ -59,11 +61,12 @@ spec:
               readOnlyRootFilesystem: true
               runAsUser: 65534
               runAsGroup: 65534
+          {{- end }}
 
           containers:
           - name: {{ include "dev-feed.fullname" . }}-crawler-discoverdev-io
-            image: "{{ .Values.crawlers.discoverdev_io.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-            imagePullPolicy: {{ .Values.crawlers.discoverdev_io.image.pullPolicy }}
+            image: "{{ .Values.crawlers.discoverdev_io.cronjob.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+            imagePullPolicy: {{ .Values.crawlers.discoverdev_io.cronjob.image.pullPolicy }}
             securityContext:
               readOnlyRootFilesystem: true
               runAsUser: 65534
@@ -98,7 +101,7 @@ spec:
             - --datasource-user=$(DATASOURCE_USER)
             - --datasource-password=$(DATASOURCE_PASSWORD)
             {{- end }}
-            - --article-max-age-days={{ .Values.crawlers.discoverdev_io.articleMaxAgeDays }}
+            - --article-max-age-days={{ .Values.crawlers.discoverdev_io.cronjob.articleMaxAgeDays }}
             resources:
               limits:
                 cpu: 300m
@@ -106,11 +109,11 @@ spec:
               requests:
                 cpu: 300m
                 memory: 512Mi
-          restartPolicy: {{ .Values.crawlers.discoverdev_io.restartPolicy }}
+          restartPolicy: {{ .Values.crawlers.discoverdev_io.cronjob.restartPolicy }}
 
 {{- end }}
 ---
-{{- if .Values.crawlers.engineeringblogs_xyz.enabled }}
+{{- if .Values.crawlers.engineeringblogs_xyz.cronjob.enabled }}
 {{/* engineeringblogs.xyz */}}
 {{- if semverCompare ">=1.21-0" $kubeVersion -}}
 apiVersion: batch/v1
@@ -121,35 +124,36 @@ kind: CronJob
 metadata:
   name: {{ include "dev-feed.fullname" . }}-crawler-engineeringblogs-xyz
 spec:
-  schedule: "{{ .Values.crawlers.engineeringblogs_xyz.schedule }}"
-  concurrencyPolicy: {{ .Values.crawlers.engineeringblogs_xyz.concurrencyPolicy }}
-  startingDeadlineSeconds: {{ .Values.crawlers.engineeringblogs_xyz.startingDeadlineSeconds }}
+  schedule: "{{ .Values.crawlers.engineeringblogs_xyz.cronjob.schedule }}"
+  concurrencyPolicy: {{ .Values.crawlers.engineeringblogs_xyz.cronjob.concurrencyPolicy }}
+  startingDeadlineSeconds: {{ .Values.crawlers.engineeringblogs_xyz.cronjob.startingDeadlineSeconds }}
   jobTemplate:
     spec:
-      ttlSecondsAfterFinished: {{ .Values.crawlers.engineeringblogs_xyz.ttlSecondsAfterFinished }}
-      activeDeadlineSeconds: {{ .Values.crawlers.engineeringblogs_xyz.activeDeadlineSeconds }}
+      ttlSecondsAfterFinished: {{ .Values.crawlers.engineeringblogs_xyz.cronjob.ttlSecondsAfterFinished }}
+      activeDeadlineSeconds: {{ .Values.crawlers.engineeringblogs_xyz.cronjob.activeDeadlineSeconds }}
       template:
         metadata:
           annotations:
             checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
             checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
-            {{- with .Values.crawlers.engineeringblogs_xyz.podAnnotations }}
+            {{- with .Values.crawlers.engineeringblogs_xyz.cronjob.podAnnotations }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
         spec:
-          {{- with .Values.crawlers.engineeringblogs_xyz.affinity }}
+          {{- with .Values.crawlers.engineeringblogs_xyz.cronjob.affinity }}
           affinity:
             {{- toYaml . | nindent 12 }}
           {{- end }}
 
-          {{- with .Values.crawlers.engineeringblogs_xyz.imagePullSecrets }}
+          {{- with .Values.crawlers.engineeringblogs_xyz.cronjob.imagePullSecrets }}
           imagePullSecrets:
             {{- toYaml . | nindent 12 }}
            {{- end }}
           serviceAccountName: {{ include "dev-feed.serviceAccountName" . }}
           securityContext:
-            {{- toYaml .Values.crawlers.engineeringblogs_xyz.podSecurityContext | nindent 12 }}
+            {{- toYaml .Values.crawlers.engineeringblogs_xyz.cronjob.podSecurityContext | nindent 12 }}
 
+          {{- if or .Values.mariadb.enabled .Values.mongodb.enabled }}
           initContainers:
           - name: wait-db-service
             image: busybox:1.28
@@ -169,11 +173,12 @@ spec:
               readOnlyRootFilesystem: true
               runAsUser: 65534
               runAsGroup: 65534
+          {{- end }}
 
           containers:
           - name: {{ include "dev-feed.fullname" . }}-crawler-engineeringblogs-xyz
-            image: "{{ .Values.crawlers.engineeringblogs_xyz.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-            imagePullPolicy: {{ .Values.crawlers.engineeringblogs_xyz.image.pullPolicy }}
+            image: "{{ .Values.crawlers.engineeringblogs_xyz.cronjob.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+            imagePullPolicy: {{ .Values.crawlers.engineeringblogs_xyz.cronjob.image.pullPolicy }}
             securityContext:
               readOnlyRootFilesystem: true
               runAsUser: 65534
@@ -208,7 +213,7 @@ spec:
             - --datasource-user=$(DATASOURCE_USER)
             - --datasource-password=$(DATASOURCE_PASSWORD)
             {{- end }}
-            - --article-max-age-days={{ .Values.crawlers.engineeringblogs_xyz.articleMaxAgeDays }}
+            - --article-max-age-days={{ .Values.crawlers.engineeringblogs_xyz.cronjob.articleMaxAgeDays }}
             resources:
               limits:
                 cpu: 500m
@@ -216,10 +221,10 @@ spec:
               requests:
                 cpu: 500m
                 memory: 1024Mi
-          restartPolicy: {{ .Values.crawlers.engineeringblogs_xyz.restartPolicy }}
+          restartPolicy: {{ .Values.crawlers.engineeringblogs_xyz.cronjob.restartPolicy }}
 {{- end }}
 ---
-{{- if .Values.crawlers.rm3l_org.enabled }}
+{{- if .Values.crawlers.rm3l_org.cronjob.enabled }}
 {{/* rm3l.org */}}
 {{- if semverCompare ">=1.21-0" $kubeVersion -}}
 apiVersion: batch/v1
@@ -230,35 +235,36 @@ kind: CronJob
 metadata:
   name: {{ include "dev-feed.fullname" . }}-crawler-rm3l-org
 spec:
-  schedule: "{{ .Values.crawlers.rm3l_org.schedule }}"
-  concurrencyPolicy: {{ .Values.crawlers.rm3l_org.concurrencyPolicy }}
-  startingDeadlineSeconds: {{ .Values.crawlers.rm3l_org.startingDeadlineSeconds }}
+  schedule: "{{ .Values.crawlers.rm3l_org.cronjob.schedule }}"
+  concurrencyPolicy: {{ .Values.crawlers.rm3l_org.cronjob.concurrencyPolicy }}
+  startingDeadlineSeconds: {{ .Values.crawlers.rm3l_org.cronjob.startingDeadlineSeconds }}
   jobTemplate:
     spec:
-      ttlSecondsAfterFinished: {{ .Values.crawlers.rm3l_org.ttlSecondsAfterFinished }}
-      activeDeadlineSeconds: {{ .Values.crawlers.rm3l_org.activeDeadlineSeconds }}
+      ttlSecondsAfterFinished: {{ .Values.crawlers.rm3l_org.cronjob.ttlSecondsAfterFinished }}
+      activeDeadlineSeconds: {{ .Values.crawlers.rm3l_org.cronjob.activeDeadlineSeconds }}
       template:
         metadata:
           annotations:
             checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
             checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
-            {{- with .Values.crawlers.rm3l_org.podAnnotations }}
+            {{- with .Values.crawlers.rm3l_org.cronjob.podAnnotations }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
         spec:
-          {{- with .Values.crawlers.rm3l_org.affinity }}
+          {{- with .Values.crawlers.rm3l_org.cronjob.affinity }}
           affinity:
             {{- toYaml . | nindent 12 }}
           {{- end }}
 
-          {{- with .Values.crawlers.rm3l_org.imagePullSecrets }}
+          {{- with .Values.crawlers.rm3l_org.cronjob.imagePullSecrets }}
           imagePullSecrets:
             {{- toYaml . | nindent 12 }}
            {{- end }}
           serviceAccountName: {{ include "dev-feed.serviceAccountName" . }}
           securityContext:
-            {{- toYaml .Values.crawlers.rm3l_org.podSecurityContext | nindent 12 }}
+            {{- toYaml .Values.crawlers.rm3l_org.cronjob.podSecurityContext | nindent 12 }}
 
+          {{- if or .Values.mariadb.enabled .Values.mongodb.enabled }}
           initContainers:
           - name: wait-db-service
             image: busybox:1.28
@@ -278,11 +284,12 @@ spec:
               readOnlyRootFilesystem: true
               runAsUser: 65534
               runAsGroup: 65534
+          {{- end }}
 
           containers:
           - name: {{ include "dev-feed.fullname" . }}-crawler-rm3l-org
-            image: "{{ .Values.crawlers.rm3l_org.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-            imagePullPolicy: {{ .Values.crawlers.rm3l_org.image.pullPolicy }}
+            image: "{{ .Values.crawlers.rm3l_org.cronjob.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+            imagePullPolicy: {{ .Values.crawlers.rm3l_org.cronjob.image.pullPolicy }}
             securityContext:
               readOnlyRootFilesystem: true
               runAsUser: 65534
@@ -317,7 +324,7 @@ spec:
             - --datasource-user=$(DATASOURCE_USER)
             - --datasource-password=$(DATASOURCE_PASSWORD)
             {{- end }}
-            - --article-max-age-days={{ .Values.crawlers.rm3l_org.articleMaxAgeDays }}
+            - --article-max-age-days={{ .Values.crawlers.rm3l_org.cronjob.articleMaxAgeDays }}
             resources:
               limits:
                 cpu: 300m
@@ -325,6 +332,6 @@ spec:
               requests:
                 cpu: 300m
                 memory: 512Mi
-          restartPolicy: {{ .Values.crawlers.rm3l_org.restartPolicy }}
+          restartPolicy: {{ .Values.crawlers.rm3l_org.cronjob.restartPolicy }}
 {{- end }}
 {{- end }}

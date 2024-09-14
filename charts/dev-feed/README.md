@@ -3,13 +3,13 @@
 GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
 https://github.com/rm3l/dev-feed
 
-[![Latest version](https://img.shields.io/badge/latest_version-2.6.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![Latest version](https://img.shields.io/badge/latest_version-3.0.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-dev-feed rm3l/dev-feed --version 2.6.0
+$ helm install my-dev-feed rm3l/dev-feed --version 3.0.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
@@ -28,51 +28,55 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | affinity | object | `{}` |  |
 | auth.password | string | `"r3allyPl34s3Ch4ng3M3"` |  |
 | config | string | `"logging.level.org.rm3l.devfeed=INFO\ndatasource.poolSize=2\nexecutor.thread-pool.size=20\n#article.screenshot.service=pagespeedonline\n#pagespeedonline.api.timeoutSeconds=300\n"` |  |
-| crawlers.discoverdev_io.activeDeadlineSeconds | int | `1800` |  |
-| crawlers.discoverdev_io.affinity | object | `{}` |  |
-| crawlers.discoverdev_io.articleMaxAgeDays | int | `365` |  |
-| crawlers.discoverdev_io.concurrencyPolicy | string | `"Forbid"` |  |
+| crawlers.discoverdev_io.cronjob.activeDeadlineSeconds | int | `1800` |  |
+| crawlers.discoverdev_io.cronjob.affinity | object | `{}` |  |
+| crawlers.discoverdev_io.cronjob.articleMaxAgeDays | int | `365` |  |
+| crawlers.discoverdev_io.cronjob.concurrencyPolicy | string | `"Forbid"` |  |
+| crawlers.discoverdev_io.cronjob.enabled | bool | `false` |  |
+| crawlers.discoverdev_io.cronjob.image.pullPolicy | string | `"IfNotPresent"` |  |
+| crawlers.discoverdev_io.cronjob.image.repository | string | `"rm3l/dev-feed-crawler-discoverdev_io"` |  |
+| crawlers.discoverdev_io.cronjob.imagePullSecrets | list | `[]` |  |
+| crawlers.discoverdev_io.cronjob.podAnnotations | object | `{}` |  |
+| crawlers.discoverdev_io.cronjob.podSecurityContext.runAsNonRoot | bool | `true` |  |
+| crawlers.discoverdev_io.cronjob.restartPolicy | string | `"OnFailure"` |  |
+| crawlers.discoverdev_io.cronjob.schedule | string | `"0 0 * * 0"` |  |
+| crawlers.discoverdev_io.cronjob.startingDeadlineSeconds | int | `3600` |  |
+| crawlers.discoverdev_io.cronjob.ttlSecondsAfterFinished | int | `900` |  |
 | crawlers.discoverdev_io.enabled | bool | `true` |  |
-| crawlers.discoverdev_io.image.pullPolicy | string | `"IfNotPresent"` |  |
-| crawlers.discoverdev_io.image.repository | string | `"rm3l/dev-feed-crawler-discoverdev_io"` |  |
-| crawlers.discoverdev_io.imagePullSecrets | list | `[]` |  |
-| crawlers.discoverdev_io.podAnnotations | object | `{}` |  |
-| crawlers.discoverdev_io.podSecurityContext.runAsNonRoot | bool | `true` |  |
-| crawlers.discoverdev_io.restartPolicy | string | `"OnFailure"` |  |
-| crawlers.discoverdev_io.schedule | string | `"0 0 * * 0"` |  |
-| crawlers.discoverdev_io.startingDeadlineSeconds | int | `3600` |  |
-| crawlers.discoverdev_io.ttlSecondsAfterFinished | int | `900` |  |
 | crawlers.dummy.enabled | bool | `false` |  |
-| crawlers.engineeringblogs_xyz.activeDeadlineSeconds | int | `1800` |  |
-| crawlers.engineeringblogs_xyz.affinity | object | `{}` |  |
-| crawlers.engineeringblogs_xyz.articleMaxAgeDays | int | `365` |  |
-| crawlers.engineeringblogs_xyz.concurrencyPolicy | string | `"Forbid"` |  |
+| crawlers.engineeringblogs_xyz.cronjob.activeDeadlineSeconds | int | `1800` |  |
+| crawlers.engineeringblogs_xyz.cronjob.affinity | object | `{}` |  |
+| crawlers.engineeringblogs_xyz.cronjob.articleMaxAgeDays | int | `365` |  |
+| crawlers.engineeringblogs_xyz.cronjob.concurrencyPolicy | string | `"Forbid"` |  |
+| crawlers.engineeringblogs_xyz.cronjob.enabled | bool | `false` |  |
+| crawlers.engineeringblogs_xyz.cronjob.image.pullPolicy | string | `"IfNotPresent"` |  |
+| crawlers.engineeringblogs_xyz.cronjob.image.repository | string | `"rm3l/dev-feed-crawler-engineeringblogs_xyz"` |  |
+| crawlers.engineeringblogs_xyz.cronjob.imagePullSecrets | list | `[]` |  |
+| crawlers.engineeringblogs_xyz.cronjob.podAnnotations | object | `{}` |  |
+| crawlers.engineeringblogs_xyz.cronjob.podSecurityContext.runAsNonRoot | bool | `true` |  |
+| crawlers.engineeringblogs_xyz.cronjob.restartPolicy | string | `"OnFailure"` |  |
+| crawlers.engineeringblogs_xyz.cronjob.schedule | string | `"*/30 * * * *"` |  |
+| crawlers.engineeringblogs_xyz.cronjob.startingDeadlineSeconds | int | `3600` |  |
+| crawlers.engineeringblogs_xyz.cronjob.ttlSecondsAfterFinished | int | `900` |  |
 | crawlers.engineeringblogs_xyz.enabled | bool | `true` |  |
-| crawlers.engineeringblogs_xyz.image.pullPolicy | string | `"IfNotPresent"` |  |
-| crawlers.engineeringblogs_xyz.image.repository | string | `"rm3l/dev-feed-crawler-engineeringblogs_xyz"` |  |
-| crawlers.engineeringblogs_xyz.imagePullSecrets | list | `[]` |  |
-| crawlers.engineeringblogs_xyz.podAnnotations | object | `{}` |  |
-| crawlers.engineeringblogs_xyz.podSecurityContext.runAsNonRoot | bool | `true` |  |
-| crawlers.engineeringblogs_xyz.restartPolicy | string | `"OnFailure"` |  |
-| crawlers.engineeringblogs_xyz.schedule | string | `"*/30 * * * *"` |  |
-| crawlers.engineeringblogs_xyz.startingDeadlineSeconds | int | `3600` |  |
-| crawlers.engineeringblogs_xyz.ttlSecondsAfterFinished | int | `900` |  |
-| crawlers.rm3l_org.activeDeadlineSeconds | int | `1800` |  |
-| crawlers.rm3l_org.affinity | object | `{}` |  |
-| crawlers.rm3l_org.articleMaxAgeDays | int | `365` |  |
-| crawlers.rm3l_org.concurrencyPolicy | string | `"Forbid"` |  |
+| crawlers.rm3l_org.cronjob.activeDeadlineSeconds | int | `1800` |  |
+| crawlers.rm3l_org.cronjob.affinity | object | `{}` |  |
+| crawlers.rm3l_org.cronjob.articleMaxAgeDays | int | `365` |  |
+| crawlers.rm3l_org.cronjob.concurrencyPolicy | string | `"Forbid"` |  |
+| crawlers.rm3l_org.cronjob.enabled | bool | `false` |  |
+| crawlers.rm3l_org.cronjob.image.pullPolicy | string | `"IfNotPresent"` |  |
+| crawlers.rm3l_org.cronjob.image.repository | string | `"rm3l/dev-feed-crawler-rm3l_org"` |  |
+| crawlers.rm3l_org.cronjob.imagePullSecrets | list | `[]` |  |
+| crawlers.rm3l_org.cronjob.podAnnotations | object | `{}` |  |
+| crawlers.rm3l_org.cronjob.podSecurityContext.runAsNonRoot | bool | `true` |  |
+| crawlers.rm3l_org.cronjob.restartPolicy | string | `"OnFailure"` |  |
+| crawlers.rm3l_org.cronjob.schedule | string | `"0 0 * * *"` |  |
+| crawlers.rm3l_org.cronjob.startingDeadlineSeconds | int | `3600` |  |
+| crawlers.rm3l_org.cronjob.ttlSecondsAfterFinished | int | `900` |  |
 | crawlers.rm3l_org.enabled | bool | `true` |  |
-| crawlers.rm3l_org.image.pullPolicy | string | `"IfNotPresent"` |  |
-| crawlers.rm3l_org.image.repository | string | `"rm3l/dev-feed-crawler-rm3l_org"` |  |
-| crawlers.rm3l_org.imagePullSecrets | list | `[]` |  |
-| crawlers.rm3l_org.podAnnotations | object | `{}` |  |
-| crawlers.rm3l_org.podSecurityContext.runAsNonRoot | bool | `true` |  |
-| crawlers.rm3l_org.restartPolicy | string | `"OnFailure"` |  |
-| crawlers.rm3l_org.schedule | string | `"0 0 * * *"` |  |
-| crawlers.rm3l_org.startingDeadlineSeconds | int | `3600` |  |
-| crawlers.rm3l_org.ttlSecondsAfterFinished | int | `900` |  |
-| datasource.password | string | `"pl34s3Ch4ng3M3"` |  |
-| datasource.user | string | `"db-user"` |  |
+| datasource.password | string | `""` |  |
+| datasource.url | string | `""` |  |
+| datasource.user | string | `""` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"rm3l/dev-feed-api"` |  |
