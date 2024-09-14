@@ -108,6 +108,9 @@ datasource:
   user: ""
   password: ""
   url: ""
+  driver: ""
+  # -- Datasource type: one of 'mongodb', 'rdbms'. Default: 'rdbms'
+  type: "rdbms"
 
 auth:
   password: r3allyPl34s3Ch4ng3M3

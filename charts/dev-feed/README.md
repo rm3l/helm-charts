@@ -3,13 +3,13 @@
 GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
 https://github.com/rm3l/dev-feed
 
-[![Latest version](https://img.shields.io/badge/latest_version-3.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![Latest version](https://img.shields.io/badge/latest_version-3.1.1-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-dev-feed rm3l/dev-feed --version 3.1.0
+$ helm install my-dev-feed rm3l/dev-feed --version 3.1.1
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
@@ -77,7 +77,9 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | crawlers.rm3l_org.cronjob.startingDeadlineSeconds | int | `3600` |  |
 | crawlers.rm3l_org.cronjob.ttlSecondsAfterFinished | int | `900` |  |
 | crawlers.rm3l_org.enabled | bool | `true` |  |
+| datasource.driver | string | `""` |  |
 | datasource.password | string | `""` |  |
+| datasource.type | string | `"rdbms"` | Datasource type: one of 'mongodb', 'rdbms'. Default: 'rdbms' |
 | datasource.url | string | `""` |  |
 | datasource.user | string | `""` |  |
 | fullnameOverride | string | `""` |  |

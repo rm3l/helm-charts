@@ -72,7 +72,7 @@ spec:
               runAsUser: 65534
               runAsGroup: 65534
             env:
-            {{- if .Values.mongodb.enabled }}
+            {{- if or .Values.mongodb.enabled (eq "mongodb" .Values.datasource.type ) }}
             - name: DATASOURCE_MONGODB_CONNECTION_STRING
               valueFrom:
                 secretKeyRef:
@@ -91,7 +91,7 @@ spec:
                   key: datasource.password
             {{- end }}
             args:
-            {{- if .Values.mongodb.enabled }}
+            {{- if or .Values.mongodb.enabled (eq "mongodb" .Values.datasource.type ) }}
             - mongo
             - --mongo-connection-string=$(DATASOURCE_MONGODB_CONNECTION_STRING)
             {{- else }}
@@ -179,7 +179,7 @@ spec:
               runAsUser: 65534
               runAsGroup: 65534
             env:
-            {{- if .Values.mongodb.enabled }}
+            {{- if or .Values.mongodb.enabled (eq "mongodb" .Values.datasource.type ) }}
             - name: DATASOURCE_MONGODB_CONNECTION_STRING
               valueFrom:
                 secretKeyRef:
@@ -198,7 +198,7 @@ spec:
                   key: datasource.password
             {{- end }}
             args:
-            {{- if .Values.mongodb.enabled }}
+            {{- if or .Values.mongodb.enabled (eq "mongodb" .Values.datasource.type ) }}
             - mongo
             - --mongo-connection-string=$(DATASOURCE_MONGODB_CONNECTION_STRING)
             {{- else }}
@@ -285,7 +285,7 @@ spec:
               runAsUser: 65534
               runAsGroup: 65534
             env:
-            {{- if .Values.mongodb.enabled }}
+            {{- if or .Values.mongodb.enabled (eq "mongodb" .Values.datasource.type ) }}
             - name: DATASOURCE_MONGODB_CONNECTION_STRING
               valueFrom:
                 secretKeyRef:
@@ -304,7 +304,7 @@ spec:
                   key: datasource.password
             {{- end }}
             args:
-            {{- if .Values.mongodb.enabled }}
+            {{- if or .Values.mongodb.enabled (eq "mongodb" .Values.datasource.type ) }}
             - mongo
             - --mongo-connection-string=$(DATASOURCE_MONGODB_CONNECTION_STRING)
             {{- else }}

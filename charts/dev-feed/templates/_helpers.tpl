@@ -45,7 +45,7 @@ Return the Datasource Driver
 {{- printf "%s" .Values.datasource.driver -}}
 {{- else if .Values.mariadb.enabled }}
 {{- printf "org.mariadb.jdbc.Driver" -}}
-{{- else if .Values.mongodb.enabled }}
+{{- else if or .Values.mongodb.enabled (eq "mongodb" .Values.datasource.type ) }}
 {{- printf "" -}}
 {{- else -}}
 {{- printf "org.h2.Driver" -}}

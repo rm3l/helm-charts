@@ -95,7 +95,7 @@ spec:
                 secretKeyRef:
                   name: {{ include "dev-feed.fullname" . }}
                   key: auth.password
-            {{- if .Values.mongodb.enabled }}
+            {{- if or .Values.mongodb.enabled (eq "mongodb" .Values.datasource.type ) }}
             - name: datasource.mongodb.connectionString
               valueFrom:
                 secretKeyRef:

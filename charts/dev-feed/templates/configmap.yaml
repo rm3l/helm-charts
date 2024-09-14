@@ -8,7 +8,7 @@ data:
   backend.properties: |
     {{- printf "datasource.url=%s" (include "dev-feed.datasourceUrl" .) | nindent 4 }}
     {{- printf "datasource.driver=%s" (include "dev-feed.datasourceDriver" .) | nindent 4 }}
-    {{- if .Values.mongodb.enabled }}
+    {{- if or .Values.mongodb.enabled (eq "mongodb" .Values.datasource.type ) }}
     {{- printf "datasource.type=mongodb" | nindent 4 }}
     {{- else }}
     {{- printf "datasource.type=rdbms" | nindent 4 }}
