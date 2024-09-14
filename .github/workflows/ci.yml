@@ -85,7 +85,7 @@ jobs:
     strategy:
       matrix:
         # https://endoflife.date/kubernetes and https://hub.docker.com/r/kindest/node/tags?page=1
-        kube_version: [1.27.13, 1.28.9, 1.29.4, 1.30.0]
+        kube_version: [1.27.16, 1.28.9, 1.29.7, 1.30.4, 1.31.0]
         experimental: [false]
         # include:
         #   - kube_version: '1.30.0-alpha.0.102_41890534532931'
