@@ -9,7 +9,7 @@
 [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/rm3l)](https://artifacthub.io/packages/search?repo=rm3l)
 [![adguard-home](https://img.shields.io/badge/adguard--home-0.18.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
 [![atuin](https://img.shields.io/badge/atuin-0.9.0-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
-[![dev-feed](https://img.shields.io/badge/dev--feed-3.0.1-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![dev-feed](https://img.shields.io/badge/dev--feed-3.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 [![ghost-export-to-s3](https://img.shields.io/badge/ghost--export--to--s3-0.26.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
 [![mac-oui](https://img.shields.io/badge/mac--oui-1.25.0-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
 [![service-names-port-numbers](https://img.shields.io/badge/service--names--port--numbers-0.26.1-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)

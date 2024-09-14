@@ -103,12 +103,7 @@ spec:
             {{- end }}
             - --article-max-age-days={{ .Values.crawlers.discoverdev_io.cronjob.articleMaxAgeDays }}
             resources:
-              limits:
-                cpu: 300m
-                memory: 1024Mi
-              requests:
-                cpu: 300m
-                memory: 512Mi
+              {{- toYaml .Values.crawlers.discoverdev_io.cronjob.resources | nindent 14 }}
           restartPolicy: {{ .Values.crawlers.discoverdev_io.cronjob.restartPolicy }}
 
 {{- end }}
@@ -215,12 +210,7 @@ spec:
             {{- end }}
             - --article-max-age-days={{ .Values.crawlers.engineeringblogs_xyz.cronjob.articleMaxAgeDays }}
             resources:
-              limits:
-                cpu: 500m
-                memory: 2048Mi
-              requests:
-                cpu: 500m
-                memory: 1024Mi
+              {{- toYaml .Values.crawlers.engineeringblogs_xyz.cronjob.resources | nindent 14 }}
           restartPolicy: {{ .Values.crawlers.engineeringblogs_xyz.cronjob.restartPolicy }}
 {{- end }}
 ---
@@ -326,12 +316,7 @@ spec:
             {{- end }}
             - --article-max-age-days={{ .Values.crawlers.rm3l_org.cronjob.articleMaxAgeDays }}
             resources:
-              limits:
-                cpu: 300m
-                memory: 1024Mi
-              requests:
-                cpu: 300m
-                memory: 512Mi
+              {{- toYaml .Values.crawlers.rm3l_org.cronjob.resources | nindent 14 }}
           restartPolicy: {{ .Values.crawlers.rm3l_org.cronjob.restartPolicy }}
 {{- end }}
 {{- end }}

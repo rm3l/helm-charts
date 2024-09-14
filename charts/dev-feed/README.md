@@ -3,13 +3,13 @@
 GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
 https://github.com/rm3l/dev-feed
 
-[![Latest version](https://img.shields.io/badge/latest_version-3.0.1-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
+[![Latest version](https://img.shields.io/badge/latest_version-3.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-dev-feed rm3l/dev-feed --version 3.0.1
+$ helm install my-dev-feed rm3l/dev-feed --version 3.1.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
@@ -38,6 +38,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | crawlers.discoverdev_io.cronjob.imagePullSecrets | list | `[]` |  |
 | crawlers.discoverdev_io.cronjob.podAnnotations | object | `{}` |  |
 | crawlers.discoverdev_io.cronjob.podSecurityContext.runAsNonRoot | bool | `true` |  |
+| crawlers.discoverdev_io.cronjob.resources | object | `{}` |  |
 | crawlers.discoverdev_io.cronjob.restartPolicy | string | `"OnFailure"` |  |
 | crawlers.discoverdev_io.cronjob.schedule | string | `"0 0 * * 0"` |  |
 | crawlers.discoverdev_io.cronjob.startingDeadlineSeconds | int | `3600` |  |
@@ -54,6 +55,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | crawlers.engineeringblogs_xyz.cronjob.imagePullSecrets | list | `[]` |  |
 | crawlers.engineeringblogs_xyz.cronjob.podAnnotations | object | `{}` |  |
 | crawlers.engineeringblogs_xyz.cronjob.podSecurityContext.runAsNonRoot | bool | `true` |  |
+| crawlers.engineeringblogs_xyz.cronjob.resources | object | `{}` |  |
 | crawlers.engineeringblogs_xyz.cronjob.restartPolicy | string | `"OnFailure"` |  |
 | crawlers.engineeringblogs_xyz.cronjob.schedule | string | `"*/30 * * * *"` |  |
 | crawlers.engineeringblogs_xyz.cronjob.startingDeadlineSeconds | int | `3600` |  |
@@ -69,6 +71,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | crawlers.rm3l_org.cronjob.imagePullSecrets | list | `[]` |  |
 | crawlers.rm3l_org.cronjob.podAnnotations | object | `{}` |  |
 | crawlers.rm3l_org.cronjob.podSecurityContext.runAsNonRoot | bool | `true` |  |
+| crawlers.rm3l_org.cronjob.resources | object | `{}` |  |
 | crawlers.rm3l_org.cronjob.restartPolicy | string | `"OnFailure"` |  |
 | crawlers.rm3l_org.cronjob.schedule | string | `"0 0 * * *"` |  |
 | crawlers.rm3l_org.cronjob.startingDeadlineSeconds | int | `3600` |  |
@@ -105,10 +108,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | podSecurityContext.runAsNonRoot | bool | `true` |  |
 | readinessProbe | object | `{"initialDelaySeconds":3,"periodSeconds":4,"timeoutSeconds":10}` | Configure the readiness healthcheck for the containers |
 | replicaCount | int | `1` |  |
-| resources.limits.cpu | string | `"500m"` |  |
-| resources.limits.memory | string | `"2048Mi"` |  |
-| resources.requests.cpu | string | `"500m"` |  |
-| resources.requests.memory | string | `"1024Mi"` |  |
+| resources | object | `{}` |  |
 | securityContext.readOnlyRootFilesystem | bool | `true` |  |
 | securityContext.runAsGroup | int | `65534` |  |
 | securityContext.runAsNonRoot | bool | `true` |  |
