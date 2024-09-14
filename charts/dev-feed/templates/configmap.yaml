@@ -13,7 +13,7 @@ data:
     {{- else }}
     {{- printf "datasource.type=rdbms" | nindent 4 }}
     {{- end }}
-    {{- if or .Values.mariadb.enabled .Values.mongodb.enabled }}
+    {{- if or .Values.mariadb.enabled .Values.mongodb.enabled .Values.crawlers.engineeringblogs_xyz.cronjob.enabled .Values.crawlers.rm3l_org.cronjob.enabled .Values.crawlers.discoverdev_io.cronjob.enabled }}
       {{- if .Values.crawlers.dummy.enabled }}
         {{- printf "crawlers.dummy.enabled=true" | nindent 4 }}
       {{- else}}
