@@ -125,7 +125,7 @@ spec:
     {{- if and (or (eq .Values.services.dnsOverTls.type "NodePort") (eq .Values.services.dnsOverTls.type "LoadBalancer")) .Values.services.dnsOverTls.nodePort }}
     nodePort: {{ .Values.services.dnsOverTls.nodePort }}
     {{- end }}
-    targetPort: dns-over-tls
+    targetPort: dot
     protocol: TCP
 {{- end }}
 ---
@@ -157,14 +157,14 @@ spec:
     nodePort: {{ .Values.services.dnsOverQuic.port1.nodePort }}
     {{- end }}
     name: dns-over-quic-1
-    targetPort: dns-over-quic-1
+    targetPort: doq-1
     protocol: UDP
   - port: {{ .Values.services.dnsOverQuic.port2.port }}
     {{- if and (or (eq .Values.services.dnsOverQuic.type "NodePort") (eq .Values.services.dnsOverQuic.type "LoadBalancer")) .Values.services.dnsOverQuic.port2.nodePort }}
     nodePort: {{ .Values.services.dnsOverQuic.port2.nodePort }}
     {{- end }}
     name: dns-over-quic-3
-    targetPort: dns-over-quic-3
+    targetPort: doq-2
     protocol: UDP
 {{- end }}
 ---
@@ -196,7 +196,7 @@ spec:
     {{- if and (or (eq .Values.services.dnscrypt.type "NodePort") (eq .Values.services.dnscrypt.type "LoadBalancer")) .Values.services.dnscrypt.tcp.nodePort }}
     nodePort: {{ .Values.services.dnscrypt.tcp.nodePort }}
     {{- end }}
-    targetPort: dnscrypt
+    targetPort: dnscrypt-tcp
     protocol: TCP
   - name: dnscrypt-udp
     port: {{ .Values.services.dnscrypt.udp.port }}
