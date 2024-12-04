@@ -17,6 +17,13 @@ spec:
   {{- with .Values.services.http.loadBalancerIP }}
   loadBalancerIP: {{ . }}
   {{- end }}
+  {{- if .Values.services.http.ipFamilyPolicy }}
+  ipFamilyPolicy: {{ .Values.services.http.ipFamilyPolicy }}
+  {{- end }}
+  {{- with .Values.services.http.ipFamilies }}
+  ipFamilies:
+  {{- toYaml . | nindent 4 }}
+  {{- end -}}
   {{- with .Values.services.http.externalTrafficPolicy }}
   externalTrafficPolicy: {{ . }}
   {{- end }}
@@ -47,6 +54,13 @@ spec:
   {{- with .Values.services.https.loadBalancerIP }}
   loadBalancerIP: {{ . }}
   {{- end }}
+  {{- if .Values.services.https.ipFamilyPolicy }}
+  ipFamilyPolicy: {{ .Values.services.https.ipFamilyPolicy }}
+  {{- end }}
+  {{- with .Values.services.https.ipFamilies }}
+  ipFamilies:
+  {{- toYaml . | nindent 4 }}
+  {{- end -}}
   {{- with .Values.services.https.externalTrafficPolicy }}
   externalTrafficPolicy: {{ . }}
   {{- end }}
@@ -78,6 +92,13 @@ spec:
   {{- with .Values.services.dns.loadBalancerIP }}
   loadBalancerIP: {{ . }}
   {{- end }}
+  {{- if .Values.services.dns.ipFamilyPolicy }}
+  ipFamilyPolicy: {{ .Values.services.dns.ipFamilyPolicy }}
+  {{- end }}
+  {{- with .Values.services.dns.ipFamilies }}
+  ipFamilies:
+  {{- toYaml . | nindent 4 }}
+  {{- end -}}
   {{- with .Values.services.dns.externalTrafficPolicy }}
   externalTrafficPolicy: {{ . }}
   {{- end }}
@@ -117,6 +138,13 @@ spec:
   {{- with .Values.services.dnsOverTls.loadBalancerIP }}
   loadBalancerIP: {{ . }}
   {{- end }}
+  {{- if .Values.services.dnsOverTls.ipFamilyPolicy }}
+  ipFamilyPolicy: {{ .Values.services.dnsOverTls.ipFamilyPolicy }}
+  {{- end }}
+  {{- with .Values.services.dnsOverTls.ipFamilies }}
+  ipFamilies:
+  {{- toYaml . | nindent 4 }}
+  {{- end -}}
   {{- with .Values.services.dnsOverTls.externalTrafficPolicy }}
   externalTrafficPolicy: {{ . }}
   {{- end }}
@@ -148,6 +176,13 @@ spec:
   {{- with .Values.services.dnsOverQuic.loadBalancerIP }}
   loadBalancerIP: {{ . }}
   {{- end }}
+  {{- if .Values.services.dnsOverQuic.ipFamilyPolicy }}
+  ipFamilyPolicy: {{ .Values.services.dnsOverQuic.ipFamilyPolicy }}
+  {{- end }}
+  {{- with .Values.services.dnsOverQuic.ipFamilies }}
+  ipFamilies:
+  {{- toYaml . | nindent 4 }}
+  {{- end -}}
   {{- with .Values.services.dnsOverQuic.externalTrafficPolicy }}
   externalTrafficPolicy: {{ . }}
   {{- end }}
@@ -187,6 +222,13 @@ spec:
   {{- with .Values.services.dnscrypt.loadBalancerIP }}
   loadBalancerIP: {{ . }}
   {{- end }}
+  {{- if .Values.services.dnscrypt.ipFamilyPolicy }}
+  ipFamilyPolicy: {{ .Values.services.dnscrypt.ipFamilyPolicy }}
+  {{- end }}
+  {{- with .Values.services.dnscrypt.ipFamilies }}
+  ipFamilies:
+  {{- toYaml . | nindent 4 }}
+  {{- end -}}
   {{- with .Values.services.dnscrypt.externalTrafficPolicy }}
   externalTrafficPolicy: {{ . }}
   {{- end }}

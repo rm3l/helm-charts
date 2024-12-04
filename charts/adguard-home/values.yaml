@@ -67,6 +67,10 @@ services:
     # -- (int) Node port for HTTP (when applicable)
     port: 80
     nodePort:
+    # -- Dual-stack policy for HTTP
+    ipFamilyPolicy:
+    # -- Dual-stack families for HTTP, for dual-stack parameters see official kubernetes [dual-stack concept documentation](https://kubernetes.io/docs/concepts/services-networking/dual-stack/).
+    ipFamilies:
   https:
     enabled: true
     type: ClusterIP
@@ -81,6 +85,10 @@ services:
     # -- (int) Node port for HTTPS (when applicable)
     nodePort:
     port: 443
+    # -- Dual-stack policy for HTTPS
+    ipFamilyPolicy:
+    # -- Dual-stack families for HTTPS; for dual-stack parameters see official kubernetes [dual-stack concept documentation](https://kubernetes.io/docs/concepts/services-networking/dual-stack/).
+    ipFamilies:
   dns:
     enabled: true
     type: NodePort
@@ -98,6 +106,10 @@ services:
     udp:
       port: 53
       nodePort:
+    # -- Dual-stack policy for DNS
+    ipFamilyPolicy:
+    # -- Dual-stack families for DNS; for dual-stack parameters see official kubernetes [dual-stack concept documentation](https://kubernetes.io/docs/concepts/services-networking/dual-stack/).
+    ipFamilies:
   dnsOverTls:
     enabled: true
     type: NodePort
@@ -112,6 +124,10 @@ services:
     # -- (int) Node port for DNS over TLS (when applicable)
     port: 853
     nodePort:
+    # -- Dual-stack policy for DNS over TLS
+    ipFamilyPolicy:
+    # -- Dual-stack families for DNS over TLS; for dual-stack parameters see official kubernetes [dual-stack concept documentation](https://kubernetes.io/docs/concepts/services-networking/dual-stack/).
+    ipFamilies:
   dnsOverQuic:
     enabled: true
     type: NodePort
@@ -129,6 +145,10 @@ services:
     externalTrafficPolicy:
     # -- Load balancer IP for DNS Over QUIC (when applicable)
     loadBalancerIP:
+    # -- Dual-stack policy for DNS Over QUIC
+    ipFamilyPolicy:
+    # -- Dual-stack families for DNS Over QUIC; for dual-stack parameters see official kubernetes [dual-stack concept documentation](https://kubernetes.io/docs/concepts/services-networking/dual-stack/).
+    ipFamilies:
   dnscrypt:
     enabled: true
     type: NodePort
@@ -146,6 +166,10 @@ services:
     udp:
       port: 5443
       nodePort:
+    # -- Dual-stack policy for DNSCrypt
+    ipFamilyPolicy:
+    # -- Dual-stack families for DNSCrypt; for dual-stack parameters see official kubernetes [dual-stack concept documentation](https://kubernetes.io/docs/concepts/services-networking/dual-stack/).
+    ipFamilies:
 
 ingresses:
   adminPanel:
