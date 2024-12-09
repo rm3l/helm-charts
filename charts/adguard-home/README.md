@@ -179,6 +179,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | bootstrapConfig.whitelist_filters | list | `[]` |  |
 | bootstrapEnabled | bool | `true` | Whether to enable bootstrapping the AdguardHome config file using the content in bootstrapConfig |
 | defaultVolumeMountsEnabled | bool | `true` | Whether to add default volume mounts. |
+| extraServices | list | `[]` | Additional services |
 | extraVolumeMounts | list | `[]` | Additional Volume mounts |
 | extraVolumes | list | `[]` | Additional volumes |
 | fullnameOverride | string | `""` |  |
