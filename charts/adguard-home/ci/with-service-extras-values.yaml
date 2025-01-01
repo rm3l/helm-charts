@@ -1,0 +1,27 @@
+extraServices:
+  - name: "dns-extra"
+    annotations: {}
+    spec:
+      type: NodePort
+      externalTrafficPolicy: Local
+      internalTrafficPolicy: Cluster
+      ports:
+        - name: dns-tcp
+          port: 53
+          protocol: TCP
+          targetPort: dns-tcp
+        - name: dns-udp
+          port: 53
+          protocol: UDP
+          targetPort: dns-udp
+  - name: "dot-extra"
+    annotations: {}
+    spec:
+      type: NodePort
+      externalTrafficPolicy: Local
+      internalTrafficPolicy: Cluster
+      ports:
+        - name: dot
+          port: 853
+          protocol: TCP
+          targetPort: dot
