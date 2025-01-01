@@ -171,6 +171,24 @@ services:
     # -- Dual-stack families for DNSCrypt; for dual-stack parameters see official kubernetes [dual-stack concept documentation](https://kubernetes.io/docs/concepts/services-networking/dual-stack/).
     ipFamilies:
 
+# -- Additional services
+extraServices: []
+#  - name: "dns-extra"
+#    annotations: {}
+#    spec:
+#      type: LoadBalancer
+#      externalTrafficPolicy: Local
+#      internalTrafficPolicy: Cluster
+#      ports:
+#        - name: dns-tcp
+#          port: 53
+#          protocol: TCP
+#          targetPort: dns-tcp
+#        - name: dns-udp
+#          port: 53
+#          protocol: UDP
+#          targetPort: dns-udp
+
 ingresses:
   adminPanel:
     enabled: false
