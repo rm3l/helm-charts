@@ -1,0 +1,15 @@
+{{- range .Values.extraServices }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "adguard-home.fullname" $ }}-{{ .name }}
+  {{- with .annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  selector:
+    {{- include "adguard-home.selectorLabels" $ | nindent 4 }}
+  {{- toYaml .spec | nindent 2 }}
+---
+{{- end }}

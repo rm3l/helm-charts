@@ -4,13 +4,13 @@ Unofficial Chart for Adguard Home, the network-wide ad and tracking blocker.
 This Chart also provides automated backups of Adguard Home to services like AWS S3.
 https://github.com/AdguardTeam/AdGuardHome
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.18.2-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
+[![Latest version](https://img.shields.io/badge/latest_version-0.19.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-adguard-home rm3l/adguard-home --version 0.18.2
+$ helm install my-adguard-home rm3l/adguard-home --version 0.19.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
@@ -179,6 +179,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | bootstrapConfig.whitelist_filters | list | `[]` |  |
 | bootstrapEnabled | bool | `true` | Whether to enable bootstrapping the AdguardHome config file using the content in bootstrapConfig |
 | defaultVolumeMountsEnabled | bool | `true` | Whether to add default volume mounts. |
+| extraServices | list | `[]` | Additional services |
 | extraVolumeMounts | list | `[]` | Additional Volume mounts |
 | extraVolumes | list | `[]` | Additional volumes |
 | fullnameOverride | string | `""` |  |
