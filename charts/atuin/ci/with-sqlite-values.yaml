@@ -36,10 +36,6 @@ storage:
 
 sqlite:
   enabled: true
-  image:
-    repository: ghcr.io/rm3l/atuin-server-sqlite
-    pullPolicy: Always
-    tag: "main"
   persistence:
     volumeClaimSpec:
       accessModes:

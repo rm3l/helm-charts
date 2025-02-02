@@ -4,13 +4,13 @@ Unofficial Chart for Atuin, the magical shell history.
 The server provides fully encrypted synchronization of the shell history across machines.
 https://github.com/ellie/atuin
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.9.0-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
+[![Latest version](https://img.shields.io/badge/latest_version-0.10.0-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-atuin rm3l/atuin --version 0.9.0
+$ helm install my-atuin rm3l/atuin --version 0.10.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
@@ -75,10 +75,10 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
-| sqlite.enabled | bool | `false` | Experimental support of SQLite. Enable this and disable postgresql.enabled to use it. |
+| sqlite.enabled | bool | `false` | Experimental support of SQLite. Enable this and disable postgresql.enabled to use it. More details at https://github.com/conradludgate/atuin-server-sqlite |
 | sqlite.image.pullPolicy | string | `"Always"` |  |
-| sqlite.image.repository | string | `"ghcr.io/rm3l/atuin-server-sqlite"` |  |
-| sqlite.image.tag | string | `"main"` |  |
+| sqlite.image.repository | string | `"ghcr.io/conradludgate/atuin-server-sqlite"` |  |
+| sqlite.image.tag | string | `"v18.3.0"` |  |
 | sqlite.persistence.volumeClaimSpec.accessModes[0] | string | `"ReadWriteOnce"` |  |
 | sqlite.persistence.volumeClaimSpec.resources.requests.storage | string | `"1Gi"` |  |
 | storage.config.volumeClaimSpec.accessModes[0] | string | `"ReadWriteOnce"` |  |

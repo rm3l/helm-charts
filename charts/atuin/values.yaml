@@ -94,12 +94,12 @@ atuin:
   openRegistration: true
 
 sqlite:
-  # -- Experimental support of SQLite. Enable this and disable postgresql.enabled to use it.
+  # -- Experimental support of SQLite. Enable this and disable postgresql.enabled to use it. More details at https://github.com/conradludgate/atuin-server-sqlite
   enabled: false
   image:
-    repository: ghcr.io/rm3l/atuin-server-sqlite
+    repository: ghcr.io/conradludgate/atuin-server-sqlite
     pullPolicy: Always
-    tag: "main"
+    tag: "v18.3.0"
   persistence:
     volumeClaimSpec:
       accessModes:
