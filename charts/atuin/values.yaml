@@ -99,7 +99,7 @@ sqlite:
   image:
     repository: ghcr.io/conradludgate/atuin-server-sqlite
     pullPolicy: Always
-    tag: "main"
+    tag: "v18.3.0"
   persistence:
     volumeClaimSpec:
       accessModes:

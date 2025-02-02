@@ -78,7 +78,7 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 | sqlite.enabled | bool | `false` | Experimental support of SQLite. Enable this and disable postgresql.enabled to use it. More details at https://github.com/conradludgate/atuin-server-sqlite |
 | sqlite.image.pullPolicy | string | `"Always"` |  |
 | sqlite.image.repository | string | `"ghcr.io/conradludgate/atuin-server-sqlite"` |  |
-| sqlite.image.tag | string | `"main"` |  |
+| sqlite.image.tag | string | `"v18.3.0"` |  |
 | sqlite.persistence.volumeClaimSpec.accessModes[0] | string | `"ReadWriteOnce"` |  |
 | sqlite.persistence.volumeClaimSpec.resources.requests.storage | string | `"1Gi"` |  |
 | storage.config.volumeClaimSpec.accessModes[0] | string | `"ReadWriteOnce"` |  |
