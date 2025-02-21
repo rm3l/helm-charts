@@ -22,6 +22,7 @@
   - [dev-feed](#dev-feed)
   - [ghost-export-to-s3](#ghost-export-to-s3)
   - [mac-oui](#mac-oui)
+  - [olivetin](#olivetin)
   - [service-names-port-numbers](#service-names-port-numbers)
 - [Developed by](#developed-by)
 - [License](#license)
@@ -77,6 +78,13 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/REA
 > [https://github.com/rm3l/mac-oui](https://github.com/rm3l/mac-oui)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md) for further details.
+
+### olivetin
+
+> Safe and simple access to predefined shell commands from a web interface.
+> [https://github.com/rm3l/olivetin](https://github.com/rm3l/olivetin)
+
+See [https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md) for further details.
 
 ### service-names-port-numbers
 
