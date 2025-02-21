@@ -1,16 +1,15 @@
 # olivetin
 
 Unofficial Chart for OliveTin, a tool that gives safe and simple access to predefined shell commands from a web interface.
-This Chart also provides automated backups of OliveTin to services like AWS S3.
 https://www.olivetin.app
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/olivetin)
+[![Latest version](https://img.shields.io/badge/latest_version-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/olivetin)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-olivetin rm3l/olivetin --version 0.1.0
+$ helm install my-olivetin rm3l/olivetin --version 0.2.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/olivetin?modal=install
