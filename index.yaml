@@ -2050,6 +2050,21 @@ entries:
   olivetin:
   - apiVersion: v2
     appVersion: 2025.2.19
+    created: "2025-02-21T23:27:33.538420849Z"
+    description: 'Unofficial Chart for OliveTin, a tool that gives safe and simple
+      access to predefined shell commands from a web interface. https://www.olivetin.app '
+    digest: d5c4a25855b38a5af5a96ccaf7be5db254da8d57347a48432633bcf8b1b857d3
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: olivetin
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/olivetin-0.2.0/olivetin-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 2025.2.19
     created: "2025-02-21T22:58:58.952173462Z"
     description: 'Unofficial Chart for OliveTin, a tool that gives safe and simple
       access to predefined shell commands from a web interface. This Chart also provides
@@ -2435,4 +2450,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-21T22:58:58.952802299Z"
+generated: "2025-02-21T23:27:33.538729816Z"
