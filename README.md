@@ -12,6 +12,7 @@
 [![dev-feed](https://img.shields.io/badge/dev--feed-3.1.1-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 [![ghost-export-to-s3](https://img.shields.io/badge/ghost--export--to--s3-0.26.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
 [![mac-oui](https://img.shields.io/badge/mac--oui-1.25.0-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
+[![olivetin](https://img.shields.io/badge/olivetin-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/olivetin)
 [![service-names-port-numbers](https://img.shields.io/badge/service--names--port--numbers-0.26.1-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
 
 - [TL;DR](#tldr)
@@ -21,6 +22,7 @@
   - [dev-feed](#dev-feed)
   - [ghost-export-to-s3](#ghost-export-to-s3)
   - [mac-oui](#mac-oui)
+  - [olivetin](#olivetin)
   - [service-names-port-numbers](#service-names-port-numbers)
 - [Developed by](#developed-by)
 - [License](#license)
@@ -76,6 +78,13 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/REA
 > [https://github.com/rm3l/mac-oui](https://github.com/rm3l/mac-oui)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md) for further details.
+
+### olivetin
+
+> Safe and simple access to predefined shell commands from a web interface.
+> [https://github.com/rm3l/olivetin](https://github.com/rm3l/olivetin)
+
+See [https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md) for further details.
 
 ### service-names-port-numbers
 

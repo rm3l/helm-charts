@@ -204,6 +204,7 @@ jobs:
           - dev-feed
           - ghost-export-to-s3
           - mac-oui
+          - olivetin
           - service-names-port-numbers
     steps:
       - uses: actions/checkout@v4
