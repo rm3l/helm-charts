@@ -75,7 +75,6 @@ spec:
           volumeMounts:
           - name: config
             mountPath: /config
-            readOnly: true
           {{- with .Values.extraVolumeMounts }}
           {{- toYaml . | nindent 10 }}
           {{- end }}
