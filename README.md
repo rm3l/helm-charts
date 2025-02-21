@@ -82,7 +82,7 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md](htt
 ### olivetin
 
 > Safe and simple access to predefined shell commands from a web interface.
-> [https://github.com/rm3l/olivetin](https://github.com/rm3l/olivetin)
+> [https://www.olivetin.app](https://www.olivetin.app)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md) for further details.
 
