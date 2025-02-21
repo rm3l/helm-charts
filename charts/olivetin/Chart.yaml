@@ -1,7 +1,7 @@
 apiVersion: v2
 name: olivetin
 description: |
-    Unofficial Chart for OliveTin, a tool that gives safe and simple access to predefined shell commands from a web interface..
+    Unofficial Chart for OliveTin, a tool that gives safe and simple access to predefined shell commands from a web interface.
     This Chart also provides automated backups of OliveTin to services like AWS S3.
     https://www.olivetin.app
 
