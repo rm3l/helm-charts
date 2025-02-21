@@ -60,17 +60,3 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
-
-{{/*
-Volumes
-*/}}
-{{- define "olivetin.volumes" -}}
-{{- if .Values.config.existingSecretRef.name }}
-
-{{- else if .Values.config.existingSecretRef.name }}
-{{- else }}
-{{- end }}
-
-app.kubernetes.io/name: {{ include "olivetin.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end }}
