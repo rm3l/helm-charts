@@ -206,6 +206,7 @@ jobs:
           - mac-oui
           - olivetin
           - service-names-port-numbers
+          - wallos
     steps:
       - uses: actions/checkout@v4
 

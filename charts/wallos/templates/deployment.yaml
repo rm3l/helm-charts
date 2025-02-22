@@ -1,0 +1,125 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "wallos.fullname" . }}
+  labels:
+    {{- include "wallos.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "wallos.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "wallos.selectorLabels" . | nindent 8 }}
+    spec:
+      priorityClassName: {{ .Values.priorityClassName }}
+      hostNetwork: {{ .Values.hostNetwork }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "wallos.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- if .Values.defaultVolumesEnabled }}
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          {{- if not .Values.persistence.existingClaim }}
+          claimName: {{ include "wallos.fullname" . }}
+          {{- else }}
+          claimName: {{ .Values.persistence.existingClaim }}
+          {{- end }}
+      {{- else }}
+      {{- with .Values.extraVolumes }}
+      volumes:
+        {{- toYaml . | nindent 6 }}
+      {{- end }}
+      {{- end }}
+
+      {{- if .Values.bootstrapEnabled }}
+      initContainers:
+      - name: bootstrapper
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        resources:
+          limits:
+            cpu: 100m
+            memory: "128Mi"
+          requests:
+            cpu: 100m
+            memory: "64Mi"
+        volumeMounts:
+        - name: data
+          mountPath: /mnt/data
+        command:
+        - /bin/sh
+        - "-c"
+        - |
+          ls -lhrta /mnt/data
+          if ! ls /mnt/data/.initialized ; then
+            echo "Populating data volume..."
+            rm -rf /var/www/html/wallos.db || true
+            cp -vrf /var/www/html/* /mnt/data/
+            touch /mnt/data/.initialized
+            echo "...done."
+          fi
+      {{- end }}
+
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          startupProbe:
+            exec:
+              command:
+              - ls
+              - /var/www/html/db/wallos.db
+            initialDelaySeconds: 30
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.defaultVolumesEnabled }}
+          volumeMounts:
+          - name: data
+            mountPath: /var/www/html
+          {{- else }}
+          {{- with .Values.extraVolumeMounts }}
+          volumeMounts:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+          {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

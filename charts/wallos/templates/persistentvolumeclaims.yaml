@@ -1,0 +1,8 @@
+{{- if not .Values.persistence.existingClaim -}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "wallos.fullname" . }}
+spec:
+  {{- toYaml .Values.persistence.volumeClaimSpec | nindent 2 }}
+{{- end }}
