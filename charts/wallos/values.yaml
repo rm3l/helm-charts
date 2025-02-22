@@ -115,3 +115,29 @@ extraVolumes: []
 
 env:
   TZ: 'Europe/Paris'
+
+backup:
+  # -- Note that this depends on the Access Mode set for the persistent volume claim (PVC) specified.
+  # -- As a consequence, backups will not be possible if the PVC access mode is set to ReadWriteOncePod (Kubernetes 1.22+),
+  # -- since the volume will be accessible only to the sole Wallos pod.
+  enabled: false
+  # -- How frequently the Backup job should run. Cron Syntax, as supported by Kubernetes CronJobs
+  schedule: "@daily"
+  concurrencyPolicy: Forbid
+  restartPolicy: OnFailure
+  ttlSecondsAfterFinished: 300
+  activeDeadlineSeconds: 1800
+  backoffLimit: 1
+  parallelism: 1
+  imagePullPolicy: IfNotPresent
+  resources: {}
+  aws:
+    # -- For now, only AWS is supported. Setting this to `false` (while `backup.enabled` is `true`) will cause a deployment error.
+    enabled: true
+    # -- AWS Access Key. Must have the permissions to write to the target bucket.
+    accessKeyId: "my-aws-access-key-id"
+    # -- AWS Secret Key. Must have the permissions to write to the target bucket.
+    secretKey: "my-aws-secret-key"
+    # -- Target destination bucket (absolute) in AWS S3, where the backup resources should be written
+    s3:
+      destination: "s3://path/to/my/wallos-backup-bucket"

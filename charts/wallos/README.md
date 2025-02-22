@@ -24,6 +24,20 @@ See https://artifacthub.io/packages/helm/rm3l/wallos?modal=install
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| backup.activeDeadlineSeconds | int | `1800` |  |
+| backup.aws.accessKeyId | string | `"my-aws-access-key-id"` | AWS Access Key. Must have the permissions to write to the target bucket. |
+| backup.aws.enabled | bool | `true` | For now, only AWS is supported. Setting this to `false` (while `backup.enabled` is `true`) will cause a deployment error. |
+| backup.aws.s3 | object | `{"destination":"s3://path/to/my/wallos-backup-bucket"}` | Target destination bucket (absolute) in AWS S3, where the backup resources should be written |
+| backup.aws.secretKey | string | `"my-aws-secret-key"` | AWS Secret Key. Must have the permissions to write to the target bucket. |
+| backup.backoffLimit | int | `1` |  |
+| backup.concurrencyPolicy | string | `"Forbid"` |  |
+| backup.enabled | bool | `false` | since the volume will be accessible only to the sole Wallos pod. |
+| backup.imagePullPolicy | string | `"IfNotPresent"` |  |
+| backup.parallelism | int | `1` |  |
+| backup.resources | object | `{}` |  |
+| backup.restartPolicy | string | `"OnFailure"` |  |
+| backup.schedule | string | `"@daily"` | How frequently the Backup job should run. Cron Syntax, as supported by Kubernetes CronJobs |
+| backup.ttlSecondsAfterFinished | int | `300` |  |
 | bootstrapEnabled | bool | `true` | Whether to enable bootstrapping the volume |
 | defaultVolumesEnabled | bool | `true` |  |
 | env.TZ | string | `"Europe/Paris"` |  |
