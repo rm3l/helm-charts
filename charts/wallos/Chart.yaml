@@ -25,7 +25,7 @@ version: 0.1.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 # See https://github.com/ellite/Wallos/pkgs/container/wallos
-appVersion: "2.45.2"
+appVersion: "2.46.0"
 
 # Issue with name. See discussion here : https://github.com/helm/chart-testing/issues/192
 maintainers:

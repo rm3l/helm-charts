@@ -26,6 +26,7 @@ See https://artifacthub.io/packages/helm/rm3l/wallos?modal=install
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | bootstrapEnabled | bool | `true` | Whether to enable bootstrapping the volume |
 | defaultVolumesEnabled | bool | `true` |  |
+| env.TZ | string | `"Europe/Paris"` |  |
 | extraVolumeMounts | list | `[]` | Additional Volume mounts |
 | extraVolumes | list | `[]` | Additional volumes |
 | fullnameOverride | string | `""` |  |

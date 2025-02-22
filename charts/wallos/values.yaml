@@ -112,3 +112,6 @@ extraVolumeMounts: []
 
 # -- Additional volumes
 extraVolumes: []
+
+env:
+  TZ: 'Europe/Paris'
