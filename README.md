@@ -30,14 +30,14 @@
 ## TL;DR
 
 ```bash
-$ # Add Helm Chart Repo
-$ helm repo add rm3l https://helm-charts.rm3l.org
+# Add Helm Chart Repo
+helm repo add rm3l https://helm-charts.rm3l.org
 
-$ # Search repo
-$ helm search repo rm3l
+# Search repo
+helm search repo rm3l
 
-$ # Install a given Chart as a Release
-$ helm install my-release rm3l/<chart>
+# Install a given Chart as a Release
+helm install my-release rm3l/<chart>
 ```
 
 ## Charts
@@ -81,7 +81,7 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md](htt
 
 ### olivetin
 
-> Safe and simple access to predefined shell commands from a web interface.
+> Unofficial Chart for OliveTin, a tool that gives safe and simple access to predefined shell commands from a web interface.
 > [https://www.olivetin.app](https://www.olivetin.app)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md) for further details.
