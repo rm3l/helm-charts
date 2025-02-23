@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "wallos.fullname" . }}-test-connection"
+  labels:
+    {{- include "wallos.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: test-pod
+      image: quay.io/curl/curl
+      command: ['curl']
+      args: ['-L', '{{ include "wallos.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

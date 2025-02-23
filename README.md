@@ -14,6 +14,7 @@
 [![mac-oui](https://img.shields.io/badge/mac--oui-1.25.0-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
 [![olivetin](https://img.shields.io/badge/olivetin-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/olivetin)
 [![service-names-port-numbers](https://img.shields.io/badge/service--names--port--numbers-0.26.1-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
+[![wallos](https://img.shields.io/badge/wallos-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/wallos)
 
 - [TL;DR](#tldr)
 - [Charts](#charts)
@@ -24,6 +25,7 @@
   - [mac-oui](#mac-oui)
   - [olivetin](#olivetin)
   - [service-names-port-numbers](#service-names-port-numbers)
+  - [wallos](#wallos)
 - [Developed by](#developed-by)
 - [License](#license)
 
@@ -93,6 +95,13 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md](ht
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-numbers/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-numbers/README.md) for further details.
 
+### wallos
+
+> Unofficial Chart for Wallos, the Open-Source Personal Subscription Tracker.
+> This Chart also provides automated backups of Wallos to services like AWS S3.
+> https://github.com/ellite/Wallos
+
+See [https://github.com/rm3l/helm-charts/blob/main/charts/wallos/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/wallos/README.md) for further details.
 
 ## Developed by
 
