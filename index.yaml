@@ -2450,4 +2450,21 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.1.0/service-names-port-numbers-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-21T23:27:33.538729816Z"
+  wallos:
+  - apiVersion: v2
+    appVersion: 2.46.0
+    created: "2025-02-23T14:06:48.407115647Z"
+    description: 'Unofficial Chart for Wallos, the Open-Source Personal Subscription
+      Tracker. This Chart also provides automated backups of Wallos to services like
+      AWS S3. https://github.com/ellite/Wallos '
+    digest: 4e7de512c9dcdd037eecb5050b22509717aa751a0fa92e87efc0dd99b00fe169
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: wallos
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/wallos-0.1.0/wallos-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-02-23T14:06:48.407382796Z"
