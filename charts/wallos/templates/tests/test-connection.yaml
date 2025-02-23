@@ -8,8 +8,8 @@ metadata:
     "helm.sh/hook": test
 spec:
   containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['{{ include "wallos.fullname" . }}:{{ .Values.service.port }}']
+    - name: test-pod
+      image: quay.io/curl/curl
+      command: ['curl']
+      args: ['-L', '{{ include "wallos.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never
