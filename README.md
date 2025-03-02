@@ -12,6 +12,7 @@
 [![dev-feed](https://img.shields.io/badge/dev--feed-3.1.1-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 [![ghost-export-to-s3](https://img.shields.io/badge/ghost--export--to--s3-0.26.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
 [![mac-oui](https://img.shields.io/badge/mac--oui-1.25.0-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
+[![ntfy](https://img.shields.io/badge/ntfy-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/ntfy)
 [![olivetin](https://img.shields.io/badge/olivetin-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/olivetin)
 [![service-names-port-numbers](https://img.shields.io/badge/service--names--port--numbers-0.26.1-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
 [![wallos](https://img.shields.io/badge/wallos-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/wallos)
@@ -23,6 +24,7 @@
   - [dev-feed](#dev-feed)
   - [ghost-export-to-s3](#ghost-export-to-s3)
   - [mac-oui](#mac-oui)
+  - [ntfy](#ntfy)
   - [olivetin](#olivetin)
   - [service-names-port-numbers](#service-names-port-numbers)
   - [wallos](#wallos)
@@ -56,7 +58,7 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/adguard-home/README.md
 
 > Unofficial Chart for Atuin, the magical shell history.
 > The server provides fully encrypted synchronization of the shell history across machines.
-> https://github.com/ellie/atuin
+> [https://github.com/atuinsh/atuin](https://github.com/atuinsh/atuin)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/atuin/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/atuin/README.md) for further details.
 
@@ -70,7 +72,7 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/dev-feed/README.md](ht
 ### ghost-export-to-s3
 
 > Automated backups of headless Ghost Blogs to AWS S3.
-> [https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/](https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/)
+> [https://armel.soro.io/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/](https://armel.soro.io/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/README.md) for further details.
 
@@ -81,10 +83,18 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/REA
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md) for further details.
 
+### ntfy
+
+> Unofficial Chart for ntfy, a simple HTTP-based [pub-sub](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) notification service.
+> This Chart also provides automated backups of ntfy to services like AWS S3.
+> [https://github.com/binwiederhier/ntfy](https://github.com/binwiederhier/ntfy)
+
+See [https://github.com/rm3l/helm-charts/blob/main/charts/ntfy/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/ntfy/README.md) for further details.
+
 ### olivetin
 
 > Unofficial Chart for OliveTin, a tool that gives safe and simple access to predefined shell commands from a web interface.
-> [https://www.olivetin.app](https://www.olivetin.app)
+> [https://github.com/OliveTin/OliveTin](https://github.com/OliveTin/OliveTin)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md) for further details.
 
@@ -99,7 +109,7 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-num
 
 > Unofficial Chart for Wallos, the Open-Source Personal Subscription Tracker.
 > This Chart also provides automated backups of Wallos to services like AWS S3.
-> https://github.com/ellite/Wallos
+> [https://github.com/ellite/Wallos](https://github.com/ellite/Wallos)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/wallos/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/wallos/README.md) for further details.
 
