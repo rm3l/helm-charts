@@ -32,7 +32,7 @@ See https://artifacthub.io/packages/helm/rm3l/ntfy?modal=install
 | config.existingConfigMap.name | string | `""` |  |
 | config.existingSecretRef.key | string | `"server.yaml"` |  |
 | config.existingSecretRef.name | string | `""` |  |
-| config.sample | object | `{"behind-proxy":true,"log-level":"info"}` | Sample config. See https://github.com/binwiederhier/ntfy/blob/main/server/server.yml |
+| config.sample | object | `{"base-url":"https://chart-example.local","behind-proxy":true,"log-level":"info"}` | Sample config. See https://github.com/binwiederhier/ntfy/blob/main/server/server.yml |
 | extraVolumeMounts | list | `[]` | Additional Volume mounts |
 | extraVolumes | list | `[]` | Additional volumes |
 | fullnameOverride | string | `""` |  |

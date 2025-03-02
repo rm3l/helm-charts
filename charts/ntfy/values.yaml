@@ -104,6 +104,7 @@ config:
   sample:
     log-level: info
     behind-proxy: true
+    base-url: https://chart-example.local
 
 cache:
   enabled: true
