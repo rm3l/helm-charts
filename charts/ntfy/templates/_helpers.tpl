@@ -51,6 +51,26 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
+Common labels
+*/}}
+{{- define "ntfy.backupLabels" -}}
+helm.sh/chart: {{ include "ntfy.chart" . }}
+{{ include "ntfy.backupSelectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
+{{/*
+Selector labels
+*/}}
+{{- define "ntfy.backupSelectorLabels" -}}
+app.kubernetes.io/name: {{ include "ntfy.name" . }}-backup
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "ntfy.serviceAccountName" -}}
