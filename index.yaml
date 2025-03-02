@@ -2047,6 +2047,23 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.0.0/mac-oui-1.0.0.tgz
     version: 1.0.0
+  ntfy:
+  - apiVersion: v2
+    appVersion: v2.11.0
+    created: "2025-03-02T22:01:00.049705008Z"
+    description: 'Unofficial Chart for ntfy, a simple HTTP-based pub-sub notification
+      service. This Chart also provides automated backups of ntfy to services like
+      AWS S3. https://github.com/binwiederhier/ntfy '
+    digest: fcb93423f65af419d40575f137ce5cd09a27d21b9ad49660e727fa611109e589
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: ntfy
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/ntfy-0.1.0/ntfy-0.1.0.tgz
+    version: 0.1.0
   olivetin:
   - apiVersion: v2
     appVersion: 2025.2.19
@@ -2467,4 +2484,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/wallos-0.1.0/wallos-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-23T14:06:48.407382796Z"
+generated: "2025-03-02T22:01:00.049957459Z"
