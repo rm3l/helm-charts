@@ -12,6 +12,7 @@
 [![dev-feed](https://img.shields.io/badge/dev--feed-3.1.1-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 [![ghost-export-to-s3](https://img.shields.io/badge/ghost--export--to--s3-0.26.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
 [![mac-oui](https://img.shields.io/badge/mac--oui-1.25.0-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
+[![memos](https://img.shields.io/badge/memos-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/memos)
 [![ntfy](https://img.shields.io/badge/ntfy-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/ntfy)
 [![olivetin](https://img.shields.io/badge/olivetin-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/olivetin)
 [![service-names-port-numbers](https://img.shields.io/badge/service--names--port--numbers-0.26.1-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
@@ -24,6 +25,7 @@
   - [dev-feed](#dev-feed)
   - [ghost-export-to-s3](#ghost-export-to-s3)
   - [mac-oui](#mac-oui)
+  - [memos](#memos)
   - [ntfy](#ntfy)
   - [olivetin](#olivetin)
   - [service-names-port-numbers](#service-names-port-numbers)
@@ -82,6 +84,14 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/REA
 > [https://github.com/rm3l/mac-oui](https://github.com/rm3l/mac-oui)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md) for further details.
+
+### memos
+
+> Unofficial Chart for memos, an open-source, lightweight note-taking solution.
+> This Chart also provides automated backups of memos to services like AWS S3.
+> [https://github.com/usememos/memos](https://github.com/usememos/memos)
+
+See [https://github.com/rm3l/helm-charts/blob/main/charts/memos/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/memos/README.md) for further details.
 
 ### ntfy
 
