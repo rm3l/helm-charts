@@ -8,6 +8,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number }}
+  cancel-in-progress: true
+
 jobs:
 
   pre-commit_checks:
@@ -204,6 +208,7 @@ jobs:
           - dev-feed
           - ghost-export-to-s3
           - mac-oui
+          - memos
           - ntfy
           - olivetin
           - service-names-port-numbers
