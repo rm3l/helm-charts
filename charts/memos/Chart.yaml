@@ -2,7 +2,6 @@ apiVersion: v2
 name: memos
 description: |
   Unofficial Chart for memos, an open-source, lightweight note-taking solution.
-  This Chart also provides automated backups of memos to services like AWS S3.
   https://github.com/usememos/memos
 
 # A chart can be either an 'application' or a 'library' chart.

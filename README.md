@@ -88,7 +88,6 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md](htt
 ### memos
 
 > Unofficial Chart for memos, an open-source, lightweight note-taking solution.
-> This Chart also provides automated backups of memos to services like AWS S3.
 > [https://github.com/usememos/memos](https://github.com/usememos/memos)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/memos/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/memos/README.md) for further details.

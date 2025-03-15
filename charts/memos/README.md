@@ -1,7 +1,6 @@
 # memos
 
 Unofficial Chart for memos, an open-source, lightweight note-taking solution.
-This Chart also provides automated backups of memos to services like AWS S3.
 https://github.com/usememos/memos
 
 [![Latest version](https://img.shields.io/badge/latest_version-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/memos)
