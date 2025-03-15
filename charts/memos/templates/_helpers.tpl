@@ -60,3 +60,24 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+
+{{- define "memos.driver" -}}
+{{- if .Values.mariadb.enabled }}
+{{- printf "mysql" }}
+{{- else if .Values.postgresql.enabled }}
+{{- printf "postgres" }}
+{{- else if .Values.sqlite.enabled }}
+{{- printf "sqlite" }}
+{{- end }}
+{{- end }}
+
+{{- define "memos.dsn" -}}
+{{- if .Values.mariadb.enabled }}
+{{- printf "%s:%s@tcp(%s-mariadb)/%s" .Values.mariadb.auth.username .Values.mariadb.auth.password .Release.Name .Values.mariadb.auth.database }}
+{{- else if .Values.postgresql.enabled }}
+{{- printf "postgresql://%s:%s@%s-postgresql:5432/%s?sslmode=disable" .Values.postgresql.auth.username .Values.postgresql.auth.password .Release.Name .Values.postgresql.auth.database}}
+{{- else }}
+{{- printf "" }}
+{{- end }}
+{{- end }}

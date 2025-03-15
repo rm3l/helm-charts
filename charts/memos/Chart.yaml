@@ -31,3 +31,15 @@ maintainers:
 - name: rm3l
   email: armel@rm3l.org
   url: https://rm3l.org
+
+dependencies:
+- name: mariadb
+  # See https://github.com/bitnami/charts/tree/master/bitnami/mariadb
+  version: "20.4.1"
+  repository: "https://charts.bitnami.com/bitnami"
+  condition: mariadb.enabled
+- name: postgresql
+  # See https://github.com/bitnami/charts/tree/master/bitnami/postgresql
+  version: "16.4.16"
+  repository: "https://charts.bitnami.com/bitnami"
+  condition: postgresql.enabled

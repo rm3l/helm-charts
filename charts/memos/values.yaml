@@ -90,3 +90,23 @@ strategy: {}
 
 # -- Host networking requested for the pod. Beware that setting this to true requires all container ports declared in the pod to be free on the node.
 hostNetwork: false
+
+secretEnv:
+  name: ""
+
+sqlite:
+  enabled: true
+
+mariadb:
+  enabled: false
+  auth:
+    database: memos
+    username: "db-user"
+    password: "pl34s3Ch4ng3M3"
+
+postgresql:
+  enabled: false
+  auth:
+    database: memos
+    username: "db-user"
+    password: "pl34s3Ch4ng3M3"
