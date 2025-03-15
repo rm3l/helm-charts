@@ -204,6 +204,7 @@ jobs:
           - dev-feed
           - ghost-export-to-s3
           - mac-oui
+          - memos
           - ntfy
           - olivetin
           - service-names-port-numbers
