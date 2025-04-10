@@ -1,3 +1,4 @@
+{{- if .Values.backup.enabled }}
 {{- if semverCompare ">=1.21-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: batch/v1
 {{- else -}}
@@ -18,7 +19,7 @@ spec:
       parallelism: {{ .Values.backup.parallelism }}
       activeDeadlineSeconds: {{ .Values.backup.activeDeadlineSeconds }}
       template:
-        metadata: 
+        metadata:
           annotations:
             checksum/secret: {{ include (print $.Template.BasePath "/backup.secret.yaml") . | sha256sum }}
             {{- with .Values.podAnnotations }}
@@ -70,15 +71,14 @@ spec:
           {{- end }}
 
           containers:
+          {{- if .Values.backup.aws.enabled }}
           - name: backup-config
             imagePullPolicy: {{ .Values.backup.imagePullPolicy }}
-            volumeMounts:
             volumeMounts:
             - mountPath: /config
               name: {{ include "atuin.fullname" . }}-config
             resources:
               {{- toYaml .Values.resources | nindent 14 }}
-            {{- if .Values.backup.aws.enabled }}
             image: amazon/aws-cli:2.4.9
             args:
             - s3
@@ -102,18 +102,16 @@ spec:
                 secretKeyRef:
                   name: {{ include "atuin.fullname" . }}-backup
                   key: S3_DESTINATION
-            {{- end }}
+          {{- end }}
 
           {{- if .Values.sqlite.enabled }}
           - name: backup-data-sqlite
             imagePullPolicy: {{ .Values.backup.imagePullPolicy }}
             volumeMounts:
-            volumeMounts:
             - mountPath: /data
               name: {{ include "atuin.fullname" . }}-data-sqlite
             resources:
               {{- toYaml .Values.resources | nindent 14 }}
-            {{- if .Values.backup.aws.enabled }}
             image: amazon/aws-cli:2.4.9
             args:
             - s3
@@ -137,5 +135,5 @@ spec:
                 secretKeyRef:
                   name: {{ include "atuin.fullname" . }}-backup
                   key: S3_DESTINATION
-            {{- end }}
           {{- end }}
+{{- end }}
