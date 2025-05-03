@@ -2533,6 +2533,21 @@ entries:
   wg-easy:
   - apiVersion: v2
     appVersion: "14"
+    created: "2025-05-03T22:27:04.31041213Z"
+    description: 'Unofficial Chart for wg-easy, the easiest way to run WireGuard VPN.
+      It also provides a Web-based Admin UI. https://github.com/wg-easy/wg-easy '
+    digest: a243faa16595c8fe07cfd154b70f82c8f0a7cda72488577841a3b4e735968da6
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: wg-easy
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/wg-easy-0.2.0/wg-easy-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: "14"
     created: "2025-05-03T22:01:22.945108189Z"
     description: 'Unofficial Chart for wg-easy, the easiest way to run WireGuard VPN.
       It also provides a Web-based Admin UI. https://github.com/wg-easy/wg-easy '
@@ -2546,4 +2561,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/wg-easy-0.1.0/wg-easy-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-03T22:01:22.945386518Z"
+generated: "2025-05-03T22:27:04.310640176Z"
