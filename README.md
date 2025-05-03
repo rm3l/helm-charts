@@ -56,7 +56,7 @@ helm install my-release rm3l/<chart>
 > This Chart also provides automated backups of Adguard Home to services like AWS S3.
 > [https://github.com/AdguardTeam/AdGuardHome](https://github.com/AdguardTeam/AdGuardHome)
 
-See [./charts/adguard-home/README.md](./charts/adguard-home/README.md) for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/adguard-home/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/adguard-home/README.md) for further details.
 
 ### atuin
 
@@ -64,35 +64,35 @@ See [./charts/adguard-home/README.md](./charts/adguard-home/README.md) for furth
 > The server provides fully encrypted synchronization of the shell history across machines.
 > [https://github.com/atuinsh/atuin](https://github.com/atuinsh/atuin)
 
-See [./charts/atuin/README.md](./charts/atuin/README.md) for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/atuin/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/atuin/README.md) for further details.
 
 ### dev-feed
 
 > GraphQL-based API exposing a list of daily curated content from top engineering blogs and articles.
 > [https://github.com/rm3l/dev-feed](https://github.com/rm3l/dev-feed)
 
-See [./charts/dev-feed/README.md](./charts/dev-feed/README.md) for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/dev-feed/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/dev-feed/README.md) for further details.
 
 ### ghost-export-to-s3
 
 > Automated backups of headless Ghost Blogs to AWS S3.
 > [https://armel.soro.io/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/](https://armel.soro.io/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/)
 
-See [./charts/ghost-export-to-s3/README.md](./charts/ghost-export-to-s3/README.md) for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/README.md) for further details.
 
 ### mac-oui
 
 > Microservice for looking up manufacturers from MAC addresses.
 > [https://github.com/rm3l/mac-oui](https://github.com/rm3l/mac-oui)
 
-See [./charts/mac-oui/README.md](./charts/mac-oui/README.md) for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md) for further details.
 
 ### memos
 
 > Unofficial Chart for memos, an open-source, lightweight note-taking solution.
 > [https://github.com/usememos/memos](https://github.com/usememos/memos)
 
-See [./charts/memos/README.md](./charts/memos/README.md) for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/memos/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/memos/README.md) for further details.
 
 ### ntfy
 
@@ -100,21 +100,21 @@ See [./charts/memos/README.md](./charts/memos/README.md) for further details.
 > This Chart also provides automated backups of ntfy to services like AWS S3.
 > [https://github.com/binwiederhier/ntfy](https://github.com/binwiederhier/ntfy)
 
-See [./charts/ntfy/README.md](./charts/ntfy/README.md) for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/ntfy/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/ntfy/README.md) for further details.
 
 ### olivetin
 
 > Unofficial Chart for OliveTin, a tool that gives safe and simple access to predefined shell commands from a web interface.
 > [https://github.com/OliveTin/OliveTin](https://github.com/OliveTin/OliveTin)
 
-See [./charts/olivetin/README.md](./charts/olivetin/README.md) for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md) for further details.
 
 ### service-names-port-numbers
 
 > Microservice (GraphQL API) against the IANA Service Names And Port Numbers Registry.
 > [https://github.com/rm3l/service-names-port-numbers](https://github.com/rm3l/service-names-port-numbers)
 
-See [./charts/service-names-port-numbers/README.md](./charts/service-names-port-numbers/README.md) for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-numbers/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-numbers/README.md) for further details.
 
 ### wallos
 
@@ -122,7 +122,7 @@ See [./charts/service-names-port-numbers/README.md](./charts/service-names-port-
 > This Chart also provides automated backups of Wallos to services like AWS S3.
 > [https://github.com/ellite/Wallos](https://github.com/ellite/Wallos)
 
-See [./charts/wallos/README.md](./charts/wallos/README.md) for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/wallos/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/wallos/README.md) for further details.
 
 ### wg-easy
 
@@ -130,7 +130,7 @@ See [./charts/wallos/README.md](./charts/wallos/README.md) for further details.
 > It also provides a Web-based Admin UI.
 > [https://github.com/wg-easy/wg-easy](https://github.com/wg-easy/wg-easy)
 
-See [./charts/wg-easy/README.md](./charts/wg-easy/README.md) for further details.
+See [https://github.com/rm3l/helm-charts/blob/main/charts/wg-easy/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/wg-easy/README.md) for further details.
 
 ## Developed by
 
