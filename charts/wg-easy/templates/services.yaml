@@ -8,7 +8,9 @@ spec:
   type: {{ .Values.services.wireguard.type }}
   ports:
     - port: {{ .Values.services.wireguard.port }}
+      {{- if eq .Values.services.wireguard.type "NodePort" }}
       nodePort: {{ .Values.services.wireguard.nodePort }}
+      {{- end }}
       targetPort: wg
       protocol: UDP
       name: wg
