@@ -213,6 +213,7 @@ jobs:
           - olivetin
           - service-names-port-numbers
           - wallos
+          - wg-easy
     steps:
       - uses: actions/checkout@v4
 

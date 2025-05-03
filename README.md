@@ -17,6 +17,7 @@
 [![olivetin](https://img.shields.io/badge/olivetin-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/olivetin)
 [![service-names-port-numbers](https://img.shields.io/badge/service--names--port--numbers-0.26.1-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
 [![wallos](https://img.shields.io/badge/wallos-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/wallos)
+[![wg-easy](https://img.shields.io/badge/wg-easy-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/wg-easy)
 
 - [TL;DR](#tldr)
 - [Charts](#charts)
@@ -30,6 +31,7 @@
   - [olivetin](#olivetin)
   - [service-names-port-numbers](#service-names-port-numbers)
   - [wallos](#wallos)
+  - [wg-easy](#wg-easy)
 - [Developed by](#developed-by)
 - [License](#license)
 
@@ -121,6 +123,14 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-num
 > [https://github.com/ellite/Wallos](https://github.com/ellite/Wallos)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/wallos/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/wallos/README.md) for further details.
+
+### wg-easy
+
+> Unofficial Chart for wg-easy, the easiest way to run WireGuard VPN.
+> It also provides a Web-based Admin UI.
+> [https://github.com/wg-easy/wg-easy](https://github.com/wg-easy/wg-easy)
+
+See [https://github.com/rm3l/helm-charts/blob/main/charts/wg-easy/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/wg-easy/README.md) for further details.
 
 ## Developed by
 
