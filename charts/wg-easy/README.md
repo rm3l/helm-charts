@@ -55,6 +55,7 @@ See https://artifacthub.io/packages/helm/rm3l/wg-easy?modal=install
 | serviceAccount.name | string | `""` |  |
 | services.http.port | int | `51821` |  |
 | services.http.type | string | `"ClusterIP"` |  |
+| services.wireguard.nodePort | int | `30000` |  |
 | services.wireguard.port | int | `30000` |  |
 | services.wireguard.type | string | `"NodePort"` |  |
 | tolerations | list | `[]` |  |

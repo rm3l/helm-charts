@@ -45,6 +45,7 @@ services:
   wireguard:
     type: NodePort
     port: 30000
+    nodePort: 30000
   http:
     type: ClusterIP
     port: 51821
