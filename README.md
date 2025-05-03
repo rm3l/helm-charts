@@ -17,7 +17,7 @@
 [![olivetin](https://img.shields.io/badge/olivetin-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/olivetin)
 [![service-names-port-numbers](https://img.shields.io/badge/service--names--port--numbers-0.26.1-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
 [![wallos](https://img.shields.io/badge/wallos-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/wallos)
-[![wg-easy](https://img.shields.io/badge/wg-easy-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/wg-easy)
+[![wg-easy](https://img.shields.io/badge/wg--easy-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/wg-easy)
 
 - [TL;DR](#tldr)
 - [Charts](#charts)
