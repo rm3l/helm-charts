@@ -1,0 +1,8 @@
+{{- if not .Values.persistence.existingClaim -}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "wg-easy.fullname" . }}-config
+spec:
+  {{- toYaml .Values.persistence.volumeClaimSpec | nindent 2 }}
+{{- end }}
