@@ -2530,4 +2530,20 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/wallos-0.1.0/wallos-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-22T16:50:43.116204804Z"
+  wg-easy:
+  - apiVersion: v2
+    appVersion: "14"
+    created: "2025-05-03T22:01:22.945108189Z"
+    description: 'Unofficial Chart for wg-easy, the easiest way to run WireGuard VPN.
+      It also provides a Web-based Admin UI. https://github.com/wg-easy/wg-easy '
+    digest: 3ad4c0c952dbf08c57063783b37b5a562ff5de1a8707e1167ada45c6eccfc416
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: wg-easy
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/wg-easy-0.1.0/wg-easy-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-05-03T22:01:22.945386518Z"
