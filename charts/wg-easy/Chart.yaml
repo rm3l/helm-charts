@@ -25,3 +25,9 @@ version: 0.1.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "14"
+
+# Issue with name. See discussion here : https://github.com/helm/chart-testing/issues/192
+maintainers:
+- name: rm3l
+  email: armel@rm3l.org
+  url: https://rm3l.org
