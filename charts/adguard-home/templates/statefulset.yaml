@@ -1,0 +1,180 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "adguard-home.fullname" . }}
+  labels:
+    {{- include "adguard-home.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "adguard-home.selectorLabels" . | nindent 6 }}
+  strategy:
+    {{- toYaml .Values.strategy | nindent 4 }}
+  template:
+    metadata:
+      labels:
+        {{- include "adguard-home.selectorLabels" . | nindent 8 }}
+      annotations:
+        checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+        {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      priorityClassName: {{ .Values.priorityClassName }}
+      hostNetwork: {{ .Values.hostNetwork }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "adguard-home.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+      {{- if .Values.bootstrapEnabled }}
+      - name: bootstrap-config-vol
+        secret:
+          secretName: {{ include "adguard-home.fullname" . }}
+      {{- end }}
+      - name: data-vol
+        persistentVolumeClaim:
+          {{- if not .Values.persistence.existingClaim }}
+          claimName: {{ include "adguard-home.fullname" . }}
+          {{- else }}
+          claimName: {{ .Values.persistence.existingClaim }}
+          {{- end -}}
+      {{- with .Values.extraVolumes }}
+        {{- toYaml . | nindent 6 }}
+      {{- end }}
+
+      {{- if .Values.bootstrapEnabled }}
+      initContainers:
+      - image: busybox:1.35
+        name: configurator
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 100m
+            memory: "128Mi"
+          requests:
+            cpu: 100m
+            memory: "64Mi"
+        volumeMounts:
+        - name: bootstrap-config-vol
+          mountPath: /var/adguardhome-bootstrap
+        - name: data-vol
+          mountPath: /opt/adguardhome/conf
+          subPath: conf
+        command:
+        - /bin/sh
+        - "-c"
+        - |
+          if ls /opt/adguardhome/conf/AdGuardHome.yaml; then
+            echo "Existing file will NOT be altered: /opt/adguardhome/conf/AdGuardHome.yaml"
+          else
+            cp -v /var/adguardhome-bootstrap/AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
+          fi
+      {{- end }}
+
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+          - /opt/adguardhome/AdGuardHome
+          - --no-check-update
+          - -c
+          - /opt/adguardhome/conf/AdGuardHome.yaml
+          - -w
+          - /opt/adguardhome/work
+          - --web-addr
+          - "0.0.0.0:{{ .Values.services.http.port }}"
+          ports:
+          - name: http
+            containerPort: {{ .Values.services.http.port }}
+            protocol: TCP
+          {{- if .Values.services.https.enabled }}
+          - name: https
+            containerPort: {{ .Values.services.https.port }}
+            protocol: TCP
+          {{- end }}
+          {{- if .Values.services.dns.enabled }}
+          - name: dns-tcp
+            containerPort: {{ .Values.services.dns.tcp.port }}
+            protocol: TCP
+          - name: dns-udp
+            containerPort: {{ .Values.services.dns.udp.port }}
+            protocol: UDP
+          {{- end }}
+          {{- if .Values.services.dnsOverTls.enabled }}
+          - name: dot
+            containerPort: {{ .Values.services.dnsOverTls.port }}
+            protocol: TCP
+          {{- end }}
+          {{- if .Values.services.dnscrypt.enabled }}
+          - name: dnscrypt-tcp
+            containerPort: {{ .Values.services.dnscrypt.tcp.port }}
+            protocol: TCP
+          - name: dnscrypt-udp
+            containerPort: {{ .Values.services.dnscrypt.udp.port }}
+            protocol: UDP
+          {{- end }}
+          {{- if .Values.services.dnsOverQuic.enabled }}
+          - name: doq-1
+            containerPort: {{ .Values.services.dnsOverQuic.port1.port }}
+            protocol: UDP
+          - name: doq-2
+            containerPort: {{ .Values.services.dnsOverQuic.port2.port }}
+            protocol: UDP
+          {{- end }}
+          livenessProbe:
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
+          startupProbe:
+            {{- toYaml .Values.startupProbe | nindent 12 }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          {{- if .Values.defaultVolumeMountsEnabled }}
+          - name: data-vol
+            mountPath: /opt/adguardhome/work
+            subPath: work
+          - name: data-vol
+            mountPath: /opt/adguardhome/conf
+            subPath: conf
+          {{- end }}
+          {{- with .Values.extraVolumeMounts }}
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if and (.Values.backup.enabled) (has "ReadWriteOnce" (((.Values.persistence).volumeClaimSpec).accessModes)) }}
+      affinity:
+        podAffinity:
+          {{- /*
+          # Add soft affinity to avoid race condition when backup cronjob already runs and has the volume mounted
+          */}}
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  {{- include "adguard-home.backupSelectorLabels" . | nindent 18 }}
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+      {{- else}}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
