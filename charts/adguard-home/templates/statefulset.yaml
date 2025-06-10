@@ -1,5 +1,6 @@
+{{- if eq .Values.deploymentType "StatefulSet" }}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "adguard-home.fullname" . }}
   labels:
@@ -8,11 +9,16 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
+  serviceName: {{ include "adguard-home.fullname" . }}
   selector:
     matchLabels:
       {{- include "adguard-home.selectorLabels" . | nindent 6 }}
-  strategy:
-    {{- toYaml .Values.strategy | nindent 4 }}
+  updateStrategy:
+    {{- if .Values.updateStrategy }}
+    {{- toYaml .Values.updateStrategy | nindent 4 }}
+    {{- else }}
+    type: RollingUpdate
+    {{- end }}
   template:
     metadata:
       labels:
@@ -38,17 +44,14 @@ spec:
         secret:
           secretName: {{ include "adguard-home.fullname" . }}
       {{- end }}
+      {{- if and .Values.persistence.existingClaim (not .Values.persistence.volumeClaimTemplates.enabled) }}
       - name: data-vol
         persistentVolumeClaim:
-          {{- if not .Values.persistence.existingClaim }}
-          claimName: {{ include "adguard-home.fullname" . }}
-          {{- else }}
           claimName: {{ .Values.persistence.existingClaim }}
-          {{- end -}}
+      {{- end }}
       {{- with .Values.extraVolumes }}
         {{- toYaml . | nindent 6 }}
       {{- end }}
-
       {{- if .Values.bootstrapEnabled }}
       initContainers:
       - image: busybox:1.35
@@ -77,7 +80,6 @@ spec:
             cp -v /var/adguardhome-bootstrap/AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
           fi
       {{- end }}
-
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -178,3 +180,13 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+  {{- if and (not .Values.persistence.existingClaim) .Values.persistence.volumeClaimTemplates.enabled }}
+  volumeClaimTemplates:
+  - metadata:
+      name: data-vol
+      labels:
+        {{- include "adguard-home.labels" . | nindent 8 }}
+    spec:
+      {{- toYaml .Values.persistence.volumeClaimSpec | nindent 6 }}
+  {{- end }}
+{{- end }}

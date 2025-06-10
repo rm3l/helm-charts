@@ -2,6 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# Choose deployment type: Deployment or StatefulSet
+deploymentType: Deployment
+
 replicaCount: 1
 
 image:
@@ -284,6 +287,11 @@ persistence:
     resources:
       requests:
         storage: 1Gi
+    storageClassName: "" # Optional: specify storage class
+  # Use when deploymentType is StatefulSet
+  volumeClaimTemplates:
+    enabled: false  # Set to true to use volumeClaimTemplates, false to use existing PVC
+      
 
 backup:
   # -- Note that this depends on the Access Mode set for the persistent volume claim (PVC) specified.
