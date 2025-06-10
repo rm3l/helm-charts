@@ -291,6 +291,8 @@ persistence:
   # Use when deploymentType is StatefulSet
   volumeClaimTemplates:
     enabled: false  # Set to true to use volumeClaimTemplates, false to use existing PVC
+  emptyDir:
+    sizeLimit: 1Gi
       
 
 backup:

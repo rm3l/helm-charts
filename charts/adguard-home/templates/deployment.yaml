@@ -40,16 +40,22 @@ spec:
           secretName: {{ include "adguard-home.fullname" . }}
       {{- end }}
       - name: data-vol
+        {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
           {{- if not .Values.persistence.existingClaim }}
           claimName: {{ include "adguard-home.fullname" . }}
           {{- else }}
           claimName: {{ .Values.persistence.existingClaim }}
-          {{- end -}}
+          {{- end }}
+        {{- else }}
+        emptyDir:
+          {{- if .Values.persistence.emptyDir.sizeLimit }}
+          sizeLimit: {{ .Values.persistence.emptyDir.sizeLimit }}
+          {{- end }}
+        {{- end }}
       {{- with .Values.extraVolumes }}
         {{- toYaml . | nindent 6 }}
       {{- end }}
-
       {{- if .Values.bootstrapEnabled }}
       initContainers:
       - image: busybox:1.35
@@ -78,7 +84,6 @@ spec:
             cp -v /var/adguardhome-bootstrap/AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
           fi
       {{- end }}
-
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -156,7 +161,7 @@ spec:
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- if and (.Values.backup.enabled) (has "ReadWriteOnce" (((.Values.persistence).volumeClaimSpec).accessModes)) }}
+      {{- if and .Values.persistence.enabled .Values.backup.enabled (has "ReadWriteOnce" (((.Values.persistence).volumeClaimSpec).accessModes)) }}
       affinity:
         podAffinity:
           {{- /*
