@@ -323,7 +323,8 @@ backup:
 
 # -- Whether to enable bootstrapping the AdguardHome config file using the content in bootstrapConfig
 bootstrapEnabled: true
-
+# -- Use a provided secret with the Adguard config. Make sure it contains the field "AdGuardHome.yaml"
+bootstrapExistingSecret: ""
 bootstrapConfig:
   # -- AdGuard Home config. See [this page](https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration#configuration-file)
   bind_host: 0.0.0.0
