@@ -280,6 +280,8 @@ readinessProbe: null
 startupProbe: null
 
 persistence:
+# -- Disabling this will mount the container with an emptyDir
+  enabled: true
   existingClaim: null
   volumeClaimSpec:
     accessModes:
