@@ -158,7 +158,7 @@ spec:
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- if and (.Values.backup.enabled) (has "ReadWriteOnce" (((.Values.persistence).volumeClaimSpec).accessModes)) }}
+      {{- if and .Values.persistence.enabled .Values.backup.enabled (has "ReadWriteOnce" (((.Values.persistence).volumeClaimSpec).accessModes)) }}
       affinity:
         podAffinity:
           {{- /*
