@@ -1,3 +1,9 @@
+# namespace -- (Optional) Specifies the namespace in which resources will be created.
+# Helm's default behavior is to use the namespace specified with the --namespace flag during `helm install` or `helm upgrade`.
+# This value is typically not needed and is provided for advanced use cases or specific GitOps tool requirements.
+# If not set, it defaults to the release namespace.
+namespace: ""
+
 # Default values for adguard-home.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
