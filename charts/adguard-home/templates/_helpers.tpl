@@ -80,3 +80,10 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Return the appropriate namespace to use for resources
+*/}}
+{{- define "adguard-home.namespace" -}}
+{{- .Values.namespace | default .Release.Namespace -}}
+{{- end -}}

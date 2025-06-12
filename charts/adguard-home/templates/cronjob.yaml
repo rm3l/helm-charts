@@ -7,7 +7,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: {{ include "adguard-home.fullname" . }}-backup
-  namespace: {{ .Values.namespace | default .Release.Namespace }}
+  namespace: {{ include "adguard-home.namespace" . }}
   labels:
     {{- include "adguard-home.backupLabels" . | nindent 4 }}
 spec:

@@ -17,7 +17,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}-http
-  namespace: {{ .Values.namespace | default .Release.Namespace }}
+  namespace: {{ include "adguard-home.namespace" . }}
   labels:
     {{- include "adguard-home.labels" . | nindent 4 }}
   {{- with .Values.ingresses.http.annotations }}
@@ -81,7 +81,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}-https
-  namespace: {{ .Values.namespace | default .Release.Namespace }}
+  namespace: {{ include "adguard-home.namespace" . }}
   labels:
     {{- include "adguard-home.labels" . | nindent 4 }}
   {{- with .Values.ingresses.https.annotations }}

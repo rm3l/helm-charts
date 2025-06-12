@@ -3,7 +3,7 @@ apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ include "adguard-home.fullname" . }}
-  namespace: {{ .Values.namespace | default .Release.Namespace }}
+  namespace: {{ include "adguard-home.namespace" . }}
   labels:
     {{- include "adguard-home.labels" . | nindent 4 }}
 spec:
