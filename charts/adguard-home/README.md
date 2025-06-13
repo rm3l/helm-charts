@@ -178,7 +178,9 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | bootstrapConfig.web_session_ttl | int | `720` |  |
 | bootstrapConfig.whitelist_filters | list | `[]` |  |
 | bootstrapEnabled | bool | `true` | Whether to enable bootstrapping the AdguardHome config file using the content in bootstrapConfig |
+| bootstrapExistingSecret | string | `""` | Use a provided secret with the Adguard config. Make sure it contains the field "AdGuardHome.yaml" |
 | defaultVolumeMountsEnabled | bool | `true` | Whether to add default volume mounts. |
+| deploymentType | string | `"Deployment"` |  |
 | extraServices | list | `[]` | Additional services |
 | extraVolumeMounts | list | `[]` | Additional Volume mounts |
 | extraVolumes | list | `[]` | Additional volumes |
@@ -212,9 +214,13 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | livenessProbe | string | `nil` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
+| persistence.emptyDir.sizeLimit | string | `"1Gi"` |  |
+| persistence.enabled | bool | `true` | Disabling this will mount the container with an emptyDir |
 | persistence.existingClaim | string | `nil` |  |
 | persistence.volumeClaimSpec.accessModes[0] | string | `"ReadWriteOnce"` |  |
 | persistence.volumeClaimSpec.resources.requests.storage | string | `"1Gi"` |  |
+| persistence.volumeClaimSpec.storageClassName | string | `""` |  |
+| persistence.volumeClaimTemplates.enabled | bool | `false` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | priorityClassName | string | `""` |  |
