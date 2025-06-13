@@ -43,7 +43,6 @@ spec:
       - name: bootstrap-config-vol
         secret:
           secretName: {{ .Values.bootstrapExistingSecret | default (include "adguard-home.fullname" .) }}
-          secretName: {{ include "adguard-home.fullname" . }}
       {{- end }}
       {{- if and .Values.persistence.existingClaim (not .Values.persistence.volumeClaimTemplates.enabled) }}
       - name: data-vol
