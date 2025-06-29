@@ -7,6 +7,6 @@ metadata:
   labels:
     {{- include "ntfy.labels" . | nindent 4 }}
 data:
-  server.yaml: |
+  server.yml: |
 {{ toYaml .Values.config.sample | indent 4 }}
 {{- end }}
