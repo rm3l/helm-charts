@@ -4,13 +4,13 @@ Unofficial Chart for Adguard Home, the network-wide ad and tracking blocker.
 This Chart also provides automated backups of Adguard Home to services like AWS S3.
 https://github.com/AdguardTeam/AdGuardHome
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.19.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
+[![Latest version](https://img.shields.io/badge/latest_version-0.20.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-adguard-home rm3l/adguard-home --version 0.19.0
+$ helm install my-adguard-home rm3l/adguard-home --version 0.20.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
@@ -211,6 +211,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | ingresses.https.tls | list | `[]` |  |
 | livenessProbe | string | `nil` |  |
 | nameOverride | string | `""` |  |
+| namespace | Optional | `""` | Specifies the namespace in which resources will be created. Helm's default behavior is to use the namespace specified with the --namespace flag during `helm install` or `helm upgrade`. If not set, it defaults to the release namespace. |
 | nodeSelector | object | `{}` |  |
 | persistence.existingClaim | string | `nil` |  |
 | persistence.volumeClaimSpec.accessModes[0] | string | `"ReadWriteOnce"` |  |

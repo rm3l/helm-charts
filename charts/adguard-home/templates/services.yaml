@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "adguard-home.fullname" . }}-http
+  namespace: {{ include "adguard-home.namespace" . }}
   {{- with .Values.services.http.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -40,6 +41,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "adguard-home.fullname" . }}-https
+  namespace: {{ include "adguard-home.namespace" . }}
   {{- with .Values.services.https.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -78,6 +80,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "adguard-home.fullname" . }}-dns
+  namespace: {{ include "adguard-home.namespace" . }}
   {{- with .Values.services.dns.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -124,6 +127,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "adguard-home.fullname" . }}-dot
+  namespace: {{ include "adguard-home.namespace" . }}
   {{- with .Values.services.dnsOverTls.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -162,6 +166,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "adguard-home.fullname" . }}-doq
+  namespace: {{ include "adguard-home.namespace" . }}
   {{- with .Values.services.dnsOverQuic.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -208,6 +213,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "adguard-home.fullname" . }}-dnscrypt
+  namespace: {{ include "adguard-home.namespace" . }}
   {{- with .Values.services.dnscrypt.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}

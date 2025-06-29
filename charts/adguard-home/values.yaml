@@ -2,6 +2,11 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# namespace -- (Optional) Specifies the namespace in which resources will be created.
+# Helm's default behavior is to use the namespace specified with the --namespace flag during `helm install` or `helm upgrade`.
+# If not set, it defaults to the release namespace.
+namespace: ""
+
 replicaCount: 1
 
 image:

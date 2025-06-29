@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "adguard-home.fullname" $ }}-{{ .name }}
+  namespace: {{ include "adguard-home.namespace" $ }}
   {{- with .annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
