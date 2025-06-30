@@ -295,7 +295,6 @@ persistence:
     enabled: false  # Set to true to use volumeClaimTemplates, false to use existing PVC
   emptyDir:
     sizeLimit: 1Gi
-      
 
 backup:
   # -- Note that this depends on the Access Mode set for the persistent volume claim (PVC) specified.
