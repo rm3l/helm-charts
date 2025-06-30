@@ -4,13 +4,13 @@ Unofficial Chart for Adguard Home, the network-wide ad and tracking blocker.
 This Chart also provides automated backups of Adguard Home to services like AWS S3.
 https://github.com/AdguardTeam/AdGuardHome
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.19.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
+[![Latest version](https://img.shields.io/badge/latest_version-0.20.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-adguard-home rm3l/adguard-home --version 0.19.0
+$ helm install my-adguard-home rm3l/adguard-home --version 0.20.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
@@ -178,7 +178,9 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | bootstrapConfig.web_session_ttl | int | `720` |  |
 | bootstrapConfig.whitelist_filters | list | `[]` |  |
 | bootstrapEnabled | bool | `true` | Whether to enable bootstrapping the AdguardHome config file using the content in bootstrapConfig |
+| bootstrapExistingSecret | string | `""` | Use a provided secret with the Adguard config. Make sure it contains the field "AdGuardHome.yaml" |
 | defaultVolumeMountsEnabled | bool | `true` | Whether to add default volume mounts. |
+| deploymentType | string | `"Deployment"` |  |
 | extraServices | list | `[]` | Additional services |
 | extraVolumeMounts | list | `[]` | Additional Volume mounts |
 | extraVolumes | list | `[]` | Additional volumes |
@@ -212,9 +214,12 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | livenessProbe | string | `nil` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
+| persistence.emptyDir.sizeLimit | string | `"1Gi"` |  |
+| persistence.enabled | bool | `true` | Disabling this will mount the container with an emptyDir |
 | persistence.existingClaim | string | `nil` |  |
 | persistence.volumeClaimSpec.accessModes[0] | string | `"ReadWriteOnce"` |  |
 | persistence.volumeClaimSpec.resources.requests.storage | string | `"1Gi"` |  |
+| persistence.volumeClaimTemplates.enabled | bool | `false` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | priorityClassName | string | `""` |  |

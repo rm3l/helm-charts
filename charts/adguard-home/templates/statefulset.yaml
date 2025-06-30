@@ -1,6 +1,6 @@
-{{- if eq .Values.deploymentType "Deployment" }}
+{{- if eq .Values.deploymentType "StatefulSet" }}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "adguard-home.fullname" . }}
   labels:
@@ -9,11 +9,16 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
+  serviceName: {{ include "adguard-home.fullname" . }}
   selector:
     matchLabels:
       {{- include "adguard-home.selectorLabels" . | nindent 6 }}
-  strategy:
-    {{- toYaml .Values.strategy | nindent 4 }}
+  updateStrategy:
+    {{- if .Values.updateStrategy }}
+    {{- toYaml .Values.updateStrategy | nindent 4 }}
+    {{- else }}
+    type: RollingUpdate
+    {{- end }}
   template:
     metadata:
       labels:
@@ -39,20 +44,11 @@ spec:
         secret:
           secretName: {{ .Values.bootstrapExistingSecret | default (include "adguard-home.fullname" .) }}
       {{- end }}
+      {{- if and .Values.persistence.existingClaim (not .Values.persistence.volumeClaimTemplates.enabled) }}
       - name: data-vol
-        {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
-          {{- if not .Values.persistence.existingClaim }}
-          claimName: {{ include "adguard-home.fullname" . }}
-          {{- else }}
           claimName: {{ .Values.persistence.existingClaim }}
-          {{- end }}
-        {{- else }}
-        emptyDir:
-          {{- if .Values.persistence.emptyDir.sizeLimit }}
-          sizeLimit: {{ .Values.persistence.emptyDir.sizeLimit }}
-          {{- end }}
-        {{- end }}
+      {{- end }}
       {{- with .Values.extraVolumes }}
         {{- toYaml . | nindent 6 }}
       {{- end }}
@@ -184,4 +180,13 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+  {{- if and (not .Values.persistence.existingClaim) .Values.persistence.volumeClaimTemplates.enabled }}
+  volumeClaimTemplates:
+  - metadata:
+      name: data-vol
+      labels:
+        {{- include "adguard-home.labels" . | nindent 8 }}
+    spec:
+      {{- toYaml .Values.persistence.volumeClaimSpec | nindent 6 }}
+  {{- end }}
 {{- end }}
