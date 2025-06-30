@@ -289,7 +289,7 @@ persistence:
     resources:
       requests:
         storage: 1Gi
-    storageClassName: "" # Optional: specify storage class
+    # storageClassName: "" # Optional: specify storage class
   # Use when deploymentType is StatefulSet
   volumeClaimTemplates:
     enabled: false  # Set to true to use volumeClaimTemplates, false to use existing PVC
