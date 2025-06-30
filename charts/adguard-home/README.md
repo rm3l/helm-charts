@@ -219,7 +219,6 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | persistence.existingClaim | string | `nil` |  |
 | persistence.volumeClaimSpec.accessModes[0] | string | `"ReadWriteOnce"` |  |
 | persistence.volumeClaimSpec.resources.requests.storage | string | `"1Gi"` |  |
-| persistence.volumeClaimSpec.storageClassName | string | `""` |  |
 | persistence.volumeClaimTemplates.enabled | bool | `false` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
