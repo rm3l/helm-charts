@@ -127,7 +127,7 @@ postgresql:
   auth:
     database: kresus
     username: "db-user"
-    # password: "pl34s3Ch4ng3M3"
+    password: "pl34s3Ch4ng3M3"
 
 apprise:
   enabled: true
