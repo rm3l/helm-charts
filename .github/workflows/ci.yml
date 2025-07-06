@@ -218,6 +218,7 @@ jobs:
           - atuin
           - dev-feed
           - ghost-export-to-s3
+          - kresus
           - mac-oui
           - memos
           - ntfy
