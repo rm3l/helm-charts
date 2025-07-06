@@ -58,7 +58,6 @@ See https://artifacthub.io/packages/helm/rm3l/kresus?modal=install
 | podLabels | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | postgresql.auth.database | string | `"kresus"` |  |
-| postgresql.auth.password | string | `"pl34s3Ch4ng3M3"` |  |
 | postgresql.auth.username | string | `"db-user"` |  |
 | postgresql.enabled | bool | `true` |  |
 | readinessProbe.httpGet.path | string | `"/"` |  |
