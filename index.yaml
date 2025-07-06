@@ -1767,6 +1767,31 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/ghost-export-to-s3-0.0.3/ghost-export-to-s3-0.0.3.tgz
     version: 0.0.3
+  kresus:
+  - apiVersion: v2
+    appVersion: 0.22.1
+    created: "2025-07-06T23:14:26.41672229Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.7.15
+    - alias: apprise
+      condition: apprise.enabled
+      name: apprise-api
+      repository: https://tieum.github.io/helm-charts
+      version: 0.0.5
+    description: 'Open-source libre self-hosted personal finance manager. https://github.com/kresusapp/kresus '
+    digest: 6691a16175ffc653c7212a8f4dfbd36b56308363fe69487a9264a3f21b1c4c04
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: kresus
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/kresus-0.1.0/kresus-0.1.0.tgz
+    version: 0.1.0
   mac-oui:
   - apiVersion: v2
     appVersion: 1.8.0
@@ -2593,4 +2618,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/wg-easy-0.1.0/wg-easy-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-30T21:56:06.274879142Z"
+generated: "2025-07-06T23:14:26.416992069Z"
