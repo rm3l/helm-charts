@@ -1,0 +1,146 @@
+# ref: https://framagit.org/kresusapp/kresus/-/blob/main/support/docker-compose/docker-compose.yml?ref_type=heads
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "kresus.fullname" . }}
+  labels:
+    {{- include "kresus.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "kresus.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "kresus.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "kresus.serviceAccountName" . }}
+      {{- with .Values.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.postgresql.enabled }}
+      initContainers:
+        - name: wait-db-service
+          image: busybox:1.28
+          securityContext:
+            readOnlyRootFilesystem: true
+            runAsUser: 65534
+            runAsGroup: 65534
+          command: ['sh', '-c', "until nslookup {{ include "kresus.fullname" . }}-postgresql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "kresus.fullname" . }}-postgresql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
+          resources:
+            limits:
+              cpu: 100m
+              memory: 10Mi
+            requests:
+              cpu: 100m
+              memory: 1Mi
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          {{- with .Values.securityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: LOCAL_USER_ID
+              value: "1000"
+            - name: KRESUS_DB_TYPE
+              value: postgres
+            {{- with .Values.extraEnvVars.env }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+            {{- if .Values.postgresql.enabled }}
+            - name: KRESUS_DB_HOST
+              value: {{ include "kresus.fullname" . }}-postgresql
+            - name: KRESUS_DB_PORT
+              value: "5432"
+            {{- end }}
+            {{- if .Values.apprise.enabled }}
+            - name: KRESUS_APPRISE_API_BASE_URL
+              value: http://apprise-api:8000
+            {{- end }}
+          {{- if .Values.postgresql.enabled }}
+          envFrom:
+            - secretRef:
+                name: {{ include "kresus.fullname" . }}
+            {{- with .Values.extraEnvVars.envFrom }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          {{- else }}
+          {{- with .Values.extraEnvVars.envFrom }}
+          envFrom:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- end }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          {{- with .Values.livenessProbe }}
+          livenessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.readinessProbe }}
+          readinessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: woob
+              mountPath: /woob
+            {{- if or .Values.config.existingConfigMap.name .Values.config.existingSecretRef.name }}
+            - name: config
+              mountPath: /opt/config.ini
+              readOnly: true
+            {{- end }}
+          {{- with .Values.volumeMounts }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      volumes:
+        - name: woob
+          emptyDir: {}
+        {{- if or .Values.config.existingConfigMap.name .Values.config.existingSecretRef.name }}
+        - name: config
+        {{- if .Values.config.existingSecretRef.name }}
+          secret:
+            secretName: {{ .Values.config.existingSecretRef.name }}
+        {{- else if .Values.config.existingConfigMap.name }}
+          configMap:
+            name: {{ .Values.config.existingConfigMap.name }}
+        {{- end }}
+        {{- end }}
+      {{- with .Values.volumes }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

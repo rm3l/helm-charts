@@ -1,0 +1,9 @@
+dependencies:
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 16.7.15
+- name: apprise-api
+  repository: https://tieum.github.io/helm-charts
+  version: 0.0.5
+digest: sha256:5ac0d4d32bcd653b1e514fe1691e1ab09979dec5c01c126b7bb710cbc83980e7
+generated: "2025-07-07T00:26:33.587852701+02:00"

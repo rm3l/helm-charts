@@ -11,6 +11,7 @@
 [![atuin](https://img.shields.io/badge/atuin-0.10.0-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
 [![dev-feed](https://img.shields.io/badge/dev--feed-3.1.1-blue)](https://artifacthub.io/packages/helm/rm3l/dev-feed)
 [![ghost-export-to-s3](https://img.shields.io/badge/ghost--export--to--s3-0.26.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
+[![kresus](https://img.shields.io/badge/kresus-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/kresus)
 [![mac-oui](https://img.shields.io/badge/mac--oui-1.25.0-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
 [![memos](https://img.shields.io/badge/memos-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/memos)
 [![ntfy](https://img.shields.io/badge/ntfy-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/ntfy)
@@ -25,6 +26,7 @@
   - [atuin](#atuin)
   - [dev-feed](#dev-feed)
   - [ghost-export-to-s3](#ghost-export-to-s3)
+  - [kresus](#kresus)
   - [mac-oui](#mac-oui)
   - [memos](#memos)
   - [ntfy](#ntfy)
@@ -79,6 +81,13 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/dev-feed/README.md](ht
 > [https://armel.soro.io/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/](https://armel.soro.io/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/ghost-export-to-s3/README.md) for further details.
+
+### kresus
+
+> Open-source libre self-hosted personal finance manager.
+> [https://github.com/kresusapp/kresus](https://github.com/kresusapp/kresus)
+
+See [https://github.com/rm3l/helm-charts/blob/main/charts/kresus/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/kresus/README.md) for further details.
 
 ### mac-oui
 
