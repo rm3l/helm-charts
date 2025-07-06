@@ -77,6 +77,11 @@ jobs:
             echo "::set-output name=changed::true"
           fi
 
+      - name: Add Helm repos
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add tieum https://tieum.github.io/helm-charts
+
       - name: Run chart-testing (lint on main)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: ct lint --config ct.yaml --since ${{ github.event.before }} --check-version-increment=false
@@ -87,6 +92,7 @@ jobs:
 
   test:
     strategy:
+      fail-fast: false
       matrix:
         # https://endoflife.date/kubernetes and https://hub.docker.com/r/kindest/node/tags?page=1
         kube_version: [1.29.14, 1.30.10, 1.31.6, 1.32.2]
@@ -133,6 +139,11 @@ jobs:
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
+
+      - name: Add Helm repos
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add tieum https://tieum.github.io/helm-charts
 
       - name: Create Kind Config
         run: |
@@ -207,6 +218,7 @@ jobs:
           - atuin
           - dev-feed
           - ghost-export-to-s3
+          - kresus
           - mac-oui
           - memos
           - ntfy
@@ -216,6 +228,11 @@ jobs:
           - wg-easy
     steps:
       - uses: actions/checkout@v4
+
+      - name: Add Helm repos
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add tieum https://tieum.github.io/helm-charts
 
       - name: Scan '${{ matrix.chart }}' Chart with kube-linter
         uses: stackrox/kube-linter-action@v1.0.7
@@ -261,6 +278,7 @@ jobs:
       - name: Add Helm repos
         run: |
           helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add tieum https://tieum.github.io/helm-charts
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.7.0
