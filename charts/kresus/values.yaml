@@ -149,3 +149,10 @@ config:
     name: ""
   existingConfigMap:
     name: ""
+
+test:
+  sampleConfig:
+    configMap:
+      create: false
+    secret:
+      create: false
