@@ -59,8 +59,6 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: LOCAL_USER_ID
-              value: "1000"
             - name: KRESUS_DB_TYPE
               value: postgres
             {{- with .Values.extraEnvVars.env }}
