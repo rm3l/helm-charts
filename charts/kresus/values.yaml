@@ -130,7 +130,7 @@ postgresql:
     password: "pl34s3Ch4ng3M3"
 
 apprise:
-  enabled: true
+  enabled: false
   image:
     repository: docker.io/caronc/apprise
     # https://hub.docker.com/r/caronc/apprise/tags
