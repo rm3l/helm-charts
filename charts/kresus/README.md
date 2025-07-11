@@ -3,13 +3,13 @@
 Open-source libre self-hosted personal finance manager.
 https://github.com/kresusapp/kresus
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/kresus)
+[![Latest version](https://img.shields.io/badge/latest_version-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/kresus)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-kresus rm3l/kresus --version 0.1.0
+$ helm install my-kresus rm3l/kresus --version 0.2.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/kresus?modal=install
@@ -26,7 +26,7 @@ See https://artifacthub.io/packages/helm/rm3l/kresus?modal=install
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| apprise.enabled | bool | `true` |  |
+| apprise.enabled | bool | `false` |  |
 | apprise.image.repository | string | `"docker.io/caronc/apprise"` |  |
 | apprise.image.tag | float | `1.2` |  |
 | apprise.persistence.storageClass | string | `nil` |  |
@@ -56,7 +56,7 @@ See https://artifacthub.io/packages/helm/rm3l/kresus?modal=install
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
-| podSecurityContext | object | `{}` |  |
+| podSecurityContext.fsGroup | int | `2000` |  |
 | postgresql.auth.database | string | `"kresus"` |  |
 | postgresql.auth.password | string | `"pl34s3Ch4ng3M3"` |  |
 | postgresql.auth.username | string | `"db-user"` |  |
@@ -72,6 +72,8 @@ See https://artifacthub.io/packages/helm/rm3l/kresus?modal=install
 | serviceAccount.automount | bool | `true` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
+| test.sampleConfig.configMap.create | bool | `false` |  |
+| test.sampleConfig.secret.create | bool | `false` |  |
 | tolerations | list | `[]` |  |
 | volumeMounts | list | `[]` |  |
 | volumes | list | `[]` |  |
