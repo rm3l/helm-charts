@@ -106,28 +106,33 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           volumeMounts:
-            - name: woob
-              mountPath: /woob
             {{- if or .Values.config.existingConfigMap.name .Values.config.existingSecretRef.name }}
             - name: config
-              mountPath: /opt/config.ini
+              mountPath: /config
               readOnly: true
             {{- end }}
           {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
+          {{- if or .Values.config.existingConfigMap.name .Values.config.existingSecretRef.name }}
+          command:
+          - /bin/sh
+          - -c
+          - |
+            cp -vf /config/config.ini /opt/config.ini
+            /entrypoint.sh '/home/user/app/bin/kresus --config /opt/config.ini'
+          {{- end }}
       volumes:
-        - name: woob
-          emptyDir: {}
         {{- if or .Values.config.existingConfigMap.name .Values.config.existingSecretRef.name }}
         - name: config
         {{- if .Values.config.existingSecretRef.name }}
           secret:
-            secretName: {{ .Values.config.existingSecretRef.name }}
+            secretName: {{ tpl .Values.config.existingSecretRef.name . }}
         {{- else if .Values.config.existingConfigMap.name }}
           configMap:
-            name: {{ .Values.config.existingConfigMap.name }}
+            name: {{ tpl .Values.config.existingConfigMap.name . }}
         {{- end }}
+            defaultMode: 0640
         {{- end }}
       {{- with .Values.volumes }}
         {{- toYaml . | nindent 8 }}
