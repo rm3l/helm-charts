@@ -4,13 +4,13 @@ Unofficial Chart for Atuin, the magical shell history.
 The server provides fully encrypted synchronization of the shell history across machines.
 https://github.com/ellie/atuin
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.10.1-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
+[![Latest version](https://img.shields.io/badge/latest_version-0.10.2-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-atuin rm3l/atuin --version 0.10.1
+$ helm install my-atuin rm3l/atuin --version 0.10.2
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
@@ -33,7 +33,7 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | backup.activeDeadlineSeconds | int | `1800` |  |
 | backup.aws.accessKeyId | string | `"my-aws-access-key-id"` | AWS Access Key. Must have the permissions to write to the target bucket. |
-| backup.aws.enabled | bool | `true` | For now, only AWS is supported. Setting this to `false` (while `sqlite.backup.enabled` is `true`) will cause a deployment error. |
+| backup.aws.enabled | bool | `true` | For now, only AWS is supported. Setting this to `false` (while `backup.enabled` is `true`) will cause a deployment error. |
 | backup.aws.s3 | object | `{"destination":"s3://path/to/my/atuin-sqlite-backup-bucket"}` | Target destination bucket (absolute) in AWS S3, where the backup resources should be written |
 | backup.aws.secretKey | string | `"my-aws-secret-key"` | AWS Secret Key. Must have the permissions to write to the target bucket. |
 | backup.backoffLimit | int | `1` |  |
@@ -45,6 +45,8 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 | backup.restartPolicy | string | `"OnFailure"` |  |
 | backup.schedule | string | `"@daily"` | How frequently the Backup job should run. Cron Syntax, as supported by Kubernetes CronJobs |
 | backup.ttlSecondsAfterFinished | int | `300` |  |
+| env[0].name | string | `"RUST_LOG"` |  |
+| env[0].value | string | `"info,atuin_server=info"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/atuinsh/atuin"` |  |
@@ -75,10 +77,7 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
-| sqlite.enabled | bool | `false` | Experimental support of SQLite. Enable this and disable postgresql.enabled to use it. More details at https://github.com/conradludgate/atuin-server-sqlite |
-| sqlite.image.pullPolicy | string | `"Always"` |  |
-| sqlite.image.repository | string | `"ghcr.io/conradludgate/atuin-server-sqlite"` |  |
-| sqlite.image.tag | string | `"v18.3.0"` |  |
+| sqlite.enabled | bool | `false` |  |
 | sqlite.persistence.volumeClaimSpec.accessModes[0] | string | `"ReadWriteOnce"` |  |
 | sqlite.persistence.volumeClaimSpec.resources.requests.storage | string | `"1Gi"` |  |
 | storage.config.volumeClaimSpec.accessModes[0] | string | `"ReadWriteOnce"` |  |
