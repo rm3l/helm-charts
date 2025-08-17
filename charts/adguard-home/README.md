@@ -190,13 +190,6 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | image.repository | string | `"adguard/adguardhome"` |  |
 | image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
-| ingresses.adminPanel.annotations | object | `{}` |  |
-| ingresses.adminPanel.className | string | `""` |  |
-| ingresses.adminPanel.enabled | bool | `false` |  |
-| ingresses.adminPanel.hosts[0].host | string | `"admin.adguard-home-example.local"` |  |
-| ingresses.adminPanel.hosts[0].paths[0].path | string | `"/"` |  |
-| ingresses.adminPanel.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
-| ingresses.adminPanel.tls | list | `[]` |  |
 | ingresses.http.annotations | object | `{}` |  |
 | ingresses.http.className | string | `""` |  |
 | ingresses.http.enabled | bool | `false` |  |
@@ -230,13 +223,6 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
-| services.adminPanel.annotations | object | `{}` | Service annotations |
-| services.adminPanel.clusterIP | string | `""` | Internal cluster service IP for the Admin Panel (when applicable) |
-| services.adminPanel.externalTrafficPolicy | string | `nil` | Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort" |
-| services.adminPanel.loadBalancerIP | string | `nil` | Load balancer IP for the Admin Panel (when applicable) |
-| services.adminPanel.nodePort | int | `nil` | Node port for the Admin Panel (when applicable) |
-| services.adminPanel.port | int | `3000` |  |
-| services.adminPanel.type | string | `"ClusterIP"` |  |
 | services.dns.annotations | object | `{}` | Service annotations |
 | services.dns.clusterIP | string | `""` | Internal cluster service IP for DNS (when applicable) |
 | services.dns.enabled | bool | `true` |  |
