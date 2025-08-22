@@ -44,19 +44,6 @@ securityContext: {}
 #   port: 80
 
 services:
-  adminPanel:
-    type: ClusterIP
-    # -- Service annotations
-    annotations: {}
-    port: 3000
-    # -- Internal cluster service IP for the Admin Panel (when applicable)
-    clusterIP: ""
-    # -- Set traffic policy for external traffic. Set to "Local" to preserve client ip address in case of service type "LoadBalancer" or "NodePort"
-    externalTrafficPolicy:
-    # -- Load balancer IP for the Admin Panel (when applicable)
-    loadBalancerIP:
-    # -- (int) Node port for the Admin Panel (when applicable)
-    nodePort:
   http:
     type: ClusterIP
     # -- Service annotations
@@ -193,21 +180,6 @@ extraServices: []
 #          targetPort: dns-udp
 
 ingresses:
-  adminPanel:
-    enabled: false
-    className: ""
-    annotations: {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
-    hosts:
-      - host: admin.adguard-home-example.local
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls: []
-    #  - secretName: chart-example-tls
-    #    hosts:
-    #      - chart-example.
   http:
     enabled: false
     className: ""
