@@ -93,13 +93,13 @@ storage:
 atuin:
   openRegistration: true
 
+# Custom env variables
+env:
+  - name: RUST_LOG
+    value: info,atuin_server=info
+
 sqlite:
-  # -- Experimental support of SQLite. Enable this and disable postgresql.enabled to use it. More details at https://github.com/conradludgate/atuin-server-sqlite
   enabled: false
-  image:
-    repository: ghcr.io/conradludgate/atuin-server-sqlite
-    pullPolicy: Always
-    tag: "v18.3.0"
   persistence:
     volumeClaimSpec:
       accessModes:
@@ -137,7 +137,7 @@ backup:
   imagePullPolicy: IfNotPresent
   resources: {}
   aws:
-    # -- For now, only AWS is supported. Setting this to `false` (while `sqlite.backup.enabled` is `true`) will cause a deployment error.
+    # -- For now, only AWS is supported. Setting this to `false` (while `backup.enabled` is `true`) will cause a deployment error.
     enabled: true
     # -- AWS Access Key. Must have the permissions to write to the target bucket.
     accessKeyId: "my-aws-access-key-id"
