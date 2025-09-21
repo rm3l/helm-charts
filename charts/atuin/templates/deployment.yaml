@@ -51,13 +51,8 @@ spec:
             - start
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          {{- if .Values.sqlite.enabled }}
-          image: "{{ .Values.sqlite.image.repository }}:{{ .Values.sqlite.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.sqlite.image.pullPolicy }}
-          {{- else }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- end }}
           env:
             - name: ATUIN_DB_URI
             {{- if .Values.sqlite.enabled }}
@@ -75,6 +70,9 @@ spec:
               value: "{{ .Values.service.port }}"
             - name: ATUIN_OPEN_REGISTRATION
               value: "{{ .Values.atuin.openRegistration }}"
+            {{- with .Values.env }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           ports:
             - name: app-port
               containerPort: {{ .Values.service.port }}
