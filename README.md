@@ -14,6 +14,7 @@
 [![kresus](https://img.shields.io/badge/kresus-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/kresus)
 [![mac-oui](https://img.shields.io/badge/mac--oui-1.25.0-blue)](https://artifacthub.io/packages/helm/rm3l/mac-oui)
 [![memos](https://img.shields.io/badge/memos-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/memos)
+[![networking-toolbox](https://img.shields.io/badge/networking--toolbox-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/networking-toolbox)
 [![ntfy](https://img.shields.io/badge/ntfy-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/ntfy)
 [![olivetin](https://img.shields.io/badge/olivetin-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/olivetin)
 [![service-names-port-numbers](https://img.shields.io/badge/service--names--port--numbers-0.26.1-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
