@@ -30,6 +30,7 @@
   - [kresus](#kresus)
   - [mac-oui](#mac-oui)
   - [memos](#memos)
+  - [networking-toolbox](#networking-toolbox)
   - [ntfy](#ntfy)
   - [olivetin](#olivetin)
   - [service-names-port-numbers](#service-names-port-numbers)
@@ -103,6 +104,13 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/mac-oui/README.md](htt
 > [https://github.com/usememos/memos](https://github.com/usememos/memos)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/memos/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/memos/README.md) for further details.
+
+### networking-toolbox
+
+> Unofficial Chart for networking-toolbox, the all-in-one offline-first networking toolbox for sysadmins.
+> [https://github.com/lissy93/networking-toolbox](https://github.com/lissy93/networking-toolbox)
+
+See [https://github.com/rm3l/helm-charts/blob/main/charts/networking-toolbox/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/networking-toolbox/README.md) for further details.
 
 ### ntfy
 
