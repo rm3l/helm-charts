@@ -1,6 +1,10 @@
 # Default values for memos.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+global:
+  security:
+    # Needed because of https://github.com/bitnami/charts/issues/30850
+    allowInsecureImages: true
 
 replicaCount: 1
 
@@ -99,6 +103,10 @@ sqlite:
 
 mariadb:
   enabled: false
+  # -- TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/mariadb
   auth:
     database: memos
     username: "db-user"
@@ -106,6 +114,10 @@ mariadb:
 
 postgresql:
   enabled: false
+  # -- TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/postgresql
   auth:
     database: memos
     username: "db-user"

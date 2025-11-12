@@ -3,13 +3,13 @@
 Open-source libre self-hosted personal finance manager.
 https://github.com/kresusapp/kresus
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/kresus)
+[![Latest version](https://img.shields.io/badge/latest_version-0.2.1-blue)](https://artifacthub.io/packages/helm/rm3l/kresus)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-kresus rm3l/kresus --version 0.2.0
+$ helm install my-kresus rm3l/kresus --version 0.2.1
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/kresus?modal=install
@@ -39,6 +39,7 @@ See https://artifacthub.io/packages/helm/rm3l/kresus?modal=install
 | extraEnvVars.env | list | `[]` |  |
 | extraEnvVars.envFrom | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
+| global.security.allowInsecureImages | bool | `true` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"bnjbvr/kresus"` |  |
 | image.tag | string | `""` |  |
@@ -61,6 +62,7 @@ See https://artifacthub.io/packages/helm/rm3l/kresus?modal=install
 | postgresql.auth.password | string | `"pl34s3Ch4ng3M3"` |  |
 | postgresql.auth.username | string | `"db-user"` |  |
 | postgresql.enabled | bool | `true` |  |
+| postgresql.image | object | `{"registry":"docker.io","repository":"bitnamilegacy/postgresql"}` | TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164 |
 | readinessProbe.httpGet.path | string | `"/"` |  |
 | readinessProbe.httpGet.port | string | `"http"` |  |
 | replicaCount | int | `1` |  |

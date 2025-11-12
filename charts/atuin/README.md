@@ -4,13 +4,13 @@ Unofficial Chart for Atuin, the magical shell history.
 The server provides fully encrypted synchronization of the shell history across machines.
 https://github.com/ellie/atuin
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.10.2-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
+[![Latest version](https://img.shields.io/badge/latest_version-0.10.3-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-atuin rm3l/atuin --version 0.10.2
+$ helm install my-atuin rm3l/atuin --version 0.10.3
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
@@ -48,6 +48,7 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 | env[0].name | string | `"RUST_LOG"` |  |
 | env[0].value | string | `"info,atuin_server=info"` |  |
 | fullnameOverride | string | `""` |  |
+| global.security.allowInsecureImages | bool | `true` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/atuinsh/atuin"` |  |
 | image.tag | string | `""` |  |
@@ -69,6 +70,7 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 | postgresql.auth.password | string | `"pl34s3Ch4ng3M3"` |  |
 | postgresql.auth.username | string | `"db-user"` |  |
 | postgresql.enabled | bool | `true` |  |
+| postgresql.image | object | `{"registry":"docker.io","repository":"bitnamilegacy/postgresql"}` | TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164 |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |

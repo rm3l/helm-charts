@@ -1,6 +1,10 @@
 # Default values for kresus.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+global:
+  security:
+    # Needed because of https://github.com/bitnami/charts/issues/30850
+    allowInsecureImages: true
 
 # This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 replicaCount: 1
@@ -124,6 +128,10 @@ affinity: {}
 
 postgresql:
   enabled: true
+  # -- TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/postgresql
   auth:
     database: kresus
     username: "db-user"

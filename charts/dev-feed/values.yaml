@@ -1,6 +1,10 @@
 # Default values for dev-feed.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+global:
+  security:
+    # Needed because of https://github.com/bitnami/charts/issues/30850
+    allowInsecureImages: true
 
 replicaCount: 1
 
@@ -125,6 +129,10 @@ config: |
 ## Dependencies
 mariadb:
   enabled: true
+  # -- TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/mariadb
   auth:
     ## MariaDB custom user and database
     ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-on-first-run
@@ -141,6 +149,10 @@ mariadb:
 
 mongodb:
   enabled: false
+  # -- TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/postgresql
   auth:
     rootPassword: "pl34s3Ch4ng3M3"
     database: dev-feed
