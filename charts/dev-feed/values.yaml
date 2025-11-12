@@ -125,6 +125,10 @@ config: |
 ## Dependencies
 mariadb:
   enabled: true
+  # -- TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/mariadb
   auth:
     ## MariaDB custom user and database
     ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-on-first-run
@@ -141,6 +145,10 @@ mariadb:
 
 mongodb:
   enabled: false
+  # -- TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/postgresql
   auth:
     rootPassword: "pl34s3Ch4ng3M3"
     database: dev-feed

@@ -3,13 +3,13 @@
 Unofficial Chart for memos, an open-source, lightweight note-taking solution.
 https://github.com/usememos/memos
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/memos)
+[![Latest version](https://img.shields.io/badge/latest_version-0.1.1-blue)](https://artifacthub.io/packages/helm/rm3l/memos)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-memos rm3l/memos --version 0.1.0
+$ helm install my-memos rm3l/memos --version 0.1.1
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/memos?modal=install
@@ -47,6 +47,7 @@ See https://artifacthub.io/packages/helm/rm3l/memos?modal=install
 | mariadb.auth.password | string | `"pl34s3Ch4ng3M3"` |  |
 | mariadb.auth.username | string | `"db-user"` |  |
 | mariadb.enabled | bool | `false` |  |
+| mariadb.image | object | `{"registry":"docker.io","repository":"bitnamilegacy/mariadb"}` | TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164 |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
@@ -55,6 +56,7 @@ See https://artifacthub.io/packages/helm/rm3l/memos?modal=install
 | postgresql.auth.password | string | `"pl34s3Ch4ng3M3"` |  |
 | postgresql.auth.username | string | `"db-user"` |  |
 | postgresql.enabled | bool | `false` |  |
+| postgresql.image | object | `{"registry":"docker.io","repository":"bitnamilegacy/postgresql"}` | TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164 |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | secretEnv.name | string | `""` |  |

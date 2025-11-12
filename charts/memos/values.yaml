@@ -99,6 +99,10 @@ sqlite:
 
 mariadb:
   enabled: false
+  # -- TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/mariadb
   auth:
     database: memos
     username: "db-user"
@@ -106,6 +110,10 @@ mariadb:
 
 postgresql:
   enabled: false
+  # -- TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/postgresql
   auth:
     database: memos
     username: "db-user"

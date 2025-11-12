@@ -111,6 +111,10 @@ sqlite:
 postgresql:
   ## Switch to enable or disable the PostgreSQL helm subchart
   enabled: true
+  # -- TODO(rm3l): Temporary workaround for https://github.com/bitnami/charts/issues/35164
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/postgresql
   auth:
     database: atuin
     username: "db-user"
