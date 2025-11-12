@@ -2211,6 +2211,22 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/memos-0.1.0/memos-0.1.0.tgz
     version: 0.1.0
+  networking-toolbox:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-11-12T23:11:37.843591785Z"
+    description: 'Unofficial Chart for networking-toolbox, the all-in-one offline-first
+      networking toolbox for sysadmins. https://github.com/lissy93/networking-toolbox '
+    digest: 8a8f2378b3a24446da578117530b8683514421e7ec24201b098519481b46f052
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: networking-toolbox
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/networking-toolbox-0.1.0/networking-toolbox-0.1.0.tgz
+    version: 0.1.0
   ntfy:
   - apiVersion: v2
     appVersion: v2.11.0
@@ -2695,4 +2711,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/wg-easy-0.1.0/wg-easy-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-18T13:54:44.148148017Z"
+generated: "2025-11-12T23:11:37.843903916Z"
