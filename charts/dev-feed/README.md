@@ -83,6 +83,7 @@ See https://artifacthub.io/packages/helm/rm3l/dev-feed?modal=install
 | datasource.url | string | `""` |  |
 | datasource.user | string | `""` |  |
 | fullnameOverride | string | `""` |  |
+| global.security.allowInsecureImages | bool | `true` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"rm3l/dev-feed-api"` |  |
 | image.tag | string | `""` |  |

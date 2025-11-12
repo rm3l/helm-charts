@@ -1,6 +1,10 @@
 # Default values for atuin.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+global:
+  security:
+    # Needed because of https://github.com/bitnami/charts/issues/30850
+    allowInsecureImages: true
 
 replicaCount: 1
 

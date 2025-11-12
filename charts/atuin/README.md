@@ -48,6 +48,7 @@ See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
 | env[0].name | string | `"RUST_LOG"` |  |
 | env[0].value | string | `"info,atuin_server=info"` |  |
 | fullnameOverride | string | `""` |  |
+| global.security.allowInsecureImages | bool | `true` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/atuinsh/atuin"` |  |
 | image.tag | string | `""` |  |

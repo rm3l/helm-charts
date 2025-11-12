@@ -39,6 +39,7 @@ See https://artifacthub.io/packages/helm/rm3l/kresus?modal=install
 | extraEnvVars.env | list | `[]` |  |
 | extraEnvVars.envFrom | list | `[]` |  |
 | fullnameOverride | string | `""` |  |
+| global.security.allowInsecureImages | bool | `true` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"bnjbvr/kresus"` |  |
 | image.tag | string | `""` |  |

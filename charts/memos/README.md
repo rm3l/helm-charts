@@ -31,6 +31,7 @@ See https://artifacthub.io/packages/helm/rm3l/memos?modal=install
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | fullnameOverride | string | `""` |  |
+| global.security.allowInsecureImages | bool | `true` |  |
 | hostNetwork | bool | `false` | Host networking requested for the pod. Beware that setting this to true requires all container ports declared in the pod to be free on the node. |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"neosmemo/memos"` |  |
