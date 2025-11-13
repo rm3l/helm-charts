@@ -19,6 +19,7 @@
 [![olivetin](https://img.shields.io/badge/olivetin-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/olivetin)
 [![service-names-port-numbers](https://img.shields.io/badge/service--names--port--numbers-0.26.1-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
 [![wallos](https://img.shields.io/badge/wallos-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/wallos)
+[![web-check](https://img.shields.io/badge/web--check-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/web-check)
 [![wg-easy](https://img.shields.io/badge/wg--easy-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/wg-easy)
 
 - [TL;DR](#tldr)
@@ -35,6 +36,7 @@
   - [olivetin](#olivetin)
   - [service-names-port-numbers](#service-names-port-numbers)
   - [wallos](#wallos)
+  - [web-check](#web-check)
   - [wg-easy](#wg-easy)
 - [Developed by](#developed-by)
 - [License](#license)
@@ -141,6 +143,13 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/service-names-port-num
 > [https://github.com/ellite/Wallos](https://github.com/ellite/Wallos)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/wallos/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/wallos/README.md) for further details.
+
+### web-check
+
+> Unofficial Chart for web-check, an all-in-one [OSINT](https://en.wikipedia.org/wiki/Open-source_intelligence) tool for analysing any website.
+> [https://github.com/lissy93/web-check](https://github.com/lissy93/web-check)
+
+See [https://github.com/rm3l/helm-charts/blob/main/charts/web-check/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/web-check/README.md) for further details.
 
 ### wg-easy
 
