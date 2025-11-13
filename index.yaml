@@ -2773,6 +2773,22 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/wallos-0.1.0/wallos-0.1.0.tgz
     version: 0.1.0
+  web-check:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-11-13T00:30:08.316746533Z"
+    description: 'Unofficial Chart for web-check, an all-in-one OSINT tool for analysing
+      any website. https://github.com/lissy93/web-check '
+    digest: 5e3542f8fa7146a12cabe956358f61f1cd5e01610d52138324cee9ea39d51ecc
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: web-check
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/web-check-0.1.0/web-check-0.1.0.tgz
+    version: 0.1.0
   wg-easy:
   - apiVersion: v2
     appVersion: "14"
@@ -2804,4 +2820,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/wg-easy-0.1.0/wg-easy-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-13T00:10:15.979261833Z"
+generated: "2025-11-13T00:30:08.317068612Z"
