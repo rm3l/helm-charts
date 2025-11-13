@@ -370,6 +370,27 @@ entries:
   atuin:
   - apiVersion: v2
     appVersion: 18.8.0
+    created: "2025-11-13T00:10:15.524126857Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.1.2
+    description: 'Unofficial Chart for Atuin, the magical shell history. The server
+      provides fully encrypted synchronization of the shell history across machines.
+      https://github.com/ellie/atuin '
+    digest: 53420b05c9e637692f6cc07568f4e5564e3dc378c08450a39e28c53d6dd2427c
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: atuin
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/atuin-0.10.3/atuin-0.10.3.tgz
+    version: 0.10.3
+  - apiVersion: v2
+    appVersion: 18.8.0
     created: "2025-09-21T12:38:00.946371044Z"
     dependencies:
     - condition: postgresql.enabled
@@ -638,6 +659,30 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/atuin-0.1.0/atuin-0.1.0.tgz
     version: 0.1.0
   dev-feed:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-11-13T00:10:15.729441981Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 19.0.5
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.6.21
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
+    digest: 49490b88377e14d1235df207d586088083262aff5a79f40da2af54fb3a3b5e89
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: dev-feed
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/dev-feed-3.1.2/dev-feed-3.1.2.tgz
+    version: 3.1.2
   - apiVersion: v2
     appVersion: latest
     created: "2024-09-14T12:52:32.412935363Z"
@@ -1823,6 +1868,30 @@ entries:
   kresus:
   - apiVersion: v2
     appVersion: 0.22.1
+    created: "2025-11-13T00:10:15.859313631Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.7.15
+    - alias: apprise
+      condition: apprise.enabled
+      name: apprise-api
+      repository: https://tieum.github.io/helm-charts
+      version: 0.0.5
+    description: 'Open-source libre self-hosted personal finance manager. https://github.com/kresusapp/kresus '
+    digest: 3345b993626f63c78aefe79c7886de34b09977b800fdc199396ae2619377095a
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: kresus
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/kresus-0.2.1/kresus-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 0.22.1
     created: "2025-07-11T23:27:45.015242955Z"
     dependencies:
     - condition: postgresql.enabled
@@ -2187,6 +2256,30 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.0.0/mac-oui-1.0.0.tgz
     version: 1.0.0
   memos:
+  - apiVersion: v2
+    appVersion: "0.24"
+    created: "2025-11-13T00:10:15.978849184Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 20.4.1
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.4.16
+    description: 'Unofficial Chart for memos, an open-source, lightweight note-taking
+      solution. https://github.com/usememos/memos '
+    digest: 9fc5006e81fe29e64ed360bae68f74a75dc6f51cf9d48fa95742298ed1074bc4
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: memos
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/memos-0.1.1/memos-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: "0.24"
     created: "2025-03-16T00:00:56.902270269Z"
@@ -2711,4 +2804,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/wg-easy-0.1.0/wg-easy-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-12T23:11:37.843903916Z"
+generated: "2025-11-13T00:10:15.979261833Z"
