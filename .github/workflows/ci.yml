@@ -26,10 +26,10 @@ jobs:
       with:
         python-version: 3.x
 
-    - uses: asdf-vm/actions/setup@v3
+    - uses: asdf-vm/actions/setup@v4
     - name: Install asdf dependencies
       run: |
-        asdf plugin-add helm-docs https://github.com/sudermanjr/asdf-helm-docs.git
+        asdf plugin add helm-docs https://github.com/sudermanjr/asdf-helm-docs.git
         asdf install
 
     - uses: pre-commit/action@v3.0.1
