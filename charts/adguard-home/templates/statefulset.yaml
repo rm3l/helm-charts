@@ -74,7 +74,7 @@ spec:
         - /bin/sh
         - "-c"
         - |
-          if ls /opt/adguardhome/conf/AdGuardHome.yaml; then
+          if [ -f /opt/adguardhome/conf/AdGuardHome.yaml ]; then
             echo "Existing file will NOT be altered: /opt/adguardhome/conf/AdGuardHome.yaml"
           else
             cp -v /var/adguardhome-bootstrap/AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
