@@ -4,13 +4,14 @@ Unofficial Chart for Adguard Home, the network-wide ad and tracking blocker.
 This Chart also provides automated backups of Adguard Home to services like AWS S3.
 https://github.com/AdguardTeam/AdGuardHome
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.21.2-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
+[![Latest version](https://img.shields.io/badge/latest_version-0.23.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-adguard-home rm3l/adguard-home --version 0.21.2
+$ helm install my-adguard-home rm3l/adguard-home --version 0.23.0
+```
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
@@ -186,6 +187,14 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | extraVolumes | list | `[]` | Additional volumes |
 | fullnameOverride | string | `""` |  |
 | hostNetwork | bool | `false` | Host networking requested for the pod. Beware that setting this to true requires all container ports declared in the pod to be free on the node. This can be useful for example to expose AdGuard Home as a DHCP Server. |
+| httproutes.http.enabled | bool | `false` |  |
+| httproutes.http.hostnames | list | `[]` |  |
+| httproutes.http.parentRefs | list | `[]` |  |
+| httproutes.http.rules | list | `[]` |  |
+| httproutes.https.enabled | bool | `false` |  |
+| httproutes.https.hostnames | list | `[]` |  |
+| httproutes.https.parentRefs | list | `[]` |  |
+| httproutes.https.rules | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"adguard/adguardhome"` |  |
 | image.tag | string | `""` |  |
