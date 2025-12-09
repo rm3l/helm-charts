@@ -12,7 +12,6 @@ https://github.com/AdguardTeam/AdGuardHome
 $ helm repo add rm3l https://helm-charts.rm3l.org
 $ helm install my-adguard-home rm3l/adguard-home --version 0.23.0
 ```
-```
 
 See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 
