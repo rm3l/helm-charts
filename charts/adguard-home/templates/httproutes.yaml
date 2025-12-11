@@ -7,6 +7,10 @@ metadata:
   name: {{ $fullName }}-http
   labels:
     {{- include "adguard-home.labels" . | nindent 4 }}
+{{- with .Values.httproutes.http.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+{{- end }}
 spec:
   parentRefs:
     {{- toYaml .Values.httproutes.http.parentRefs | nindent 4 }}
@@ -35,6 +39,10 @@ metadata:
   name: {{ $fullName }}-https
   labels:
     {{- include "adguard-home.labels" . | nindent 4 }}
+{{- with .Values.httproutes.https.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+{{- end }}
 spec:
   parentRefs:
     {{- toYaml .Values.httproutes.https.parentRefs | nindent 4 }}

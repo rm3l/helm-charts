@@ -214,6 +214,7 @@ ingresses:
 httproutes:
   http:
     enabled: false
+    annotations: {}
     parentRefs: []
     hostnames: []
     # - adguard-home-example.local
@@ -227,6 +228,7 @@ httproutes:
     #     port: 80
   https:
     enabled: false
+    annotations: {}
     parentRefs: []
     hostnames: []
     # - adguard-home-example.local
