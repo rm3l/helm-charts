@@ -433,6 +433,27 @@ entries:
     version: 0.1.0
   atuin:
   - apiVersion: v2
+    appVersion: 18.10.0
+    created: "2025-12-13T23:48:22.333888624Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.1.2
+    description: 'Unofficial Chart for Atuin, the magical shell history. The server
+      provides fully encrypted synchronization of the shell history across machines.
+      https://github.com/ellie/atuin '
+    digest: f881c66abead620b531cc3bee558379744b9cd9f1dbc22b960a7be03cf0c4672
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: atuin
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/atuin-0.10.4/atuin-0.10.4.tgz
+    version: 0.10.4
+  - apiVersion: v2
     appVersion: 18.8.0
     created: "2025-11-13T00:10:15.524126857Z"
     dependencies:
@@ -2884,4 +2905,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/wg-easy-0.1.0/wg-easy-0.1.0.tgz
     version: 0.1.0
-generated: "2025-12-11T08:28:48.335337662Z"
+generated: "2025-12-13T23:48:22.334194466Z"
