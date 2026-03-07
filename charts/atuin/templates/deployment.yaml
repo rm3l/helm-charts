@@ -47,7 +47,6 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           args:
-            - server
             - start
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
