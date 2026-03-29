@@ -1,0 +1,152 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "open-terminal.fullname" . }}
+  labels:
+    {{- include "open-terminal.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "open-terminal.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+      {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.openTerminal.config.enabled }}
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+      {{- end }}
+      {{- if and (not .Values.openTerminal.apiKey.existingSecret) .Values.openTerminal.apiKey.value }}
+        checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+      {{- end }}
+      labels:
+        {{- include "open-terminal.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "open-terminal.serviceAccountName" . }}
+      {{- if .Values.openTerminal.docker.enabled }}
+      {{- with (merge (dict "runAsUser" 0 "runAsGroup" 0 "fsGroup" 0) .Values.podSecurityContext) }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- else }}
+      {{- with .Values.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          {{- if .Values.openTerminal.docker.enabled }}
+          {{- with (merge (dict "privileged" true) .Values.securityContext) }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- else }}
+          {{- with .Values.securityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- end }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            {{- if or .Values.openTerminal.apiKey.value .Values.openTerminal.apiKey.existingSecret }}
+            - name: OPEN_TERMINAL_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.openTerminal.apiKey.existingSecret | default (printf "%s-api-key" (include "open-terminal.fullname" .)) }}
+                  key: {{ .Values.openTerminal.apiKey.existingSecretKey }}
+            {{- end }}
+            {{- if .Values.openTerminal.multiUser.enabled }}
+            - name: OPEN_TERMINAL_MULTI_USER
+              value: "true"
+            {{- end }}
+            {{- if .Values.openTerminal.packages.apt }}
+            - name: OPEN_TERMINAL_PACKAGES
+              value: {{ join " " .Values.openTerminal.packages.apt | quote }}
+            {{- end }}
+            {{- if .Values.openTerminal.packages.pip }}
+            - name: OPEN_TERMINAL_PIP_PACKAGES
+              value: {{ join " " .Values.openTerminal.packages.pip | quote }}
+            {{- end }}
+            {{- if .Values.openTerminal.cors.allowedOrigins }}
+            - name: OPEN_TERMINAL_CORS_ALLOWED_ORIGINS
+              value: {{ join "," .Values.openTerminal.cors.allowedOrigins | quote }}
+            {{- end }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.openTerminal.server.port }}
+              protocol: TCP
+          {{- with .Values.livenessProbe }}
+          livenessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.readinessProbe }}
+          readinessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            {{- if .Values.persistence.enabled }}
+            - name: data
+              mountPath: /home/user
+            {{- end }}
+            {{- if .Values.openTerminal.docker.enabled }}
+            - name: docker-socket
+              mountPath: /var/run/docker.sock
+            {{- end }}
+            {{- if .Values.openTerminal.config.enabled }}
+            - name: config
+              mountPath: /root/.config/open-terminal/config.toml
+              subPath: config.toml
+              readOnly: true
+            {{- end }}
+            {{- with .Values.volumeMounts }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+      volumes:
+        {{- if .Values.persistence.enabled }}
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim | default (printf "%s-data" (include "open-terminal.fullname" .)) }}
+        {{- end }}
+        {{- if .Values.openTerminal.docker.enabled }}
+        - name: docker-socket
+          hostPath:
+            path: {{ .Values.openTerminal.docker.socketPath }}
+            type: Socket
+        {{- end }}
+        {{- if .Values.openTerminal.config.enabled }}
+        - name: config
+          configMap:
+            name: {{ include "open-terminal.fullname" . }}-config
+        {{- end }}
+        {{- with .Values.volumes }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

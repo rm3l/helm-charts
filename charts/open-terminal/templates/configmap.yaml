@@ -1,0 +1,11 @@
+{{- if .Values.openTerminal.config.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "open-terminal.fullname" . }}-config
+  labels:
+    {{- include "open-terminal.labels" . | nindent 4 }}
+data:
+  config.toml: |
+    {{- .Values.openTerminal.config.content | nindent 4 }}
+{{- end }}

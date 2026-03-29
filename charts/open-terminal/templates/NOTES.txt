@@ -1,0 +1,96 @@
+Thank you for installing {{ .Chart.Name }}!
+
+Your Open Terminal instance has been deployed.
+
+{{- if or .Values.openTerminal.apiKey.value .Values.openTerminal.apiKey.existingSecret }}
+
+====================
+API KEY
+====================
+{{- if .Values.openTerminal.apiKey.value }}
+API Key configured from values.yaml
+{{- else }}
+API Key configured from existing secret: {{ .Values.openTerminal.apiKey.existingSecret }}
+{{- end }}
+
+To retrieve your API key:
+  kubectl get secret --namespace {{ .Release.Namespace }} {{ .Values.openTerminal.apiKey.existingSecret | default (printf "%s-api-key" (include "open-terminal.fullname" .)) }} -o jsonpath="{.data.{{ .Values.openTerminal.apiKey.existingSecretKey }}}" | base64 -d
+{{- else }}
+
+====================
+API KEY
+====================
+Open Terminal will auto-generate an API key on first startup.
+
+To retrieve the auto-generated API key, check the container logs:
+  kubectl logs --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "open-terminal.name" . }},app.kubernetes.io/instance={{ .Release.Name }}" | grep "API key"
+{{- end }}
+
+====================
+ACCESS
+====================
+{{- if .Values.httpRoute.enabled }}
+{{- if .Values.httpRoute.hostnames }}
+    export APP_HOSTNAME={{ .Values.httpRoute.hostnames | first }}
+{{- else }}
+    export APP_HOSTNAME=$(kubectl get --namespace {{(first .Values.httpRoute.parentRefs).namespace | default .Release.Namespace }} gateway/{{ (first .Values.httpRoute.parentRefs).name }} -o jsonpath="{.spec.listeners[0].hostname}")
+{{- end }}
+{{- if and .Values.httpRoute.rules (first .Values.httpRoute.rules).matches (first (first .Values.httpRoute.rules).matches).path.value }}
+    echo "Visit http://$APP_HOSTNAME{{ (first (first .Values.httpRoute.rules).matches).path.value }} to use your application"
+    echo "API documentation: http://$APP_HOSTNAME{{ (first (first .Values.httpRoute.rules).matches).path.value }}/docs"
+{{- end }}
+{{- else if .Values.ingress.enabled }}
+Application URLs:
+{{- range $host := .Values.ingress.hosts }}
+  {{- range .paths }}
+  http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ .path }}
+  API docs: http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ .path }}/docs
+  {{- end }}
+{{- end }}
+{{- else if contains "NodePort" .Values.service.type }}
+  export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ include "open-terminal.fullname" . }})
+  export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo "Application: http://$NODE_IP:$NODE_PORT"
+  echo "API docs: http://$NODE_IP:$NODE_PORT/docs"
+{{- else if contains "LoadBalancer" .Values.service.type }}
+  NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+  You can watch its status by running 'kubectl get --namespace {{ .Release.Namespace }} svc -w {{ include "open-terminal.fullname" . }}'
+
+  export SERVICE_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ include "open-terminal.fullname" . }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}")
+  echo "Application: http://$SERVICE_IP:{{ .Values.service.port }}"
+  echo "API docs: http://$SERVICE_IP:{{ .Values.service.port }}/docs"
+{{- else if contains "ClusterIP" .Values.service.type }}
+  export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "open-terminal.name" . }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}")
+  echo "Visit http://127.0.0.1:{{ .Values.openTerminal.server.port }} to use your application"
+  echo "API documentation: http://127.0.0.1:{{ .Values.openTerminal.server.port }}/docs"
+  kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME {{ .Values.openTerminal.server.port }}:{{ .Values.openTerminal.server.port }}
+{{- end }}
+
+====================
+CONFIGURATION
+====================
+Image variant: {{ .Values.image.tag | default .Chart.AppVersion }}
+{{- if .Values.openTerminal.multiUser.enabled }}
+Multi-user mode: ENABLED
+{{- end }}
+{{- if .Values.openTerminal.docker.enabled }}
+
+⚠️  WARNING: Docker socket access is ENABLED
+    This gives the container effectively ROOT access to the host machine.
+    Only use in fully trusted environments!
+{{- end }}
+{{- if .Values.persistence.enabled }}
+Persistent storage: ENABLED ({{ .Values.persistence.size }})
+{{- end }}
+
+====================
+INTEGRATION
+====================
+To integrate with Open WebUI:
+1. Get your API key using the command above
+2. In Open WebUI, go to Admin Settings → Tools
+3. Add Open Terminal connection:
+   - URL: http://{{ include "open-terminal.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}
+   - API Key: <your-api-key>
+
+For more information, visit: https://github.com/open-webui/open-terminal

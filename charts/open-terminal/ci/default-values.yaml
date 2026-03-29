@@ -1,0 +1,11 @@
+# Minimal default configuration test
+# Tests the chart with minimal settings
+
+openTerminal:
+  apiKey:
+    # Set a test API key for CI
+    value: "test-api-key-12345"
+
+persistence:
+  enabled: true
+  size: 1Gi
