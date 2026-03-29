@@ -2491,6 +2491,35 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/olivetin-0.1.0/olivetin-0.1.0.tgz
     version: 0.1.0
+  open-terminal:
+  - apiVersion: v2
+    appVersion: 0.11.30
+    created: "2026-03-29T21:35:10.842762804Z"
+    description: 'Unofficial Chart for Open Terminal, a lightweight, self-hosted terminal
+      that gives AI agents and automation tools a dedicated environment to run commands,
+      manage files, and execute code. '
+    digest: c3842b7e025e2937c1ac734f3bde9008e927661beaf04fc2a3c0dbf981da3989
+    home: https://github.com/open-webui/open-terminal
+    icon: https://raw.githubusercontent.com/open-webui/open-webui/main/static/favicon.png
+    keywords:
+    - open-terminal
+    - terminal
+    - ai
+    - automation
+    - open-webui
+    - shell
+    - rest-api
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: open-terminal
+    sources:
+    - https://github.com/open-webui/open-terminal
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/open-terminal-0.1.0/open-terminal-0.1.0.tgz
+    version: 0.1.0
   service-names-port-numbers:
   - apiVersion: v2
     appVersion: 0.12.1
@@ -2926,4 +2955,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/wg-easy-0.1.0/wg-easy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-03-07T06:42:52.082244618Z"
+generated: "2026-03-29T21:35:10.843114565Z"
