@@ -17,6 +17,7 @@
 [![networking-toolbox](https://img.shields.io/badge/networking--toolbox-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/networking-toolbox)
 [![ntfy](https://img.shields.io/badge/ntfy-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/ntfy)
 [![olivetin](https://img.shields.io/badge/olivetin-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/olivetin)
+[![open-terminal](https://img.shields.io/badge/open--terminal-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/open-terminal)
 [![service-names-port-numbers](https://img.shields.io/badge/service--names--port--numbers-0.26.1-blue)](https://artifacthub.io/packages/helm/rm3l/service-names-port-numbers)
 [![wallos](https://img.shields.io/badge/wallos-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/wallos)
 [![web-check](https://img.shields.io/badge/web--check-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/web-check)
@@ -34,6 +35,7 @@
   - [networking-toolbox](#networking-toolbox)
   - [ntfy](#ntfy)
   - [olivetin](#olivetin)
+  - [open-terminal](#open-terminal)
   - [service-names-port-numbers](#service-names-port-numbers)
   - [wallos](#wallos)
   - [web-check](#web-check)
@@ -128,6 +130,13 @@ See [https://github.com/rm3l/helm-charts/blob/main/charts/ntfy/README.md](https:
 > [https://github.com/OliveTin/OliveTin](https://github.com/OliveTin/OliveTin)
 
 See [https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/olivetin/README.md) for further details.
+
+### open-terminal
+
+> Unofficial Chart for Open Terminal, a lightweight, self-hosted terminal that gives AI agents and automation tools a dedicated environment to run commands, manage files, and execute code.
+> [https://github.com/open-webui/open-terminal](https://github.com/open-webui/open-terminal)
+
+See [https://github.com/rm3l/helm-charts/blob/main/charts/open-terminal/README.md](https://github.com/rm3l/helm-charts/blob/main/charts/open-terminal/README.md) for further details.
 
 ### service-names-port-numbers
 
