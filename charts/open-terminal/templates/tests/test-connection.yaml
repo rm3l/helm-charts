@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "open-terminal.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "open-terminal.fullname" . }}:{{ .Values.service.port }}/docs']
   restartPolicy: Never
