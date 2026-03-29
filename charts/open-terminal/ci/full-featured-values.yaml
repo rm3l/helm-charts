@@ -1,0 +1,92 @@
+# Full-featured configuration test
+# Tests with multiple features enabled
+
+image:
+  tag: "latest"
+
+openTerminal:
+  apiKey:
+    value: "test-api-key-full-featured"
+
+  server:
+    host: "0.0.0.0"
+    port: 8000
+    executeTimeout: "300"
+
+  cors:
+    allowedOrigins:
+      - "https://open-webui.example.com"
+      - "http://localhost:3000"
+
+  multiUser:
+    enabled: true
+
+  packages:
+    apt:
+      - "curl"
+      - "vim"
+    pip:
+      - "requests"
+      - "pandas"
+
+  logging:
+    logDir: "/var/log/open-terminal"
+
+  config:
+    enabled: true
+    content: |
+      [server]
+      host = "0.0.0.0"
+      port = 8000
+      execute_timeout = 300
+
+persistence:
+  enabled: true
+  size: 5Gi
+  storageClass: ""
+  accessMode: ReadWriteOnce
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+  hosts:
+    - host: open-terminal.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: open-terminal-tls
+      hosts:
+        - open-terminal.example.com
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+# Example: Using HTTP probes with /docs endpoint instead of default TCP probes
+# Note: Must explicitly set tcpSocket to null to override the default
+livenessProbe:
+  tcpSocket: null
+  httpGet:
+    path: /docs
+    port: http
+  initialDelaySeconds: 15
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  tcpSocket: null
+  httpGet:
+    path: /docs
+    port: http
+  initialDelaySeconds: 10
+  periodSeconds: 5
+  timeoutSeconds: 3
+  failureThreshold: 3

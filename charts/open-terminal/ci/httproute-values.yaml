@@ -1,0 +1,26 @@
+# HTTPRoute (Gateway API) configuration test
+# Tests Gateway API integration
+
+openTerminal:
+  apiKey:
+    value: "test-api-key-gateway"
+
+httpRoute:
+  enabled: true
+  annotations:
+    external-dns.alpha.kubernetes.io/target: "gateway.example.com"
+  parentRefs:
+    - name: gateway
+      sectionName: http
+      namespace: gateway-system
+  hostnames:
+    - open-terminal.example.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+
+persistence:
+  enabled: true
+  size: 1Gi
