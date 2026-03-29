@@ -95,10 +95,11 @@ jobs:
       fail-fast: false
       matrix:
         # https://endoflife.date/kubernetes and https://hub.docker.com/r/kindest/node/tags?page=1
-        kube_version: [1.29.14, 1.30.10, 1.31.6, 1.32.2]
+        # Using currently supported K8s versions (N-2 support policy)
+        kube_version: [1.32.11, 1.33.7, 1.34.3, 1.35.0]
         experimental: [false]
         # include:
-        #   - kube_version: '1.30.0-alpha.0.102_41890534532931'
+        #   - kube_version: '1.36.0-alpha.0'
         #     experimental: true
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental }}
