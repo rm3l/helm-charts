@@ -221,10 +221,13 @@ jobs:
           - kresus
           - mac-oui
           - memos
+          - networking-toolbox
           - ntfy
           - olivetin
+          - open-terminal
           - service-names-port-numbers
           - wallos
+          - web-check
           - wg-easy
     steps:
       - uses: actions/checkout@v6
