@@ -185,8 +185,8 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | extraVolumeMounts | list | `[]` | Additional Volume mounts |
 | extraVolumes | list | `[]` | Additional volumes |
 | fullnameOverride | string | `""` |  |
-| hostNetwork | bool | `false` | Host networking requested for the pod. Beware that setting this to true requires all container ports declared in the pod to be free on the node. This can be useful for example to expose AdGuard Home as a DHCP Server. |
 | global.imageRegistry | string | `""` | Global container image registry. Used as a fallback when `image.registry` is not set. |
+| hostNetwork | bool | `false` | Host networking requested for the pod. Beware that setting this to true requires all container ports declared in the pod to be free on the node. This can be useful for example to expose AdGuard Home as a DHCP Server. |
 | httproutes.http.annotations | object | `{}` |  |
 | httproutes.http.enabled | bool | `false` |  |
 | httproutes.http.hostnames | list | `[]` |  |
@@ -198,7 +198,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | httproutes.https.parentRefs | list | `[]` |  |
 | httproutes.https.rules | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.registry | string | `"docker.io"` | Container image registry (FQDN). If `image.repository` already includes a registry, this value is ignored. |
+| image.registry | string | `"docker.io"` | If `image.repository` already includes a registry (e.g. `ghcr.io/org/image`), this value is ignored. |
 | image.repository | string | `"adguard/adguardhome"` |  |
 | image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
