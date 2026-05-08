@@ -9,7 +9,7 @@ metadata:
 spec:
   containers:
     - name: wget
-      image: busybox
+      image: docker.io/busybox:1.35
       command: ['wget']
       args: ['{{ include "adguard-home.fullname" . }}-http:{{ .Values.services.http.port }}']
   restartPolicy: Never

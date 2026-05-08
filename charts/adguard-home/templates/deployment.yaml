@@ -58,7 +58,7 @@ spec:
       {{- end }}
       {{- if .Values.bootstrapEnabled }}
       initContainers:
-      - image: busybox:1.35
+      - image: docker.io/busybox:1.35
         name: configurator
         imagePullPolicy: Always
         resources:
@@ -88,7 +88,7 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: {{ include "adguard-home.image" . | quote }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
           - /opt/adguardhome/AdGuardHome

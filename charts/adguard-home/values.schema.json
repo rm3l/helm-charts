@@ -2,6 +2,15 @@
   "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "properties": {
+    "global": {
+      "type": "object",
+      "properties": {
+        "imageRegistry": {
+          "type": "string",
+          "description": "Global container image registry. Used as a fallback when image.registry is not set."
+        }
+      }
+    },
     "deploymentType": {
       "type": "string",
       "enum": [
@@ -9,6 +18,24 @@
         "StatefulSet"
       ],
       "description": "Type of Kubernetes workload to deploy. Must be either 'Deployment' or 'StatefulSet'."
+    },
+    "image": {
+      "type": "object",
+      "properties": {
+        "registry": {
+          "type": "string",
+          "description": "Container image registry (FQDN). If image.repository already includes a registry, this value is ignored."
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "pullPolicy": {
+          "type": "string"
+        }
+      }
     }
   },
   "required": [

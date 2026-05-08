@@ -7,7 +7,14 @@ deploymentType: Deployment
 
 replicaCount: 1
 
+global:
+  # -- Global container image registry. Used as a fallback when `image.registry` is not set.
+  imageRegistry: ""
+
 image:
+  # -- Container image registry (FQDN). Starting with Kubernetes 1.34 / CRI-O 1.34, short image names are rejected.
+  # -- If `image.repository` already includes a registry (e.g. `ghcr.io/org/image`), this value is ignored.
+  registry: docker.io
   repository: adguard/adguardhome
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.

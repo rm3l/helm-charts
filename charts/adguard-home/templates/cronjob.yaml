@@ -78,7 +78,7 @@ spec:
             resources:
               {{- toYaml .Values.resources | nindent 14 }}
             {{- if .Values.backup.aws.enabled }}
-            image: amazon/aws-cli:2.4.9
+            image: docker.io/amazon/aws-cli:2.4.9
             args:
             - s3
             - cp

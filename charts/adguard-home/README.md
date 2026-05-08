@@ -4,13 +4,13 @@ Unofficial Chart for Adguard Home, the network-wide ad and tracking blocker.
 This Chart also provides automated backups of Adguard Home to services like AWS S3.
 https://github.com/AdguardTeam/AdGuardHome
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.24.0-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
+[![Latest version](https://img.shields.io/badge/latest_version-0.24.1-blue)](https://artifacthub.io/packages/helm/rm3l/adguard-home)
 
 ## Installation
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-adguard-home rm3l/adguard-home --version 0.24.0
+$ helm install my-adguard-home rm3l/adguard-home --version 0.24.1
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
@@ -186,6 +186,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | extraVolumes | list | `[]` | Additional volumes |
 | fullnameOverride | string | `""` |  |
 | hostNetwork | bool | `false` | Host networking requested for the pod. Beware that setting this to true requires all container ports declared in the pod to be free on the node. This can be useful for example to expose AdGuard Home as a DHCP Server. |
+| global.imageRegistry | string | `""` | Global container image registry. Used as a fallback when `image.registry` is not set. |
 | httproutes.http.annotations | object | `{}` |  |
 | httproutes.http.enabled | bool | `false` |  |
 | httproutes.http.hostnames | list | `[]` |  |
@@ -197,6 +198,7 @@ See https://artifacthub.io/packages/helm/rm3l/adguard-home?modal=install
 | httproutes.https.parentRefs | list | `[]` |  |
 | httproutes.https.rules | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.registry | string | `"docker.io"` | Container image registry (FQDN). If `image.repository` already includes a registry, this value is ignored. |
 | image.repository | string | `"adguard/adguardhome"` |  |
 | image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
