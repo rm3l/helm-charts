@@ -80,3 +80,49 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Return the image registry to use, preferring:
+1) .Values.image.registry
+2) .Values.global.imageRegistry
+3) docker.io
+*/}}
+{{- define "adguard-home.imageRegistry" -}}
+{{- default "docker.io" (coalesce .Values.image.registry .Values.global.imageRegistry) -}}
+{{- end -}}
+
+{{/*
+Return true when the repository already contains a registry (FQDN, localhost, or host:port).
+Logic based on Docker's reference rules: if the first path component contains '.' or ':'
+or is exactly 'localhost', it is treated as a registry host.
+*/}}
+{{- define "adguard-home.repositoryHasRegistry" -}}
+{{- $repo := (toString .) -}}
+{{- $first := (first (splitList "/" $repo)) -}}
+{{- if or (eq $first "localhost") (contains "." $first) (contains ":" $first) -}}
+true
+{{- else -}}
+false
+{{- end -}}
+{{- end -}}
+
+{{/*
+Return an image repository qualified with a registry (FQDN).
+If .Values.image.repository already contains a registry, it is returned as-is.
+Otherwise, the configured registry is prepended.
+*/}}
+{{- define "adguard-home.imageRepository" -}}
+{{- $repo := .Values.image.repository -}}
+{{- if eq (include "adguard-home.repositoryHasRegistry" $repo | trim) "true" -}}
+{{- $repo -}}
+{{- else -}}
+{{- printf "%s/%s" (include "adguard-home.imageRegistry" .) $repo -}}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Return the fully qualified AdGuard Home image (repository + tag).
+*/}}
+{{- define "adguard-home.image" -}}
+{{- printf "%s:%s" (include "adguard-home.imageRepository" .) (.Values.image.tag | default .Chart.AppVersion) -}}
+{{- end -}}
