@@ -4,13 +4,21 @@ Unofficial Chart for ntfy, a simple HTTP-based pub-sub notification service.
 This Chart also provides automated backups of ntfy to services like AWS S3.
 https://github.com/binwiederhier/ntfy
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.1.1-blue)](https://artifacthub.io/packages/helm/rm3l/ntfy)
+[![Latest version](https://img.shields.io/badge/latest_version-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/ntfy)
 
 ## Installation
 
+### Using the OCI registry
+
+```bash
+$ helm install my-ntfy oci://ghcr.io/rm3l/helm-charts/ntfy --version 0.2.0
+```
+
+### Using the Helm repository
+
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-ntfy rm3l/ntfy --version 0.1.1
+$ helm install my-ntfy rm3l/ntfy --version 0.2.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/ntfy?modal=install

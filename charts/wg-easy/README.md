@@ -4,13 +4,21 @@ Unofficial Chart for wg-easy, the easiest way to run WireGuard VPN.
 It also provides a Web-based Admin UI.
 https://github.com/wg-easy/wg-easy
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/wg-easy)
+[![Latest version](https://img.shields.io/badge/latest_version-0.3.0-blue)](https://artifacthub.io/packages/helm/rm3l/wg-easy)
 
 ## Installation
 
+### Using the OCI registry
+
+```bash
+$ helm install my-wg-easy oci://ghcr.io/rm3l/helm-charts/wg-easy --version 0.3.0
+```
+
+### Using the Helm repository
+
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-wg-easy rm3l/wg-easy --version 0.2.0
+$ helm install my-wg-easy rm3l/wg-easy --version 0.3.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/wg-easy?modal=install

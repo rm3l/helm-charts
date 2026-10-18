@@ -3,13 +3,21 @@
 Unofficial Chart for OliveTin, a tool that gives safe and simple access to predefined shell commands from a web interface.
 https://www.olivetin.app
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/olivetin)
+[![Latest version](https://img.shields.io/badge/latest_version-0.3.0-blue)](https://artifacthub.io/packages/helm/rm3l/olivetin)
 
 ## Installation
 
+### Using the OCI registry
+
+```bash
+$ helm install my-olivetin oci://ghcr.io/rm3l/helm-charts/olivetin --version 0.3.0
+```
+
+### Using the Helm repository
+
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-olivetin rm3l/olivetin --version 0.2.0
+$ helm install my-olivetin rm3l/olivetin --version 0.3.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/olivetin?modal=install

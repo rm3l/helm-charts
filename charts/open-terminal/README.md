@@ -4,13 +4,21 @@ Unofficial Chart for Open Terminal, a lightweight, self-hosted terminal
 that gives AI agents and automation tools a dedicated environment to
 run commands, manage files, and execute code.
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/open-terminal)
+[![Latest version](https://img.shields.io/badge/latest_version-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/open-terminal)
 
 ## Installation
 
+### Using the OCI registry
+
+```bash
+$ helm install my-open-terminal oci://ghcr.io/rm3l/helm-charts/open-terminal --version 0.2.0
+```
+
+### Using the Helm repository
+
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-open-terminal rm3l/open-terminal --version 0.1.0
+$ helm install my-open-terminal rm3l/open-terminal --version 0.2.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/open-terminal?modal=install

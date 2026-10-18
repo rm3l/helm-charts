@@ -3,13 +3,21 @@
 Unofficial Chart for networking-toolbox, the all-in-one offline-first networking toolbox for sysadmins.
 https://github.com/lissy93/networking-toolbox
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/networking-toolbox)
+[![Latest version](https://img.shields.io/badge/latest_version-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/networking-toolbox)
 
 ## Installation
 
+### Using the OCI registry
+
+```bash
+$ helm install my-networking-toolbox oci://ghcr.io/rm3l/helm-charts/networking-toolbox --version 0.2.0
+```
+
+### Using the Helm repository
+
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-networking-toolbox rm3l/networking-toolbox --version 0.1.0
+$ helm install my-networking-toolbox rm3l/networking-toolbox --version 0.2.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/networking-toolbox?modal=install
