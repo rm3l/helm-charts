@@ -35,7 +35,16 @@ spec:
             readOnlyRootFilesystem: true
             runAsUser: 65534
             runAsGroup: 65534
-          command: ['sh', '-c', "until nslookup {{ include "atuin.fullname" . }}-postgresql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "atuin.fullname" . }}-postgresql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
+          command:
+            - sh
+            - -c
+            - |
+              until nc -z -w 2 \
+                {{ include "atuin.fullname" . }}-postgresql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local \
+                5432; do
+                echo "waiting for postgres to accept connections"
+                sleep 2
+              done
           resources:
             limits:
               cpu: 100m
