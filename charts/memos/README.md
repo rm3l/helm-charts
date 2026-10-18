@@ -3,13 +3,21 @@
 Unofficial Chart for memos, an open-source, lightweight note-taking solution.
 https://github.com/usememos/memos
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.1.1-blue)](https://artifacthub.io/packages/helm/rm3l/memos)
+[![Latest version](https://img.shields.io/badge/latest_version-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/memos)
 
 ## Installation
 
+### Using the OCI registry
+
+```bash
+$ helm install my-memos oci://ghcr.io/rm3l/helm-charts/memos --version 0.2.0
+```
+
+### Using the Helm repository
+
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-memos rm3l/memos --version 0.1.1
+$ helm install my-memos rm3l/memos --version 0.2.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/memos?modal=install

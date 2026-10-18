@@ -4,13 +4,21 @@ Unofficial Chart for Wallos, the Open-Source Personal Subscription Tracker.
 This Chart also provides automated backups of Wallos to services like AWS S3.
 https://github.com/ellite/Wallos
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/wallos)
+[![Latest version](https://img.shields.io/badge/latest_version-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/wallos)
 
 ## Installation
 
+### Using the OCI registry
+
+```bash
+$ helm install my-wallos oci://ghcr.io/rm3l/helm-charts/wallos --version 0.2.0
+```
+
+### Using the Helm repository
+
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-wallos rm3l/wallos --version 0.1.0
+$ helm install my-wallos rm3l/wallos --version 0.2.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/wallos?modal=install

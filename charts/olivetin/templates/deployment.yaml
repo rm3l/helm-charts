@@ -17,7 +17,7 @@ spec:
     metadata:
       annotations:
       {{- if not (and (.Values.config.existingSecretRef.name) (.Values.config.existingConfigMap.name)) }}
-      checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
       {{- end }}
       {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}

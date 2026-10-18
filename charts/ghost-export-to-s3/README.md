@@ -3,13 +3,21 @@
 Automated backups of headless Ghost Blogs to AWS S3.
 https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.26.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
+[![Latest version](https://img.shields.io/badge/latest_version-0.27.0-blue)](https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3)
 
 ## Installation
 
+### Using the OCI registry
+
+```bash
+$ helm install my-ghost-export-to-s3 oci://ghcr.io/rm3l/helm-charts/ghost-export-to-s3 --version 0.27.0
+```
+
+### Using the Helm repository
+
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-ghost-export-to-s3 rm3l/ghost-export-to-s3 --version 0.26.0
+$ helm install my-ghost-export-to-s3 rm3l/ghost-export-to-s3 --version 0.27.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/ghost-export-to-s3?modal=install

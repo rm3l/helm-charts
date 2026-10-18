@@ -3,13 +3,21 @@
 Unofficial Chart for web-check, an all-in-one OSINT tool for analysing any website.
 https://github.com/lissy93/web-check
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.1.0-blue)](https://artifacthub.io/packages/helm/rm3l/web-check)
+[![Latest version](https://img.shields.io/badge/latest_version-0.2.0-blue)](https://artifacthub.io/packages/helm/rm3l/web-check)
 
 ## Installation
 
+### Using the OCI registry
+
+```bash
+$ helm install my-web-check oci://ghcr.io/rm3l/helm-charts/web-check --version 0.2.0
+```
+
+### Using the Helm repository
+
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-web-check rm3l/web-check --version 0.1.0
+$ helm install my-web-check rm3l/web-check --version 0.2.0
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/web-check?modal=install
