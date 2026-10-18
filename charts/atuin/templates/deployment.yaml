@@ -27,7 +27,7 @@ spec:
       serviceAccountName: {{ include "atuin.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      {{- if .Values.postgresql.enabled }}
+      {{- if and .Values.postgresql.enabled (not .Values.sqlite.enabled) (not .Values.postgresql.auth.existingSecret) }}
       initContainers:
         - name: wait-db-service
           image: busybox:1.28
@@ -35,7 +35,16 @@ spec:
             readOnlyRootFilesystem: true
             runAsUser: 65534
             runAsGroup: 65534
-          command: ['sh', '-c', "until nslookup {{ include "atuin.fullname" . }}-postgresql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "atuin.fullname" . }}-postgresql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; sleep 2; done"]
+          command:
+            - sh
+            - -c
+            - |
+              until nc -w 2 \
+                {{ include "atuin.fullname" . }}-postgresql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local \
+                5432 < /dev/null; do
+                echo "waiting for postgres to accept connections"
+                sleep 2
+              done
           resources:
             limits:
               cpu: 100m
