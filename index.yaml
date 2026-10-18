@@ -3,6 +3,22 @@ entries:
   adguard-home:
   - apiVersion: v2
     appVersion: v0.107.51
+    created: "2026-10-18T20:01:03.214194746Z"
+    description: 'Unofficial Chart for Adguard Home, the network-wide ad and tracking
+      blocker. This Chart also provides automated backups of Adguard Home to services
+      like AWS S3. https://github.com/AdguardTeam/AdGuardHome '
+    digest: b98719d4afde6571df71fe0546585bd394c55e262f26444eb38e8880e4153280
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: adguard-home
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/adguard-home-0.25.0/adguard-home-0.25.0.tgz
+    version: 0.25.0
+  - apiVersion: v2
+    appVersion: v0.107.51
     created: "2026-06-17T11:44:15.155586964Z"
     description: 'Unofficial Chart for Adguard Home, the network-wide ad and tracking
       blocker. This Chart also provides automated backups of Adguard Home to services
@@ -450,6 +466,27 @@ entries:
   atuin:
   - apiVersion: v2
     appVersion: 18.12.0
+    created: "2026-10-18T20:01:03.358583794Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.1.2
+    description: 'Unofficial Chart for Atuin, the magical shell history. The server
+      provides fully encrypted synchronization of the shell history across machines.
+      https://github.com/ellie/atuin '
+    digest: e2013edb00b8ebba8a665b53d8a42fe1d096c2df712b08775479b9c8fa137db6
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: atuin
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/atuin-0.12.0/atuin-0.12.0.tgz
+    version: 0.12.0
+  - apiVersion: v2
+    appVersion: 18.12.0
     created: "2026-03-07T06:42:52.082003937Z"
     dependencies:
     - condition: postgresql.enabled
@@ -781,6 +818,30 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/atuin-0.1.0/atuin-0.1.0.tgz
     version: 0.1.0
   dev-feed:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2026-10-18T20:01:03.517468311Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 19.0.5
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.6.21
+    description: 'GraphQL-based API exposing a list of daily curated content from
+      top engineering blogs and articles. https://github.com/rm3l/dev-feed '
+    digest: 29859ec5e62417b735dbe93dcc766747fa0f1e98e108f7d5a1506d4fde0ef7c6
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: dev-feed
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/dev-feed-3.2.0/dev-feed-3.2.0.tgz
+    version: 3.2.0
   - apiVersion: v2
     appVersion: latest
     created: "2025-11-13T00:10:15.729441981Z"
@@ -1624,6 +1685,20 @@ entries:
   ghost-export-to-s3:
   - apiVersion: v2
     appVersion: 5.82.8
+    created: "2026-10-18T20:01:03.724057108Z"
+    description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
+    digest: b49a764e44b90cb24e1731571c802ecfed2e346ebd7e8f0e9a84edf609c5b082
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: ghost-export-to-s3
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/ghost-export-to-s3-0.27.0/ghost-export-to-s3-0.27.0.tgz
+    version: 0.27.0
+  - apiVersion: v2
+    appVersion: 5.82.8
     created: "2024-06-08T21:59:43.999943216Z"
     description: 'Automated backups of headless Ghost Blogs to AWS S3. https://rm3l.org/leveraging-kubernetes-cronjobs-for-automated-backups-of-a-headless-ghost-blog-to-aws-s3/ '
     digest: d44e5530caf581f777b8d8aa187c2b9b988224081ca82f693b141782a27a168c
@@ -1990,6 +2065,30 @@ entries:
   kresus:
   - apiVersion: v2
     appVersion: 0.22.1
+    created: "2026-10-18T20:01:03.886228362Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.7.15
+    - alias: apprise
+      condition: apprise.enabled
+      name: apprise-api
+      repository: https://tieum.github.io/helm-charts
+      version: 0.0.5
+    description: 'Open-source libre self-hosted personal finance manager. https://github.com/kresusapp/kresus '
+    digest: 20e533f8000fa02ae4609f5c434846fdc2ded9613c002d5b514c2cb9cb033900
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: kresus
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/kresus-0.3.0/kresus-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 0.22.1
     created: "2025-11-13T00:10:15.859313631Z"
     dependencies:
     - condition: postgresql.enabled
@@ -2061,6 +2160,20 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/kresus-0.1.0/kresus-0.1.0.tgz
     version: 0.1.0
   mac-oui:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2026-10-18T20:01:04.029063154Z"
+    description: 'Microservice for looking up manufacturers from MAC addresses. https://github.com/rm3l/mac-oui '
+    digest: 75212314a3f57d61ce2d4a138653ffd5a9cf2e3bfd07a9f4899e469b636cce5b
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: mac-oui
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/mac-oui-1.26.0/mac-oui-1.26.0.tgz
+    version: 1.26.0
   - apiVersion: v2
     appVersion: 1.8.0
     created: "2024-08-28T22:02:13.328219427Z"
@@ -2380,6 +2493,30 @@ entries:
   memos:
   - apiVersion: v2
     appVersion: "0.24"
+    created: "2026-10-18T20:01:04.208901329Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 20.4.1
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.4.16
+    description: 'Unofficial Chart for memos, an open-source, lightweight note-taking
+      solution. https://github.com/usememos/memos '
+    digest: 912050bdf5738eda58cd3f32e2f980c3706ce3d4b49c8aa51fafad50ffa4862a
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: memos
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/memos-0.2.0/memos-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: "0.24"
     created: "2025-11-13T00:10:15.978849184Z"
     dependencies:
     - condition: mariadb.enabled
@@ -2429,6 +2566,21 @@ entries:
   networking-toolbox:
   - apiVersion: v2
     appVersion: latest
+    created: "2026-10-18T20:01:04.355727709Z"
+    description: 'Unofficial Chart for networking-toolbox, the all-in-one offline-first
+      networking toolbox for sysadmins. https://github.com/lissy93/networking-toolbox '
+    digest: ad2eb57cd03cfb9467ea0f9ebe6323280090973a98c8b22db3b7857d00d8bfda
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: networking-toolbox
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/networking-toolbox-0.2.0/networking-toolbox-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-11-12T23:11:37.843591785Z"
     description: 'Unofficial Chart for networking-toolbox, the all-in-one offline-first
       networking toolbox for sysadmins. https://github.com/lissy93/networking-toolbox '
@@ -2443,6 +2595,22 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/networking-toolbox-0.1.0/networking-toolbox-0.1.0.tgz
     version: 0.1.0
   ntfy:
+  - apiVersion: v2
+    appVersion: v2.11.0
+    created: "2026-10-18T20:01:04.679264923Z"
+    description: 'Unofficial Chart for ntfy, a simple HTTP-based pub-sub notification
+      service. This Chart also provides automated backups of ntfy to services like
+      AWS S3. https://github.com/binwiederhier/ntfy '
+    digest: db7755c625eaed2e1033fc7e64c5f5ed99fd478a8f07c6a684247acb4bf05141
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: ntfy
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/ntfy-0.2.0/ntfy-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: v2.11.0
     created: "2025-06-29T22:34:06.78895418Z"
@@ -2478,6 +2646,21 @@ entries:
   olivetin:
   - apiVersion: v2
     appVersion: 2025.2.19
+    created: "2026-10-18T20:01:05.010271419Z"
+    description: 'Unofficial Chart for OliveTin, a tool that gives safe and simple
+      access to predefined shell commands from a web interface. https://www.olivetin.app '
+    digest: 9b78bfe6c2f1e69ca6685b8d4c93a8ef9d55ab0ce5ce68a51c40a0d301662a92
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: olivetin
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/olivetin-0.3.0/olivetin-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 2025.2.19
     created: "2025-02-21T23:27:33.538420849Z"
     description: 'Unofficial Chart for OliveTin, a tool that gives safe and simple
       access to predefined shell commands from a web interface. https://www.olivetin.app '
@@ -2510,6 +2693,34 @@ entries:
   open-terminal:
   - apiVersion: v2
     appVersion: 0.11.30
+    created: "2026-10-18T20:01:05.15521526Z"
+    description: 'Unofficial Chart for Open Terminal, a lightweight, self-hosted terminal
+      that gives AI agents and automation tools a dedicated environment to run commands,
+      manage files, and execute code. '
+    digest: e5071bc65eab4961e760e40e6d03237f2d27595615d5ad34061d61d7d9248ad7
+    home: https://github.com/open-webui/open-terminal
+    icon: https://raw.githubusercontent.com/open-webui/open-webui/main/static/favicon.png
+    keywords:
+    - open-terminal
+    - terminal
+    - ai
+    - automation
+    - open-webui
+    - shell
+    - rest-api
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: open-terminal
+    sources:
+    - https://github.com/open-webui/open-terminal
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/open-terminal-0.2.0/open-terminal-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 0.11.30
     created: "2026-03-29T21:35:10.842762804Z"
     description: 'Unofficial Chart for Open Terminal, a lightweight, self-hosted terminal
       that gives AI agents and automation tools a dedicated environment to run commands,
@@ -2537,6 +2748,21 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/open-terminal-0.1.0/open-terminal-0.1.0.tgz
     version: 0.1.0
   service-names-port-numbers:
+  - apiVersion: v2
+    appVersion: 0.12.1
+    created: "2026-10-18T20:01:05.38640739Z"
+    description: 'Microservice (GraphQL API) against the IANA Service Names And Port
+      Numbers Registry. https://github.com/rm3l/service-names-port-numbers '
+    digest: 9eb1971439efae0527ea306180a8406970fce1908275928de813d6a3ddb4ff3e
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: service-names-port-numbers
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/service-names-port-numbers-0.27.0/service-names-port-numbers-0.27.0.tgz
+    version: 0.27.0
   - apiVersion: v2
     appVersion: 0.12.1
     created: "2024-08-28T22:02:13.583874493Z"
@@ -2910,6 +3136,22 @@ entries:
   wallos:
   - apiVersion: v2
     appVersion: 2.46.0
+    created: "2026-10-18T20:01:05.593615145Z"
+    description: 'Unofficial Chart for Wallos, the Open-Source Personal Subscription
+      Tracker. This Chart also provides automated backups of Wallos to services like
+      AWS S3. https://github.com/ellite/Wallos '
+    digest: 26c5784bfad3923ea83db4f9fe000f105c5694fd62e402fb97705e6bd6024850
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: wallos
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/wallos-0.2.0/wallos-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 2.46.0
     created: "2025-02-23T14:06:48.407115647Z"
     description: 'Unofficial Chart for Wallos, the Open-Source Personal Subscription
       Tracker. This Chart also provides automated backups of Wallos to services like
@@ -2927,6 +3169,21 @@ entries:
   web-check:
   - apiVersion: v2
     appVersion: latest
+    created: "2026-10-18T20:01:05.80248279Z"
+    description: 'Unofficial Chart for web-check, an all-in-one OSINT tool for analysing
+      any website. https://github.com/lissy93/web-check '
+    digest: b36628c8109f5b8897b8bf01a4b65fdad4573cb5a372fb47b5eebba053b75e4d
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: web-check
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/web-check-0.2.0/web-check-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-11-13T00:30:08.316746533Z"
     description: 'Unofficial Chart for web-check, an all-in-one OSINT tool for analysing
       any website. https://github.com/lissy93/web-check '
@@ -2941,6 +3198,21 @@ entries:
     - https://github.com/rm3l/helm-charts/releases/download/web-check-0.1.0/web-check-0.1.0.tgz
     version: 0.1.0
   wg-easy:
+  - apiVersion: v2
+    appVersion: "14"
+    created: "2026-10-18T20:01:05.990474163Z"
+    description: 'Unofficial Chart for wg-easy, the easiest way to run WireGuard VPN.
+      It also provides a Web-based Admin UI. https://github.com/wg-easy/wg-easy '
+    digest: dfe6f76895a8600fb63fa5bac783c21ef7b074faa6b827619204788d1a737dad
+    maintainers:
+    - email: armel@rm3l.org
+      name: rm3l
+      url: https://rm3l.org
+    name: wg-easy
+    type: application
+    urls:
+    - https://github.com/rm3l/helm-charts/releases/download/wg-easy-0.3.0/wg-easy-0.3.0.tgz
+    version: 0.3.0
   - apiVersion: v2
     appVersion: "14"
     created: "2025-05-03T22:27:04.31041213Z"
@@ -2971,4 +3243,4 @@ entries:
     urls:
     - https://github.com/rm3l/helm-charts/releases/download/wg-easy-0.1.0/wg-easy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-06-17T11:44:15.156060934Z"
+generated: "2026-10-18T20:01:05.991094157Z"
