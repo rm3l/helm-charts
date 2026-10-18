@@ -295,10 +295,13 @@ jobs:
       - release
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       packages: write
     concurrency:
       group: release_oci
       cancel-in-progress: false
+    env:
+      OCI_REGISTRY: ghcr.io/${{ github.repository }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -315,16 +318,62 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Package and push charts to GHCR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          failed_charts=()
           for chart_dir in charts/*/; do
             chart_name=$(basename "$chart_dir")
             chart_version=$(grep '^version:' "${chart_dir}Chart.yaml" | awk '{print $2}')
-            echo "Packaging ${chart_name} version ${chart_version}..."
-            helm dependency build "$chart_dir"
+
+            echo "::group::${chart_name} ${chart_version}"
+
+            # Build dependencies with retry; skip this chart on persistent failure
+            dep_ok=false
+            for attempt in 1 2 3; do
+              if helm dependency build "$chart_dir" 2>&1; then
+                dep_ok=true
+                break
+              fi
+              echo "Dependency build attempt ${attempt} failed for ${chart_name}, retrying in 10s..."
+              sleep 10
+            done
+            if [ "$dep_ok" = false ]; then
+              echo "::warning::Skipping ${chart_name}: dependency build failed after 3 attempts"
+              failed_charts+=("${chart_name}")
+              echo "::endgroup::"
+              continue
+            fi
+
             helm package "$chart_dir" -d /tmp/helm-packages
-            echo "Pushing ${chart_name} version ${chart_version} to GHCR..."
-            helm push "/tmp/helm-packages/${chart_name}-${chart_version}.tgz" "oci://ghcr.io/${{ github.repository }}" || echo "Skipping ${chart_name}-${chart_version} (already exists or push failed)"
+
+            push_output=$(helm push "/tmp/helm-packages/${chart_name}-${chart_version}.tgz" "oci://${OCI_REGISTRY}" 2>&1) && push_rc=0 || push_rc=$?
+            if [ $push_rc -ne 0 ]; then
+              if echo "$push_output" | grep -qi "already exists"; then
+                echo "Skipping ${chart_name}-${chart_version} (already exists in registry)"
+              else
+                echo "::error::Failed to push ${chart_name}-${chart_version}: ${push_output}"
+                failed_charts+=("${chart_name}")
+                echo "::endgroup::"
+                continue
+              fi
+            fi
+
+            # Ensure the GHCR package is public
+            gh api \
+              --method PUT \
+              -H "Accept: application/vnd.github+json" \
+              /user/packages/container/${GITHUB_REPOSITORY#*/}%2F${chart_name}/visibility \
+              -f visibility=public 2>/dev/null \
+            || echo "::warning::Could not set visibility for ${chart_name} (may require manual action)"
+
+            echo "::endgroup::"
           done
+
+          if [ ${#failed_charts[@]} -ne 0 ]; then
+            echo "::error::The following charts failed to publish: ${failed_charts[*]}"
+            exit 1
+          fi
 
       - name: Logout from GHCR
         if: always()
