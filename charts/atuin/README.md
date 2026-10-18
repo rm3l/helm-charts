@@ -4,21 +4,21 @@ Unofficial Chart for Atuin, the magical shell history.
 The server provides fully encrypted synchronization of the shell history across machines.
 https://github.com/ellie/atuin
 
-[![Latest version](https://img.shields.io/badge/latest_version-0.12.0-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
+[![Latest version](https://img.shields.io/badge/latest_version-0.12.1-blue)](https://artifacthub.io/packages/helm/rm3l/atuin)
 
 ## Installation
 
 ### Using the OCI registry
 
 ```bash
-$ helm install my-atuin oci://ghcr.io/rm3l/helm-charts/atuin --version 0.12.0
+$ helm install my-atuin oci://ghcr.io/rm3l/helm-charts/atuin --version 0.12.1
 ```
 
 ### Using the Helm repository
 
 ```bash
 $ helm repo add rm3l https://helm-charts.rm3l.org
-$ helm install my-atuin rm3l/atuin --version 0.12.0
+$ helm install my-atuin rm3l/atuin --version 0.12.1
 ```
 
 See https://artifacthub.io/packages/helm/rm3l/atuin?modal=install
