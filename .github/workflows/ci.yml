@@ -184,7 +184,7 @@ jobs:
           EOF
 
       - name: Create kind cluster
-        uses: helm/kind-action@v1.15.1
+        uses: helm/kind-action@v1.15.2
         with:
           config: /tmp/kind.config.yaml
 
